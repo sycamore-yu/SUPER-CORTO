@@ -1,0 +1,66 @@
+cmake_minimum_required(VERSION 3.16)
+project(corto_ros2 LANGUAGES C CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(pcl_conversions REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(visualization_msgs REQUIRED)
+find_package(mars_quadrotor_msgs REQUIRED)
+find_package(rog_map REQUIRED)
+find_package(Eigen3 REQUIRED)
+find_package(PCL REQUIRED COMPONENTS common kdtree filters io)
+find_package(NLopt REQUIRED)
+set(MOSEK_ROOT "$ENV{MOSEK_ROOT}" CACHE PATH "MOSEK version root")
+find_path(MOSEK_INCLUDE_DIR fusion.h PATHS "${MOSEK_ROOT}/tools/platform/linux64x86/h" REQUIRED NO_DEFAULT_PATH)
+find_library(MOSEK_LIBRARY mosek64 PATHS "${MOSEK_ROOT}/tools/platform/linux64x86/bin" REQUIRED NO_DEFAULT_PATH)
+find_library(FUSION_LIBRARY fusion64 PATHS "${MOSEK_ROOT}/tools/platform/linux64x86/bin" REQUIRED NO_DEFAULT_PATH)
+set(CORE_SOURCES
+  modules/cubic_spline/cubic_spline.cpp
+  modules/cubic_spline/arc_length_spline.cpp
+  modules/optimization/ref_traj_opt.cpp
+  modules/corridor/corGen.cpp
+  modules/nmpc/nominal_nmpc_cor.cpp)
+add_library(corto_core ${CORE_SOURCES})
+target_include_directories(corto_core PUBLIC modules ${MOSEK_INCLUDE_DIR} ${PCL_INCLUDE_DIRS})
+target_link_libraries(corto_core Eigen3::Eigen ${PCL_LIBRARIES} ${FUSION_LIBRARY} ${MOSEK_LIBRARY} NLopt::nlopt)
+ament_target_dependencies(corto_core rclcpp)
+add_library(corto_map modules/map/map.cpp modules/path_searching/topo_prm.cpp modules/raycast/raycast.cpp)
+target_compile_definitions(corto_map PUBLIC USE_ROS2 ORIGIN_AT_CORNER ROOT_DIR="${CMAKE_CURRENT_SOURCE_DIR}/../rog_map/")
+target_link_libraries(corto_map corto_core)
+ament_target_dependencies(corto_map rclcpp rog_map nav_msgs sensor_msgs visualization_msgs pcl_conversions tf2_ros)
+add_executable(corto_node src/corto_node.cpp)
+target_link_libraries(corto_node corto_map)
+ament_target_dependencies(corto_node rclcpp nav_msgs geometry_msgs std_msgs visualization_msgs mars_quadrotor_msgs)
+install(TARGETS corto_core corto_map corto_node ARCHIVE DESTINATION lib LIBRARY DESTINATION lib RUNTIME DESTINATION lib/${PROJECT_NAME})
+install(DIRECTORY modules/ DESTINATION include/${PROJECT_NAME})
+if(BUILD_TESTING)
+  set(UPSTREAM_MODULES ${CMAKE_CURRENT_SOURCE_DIR}/../vendor/corto/src/modules)
+  add_executable(corto_upstream_oracle tests/numerical_fixture.cpp
+    ${UPSTREAM_MODULES}/map/map.cpp ${UPSTREAM_MODULES}/path_searching/topo_prm.cpp ${UPSTREAM_MODULES}/raycast/raycast.cpp
+    ${UPSTREAM_MODULES}/cubic_spline/cubic_spline.cpp ${UPSTREAM_MODULES}/cubic_spline/arc_length_spline.cpp
+    ${UPSTREAM_MODULES}/optimization/ref_traj_opt.cpp ${UPSTREAM_MODULES}/corridor/corGen.cpp
+    ${UPSTREAM_MODULES}/nmpc/nominal_nmpc_cor.cpp)
+  target_compile_definitions(corto_upstream_oracle PRIVATE CORTO_UPSTREAM)
+  target_include_directories(corto_upstream_oracle PRIVATE tests/upstream_headers ${UPSTREAM_MODULES} ${MOSEK_INCLUDE_DIR} ${PCL_INCLUDE_DIRS})
+  target_link_libraries(corto_upstream_oracle Eigen3::Eigen ${PCL_LIBRARIES} ${FUSION_LIBRARY} ${MOSEK_LIBRARY} NLopt::nlopt)
+  add_executable(corto_ported_fixture tests/numerical_fixture.cpp tests/fixture_map.cpp
+    modules/path_searching/topo_prm.cpp modules/raycast/raycast.cpp)
+  target_link_libraries(corto_ported_fixture corto_core)
+  ament_target_dependencies(corto_ported_fixture rclcpp)
+  find_package(Python3 REQUIRED COMPONENTS Interpreter)
+  enable_testing()
+  add_executable(corto_map_contract tests/map_contract.cpp)
+  target_link_libraries(corto_map_contract corto_map)
+  ament_target_dependencies(corto_map_contract rclcpp)
+  add_test(NAME map_contract COMMAND corto_map_contract)
+  add_test(NAME upstream_numerical_regression COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/tests/compare_numerics.py
+    --upstream $<TARGET_FILE:corto_upstream_oracle> --ported $<TARGET_FILE:corto_ported_fixture>
+    --output ${CMAKE_CURRENT_SOURCE_DIR}/../results/numerical_regression)
+endif()
+ament_package()

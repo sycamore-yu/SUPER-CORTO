@@ -9,3 +9,10 @@
 **.bin
 **.zip
 **.ply
+/.deps/
+/build*/
+/install*/
+/log*/
+**/__pycache__/
+!experiments/**/*.csv
+!results/**/*.csv

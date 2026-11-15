@@ -1,277 +1,73 @@
-<div align="center">
-    <h2>SUPER: Safety-assured High-speed Navigation for MAVs</h2>
-    <strong>Science Robotics' 25</strong>
-    <br>
-        <a href="https://github.com/RENyunfan" target="_blank">Yunfan REN</a>,
-<a href="https://github.com/zfc-zfc" target="_blank">Fangcheng Zhu</a>,
-    <a href="https://github.com/genegzl" target="_blank">Guozheng Lu</a>,
-    <a href="https://github.com/Ecstasy-EC" target="_blank">Yixi Cai</a>,
-    <a href="https://github.com/YLJ6038" target="_blank">Longji Yin</a>,
-    <a href="https://github.com/jackykongfz" target="_blank">Fanze Kong</a>,
-    <a href="https://github.com/ziv-lin" target="_blank">Jiarong Lin</a>,
-    <a href="https://github.com/lawrence-cn" target="_blank">Nan Chen</a>, and
-        <a href="https://mars.hku.hk/people.html" target="_blank">Fu Zhang</a>
-    <p>
-        <h45>
-            <br>
-           <img src='./misc/mars_logo.svg' alt='HKU MaRS Lab'>
-            <br>
-        </h5>
-    </p>
-    <a href='https://www.science.org/doi/10.1126/scirobotics.ado6187'><img src='./misc/arXiv-super.svg' alt='arxiv'></a>
-    <a href="https://www.bilibili.com/video/BV1BSFgeJEJn/"><img alt="Bilibili" src="./misc/Video-Bilibili-blue.svg"/></a>
-    <a href="https://youtu.be/GPHuzG0ANmI?si=npW-FNp1rkQQ5YaF"><img alt="Youtube" src="./misc/Video-Youtube-red.svg"/></a>
-</div>
+# SUPER-CORTO
 
+基于官方 SUPER 仿真组件，移植 CORTO-Planner 原版 C++ 算法。
+目标环境为 ROS 2 Jazzy。
 
+CORTO 保留 Topo-PRM、弧长三次样条、MOSEK SOCP、PTF 连续椭圆安全飞行走廊、NLopt SLSQP 非线性模型预测控制（NMPC），以及异步重规划和计划交接。
+实际执行使用 EGO-Planner 的 SO(3) 刚体、电机滞后、阻力和旋翼限制。
+地图、LiDAR、状态发布和可视化来自官方 SUPER。
 
-# Updates
-* **Mar. 09, 2025** - The hardware components of SUPER have been released at [SUPER-Hardware](https://github.com/hku-mars/SUPER-Hardware) 🦾
-* **Jan. 29, 2025** - The preview version of SUPER's planning module, supporting both ROS1 and ROS2, is now available! Try it out, and we welcome any issues or contributions.
-* **Jan. 29, 2025** - The paper of SUPER is now featured on the official website of [*Science Robotics*](https://www.science.org/doi/10.1126/scirobotics.ado6187).
-* **Dec. 12, 2024** - 🎉 Our paper has been accepted by *Science Robotics*! 
+## 源码与接口
 
-Our paper is also aviliable at [here](misc/scirobotics.ado6187.pdf). If our repository supports your academic projects, please cite our work. Thank you!
+| 组件 | 固定提交 | 目录 |
+| --- | --- | --- |
+| SUPER | `2ad3419c127a617c6d7df6925e81a14175a9c096` | `rog_map/`、`mars_uav_sim/` |
+| CORTO-Planner | `e05a2e60f78d9ae4425981c1343913c3c67d3bb3` | 原版 `vendor/corto/`，移植 `corto_ros2/` |
+| EGO-Planner | `bfda51284c8c1b476043255a8145ef925a3778a5` | `mars_uav_sim/perfect_drone_sim/third_party/ego/` |
 
-```tex
-@article{ren2025safety,
-  title={Safety-assured high-speed navigation for MAVs},
-  author={Ren, Yunfan and Zhu, Fangcheng and Lu, Guozheng and Cai, Yixi and Yin, Longji and Kong, Fanze and Lin, Jiarong and Chen, Nan and Zhang, Fu},
-  journal={Science Robotics},
-  volume={10},
-  number={98},
-  pages={eado6187},
-  year={2025},
-  publisher={American Association for the Advancement of Science}
-}
+`PerfectDrone` 支持 `dynamics_mode: perfect | so3`。
+`perfect` 保留原版位置命令执行。
+`so3` 接收 `/corto/control`，通过角速度内环和旋翼分配驱动物理模型。
+`/lidar_slam/odom` 向 CORTO 反馈实际状态。
 
-@article{lu2025autonomous,
-  title={Autonomous Tail-Sitter Flights in Unknown Environments},
-  author={Lu, Guozheng and Ren, Yunfan and Zhu, Fangcheng and Li, Haotian and Xue, Ruize and Cai, Yixi and Lyu, Ximin and Zhang, Fu},
-  journal={IEEE Transactions on Robotics},
-  year={2025},
-  publisher={IEEE}
-}
+实验模式 `nominal` 使用原版 RK4 执行状态，并通过 `perfect` 显示轨迹。
+实验模式 `so3` 使用外部物理状态。
+物理步长为 1 ms，NMPC 目标控制频率为 20 Hz。
+状态反馈与仿真时钟为 100 Hz；实际控制间隔保留在原始数据中。
 
-@inproceedings{ren2024rog,
-  title={Rog-map: An efficient robocentric occupancy grid map for large-scene and high-resolution lidar-based motion planning},
-  author={Ren, Yunfan and Cai, Yixi and Zhu, Fangcheng and Liang, Siqi and Zhang, Fu},
-  booktitle={2024 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
-  pages={8119--8125},
-  year={2024},
-  organization={IEEE}
-}
-```
-
-# 1 Highlights
-
-## 1.1 Autonomous Navigation in Challenging Environments
-(Click for video demo)
-[![Video Demo](./misc/fig1.gif)](https://youtu.be/GPHuzG0ANmI?si=W83mDMxqfgWReWPF)
-
-## 1.2 Applications: Object Tracking & Autonomous Exploration
-
-SUPER has been successfully deployed in various applications, including large-scale autonomous exploration in an ongoing project by [@jackykongfz](https://github.com/jackykongfz) and [@ZbyLGsc](https://github.com/ZbyLGsc) from [STAR Lab](sysu-star.com), among others, as well as object tracking under both day and night conditions.
-
-![exp](./misc/exp.gif)
-> ⬆️ This segment is from an unpublished work by Kong [[@jackykongfz](https://github.com/jackykongfz) ] et al., conducted in collaboration with [STAR Lab](sysu-star.com), using SUPER.
-
-![tracking](./misc/tracking.gif)
-
-
-
-## 1.3 Supported Projects
-
-### 1.3.1 Autonomous Tail-Sitter (TRO '25)
-
-Building on SUPER, a similar planning system has been successfully validated in [Autonomous Navigation for Tail-Sitter UAVs](https://github.com/hku-mars/EFOPT)  by [@genegzl](https://github.com/genegzl)  et al.
-
-![tailsitter](./misc/tailsitter.gif)
-
-### 1.3.2 FAST-LIVO2 (TRO '24)
-SUPER serves as the flight platform and navigation system in the video demonstration of [FAST-LIVO2: Fast, Direct LiDAR-Inertial-Visual Odometry](https://github.com/hku-mars/FAST-LIVO2) by [@xuankuzcr](https://github.com/xuankuzcr) et al.
-
-<img src="./misc/image-20250130031404057.png" alt="image-20250130031404057" style="zoom:50%;" />
-
-# 2 Quick Start
-
-## 2.1 Installation
-
-Install dependencies
+## 编译
 
 ```bash
-# for MARSIM example
-sudo apt-get install libglfw3-dev libglew-dev libncurses5-dev libncursesw5-dev
-# Eigen [version testd: 3.3.7-2] and soft link 
-sudo apt-get install libeigen3-dev       
-sudo ln -s /usr/include/eigen3/Eigen /usr/include/Eigen
-# dw for backward cpp
-sudo apt-get install libdw-dev
-# for ROS dependency
-sudo apt-get install ros-${YOUR-ROS-VERSION}-mavros* ros-${YOUR-ROS-VERSION}-pcl* ros-${YOUR-ROS-VERSION}-rosfmt
+cd /home/tong/tongworkspace/projects/aerial/SUPER-CORTO
+bash scripts/setup_deps.sh
+source scripts/env.sh
+bash scripts/build.sh
+ctest --test-dir build/corto_ros2 --output-on-failure
+ctest --test-dir build/perfect_drone_sim --output-on-failure
 ```
 
-Before building the code, select the appropriate ROS version:
+依赖 MOSEK 11.2.2 C++ SDK 和有效许可证。
+NLopt 与 GLFW 的版本及下载包校验值见 [依赖记录](docs/DEPENDENCIES.json)。
+详细运行命令、GPU 无窗口渲染、RViz 和完整实验入口见 [运行说明](docs/RUNNING.md)。
 
-```bash
-# Use ROS1-noetic
-bash ${PATH-TO-SUPER}/SUPER/scripts/select_ros_version.sh ROS1
-# Use ROS2
-bash ${PATH-TO-SUPER}/SUPER/scripts/select_ros_version.sh ROS2
-```
+## 固定实验
 
-Tested Environments:
+场景尺寸为 30×15×3 m。
+Sparse、Medium、Dense 分别有 45、90、180 个圆柱和圆环障碍。
+作者公开 Medium 地图有 100 个障碍，因此三张实验图按已记录规则重建。
+生成种子为 20261115，规划种子为 0–9。
+两个执行条件各 30 回合，共 60 回合。
 
-* Ubuntu 20.04 + ROS1 Noetic
-* Ubuntu 20.04 + ROS2 foxy
-* ...
+速度上限为 10 m/s，加速度上限为 5 m/s²。
+NMPC 预测 10 步，每步 0.05 s；SOCP 使用 100 个节点。
+成功率分母包含全部预定回合。
+所有碰撞、越界、求解失败和规划失败均保留。
 
-Currently, **ROS1 Noetic** serves as the **Tier 1** supported platform for SUPER. The ROS2 version is still under development and may be unstable, with some issues such as imperfect visualization. We are actively working on improvements.
+主碰撞模型为半径 0.322 m 的 EGO 旋翼保守包络球。
+同时报告中心点和 0.1 m 球体的净空。
+原版 EGO 不提供障碍接触求解或整机碰撞网格。
+净空从未膨胀的原始障碍几何计算。
 
-### Known Build issues
+- [场景与种子清单](experiments/manifest.json)
+- [评测协议](experiments/PROTOCOL.md)
+- [固定输入数值回归](results/numerical_regression/regression.json)
+- [Table III 对照结果](results/table3/table3.md)
+- [全部回合指标](results/table3/trials.csv)
+- [源码迁移边界](docs/UPSTREAM.md)
+- [CORTO 原版行为记录](corto_ros2/PORT_NOTES.md)
 
-* ...
+## 来源与版权
 
-## 2.2  ROS1 (Noetic) Installation
-```bash
-mkdir -p super_ws/src && cd super_ws/src
-git clone https://github.com/hku-mars/SUPER.git
-cd ..
-catkin_make -DBUILD_TYPE=Release
-```
-
-To test, use one of the following commands:
-
-1. **High-Speed Navigation**
-
-```bash
-cd ${PATH-TO-WS}
-source devel/setup.bash
-roslaunch mission_planner benchmark_high_speed.launch
-```
-
-2. **Agile Flight in Dense Environments**
-
-```bash
-cd ${PATH-TO-WS}
-source devel/setup.bash
-roslaunch mission_planner benchmark_dense.launch
-```
-
-3. **Click and Go Demo**
-
-```
-roslaunch mission_planner click_demo.launch 
-```
-In the click demo, press `G` to enable the `2D Goal Pose` plugin, then click a position in RViz to set the goal.
-## 2.3 ROS2
-
-
-```bash
-mkdir -p super_ws/src && cd super_ws/src
-git clone https://github.com/hku-mars/SUPER.git
-cd ..
-colcon build --symlink-install
-# add to debug:  --event-handlers console_direct+ 
-```
-
-To test, run:
-
-1. **High-speed Navigation**
-
-```bash
-cd ${PATH-TO-WS}
-source install/local_setup.bash
-ros2 launch mission_planner benchmark_high_speed.launch.py
-```
-
-2. **Agile flights in dense enviroment**
-
-```bash
-cd ${PATH-TO-WS}
-source install/local_setup.bash
-ros2 launch mission_planner benchmark_dense.launch.py     
-```
-
-3. **Click demo**
-
-```
-ros2 launch mission_planner click_demo.launch.py
-```
-
-### Real-world deployment
-
-A detailed guide for deploying SUPER on real-world hardware will be available soon. In the meantime, you can refer to [issue #5](https://github.com/hku-mars/SUPER/issues/5) for some helpful hints.
-
-## 2.4 Use Your Own Map
-
-SUPER allows users to load their own **.pcd** maps as simulation environments. To do so:
-
-1. Place your **.pcd** file in:
-   **[./mars_uav_sim/perfect_drone_sim/pcd/](./mars_uav_sim/perfect_drone_sim/pcd)**
-2. Modify the `pcd_name` parameter in the corresponding YAML file located at:
-   **[./mars_uav_sim/perfect_drone_sim/config](./mars_uav_sim/perfect_drone_sim/config)**
-
-This enables seamless integration of custom maps for simulation. 
-
-## 2.5 Logging System
-
-SUPER includes a built-in logging system that records each run automatically. Logs are saved in:
-
-- **[./super_planner/log/cmd_logs](./super_planner/log/cmd_logs)**
-- **[./super_planner/log/replan_logs](./super_planner/log/replan_logs)**
-
-After stopping the program with `Ctrl + C`, the latest log will be saved. Users can evaluate **trajectory quality** by running:
-
-```bash
-# Install dependencies
-pip3 install numpy pandas matplotlib
-
-# Plot the command log
-python3 plotCmdLog.py
-```
-
-For advanced usage, refer to:
-
-- **[read_replan_log.cpp](super_planner/Apps/read_replan_log.cpp)**
-- **[traj_opt_tuning.cpp](super_planner/Apps/traj_opt_tuning.cpp)**
-
-We are actively working on improving the logging system, and updates will be available soon! 
-
-## 2.6 Tuning
-
-To maximize performance, parameter tuning is crucial. The current version of SUPER has a large number of parameters (maybe TOOOO MUCH), requiring careful adjustment. Users can refer to the provided examples for guidance. We plan to provide detailed tuning instructions soon. In the meantime, feedback and issue reports are welcome.
-
-## 2.7 Notable Known Issues
-* [#10]: When using SUPER with your own simulator (e.g., Gazebo) or a LiDAR odometry system other than FAST-LIO2, ensure that the input point cloud is provided in the world frame. ROG-Map does not utilize `frame_id` or `/tf` information and assumes by default that all input point clouds are in the world frame rather than the body frame.
-
-# 3 TODO
-
-* Add a demo for autonomous exploration (SUPER is well-suited as a local planner for point-to-point navigation).
-* Provide examples for using standalone tools in SUPER, such as:
-
-  - **CIRI** - Generates safe flight corridors in C-space.
-
-  - **ROG-Map** - An efficient occupancy grid map supporting both ROS1 and ROS2.
-* Introduce the hardware components of SUPER.
-* Detail the control module of SUPER.
-* Develop a tutorial.
-
-
-
-# 4. Acknowledgments
-
-SUPER is built upon several outstanding open-source projects. We extend our gratitude to the developers of the following repositories:
-
-* **[FAST_LIO](https://github.com/hku-mars/FAST_LIO)**, **[Swarm-LIO2](https://github.com/hku-mars/Swarm-LIO2)** and  **[LiDAR_IMU_Init](https://github.com/hku-mars/LiDAR_IMU_Init)**  for their excellent localization solutions.
-* **[ROG-Map](https://github.com/hku-mars/ROG-Map)** - A high-performance mapping framework that influenced our approach to map representation and optimization.
-* **[MARSIM](https://github.com/hku-mars/MARSIM)** - A simulation environment that played a key role in testing and evaluating our algorithms in virtual scenarios.
-* **[GCOPTER](https://github.com/ZJU-FAST-Lab/GCOPTER)** – A valuable resource that efficiently performs differentiable trajectory optimization and serves as the foundation of our trajectory optimization method.
-
-  **[FIRI](https://github.com/ZJU-FAST-Lab/GCOPTER/blob/main/gcopter/include/gcopter/firi.hpp)** – An extremely efficient safe flight corridor generation method upon which our CIRI is built.
-* [**FASTER**](https://github.com/mit-acl/faster) - Introduces the initial concept of a two-trajectory optimization framework.
-* **[DecompUtil](https://github.com/sikang/DecompUtil)** - A convex decomposition tool that was instrumental in implementing our algorithms.
-* **[Mockamap](https://github.com/HKUST-Aerial-Robotics/mockamap)** - A simple ROS-based map generator that assisted in our development and testing.
-* [**Nxt-FC**](https://github.com/HKUST-Aerial-Robotics/Nxt-FC) – A compact yet powerful hardware platform for the PX4 flight controller.
-
-We sincerely appreciate the efforts of these communities in advancing robotics research.
+复用源码保留各自许可证和版权声明。
+官方项目：[SUPER](https://github.com/hku-mars/SUPER)、[CORTO-Planner](https://github.com/yzpd/CORTO-Planner)、[EGO-Planner](https://github.com/ZJU-FAST-Lab/ego-planner)。
+原 SUPER 项目说明与引用保存在 [SUPER_UPSTREAM_README.md](docs/SUPER_UPSTREAM_README.md)。

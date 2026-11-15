@@ -1,0 +1,207 @@
+{
+  "mosek": "11.2.2",
+  "apt_packages": [
+    {
+      "file": "libnlopt-cxx-dev_2.7.1-5build2_amd64.deb",
+      "metadata": "Package: libnlopt-cxx-dev\nVersion: 2.7.1-5build2\nArchitecture: amd64",
+      "sha256": "c57a5fdae4593e426b2538a368ba77c4e09b8a992dd0df0f20d2b69b87b3eadf"
+    },
+    {
+      "file": "libnlopt-cxx0_2.7.1-5build2_amd64.deb",
+      "metadata": "Package: libnlopt-cxx0\nVersion: 2.7.1-5build2\nArchitecture: amd64",
+      "sha256": "86cf0ff2ff0cabbdcf0a629572e6b6def25cf0340ef3dde975142d33d66d4570"
+    },
+    {
+      "file": "libnlopt-dev_2.7.1-5build2_amd64.deb",
+      "metadata": "Package: libnlopt-dev\nVersion: 2.7.1-5build2\nArchitecture: amd64",
+      "sha256": "1d97691fbc8c6d6124385647cdba16ed10721420b42d223035d29edf54cdf312"
+    },
+    {
+      "file": "libnlopt0_2.7.1-5build2_amd64.deb",
+      "metadata": "Package: libnlopt0\nVersion: 2.7.1-5build2\nArchitecture: amd64",
+      "sha256": "3f6ee54ee75e0f41ce5ff2cfb0596372835522c4027efe42cbf7f5031b5335b5"
+    },
+    {
+      "file": "libglfw3-dev_3.3.10-1build1_amd64.deb",
+      "metadata": "Package: libglfw3-dev\nVersion: 3.3.10-1build1\nArchitecture: amd64",
+      "sha256": "f443edfb2a591c81e13292eebf177c08b8a1cc98be5c877cb7e088ab6e6b6377"
+    },
+    {
+      "file": "libglfw3_3.3.10-1build1_amd64.deb",
+      "metadata": "Package: libglfw3\nVersion: 3.3.10-1build1\nArchitecture: amd64",
+      "sha256": "40b75a7cf3c6afa6dcc9732f84dd4c044228e449a09bfcca169ab1631baaf096"
+    }
+  ],
+  "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "cpu": {
+    "lscpu": [
+      {
+        "field": "Architecture:",
+        "data": "x86_64"
+      },
+      {
+        "field": "CPU op-mode(s):",
+        "data": "32-bit, 64-bit"
+      },
+      {
+        "field": "Address sizes:",
+        "data": "46 bits physical, 48 bits virtual"
+      },
+      {
+        "field": "Byte Order:",
+        "data": "Little Endian"
+      },
+      {
+        "field": "CPU(s):",
+        "data": "40"
+      },
+      {
+        "field": "On-line CPU(s) list:",
+        "data": "0-39"
+      },
+      {
+        "field": "Vendor ID:",
+        "data": "GenuineIntel"
+      },
+      {
+        "field": "Model name:",
+        "data": "Intel(R) Xeon(R) Silver 4210R CPU @ 2.40GHz"
+      },
+      {
+        "field": "CPU family:",
+        "data": "6"
+      },
+      {
+        "field": "Model:",
+        "data": "85"
+      },
+      {
+        "field": "Thread(s) per core:",
+        "data": "2"
+      },
+      {
+        "field": "Core(s) per socket:",
+        "data": "10"
+      },
+      {
+        "field": "Socket(s):",
+        "data": "2"
+      },
+      {
+        "field": "Stepping:",
+        "data": "7"
+      },
+      {
+        "field": "BogoMIPS:",
+        "data": "4800.00"
+      },
+      {
+        "field": "Flags:",
+        "data": "fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cdp_l3 intel_ppin ssbd mba ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm mpx rdt_a avx512f avx512dq rdseed adx smap clflushopt clwb intel_pt avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm arat pln pts hwp_epp vnmi pku ospke avx512_vnni md_clear flush_l1d arch_capabilities ibpb_exit_to_user"
+      },
+      {
+        "field": "Virtualization:",
+        "data": "VT-x"
+      },
+      {
+        "field": "L1d cache:",
+        "data": "640 KiB (20 instances)"
+      },
+      {
+        "field": "L1i cache:",
+        "data": "640 KiB (20 instances)"
+      },
+      {
+        "field": "L2 cache:",
+        "data": "20 MiB (20 instances)"
+      },
+      {
+        "field": "L3 cache:",
+        "data": "27.5 MiB (2 instances)"
+      },
+      {
+        "field": "NUMA node(s):",
+        "data": "2"
+      },
+      {
+        "field": "NUMA node0 CPU(s):",
+        "data": "0-9,20-29"
+      },
+      {
+        "field": "NUMA node1 CPU(s):",
+        "data": "10-19,30-39"
+      },
+      {
+        "field": "Vulnerability Gather data sampling:",
+        "data": "Mitigation; Microcode"
+      },
+      {
+        "field": "Vulnerability Indirect target selection:",
+        "data": "Mitigation; Aligned branch/return thunks"
+      },
+      {
+        "field": "Vulnerability Itlb multihit:",
+        "data": "KVM: Mitigation: VMX disabled"
+      },
+      {
+        "field": "Vulnerability L1tf:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Mds:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Meltdown:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Mmio stale data:",
+        "data": "Mitigation; Clear CPU buffers; SMT vulnerable"
+      },
+      {
+        "field": "Vulnerability Reg file data sampling:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Retbleed:",
+        "data": "Mitigation; Enhanced IBRS"
+      },
+      {
+        "field": "Vulnerability Spec rstack overflow:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Spec store bypass:",
+        "data": "Mitigation; Speculative Store Bypass disabled via prctl"
+      },
+      {
+        "field": "Vulnerability Spectre v1:",
+        "data": "Mitigation; usercopy/swapgs barriers and __user pointer sanitization"
+      },
+      {
+        "field": "Vulnerability Spectre v2:",
+        "data": "Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI SW loop, KVM SW loop"
+      },
+      {
+        "field": "Vulnerability Srbds:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Tsa:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Tsx async abort:",
+        "data": "Mitigation; TSX disabled"
+      },
+      {
+        "field": "Vulnerability Vmscape:",
+        "data": "Mitigation; IBPB before exit to userspace"
+      }
+    ]
+  },
+  "gpu": "NVIDIA GeForce RTX 4090, 595.84",
+  "ros_distro": "jazzy",
+  "ros_packages": "libboost-dev:amd64\t1.83.0.1ubuntu2\nlibeigen3-dev\t3.4.0-4build0.1\nlibopencv-dev\t4.6.0+dfsg-13.1ubuntu1\nlibpcl-dev\t1.14.0+dfsg-1\nlibyaml-cpp-dev:amd64\t0.8.0+dfsg-6build1\nros-jazzy-rclcpp\t28.1.22-1noble.20260902.055335\n"
+}

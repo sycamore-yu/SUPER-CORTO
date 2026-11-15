@@ -14,6 +14,14 @@
 #include "pcl_conversions/pcl_conversions.h"
 #include "perfect_drone_sim/config.hpp"
 #include "tf2_ros/transform_broadcaster.h"
+#include <geometry_msgs/msg/wrench_stamped.hpp>
+#include <rosgraph_msgs/msg/clock.hpp>
+#include <std_msgs/msg/float64_multi_array.hpp>
+#include <perfect_drone_sim/so3_dynamics.hpp>
+#include <atomic>
+#include <mutex>
+#include <stdexcept>
+#include <thread>
 
 
 typedef Eigen::Matrix<double, 3, 1> Vec3;
@@ -32,11 +40,21 @@ namespace perfect_drone {
         Config cfg_;
         std::shared_ptr<marsim::MarsimRender> render_ptr_;
         double sys_start_t;
-        rclcpp::TimerBase::SharedPtr odom_pub_timer_;
         rclcpp::TimerBase::SharedPtr global_pc_pub_timer_;
         rclcpp::TimerBase::SharedPtr local_pc_pub_timer_;
         rclcpp::Subscription<mars_quadrotor_msgs::msg::PositionCommand>::SharedPtr cmd_sub_;
-        rclcpp::CallbackGroup::SharedPtr odom_timer_cbk_group, global_pc_pub_cbk_group, local_pc_pub_cbk_group,
+        rclcpp::Subscription<geometry_msgs::msg::WrenchStamped>::SharedPtr ctbr_sub_;
+        rclcpp::Publisher<rosgraph_msgs::msg::Clock>::SharedPtr clock_pub_;
+        rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr motor_pub_;
+        std::unique_ptr<So3Dynamics> dynamics_;
+        std::mutex dynamics_mutex_;
+        Eigen::Vector3d body_rate_command_{Eigen::Vector3d::Zero()};
+        double thrust_command_{0.6};
+        std::atomic<int64_t> simulation_ns_{0};
+        std::atomic<bool> physics_running_{false};
+        std::thread physics_thread_;
+        rclcpp::executors::SingleThreadedExecutor control_executor_;
+        rclcpp::CallbackGroup::SharedPtr global_pc_pub_cbk_group, local_pc_pub_cbk_group,
                 cmd_sub_cbk_group;
 
 
@@ -53,6 +71,12 @@ namespace perfect_drone {
 
         nav_msgs::msg::Odometry odom_;
         nav_msgs::msg::Path path_;
+        struct StateSnapshot {
+            Vec3 position, velocity, angular_velocity;
+            Eigen::Quaterniond orientation;
+            Eigen::Array4d motor_rpm;
+            int64_t stamp_ns;
+        };
 
 
     public:
@@ -64,16 +88,22 @@ namespace perfect_drone {
                                           .durability_volatile());
 
 #define CONFIG_FILE_DIR(name) (std::string(std::string(ROOT_DIR) + "config/"+(name)))
-            std::string dft_cfg_path = CONFIG_FILE_DIR("lidar_sim.yaml");
+            std::string dft_cfg_path = "dense.yaml";
             std::string cfg_path, cfg_name;
             this->declare_parameter<std::string>("config_name", dft_cfg_path);
 
             if(this->get_parameter("config_name", cfg_name)){
-                cfg_path = CONFIG_FILE_DIR(cfg_name);
+                cfg_path = (!cfg_name.empty() && cfg_name.front() == '/') ?
+                           cfg_name : CONFIG_FILE_DIR(cfg_name);
                 RCLCPP_WARN(this->get_logger(), " -- [MissionPlanner] Load config by file name: %s", cfg_path.c_str());
             }
 
             cfg_ = Config(cfg_path);
+            cfg_.dynamics_mode = this->declare_parameter<std::string>(
+                    "dynamics_mode", cfg_.dynamics_mode);
+            if (cfg_.dynamics_mode != "perfect" && cfg_.dynamics_mode != "so3") {
+                throw std::invalid_argument("dynamics_mode must be perfect or so3");
+            }
 
             // 创建 TransformBroadcaster
 
@@ -85,12 +115,26 @@ namespace perfect_drone {
 
             // 订阅命令
             rclcpp::SubscriptionOptions so;
-            cmd_sub_cbk_group = this->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
+            cmd_sub_cbk_group = this->create_callback_group(
+                    rclcpp::CallbackGroupType::MutuallyExclusive, false);
             so.callback_group = cmd_sub_cbk_group;
             cmd_sub_ = this->create_subscription<mars_quadrotor_msgs::msg::PositionCommand>(
                     "/planning/pos_cmd", qos, std::bind(&PerfectDrone::cmdCallback, this, std::placeholders::_1),
                     so
             );
+            ctbr_sub_ = this->create_subscription<geometry_msgs::msg::WrenchStamped>(
+                    "/corto/control", rclcpp::QoS(1).reliable(),
+                    [this](const geometry_msgs::msg::WrenchStamped::SharedPtr msg) {
+                        std::lock_guard<std::mutex> lock(dynamics_mutex_);
+                        body_rate_command_ << msg->wrench.force.x, msg->wrench.force.y,
+                                              msg->wrench.force.z;
+                        thrust_command_ = msg->wrench.torque.x;
+                    }, so);
+            control_executor_.add_callback_group(cmd_sub_cbk_group, this->get_node_base_interface());
+            clock_pub_ = this->create_publisher<rosgraph_msgs::msg::Clock>(
+                    "/clock", rclcpp::QoS(1).best_effort());
+            motor_pub_ = this->create_publisher<std_msgs::msg::Float64MultiArray>(
+                    "/simulator/motor_rpm", qos);
 
             // 发布 Odometry 消息
             odom_pub_ = this->create_publisher<nav_msgs::msg::Odometry>("/lidar_slam/odom", qos);
@@ -115,18 +159,14 @@ namespace perfect_drone {
             yaw_ = cfg_.init_yaw;
             mesh_resource_ = cfg_.mesh_resource;
             q_ = Eigen::AngleAxisd(yaw_, Vec3::UnitZ());
+            if (cfg_.dynamics_mode == "so3") {
+                dynamics_ = std::make_unique<So3Dynamics>(position_, yaw_);
+            }
             odom_.header.frame_id = "world";
             path_.poses.clear();
             path_.header.frame_id = "world";
             path_.header.stamp = this->get_clock()->now();
 
-
-            odom_timer_cbk_group = this->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
-            odom_pub_timer_ = this->create_wall_timer(
-                    std::chrono::milliseconds(10),
-                    std::bind(&PerfectDrone::publishOdom, this),
-                    odom_timer_cbk_group
-            );
 
             global_pc_pub_cbk_group = this->create_callback_group(rclcpp::CallbackGroupType::MutuallyExclusive);
             global_pc_pub_timer_ = this->create_wall_timer(
@@ -143,7 +183,9 @@ namespace perfect_drone {
                     local_pc_pub_cbk_group
             );
 
-            sys_start_t = this->get_clock()->now().seconds();
+            sys_start_t = 0.0;
+            physics_running_ = true;
+            physics_thread_ = std::thread(&PerfectDrone::runPhysics, this);
         }
 
         double getSensingRate() {
@@ -152,21 +194,67 @@ namespace perfect_drone {
 
 
         void publishPC() {
+            const auto state = currentState();
             pcl::PointCloud<marsim::PointType>::Ptr local_map(new pcl::PointCloud<marsim::PointType>);
-            const auto cur_t = this->get_clock()->now().seconds();
-            render_ptr_->renderOnceInWorld(position_.cast<float>(), q_.cast<float>(), cur_t, local_map);
+            const double cur_t = state.stamp_ns * 1e-9;
+            render_ptr_->renderOnceInWorld(state.position.cast<float>(),
+                                          state.orientation.cast<float>(), cur_t, local_map);
             sensor_msgs::msg::PointCloud2 pc_msg;
             pcl::toROSMsg(*local_map, pc_msg);
             pc_msg.header.frame_id = "world";
-            pc_msg.header.stamp = this->get_clock()->now();
-            std::cout << "Publish local map size: " << local_map->size() << std::endl;
+            pc_msg.header.stamp = rclcpp::Time(state.stamp_ns);
             local_pc_pub_->publish(pc_msg);
         }
 
-        ~PerfectDrone() {}
+        ~PerfectDrone() {
+            physics_running_ = false;
+            if (physics_thread_.joinable()) physics_thread_.join();
+        }
 
     private:
+        void runPhysics() {
+            try {
+            constexpr int64_t step_ns = 1000000;
+            auto next_step = std::chrono::steady_clock::now();
+            int clock_decimation = 0;
+            while (physics_running_ && rclcpp::ok()) {
+                next_step += std::chrono::nanoseconds(step_ns);
+                control_executor_.spin_some();
+                {
+                    std::lock_guard<std::mutex> lock(dynamics_mutex_);
+                    if (dynamics_) {
+                        dynamics_->step(thrust_command_, body_rate_command_, 0.001);
+                    }
+                    simulation_ns_ += step_ns;
+                }
+                if (++clock_decimation == 10) {
+                    rosgraph_msgs::msg::Clock msg;
+                    msg.clock = rclcpp::Time(simulation_ns_.load());
+                    clock_pub_->publish(msg);
+                    publishOdom();
+                    clock_decimation = 0;
+                }
+                std::this_thread::sleep_until(next_step);
+            }
+            } catch (const std::runtime_error&) {
+                // SIGINT can invalidate the ROS context during a publish/spin call.
+                if (rclcpp::ok()) throw;
+            }
+        }
+
+        StateSnapshot currentState() {
+            std::lock_guard<std::mutex> lock(dynamics_mutex_);
+            if (dynamics_) {
+                const auto& state = dynamics_->state();
+                return {state.x, state.v, state.omega, Eigen::Quaterniond(state.R),
+                        state.motor_rpm, simulation_ns_.load()};
+            }
+            return {position_, velocity_, Vec3::Zero(), q_, Eigen::Array4d::Zero(),
+                    simulation_ns_.load()};
+        }
+
         void cmdCallback(const mars_quadrotor_msgs::msg::PositionCommand::SharedPtr msg) {
+            if (cfg_.dynamics_mode != "perfect") return;
             Vec3 pos(msg->position.x, msg->position.y, msg->position.z);
             Vec3 vel(msg->velocity.x, msg->velocity.y, msg->velocity.z);
             Vec3 acc(msg->acceleration.x, msg->acceleration.y, msg->acceleration.z);
@@ -179,14 +267,14 @@ namespace perfect_drone {
             static int last_sub_num = 0;
             // update sub num
             int sub_num = this->count_subscribers("/global_pc");
-            double cur_t = this->get_clock()->now().seconds() - sys_start_t;
+            double cur_t = simulation_ns_.load() * 1e-9 - sys_start_t;
             if (sub_num > 0 && last_sub_num != sub_num || (cur_t > 5.0 && cur_t < 5.1)) {
                 pcl::PointCloud<marsim::PointType>::Ptr global_map(new pcl::PointCloud<marsim::PointType>);
                 render_ptr_->getGlobalMap(global_map);
                 sensor_msgs::msg::PointCloud2 pc_msg;
                 pcl::toROSMsg(*global_map, pc_msg);
                 pc_msg.header.frame_id = "world";
-                pc_msg.header.stamp = this->get_clock()->now();
+                pc_msg.header.stamp = rclcpp::Time(simulation_ns_.load());
                 global_pc_pub_->publish(pc_msg);
                 std::cout << "Publish global map size: " << global_map->size() << std::endl;
             }
@@ -194,23 +282,32 @@ namespace perfect_drone {
         }
 
         void publishOdom() {
-            odom_.pose.pose.position.x = position_.x();
-            odom_.pose.pose.position.y = position_.y();
-            odom_.pose.pose.position.z = position_.z();
+            const auto state = currentState();
+            odom_.pose.pose.position.x = state.position.x();
+            odom_.pose.pose.position.y = state.position.y();
+            odom_.pose.pose.position.z = state.position.z();
 
-            odom_.pose.pose.orientation.x = q_.x();
-            odom_.pose.pose.orientation.y = q_.y();
-            odom_.pose.pose.orientation.z = q_.z();
-            odom_.pose.pose.orientation.w = q_.w();
+            odom_.pose.pose.orientation.x = state.orientation.x();
+            odom_.pose.pose.orientation.y = state.orientation.y();
+            odom_.pose.pose.orientation.z = state.orientation.z();
+            odom_.pose.pose.orientation.w = state.orientation.w();
 
-            odom_.twist.twist.linear.x = velocity_.x();
-            odom_.twist.twist.linear.y = velocity_.y();
-            odom_.twist.twist.linear.z = velocity_.z();
+            odom_.twist.twist.linear.x = state.velocity.x();
+            odom_.twist.twist.linear.y = state.velocity.y();
+            odom_.twist.twist.linear.z = state.velocity.z();
+            odom_.twist.twist.angular.x = state.angular_velocity.x();
+            odom_.twist.twist.angular.y = state.angular_velocity.y();
+            odom_.twist.twist.angular.z = state.angular_velocity.z();
 
-            odom_.header.stamp = this->get_clock()->now();
+            odom_.header.stamp = rclcpp::Time(state.stamp_ns);
 
 
             odom_pub_->publish(odom_);
+            if (dynamics_) {
+                std_msgs::msg::Float64MultiArray msg;
+                msg.data.assign(state.motor_rpm.data(), state.motor_rpm.data() + 4);
+                motor_pub_->publish(msg);
+            }
 
             geometry_msgs::msg::PoseStamped pose;
             pose.pose = odom_.pose.pose;
@@ -253,7 +350,7 @@ namespace perfect_drone {
             robot_pub_->publish(meshROS);
             static int slow_down = 0;
             if (slow_down++ % 10 == 0) {
-                if ((position_.head(2) - Vec3(0, -50, 1.5).head(2)).norm() < 1) {
+                if ((state.position.head(2) - Vec3(0, -50, 1.5).head(2)).norm() < 1) {
                     path_.poses.clear();
                     path_.poses.reserve(10000);
                 }
@@ -265,6 +362,7 @@ namespace perfect_drone {
 
         void updateFlatness(const Vec3& pos, const Vec3& vel,
                             const Vec3& acc, const double yaw) {
+            std::lock_guard<std::mutex> lock(dynamics_mutex_);
             Vec3 gravity_ = 9.80 * Eigen::Vector3d(0, 0, 1);
             position_ = pos;
             velocity_ = vel;
