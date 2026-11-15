@@ -1,0 +1,117 @@
+Starting >>> marsim_render
+Finished <<< marsim_render [0.37s]
+Starting >>> rog_map
+Finished <<< rog_map [0.32s]
+Starting >>> corto_ros2
+--- stderr: corto_ros2
+CMake Warning (dev) at /usr/lib/x86_64-linux-gnu/cmake/pcl/Modules/FindFLANN.cmake:45 (find_package):
+  Policy CMP0144 is not set: find_package uses upper-case <PACKAGENAME>_ROOT
+  variables.  Run "cmake --help-policy CMP0144" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+
+  CMake variable FLANN_ROOT is set to:
+
+    /usr
+
+  For compatibility, find_package is ignoring the variable, but code in a
+  .cmake module might still use it.
+Call Stack (most recent call first):
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:261 (find_package)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:306 (find_flann)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:570 (find_external_library)
+  /opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)
+  CMakeLists.txt:9 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning at CMakeLists.txt:37 (add_executable):
+  Cannot generate a safe runtime search path for target corto_node because
+  files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libtbb.so.12] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/tong/.local/opt/mosek-11.2.2/mosek/11.2/tools/platform/linux64x86/bin
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at CMakeLists.txt:44 (add_executable):
+  Cannot generate a safe runtime search path for target corto_upstream_oracle
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libtbb.so.12] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/tong/.local/opt/mosek-11.2.2/mosek/11.2/tools/platform/linux64x86/bin
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at CMakeLists.txt:52 (add_executable):
+  Cannot generate a safe runtime search path for target corto_ported_fixture
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libtbb.so.12] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/tong/.local/opt/mosek-11.2.2/mosek/11.2/tools/platform/linux64x86/bin
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at CMakeLists.txt:58 (add_executable):
+  Cannot generate a safe runtime search path for target corto_map_contract
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libtbb.so.12] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/tong/.local/opt/mosek-11.2.2/mosek/11.2/tools/platform/linux64x86/bin
+
+  Some of these libraries may not be found correctly.
+
+
+---
+Finished <<< corto_ros2 [55.1s]
+Starting >>> perfect_drone_sim
+--- stderr: perfect_drone_sim
+CMake Warning (dev) at /usr/lib/x86_64-linux-gnu/cmake/pcl/Modules/FindFLANN.cmake:45 (find_package):
+  Policy CMP0144 is not set: find_package uses upper-case <PACKAGENAME>_ROOT
+  variables.  Run "cmake --help-policy CMP0144" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+
+  CMake variable FLANN_ROOT is set to:
+
+    /usr
+
+  For compatibility, find_package is ignoring the variable, but code in a
+  .cmake module might still use it.
+Call Stack (most recent call first):
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:261 (find_package)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:306 (find_flann)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:570 (find_external_library)
+  /opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)
+  CMakeLists.txt:30 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at CMakeLists.txt:34 (find_package):
+  Policy CMP0074 is not set: find_package uses <PackageName>_ROOT variables.
+  Run "cmake --help-policy CMP0074" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  CMake variable PCL_ROOT is set to:
+
+    /usr
+
+  For compatibility, CMake is ignoring the variable.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    NLopt_DIR
+
+
+---
+Finished <<< perfect_drone_sim [1min 10s]
+
+Summary: 4 packages finished [2min 6s]
+  2 packages had stderr output: corto_ros2 perfect_drone_sim

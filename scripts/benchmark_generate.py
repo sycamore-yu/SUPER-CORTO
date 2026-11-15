@@ -110,19 +110,17 @@ def main():
                 "circle_count": count // 5, "cylinder_count": count * 4 // 5}
         manifests.append(info)
         print(json.dumps(info))
-    manifest = {"schema_version": 1, "protocol_version": 2,
-                "termination_policy": "first_collision_or_body_boundary_or_goal_or_timeout",
-                "post_terminal_recording_wall_s": 0.3, "generation_seed": args.seed,
+    manifest = {"schema_version": 2, "protocol_version": 3,
+                "execution": "corto_direct", "termination_policy": "goal_or_planner_end_or_timeout",
+                "generation_seed": args.seed,
                 "start": START, "goal": GOAL, "initial_yaw_rad": math.pi,
                 "initial_quaternion_wxyz": [0, 0, 0, 1], "goal_tolerance_m": 0.2,
-                "collision_model": "ego_rotor_enclosing_sphere", "body_radius_m": 0.322,
-                "original_reference_radius_m": 0.1, "continuous_sample_spacing_m": 0.005,
+                "collision_model": "sampled_center_point",
                 "flight_timeout_s": 60.0, "wall_timeout_s": 180.0,
                 "v_max_mps": 10, "a_max_mps2": 5, "nmpc_horizon": 10,
                 "nmpc_dt_s": 0.05, "socp_nodes": 100, "scenes": manifests,
-                "runs": [{"run_id": f"{mode}_{name}_{seed:02d}", "mode": mode,
-                          "scene": name, "planner_seed": seed}
-                         for mode in ("nominal", "so3") for name in COUNTS for seed in range(10)]}
+                "runs": [{"run_id": f"direct_{name}_{seed:02d}", "scene": name, "planner_seed": seed}
+                         for name in COUNTS for seed in range(10)]}
     (args.output / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
 
 

@@ -1,0 +1,51 @@
+test_boundary_is_not_shrunk (test_protocol.ProtocolTests.test_boundary_is_not_shrunk) ... FAIL
+test_collision_does_not_hide_later_arrival (test_protocol.ProtocolTests.test_collision_does_not_hide_later_arrival) ... FAIL
+test_cylinder_distance (test_protocol.ProtocolTests.test_cylinder_distance) ... ok
+test_frozen_counts (test_protocol.ProtocolTests.test_frozen_counts) ... FAIL
+test_out_of_bounds_does_not_hide_later_arrival (test_protocol.ProtocolTests.test_out_of_bounds_does_not_hide_later_arrival) ... FAIL
+test_point_clearance_has_no_vehicle_envelope (test_protocol.ProtocolTests.test_point_clearance_has_no_vehicle_envelope) ... FAIL
+
+======================================================================
+FAIL: test_boundary_is_not_shrunk (test_protocol.ProtocolTests.test_boundary_is_not_shrunk)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/experiments/test_protocol.py", line 57, in test_boundary_is_not_shrunk
+    self.assertTrue(result["success"])
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_collision_does_not_hide_later_arrival (test_protocol.ProtocolTests.test_collision_does_not_hide_later_arrival)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/experiments/test_protocol.py", line 43, in test_collision_does_not_hide_later_arrival
+    self.assertAlmostEqual(result["flight_time_s"], 0.1)
+AssertionError: 0.09 != 0.1 within 7 places (0.010000000000000009 difference)
+
+======================================================================
+FAIL: test_frozen_counts (test_protocol.ProtocolTests.test_frozen_counts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/experiments/test_protocol.py", line 73, in test_frozen_counts
+    self.assertEqual(len(manifest["runs"]), 30)
+AssertionError: 60 != 30
+
+======================================================================
+FAIL: test_out_of_bounds_does_not_hide_later_arrival (test_protocol.ProtocolTests.test_out_of_bounds_does_not_hide_later_arrival)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/experiments/test_protocol.py", line 65, in test_out_of_bounds_does_not_hide_later_arrival
+    self.assertAlmostEqual(result["flight_time_s"], 0.1)
+AssertionError: 0.09552786404500044 != 0.1 within 7 places (0.004472135954999568 difference)
+
+======================================================================
+FAIL: test_point_clearance_has_no_vehicle_envelope (test_protocol.ProtocolTests.test_point_clearance_has_no_vehicle_envelope)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/experiments/test_protocol.py", line 51, in test_point_clearance_has_no_vehicle_envelope
+    self.assertTrue(result["success"])
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.048s
+
+FAILED (failures=5)

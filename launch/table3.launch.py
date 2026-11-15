@@ -17,9 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def start(context):
     value = lambda name: LaunchConfiguration(name).perform(context)
-    mode, scene = value("mode"), value("scene")
-    if mode not in ("nominal", "so3") or scene not in ("sparse", "medium", "dense"):
-        raise ValueError("mode must be nominal/so3 and scene sparse/medium/dense")
+    scene = value("scene")
     seed = int(value("planner_seed"))
     output = Path(value("output_dir")).resolve()
     output.mkdir(parents=True, exist_ok=True)
@@ -28,7 +26,7 @@ def start(context):
     geometry = json.loads(scene_json.read_text())
     start_pos, goal_pos = geometry["start"], geometry["goal"]
     simulator = yaml.safe_load((ROOT / "mars_uav_sim/perfect_drone_sim/config/dense.yaml").read_text())
-    simulator.update({"pcd_name": str(scene_pcd), "dynamics_mode": "perfect" if mode == "nominal" else "so3",
+    simulator.update({"pcd_name": str(scene_pcd),
                       "init_position": dict(zip(("x", "y", "z"), start_pos)), "init_yaw": math.pi})
     simulator_path = output / "sim_config.yaml"
     simulator_path.write_text(yaml.safe_dump(simulator, sort_keys=False))
@@ -53,18 +51,18 @@ def start(context):
     map_path = output / "map_config.yaml"
     map_path.write_text(yaml.safe_dump({"rog_map": rog}, sort_keys=False))
     parameters = {"map_config_path": str(map_path), "map_size": [30.0, 15.0, 3.0],
-                  "map_origin": [-15.0, -7.5, 0.0], "execution_mode": "nominal" if mode == "nominal" else "odometry",
+                  "map_origin": [-15.0, -7.5, 0.0],
                   "planner_seed": seed, "use_sim_time": True,
                   "ref.max_velocity": 10.0, "ref.max_acceleration": 5.0,
                   "nmpc.maxVel": 10.0, "nmpc.real_maxVel": 10.0,
                   "MaxPointCloud": 10000, "n_sweep": 7, "poly_degree": 3, "frame": "PTF"}
     for prefix, coordinates in (("start_pos", start_pos), ("goal_pos", goal_pos)):
         parameters.update({f"{prefix}_{axis}": float(coordinate) for axis, coordinate in zip("xyz", coordinates)})
-    (output / "launch_inputs.json").write_text(json.dumps({"mode": mode, "scene": scene, "planner_seed": seed,
+    (output / "launch_inputs.json").write_text(json.dumps({"scene": scene, "planner_seed": seed,
                                                           "corto_parameters": parameters}, indent=2) + "\n")
     nodes = [
         Node(package="perfect_drone_sim", executable="perfect_drone_node", output="screen", prefix="vglrun -d egl",
-             parameters=[{"config_name": str(simulator_path), "dynamics_mode": simulator["dynamics_mode"]}]),
+             parameters=[{"config_name": str(simulator_path), "use_sim_time": True}]),
         Node(package="corto_ros2", executable="corto_node", output="screen", parameters=[parameters]),
     ]
     nodes.extend([
@@ -80,8 +78,7 @@ def start(context):
 
 def generate_launch_description():
     return LaunchDescription([
-        DeclareLaunchArgument("mode", default_value="so3"),
-        DeclareLaunchArgument("scene", default_value="medium"),
+        DeclareLaunchArgument("scene", default_value="medium", choices=["sparse", "medium", "dense"]),
         DeclareLaunchArgument("planner_seed", default_value="0"),
         DeclareLaunchArgument("output_dir", default_value=str(ROOT / "results/manual")),
         DeclareLaunchArgument("rviz", default_value="false"),

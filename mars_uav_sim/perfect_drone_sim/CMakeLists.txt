@@ -26,9 +26,7 @@ find_package(sensor_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(visualization_msgs REQUIRED)
 find_package(marsim_render REQUIRED)
-find_package(mars_quadrotor_msgs REQUIRED)
 find_package(tf2_ros REQUIRED)
-find_package(rosgraph_msgs REQUIRED)
 find_package(pcl_conversions REQUIRED)
 
 # Other packages
@@ -36,7 +34,6 @@ find_package(Eigen3 REQUIRED)
 find_package(PCL REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(glfw3 REQUIRED)
-find_package(Threads REQUIRED)
 
 
 include_directories(
@@ -55,22 +52,16 @@ set(THIRD_PARTY
 find_package(marsim_render REQUIRED)
 
 set(dependencies
-        rosgraph_msgs
         pcl_conversions
         marsim_render
         rclcpp
         sensor_msgs
-        mars_quadrotor_msgs
         std_msgs
         geometry_msgs
         nav_msgs
         visualization_msgs
         tf2_ros
 )
-
-add_library(ego_so3_dynamics STATIC third_party/ego/src/Quadrotor.cpp)
-target_include_directories(ego_so3_dynamics PUBLIC third_party/ego/include)
-target_link_libraries(ego_so3_dynamics PUBLIC Eigen3::Eigen)
 
 add_executable(perfect_drone_node
         src/ros2_perfect_drone_node.cpp
@@ -80,7 +71,7 @@ ament_target_dependencies(perfect_drone_node PUBLIC
         ${dependencies}
 )
 target_link_libraries(perfect_drone_node PUBLIC
-        ego_so3_dynamics Threads::Threads glfw
+        glfw
         ${THIRD_PARTY}
 )
 
@@ -118,14 +109,5 @@ install(DIRECTORY
         DESTINATION share/${PROJECT_NAME}/
         )
 
-
-include(CTest)
-if(BUILD_TESTING)
-        add_executable(so3_dynamics_test test/so3_dynamics_test.cpp)
-        target_link_libraries(so3_dynamics_test PRIVATE ego_so3_dynamics)
-        add_test(NAME so3_dynamics COMMAND so3_dynamics_test)
-endif()
-install(FILES third_party/ego/LICENSE third_party/ego/UPSTREAM.md
-        DESTINATION share/${PROJECT_NAME}/ego)
 
 ament_package()

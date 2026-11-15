@@ -1,0 +1,10 @@
+Internal ctest changing into directory: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/build/corto_ros2
+Test project /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/build/corto_ros2
+    Start 1: map_contract
+1/2 Test #1: map_contract .....................   Passed    0.40 sec
+    Start 2: upstream_numerical_regression
+2/2 Test #2: upstream_numerical_regression ....   Passed    0.72 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   1.13 sec

@@ -69,9 +69,6 @@ static void runPlanner() {
     nh.declare_parameter("goal_pos_x", 6.8);
     nh.declare_parameter("goal_pos_y", 5.2);
     nh.declare_parameter("goal_pos_z", 0.49);
-    const std::string execution_mode = nh.declare_parameter<std::string>("execution_mode", "odometry");
-    if (execution_mode != "odometry" && execution_mode != "nominal")
-        throw std::invalid_argument("execution_mode must be odometry or nominal");
 
     rclcpp::sleep_for(std::chrono::milliseconds(2000));
 
@@ -197,40 +194,20 @@ static void runPlanner() {
     Eigen::Matrix<double, NominalNMPC::n_step_, NominalQuadDynamic::x_dim_> last_pred_x;
     bool last_pred_x_valid = false;
     bool last_nmpc_ok = false;
-    bool have_odom = false;
-    double latest_odom_time = 0.0;
-    auto odom_sub = nh.create_subscription<nav_msgs::msg::Odometry>(
-        "/lidar_slam/odom", rclcpp::SensorDataQoS(),
-        [&](nav_msgs::msg::Odometry::SharedPtr msg) {
-            have_odom = true;
-            latest_odom_time = rclcpp::Time(msg->header.stamp).seconds();
-            if (execution_mode == "odometry") {
-                x0 << msg->pose.pose.position.x, msg->pose.pose.position.y, msg->pose.pose.position.z,
-                      msg->twist.twist.linear.x, msg->twist.twist.linear.y, msg->twist.twist.linear.z,
-                      msg->pose.pose.orientation.w, msg->pose.pose.orientation.x,
-                      msg->pose.pose.orientation.y, msg->pose.pose.orientation.z;
-                ros_inte.set_sim_time(latest_odom_time);
-            }
-        });
     auto advance_execution = [&]() {
-        if (execution_mode == "odometry") executor.spin_some();
         if (!mission_started) {
-            if (execution_mode == "nominal")
-                ros_inte.publish_nominal(x0, Eigen::Vector3d::Zero(), nominal_elapsed);
-            ros_inte.event("mission_start", "\"execution_mode\":\"" + execution_mode + "\"");
+            ros_inte.publish_state(x0, Eigen::Vector3d::Zero(), nominal_elapsed);
+            ros_inte.event("mission_start");
             mission_started = true;
         }
         ros_inte.publish_control(u0);
-        if (execution_mode == "nominal") {
-            Eigen::Matrix<double, NominalQuadDynamic::x_dim_, 1> next, xdot;
-            nmpc.quad_dynamic_.rk4_func(x0, u0, dt, next);
-            total_length += (next.head<3>() - x0.head<3>()).norm();
-            x0 = next;
-            nominal_elapsed += dt;
-            ros_inte.set_sim_time(nominal_elapsed);
-            nmpc.quad_dynamic_.xdot_func(x0, u0, xdot);
-            ros_inte.publish_nominal(x0, xdot.segment<3>(3), nominal_elapsed);
-        }
+        Eigen::Matrix<double, NominalQuadDynamic::x_dim_, 1> next;
+        nmpc.quad_dynamic_.rk4_func(x0, u0, dt, next);
+        total_length += (next.head<3>() - x0.head<3>()).norm();
+        x0 = next;
+        nominal_elapsed += dt;
+        ros_inte.set_sim_time(nominal_elapsed);
+        ros_inte.publish_state(x0, u0.head<3>(), nominal_elapsed);
     };
 
     rclcpp::sleep_for(std::chrono::milliseconds(1000));
@@ -251,11 +228,6 @@ static void runPlanner() {
         ~JoinReplan() { if (thread.joinable()) thread.join(); }
     } join_replan{replan_thread};
 
-    ros_inte.status("WAIT_ODOM");
-    while (rclcpp::ok() && execution_mode == "odometry" && !have_odom) {
-        executor.spin_some();
-        rate.sleep();
-    }
     int previous_status = -1;
     const char* state_names[] = {"WAIT_TARGET", "PLAN_LOCAL", "EXEC_TRAJ", "GOAL_REACHED"};
     while (rclcpp::ok()) {
@@ -292,9 +264,9 @@ static void runPlanner() {
                 replan_count = 0;
                 mission_started = false;
                 nominal_elapsed = 0.0;
-                if (execution_mode == "nominal") ros_inte.set_sim_time(0.0);
+                ros_inte.set_sim_time(0.0);
 
-                if (execution_mode == "nominal") x0 << start_pos(0), start_pos(1), start_pos(2),
+                x0 << start_pos(0), start_pos(1), start_pos(2),
                         0.0, 0.0, 0.0,
                         0.0, 0.0, 0.0, 1.0;
                 

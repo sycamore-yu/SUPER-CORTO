@@ -1,0 +1,11 @@
+test_boundary_is_not_shrunk (test_protocol.ProtocolTests.test_boundary_is_not_shrunk) ... ok
+test_collision_does_not_hide_later_arrival (test_protocol.ProtocolTests.test_collision_does_not_hide_later_arrival) ... ok
+test_cylinder_distance (test_protocol.ProtocolTests.test_cylinder_distance) ... ok
+test_frozen_counts (test_protocol.ProtocolTests.test_frozen_counts) ... ok
+test_out_of_bounds_does_not_hide_later_arrival (test_protocol.ProtocolTests.test_out_of_bounds_does_not_hide_later_arrival) ... ok
+test_point_clearance_has_no_vehicle_envelope (test_protocol.ProtocolTests.test_point_clearance_has_no_vehicle_envelope) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.051s
+
+OK

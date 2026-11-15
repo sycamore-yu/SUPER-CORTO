@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""Exercise both PerfectDrone modes against actual ROS 2, clock and MARSIM output."""
-
+"""Verify that MARSIM renders the exact CORTO state without advancing it."""
 import argparse
 import json
 import math
@@ -12,151 +11,101 @@ import time
 
 import rclpy
 from rclpy.qos import qos_profile_sensor_data
-from geometry_msgs.msg import WrenchStamped
-from mars_quadrotor_msgs.msg import PositionCommand
-from nav_msgs.msg import Odometry
+from nav_msgs.msg import Odometry, Path as NavPath
 from rosgraph_msgs.msg import Clock
 from sensor_msgs.msg import PointCloud2
-from std_msgs.msg import Float64MultiArray
 from tf2_msgs.msg import TFMessage
 from visualization_msgs.msg import Marker
-from nav_msgs.msg import Path as NavPath
 
 
-def stamp_seconds(stamp):
-    return stamp.sec + stamp.nanosec * 1e-9
+def state(msg):
+    p, q = msg.pose.pose.position, msg.pose.pose.orientation
+    v, w = msg.twist.twist.linear, msg.twist.twist.angular
+    return [p.x, p.y, p.z, q.w, q.x, q.y, q.z, v.x, v.y, v.z, w.x, w.y, w.z]
+
+
+def stamp(msg):
+    return msg.header.stamp.sec * 1000000000 + msg.header.stamp.nanosec
 
 
 def run(args):
     output = Path(args.output)
     output.mkdir(parents=True, exist_ok=True)
     rclpy.init()
-    node = rclpy.create_node("perfect_drone_smoke")
-    rows, clocks, lidar, motors = [], [], [], []
-    transforms, markers, paths = [], [], []
-    started = time.monotonic()
-
-    def on_odom(msg):
-        p, q = msg.pose.pose.position, msg.pose.pose.orientation
-        v, w = msg.twist.twist.linear, msg.twist.twist.angular
-        rows.append({
-            "t": stamp_seconds(msg.header.stamp),
-            "p": [p.x, p.y, p.z], "q_xyzw": [q.x, q.y, q.z, q.w],
-            "v": [v.x, v.y, v.z], "omega": [w.x, w.y, w.z],
-            "wall_s": time.monotonic() - started,
-        })
-
+    node = rclpy.create_node("corto_state_render_test")
+    source = node.create_publisher(Odometry, "/corto/odom", rclpy.qos.QoSProfile(depth=100,
+                                   durability=rclpy.qos.DurabilityPolicy.TRANSIENT_LOCAL))
+    clock = node.create_publisher(Clock, "/clock", 10)
+    received, sent, lidar, transforms, markers, paths = {}, {}, [], {}, [], []
     subscriptions = [
-        node.create_subscription(Odometry, "/lidar_slam/odom", on_odom, qos_profile_sensor_data),
-        node.create_subscription(Clock, "/clock",
-                                 lambda msg: clocks.append(stamp_seconds(msg.clock)),
-                                 qos_profile_sensor_data),
-        node.create_subscription(PointCloud2, "/cloud_registered",
-                                 lambda msg: lidar.append([stamp_seconds(msg.header.stamp),
-                                                           msg.width * msg.height]),
-                                 qos_profile_sensor_data),
-        node.create_subscription(Float64MultiArray, "/simulator/motor_rpm",
-                                 lambda msg: motors.append(list(msg.data)),
-                                 qos_profile_sensor_data),
-        node.create_subscription(TFMessage, "/tf",
-                                 lambda msg: transforms.extend(
-                                     t.child_frame_id for t in msg.transforms),
-                                 qos_profile_sensor_data),
-        node.create_subscription(Marker, "/robot",
-                                 lambda msg: markers.append(msg.mesh_resource),
-                                 qos_profile_sensor_data),
-        node.create_subscription(NavPath, "/path",
-                                 lambda msg: paths.append(len(msg.poses)),
-                                 qos_profile_sensor_data),
+        node.create_subscription(Odometry, "/lidar_slam/odom", lambda msg: received.update({stamp(msg): state(msg)}), qos_profile_sensor_data),
+        node.create_subscription(PointCloud2, "/cloud_registered", lambda msg: lidar.append((stamp(msg), msg.width * msg.height)), qos_profile_sensor_data),
+        node.create_subscription(TFMessage, "/tf", lambda msg: transforms.update({stamp(t): t for t in msg.transforms if t.child_frame_id == "perfect_drone"}), qos_profile_sensor_data),
+        node.create_subscription(Marker, "/robot", lambda msg: markers.append(msg), qos_profile_sensor_data),
+        node.create_subscription(NavPath, "/path", lambda msg: paths.append(msg), qos_profile_sensor_data),
     ]
-    ctbr_pub = node.create_publisher(WrenchStamped, "/corto/control", 1)
-    position_pub = node.create_publisher(PositionCommand, "/planning/pos_cmd", 1)
-    log = (output / f"{args.mode}.log").open("w")
-    proc = subprocess.Popen(
-        ["vglrun", "-d", "egl", args.simulator, "--ros-args",
-         "-p", f"config_name:={args.config}", "-p", f"dynamics_mode:={args.mode}",
-         "-p", "use_sim_time:=true"],
-        stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
-    try:
-        deadline = time.monotonic() + 30.0
-        while not rows and time.monotonic() < deadline and proc.poll() is None:
-            rclpy.spin_once(node, timeout_sec=0.05)
-        if not rows:
-            raise RuntimeError(f"No odometry; inspect {output / (args.mode + '.log')}")
-        initial = rows[0]["p"]
-        first_time = rows[0]["t"]
-        first_wall = time.monotonic()
-        while time.monotonic() - first_wall < 4.0 and proc.poll() is None:
-            elapsed = rows[-1]["t"] - first_time
-            if args.mode == "so3":
-                msg = WrenchStamped()
-                msg.wrench.torque.x = 0.6 if elapsed < 1.0 else 0.63
-                msg.wrench.force.z = 0.0 if elapsed < 1.0 else 0.3
-                ctbr_pub.publish(msg)
-            else:
-                msg = PositionCommand()
-                msg.position.x, msg.position.y, msg.position.z = initial
-                msg.position.x += 0.5
-                msg.yaw = 0.2
-                position_pub.publish(msg)
-            rclpy.spin_once(node, timeout_sec=0.01)
-        if proc.poll() is not None:
-            raise RuntimeError(f"Simulator exited with {proc.returncode}")
-
-        result = {
-            "mode": args.mode, "odometry_count": len(rows),
-            "clock_count": len(clocks), "lidar_count": len(lidar),
-            "lidar_nonempty_count": sum(n > 0 for _, n in lidar),
-            "motor_count": len(motors),
-            "tf_drone_count": transforms.count("perfect_drone"),
-            "robot_marker_count": len(markers), "path_count": len(paths),
-            "simulation_span_s": rows[-1]["t"] - first_time,
-            "wall_span_s": rows[-1]["wall_s"] - rows[0]["wall_s"],
-            "initial_position_m": initial, "final": rows[-1],
-            "all_states_finite": all(math.isfinite(x) for r in rows
-                                     for field in ["p", "q_xyzw", "v", "omega"]
-                                     for x in r[field]),
-            "clock_monotonic": all(a < b for a, b in zip(clocks, clocks[1:])),
-        }
-        if args.mode == "so3":
-            result["input_response_passed"] = (
-                rows[-1]["omega"][2] > 0.25 and rows[-1]["p"][2] - initial[2] > 0.1
-                and len(motors) > 50)
-        else:
-            target = [initial[0] + 0.5, initial[1], initial[2]]
-            result["input_response_passed"] = math.dist(rows[-1]["p"], target) < 1e-8
-        result["passed"] = (
-            result["all_states_finite"] and result["clock_monotonic"]
-            and result["input_response_passed"] and result["lidar_nonempty_count"] > 2
-            and result["tf_drone_count"] > 50 and len(markers) > 50 and len(paths) > 2
-            and result["simulation_span_s"] > 3.0)
-        with (output / f"{args.mode}_odom.jsonl").open("w") as stream:
-            for row in rows:
-                stream.write(json.dumps(row) + "\n")
-    finally:
-        if proc.poll() is None:
-            os.killpg(proc.pid, signal.SIGINT)
-            try:
-                proc.wait(timeout=10)
-            except subprocess.TimeoutExpired:
-                os.killpg(proc.pid, signal.SIGTERM)
-                proc.wait(timeout=5)
-        log.close()
-        node.destroy_node()
-        rclpy.shutdown()
-    result["exit_code"] = proc.returncode
-    result["passed"] = result["passed"] and proc.returncode == 0
-    (output / f"{args.mode}.json").write_text(json.dumps(result, indent=2) + "\n")
-    print(json.dumps(result, indent=2))
-    if not result["passed"]:
-        raise RuntimeError("Simulator integration/exit smoke failed")
+    with (output / "renderer.log").open("w") as log:
+        process = subprocess.Popen(["vglrun", "-d", "egl", args.simulator, "--ros-args",
+                                    "-p", f"config_name:={args.config}", "-p", "use_sim_time:=true"],
+                                   stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+        try:
+            deadline = time.monotonic() + 15
+            while source.get_subscription_count() == 0 and time.monotonic() < deadline:
+                rclpy.spin_once(node, timeout_sec=0.05)
+                assert process.poll() is None, "Renderer exited before state discovery"
+            assert source.get_subscription_count() > 0, "Renderer does not consume CORTO Odometry"
+            for index in range(61):
+                message = Odometry()
+                message.header.frame_id, message.child_frame_id = "world", "body"
+                ns = index * 50000000
+                message.header.stamp.sec, message.header.stamp.nanosec = divmod(ns, 1000000000)
+                message.pose.pose.position.x = -14.0 + index * 0.02
+                message.pose.pose.position.y, message.pose.pose.position.z = -6.5, 0.49
+                q = message.pose.pose.orientation
+                q.w, q.x, q.y, q.z = math.sqrt(0.86), 0.2, -0.1, 0.3
+                v, w = message.twist.twist.linear, message.twist.twist.angular
+                v.x, v.y, v.z = 0.4, -0.2, 0.1
+                w.x, w.y, w.z = 0.5, -0.3, 0.2
+                sent[ns] = state(message)
+                clock.publish(Clock(clock=message.header.stamp))
+                source.publish(message)
+                until = time.monotonic() + 0.05
+                while time.monotonic() < until:
+                    rclpy.spin_once(node, timeout_sec=0.01)
+            until = time.monotonic() + 1
+            while time.monotonic() < until:
+                rclpy.spin_once(node, timeout_sec=0.02)
+            assert received.keys() == sent.keys(), (len(received), len(sent))
+            error = max(abs(a - b) for key in sent for a, b in zip(received[key], sent[key]))
+            assert error == 0, error
+            assert transforms, "No drone TF"
+            for key, transform in transforms.items():
+                t, q = transform.transform.translation, transform.transform.rotation
+                assert [t.x, t.y, t.z, q.w, q.x, q.y, q.z] == sent[key][:7]
+            assert any(count > 0 for _, count in lidar), "LiDAR is empty"
+            assert all(key in sent for key, _ in lidar), "LiDAR has an independent time source"
+            assert markers and paths, "Missing visualization"
+            assert node.count_publishers("/clock") == 1, "Renderer publishes a second clock"
+            assert node.count_subscribers("/corto/control") == 0, "Renderer consumes control commands"
+            result = {"passed": True, "state_count": len(received), "max_state_error": error,
+                      "tf_count": len(transforms), "lidar_count": len(lidar),
+                      "nonempty_lidar_count": sum(n > 0 for _, n in lidar),
+                      "marker_count": len(markers), "path_count": len(paths)}
+        finally:
+            if process.poll() is None:
+                os.killpg(process.pid, signal.SIGINT)
+                process.wait(timeout=10)
+            node.destroy_node()
+            rclpy.shutdown()
+    assert process.returncode == 0, process.returncode
+    result["exit_code"] = process.returncode
+    (output / "renderer.json").write_text(json.dumps(result, indent=2) + "\n")
+    print(json.dumps(result))
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", choices=["perfect", "so3"], required=True)
     parser.add_argument("--config", required=True)
     parser.add_argument("--simulator", required=True)
     parser.add_argument("--output", required=True)
     run(parser.parse_args())
-

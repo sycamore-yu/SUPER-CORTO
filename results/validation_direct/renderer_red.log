@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/perfect_drone_sim/test/simulator_ros_smoke.py", line 111, in <module>
+    run(parser.parse_args())
+  File "/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/perfect_drone_sim/test/simulator_ros_smoke.py", line 56, in run
+    assert source.get_subscription_count() > 0, "Renderer does not consume CORTO Odometry"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Renderer does not consume CORTO Odometry

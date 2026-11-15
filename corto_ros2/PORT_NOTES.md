@@ -24,15 +24,16 @@
 - SOCP 的 w 变量表示速度平方，但重规划入口传入的是速度范数 `snap_v`。
 - 参考节点使用最近的离散累计时间节点。SFC 的优化隐参数转换及输出系数插值方式保持原版。
 - NMPC 原版硬约束只有速度范数与横截面椭圆约束。5 m/s² 是 SOCP 的设置；未另加 NMPC 加速度硬约束。
-- 状态顺序为 `[px,py,pz,vx,vy,vz,qw,qx,qy,qz]`。原版初始化尾部 `[0,0,0,1]` 对应偏航 π。本包 nominal 初态保留该值，外部仿真应使用相同偏航。
+- 状态顺序为 `[px,py,pz,vx,vy,vz,qw,qx,qy,qz]`。原版初始化尾部 `[0,0,0,1]` 对应偏航 π。本包保留该值。
 - NMPC 的机体角速度范围为 ±1.8π rad/s。归一化推力范围为 [0,0.8]，悬停推力为 0.6。
 - 原版 nominal RK4 不额外归一化四元数。本包数值基线保持该行为。
 
 ## 接口变化
 
-`execution_mode=odometry` 使用 `/lidar_slam/odom` 反馈。内部 RK4 只服务于预测模型。节点通过 `/corto/control` 下发控制，绝不以预测状态覆盖实际里程计。
-
-`execution_mode=nominal` 保留原版每步 0.05 s 的 RK4 执行。它发布 `/corto/nominal_odom`，并向 `/planning/pos_cmd` 发布 `mars_quadrotor_msgs/msg/PositionCommand`，供 PerfectDrone 的 perfect 模式显示和渲染。该模式的统计状态取 nominal_odom。
+NMPC 输出直接进入原版 RK4，每步推进 0.05 s。
+`/corto/odom` 发布执行后的完整状态，`/clock` 发布同一模型时间。
+下一次 NMPC 直接使用该状态。PerfectDrone 只转发和渲染。
+状态不再经过 PositionCommand 和平坦性姿态重建。
 
 `/corto/control` 类型为 `geometry_msgs/msg/WrenchStamped`。字段沿用原版编码：
 
@@ -43,7 +44,8 @@
 | `wrench.torque.y/z` | 0 |
 | `header.frame_id` | body |
 
-这些字段并非牛顿力或牛顿米力矩。物理仿真需换算总推力 `m × 9.81 × torque.x / 0.6`，再通过角速度内环和电机分配执行。
+归一化推力在原版动力学中换算为 `9.81 × thrust / 0.6`，单位 m/s²。
+机体系角速度直接用于四元数导数。
 
 start_pos_x/y/z 和 goal_pos_x/y/z 直接使用 world 坐标。默认起终点为 [-14,-6.5,0.49] 和 [6.8,5.2,0.49]。原 demo 的局部坐标偏移不再重复施加。地图坐标转换由 GridMap::origin() 明确提供。Topo-PRM 不再写死原版的 z=-0.01 偏移。
 
@@ -55,13 +57,13 @@ start_pos_x/y/z 和 goal_pos_x/y/z 直接使用 world 坐标。默认起终点�
 
 `/corto/events` 为 `std_msgs/msg/String`，每条为 JSON，含 event、sim_time_s、wall_time_s。
 
-- mission_start：第一条控制下发前记录。nominal 先发布 t=0 初态。
+- mission_start：第一条控制下发前记录，先发布 t=0 初态。
 - plan_result：每次规划恰好一条。含 initial、success、elapsed_ms、stage、plan_id。失败阶段也记录。
 - plan_handoff：含 accepted、stitch_error_m、plan_id。
 - nmpc_result：每次求解记录 solver_code、success、elapsed_ms。
 - mission_end：含 reason；goal_reached 与 topology_failures 分开记录。初始规划失败只记录 plan_result，并保留原版重试流程。
 
-nominal 的 sim_time_s 来自累计 RK4 时间。odometry 模式使用节点时钟；启用 use_sim_time 时跟随 ROS /clock。wall_time_s 使用 steady_clock。规划与 NMPC elapsed_ms 均使用 steady_clock。
+sim_time_s 来自累计 RK4 时间。wall_time_s、规划和 NMPC elapsed_ms 使用 steady_clock。
 
 状态发布到 `/corto/status`。轨迹、候选路径、拓扑图和走廊分别发布到 `/corto/predict_traj`、`/corto/filter_path`、`/corto/graph_nodes`、`/corto/corridor_markers`。实际机体、TF、LiDAR 与路径显示由 SUPER 保留。
 

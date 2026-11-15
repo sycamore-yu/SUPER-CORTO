@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Record ROS data and end each trial at the first geometric terminal condition."""
+"""Observe CORTO directly; collision and boundary events never interrupt control."""
 import argparse
 import csv
 import hashlib
@@ -15,12 +15,10 @@ import rclpy
 from geometry_msgs.msg import WrenchStamped
 from nav_msgs.msg import Odometry
 from rclpy.node import Node
-from rclpy.qos import qos_profile_sensor_data
 from std_msgs.msg import String
 
+from benchmark_geometry import SceneGeometry
 from benchmark_report import score_trial
-from benchmark_geometry import SceneGeometry, first_terminal_on_segment
-
 
 ROOT = Path(__file__).resolve().parents[1]
 ODOM_FIELDS = ["sim_time_s", "wall_receive_s", "x", "y", "z", "qw", "qx", "qy", "qz",
@@ -41,19 +39,19 @@ class Recorder(Node):
         self.mission_start = None
         self.latest_sim = 0.0
         self.ended_wall = None
+        self.planner_end = None
         self.interrupted = False
+        self.first_events = set()
         self.geometry = SceneGeometry(scene)
         self.goal = np.asarray(scene["goal"])
-        self.previous_state = None
         self.files = {name: (output / name).open("w") for name in ("trajectory.csv", "control.csv", "events.jsonl")}
         self.odom_writer = csv.writer(self.files["trajectory.csv"])
         self.control_writer = csv.writer(self.files["control.csv"])
         self.odom_writer.writerow(ODOM_FIELDS)
         self.control_writer.writerow(CONTROL_FIELDS)
-        topic = "/corto/nominal_odom" if run["mode"] == "nominal" else "/lidar_slam/odom"
-        self.create_subscription(Odometry, topic, self.on_odom, qos_profile_sensor_data)
-        self.create_subscription(WrenchStamped, "/corto/control", self.on_control, 10000)
-        self.create_subscription(String, "/corto/events", self.on_event, 10000)
+        self.create_subscription(Odometry, "/corto/odom", self.on_odom, 1000)
+        self.create_subscription(WrenchStamped, "/corto/control", self.on_control, 1000)
+        self.create_subscription(String, "/corto/events", self.on_event, 1000)
         (output / "ready").write_text("subscriptions_created\n")
 
     def wall(self):
@@ -63,37 +61,25 @@ class Recorder(Node):
         self.latest_sim = stamp_seconds(message.header.stamp)
         p, q = message.pose.pose.position, message.pose.pose.orientation
         v, w = message.twist.twist.linear, message.twist.twist.angular
-        self.odom_writer.writerow([self.latest_sim, self.wall(), p.x, p.y, p.z,
-                                   q.w, q.x, q.y, q.z, v.x, v.y, v.z, w.x, w.y, w.z])
-        point = np.array([p.x, p.y, p.z])
-        previous = self.previous_state
-        self.previous_state = (self.latest_sim, point)
-        if self.mission_start is None or self.ended_wall is not None or self.latest_sim < self.mission_start:
+        state = [p.x, p.y, p.z, q.w, q.x, q.y, q.z, v.x, v.y, v.z, w.x, w.y, w.z]
+        self.odom_writer.writerow([self.latest_sim, self.wall(), *state])
+        if self.mission_start is None or self.ended_wall is not None:
             return
-        if not np.isfinite(point).all():
+        if not np.isfinite(state).all():
             self.finish("nonfinite_state")
             return
-        start_time, start = previous if previous is not None else (self.latest_sim, point)
-        if start_time < self.mission_start:
-            alpha = (self.mission_start - start_time) / (self.latest_sim - start_time)
-            start = start + alpha * (point - start)
-            start_time = self.mission_start
-        deadline = self.mission_start + self.manifest["flight_timeout_s"]
-        check_time = min(self.latest_sim, deadline)
-        check_point = point
-        if self.latest_sim > deadline and self.latest_sim > start_time:
-            check_point = start + (deadline - start_time) / (self.latest_sim - start_time) * (point - start)
-        terminal = first_terminal_on_segment(self.geometry, start_time, start, check_time, check_point,
-                                             self.goal, self.manifest["body_radius_m"],
-                                             self.manifest["goal_tolerance_m"],
-                                             self.manifest["continuous_sample_spacing_m"])
-        if terminal:
-            reason = terminal.pop("reason")
-            self.finish(reason, evaluation_end_sim_time_s=self.latest_sim,
-                        observed_position=point.tolist(), **terminal)
-        elif self.latest_sim >= deadline:
-            self.finish("collector_flight_timeout", terminal_time_s=deadline,
-                        evaluation_end_sim_time_s=self.latest_sim)
+        point = np.array([p.x, p.y, p.z])
+        conditions = {"collision": self.geometry.clearance(point)[0] <= 0,
+                      "out_of_bounds": self.geometry.out_of_bounds(point)[0]}
+        for name, active in conditions.items():
+            if active and name not in self.first_events:
+                self.first_events.add(name)
+                self.append_event({"event": name, "origin": "collector", "sim_time_s": self.latest_sim,
+                                   "position": point.tolist()})
+        if np.linalg.norm(point - self.goal) < self.manifest["goal_tolerance_m"]:
+            self.finish("goal_reached")
+        elif self.latest_sim - self.mission_start >= self.manifest["flight_timeout_s"] - 1e-9:
+            self.finish("collector_flight_timeout")
 
     def on_control(self, message):
         rate, thrust = message.wrench.force, message.wrench.torque
@@ -106,17 +92,16 @@ class Recorder(Node):
         self.files["events.jsonl"].flush()
 
     def on_event(self, message):
-        try:
-            event = json.loads(message.data)
-        except json.JSONDecodeError:
-            event = {"event": "invalid_event_payload", "raw": message.data}
+        event = json.loads(message.data)
         self.append_event(event)
-        if event.get("event") == "mission_start":
+        if event["event"] == "mission_start":
             self.mission_start = float(event["sim_time_s"])
+        elif event["event"] == "mission_end":
+            self.planner_end = event
 
-    def finish(self, reason, **details):
+    def finish(self, reason):
         self.append_event({"event": "mission_end", "origin": "collector", "reason": reason,
-                           "sim_time_s": self.latest_sim, "wall_time_s": self.wall(), **details})
+                           "sim_time_s": self.latest_sim})
         self.ended_wall = time.monotonic()
 
     def close(self):
@@ -139,38 +124,33 @@ def main():
     scene_path = args.experiments / "scenes" / f"{run['scene']}.json"
     scene_bytes = scene_path.read_bytes()
     metadata = dict(run, manifest_sha256=hashlib.sha256(manifest_path.read_bytes()).hexdigest(),
-                    protocol_version=manifest["protocol_version"], termination_policy=manifest["termination_policy"],
+                    protocol_version=manifest["protocol_version"], execution=manifest["execution"],
                     scene_sha256=hashlib.sha256(scene_bytes).hexdigest(),
-                    ros_domain_id=os.environ.get("ROS_DOMAIN_ID", "0"),
-                    ros_distro=os.environ.get("ROS_DISTRO"),
+                    ros_domain_id=os.environ.get("ROS_DOMAIN_ID", "0"), ros_distro=os.environ.get("ROS_DISTRO"),
                     code_commit=subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
                     tracked_source_dirty=subprocess.run(["git", "diff", "--quiet", "HEAD", "--", ".", ":(exclude)results"], cwd=ROOT).returncode != 0,
                     started_utc=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()))
     (args.output / "run.json").write_text(json.dumps(metadata, indent=2) + "\n")
     rclpy.init()
     node = Recorder(manifest, run, args.output, json.loads(scene_bytes))
+
     def interrupt(_signal, _frame):
         node.interrupted = True
+
     signal.signal(signal.SIGINT, interrupt)
     signal.signal(signal.SIGTERM, interrupt)
     try:
-        while rclpy.ok():
+        while rclpy.ok() and node.ended_wall is None:
             rclpy.spin_once(node, timeout_sec=0.05)
             if node.ended_wall is not None:
-                if time.monotonic() - node.ended_wall >= manifest["post_terminal_recording_wall_s"]:
-                    break
-                continue
-            if node.interrupted:
-                exit_path = args.output / "process_exit.json"
-                process_exit = json.loads(exit_path.read_text()) if exit_path.exists() else {}
-                if "launch_natural_exit" in process_exit:
-                    node.finish("launch_exited", launch_exit_code=process_exit["launch_natural_exit"])
-                else:
-                    node.finish("collector_interrupted")
+                break
+            # ROS topics can be delivered in a different order. Retain the final state.
+            if node.planner_end is not None and node.latest_sim >= node.planner_end["sim_time_s"] - 1e-9:
+                node.finish(node.planner_end["reason"])
+            elif node.interrupted:
+                node.finish("launch_exited")
             elif node.wall() >= manifest["wall_timeout_s"]:
                 node.finish("collector_wall_timeout")
-            elif node.mission_start is not None and node.latest_sim - node.mission_start >= manifest["flight_timeout_s"]:
-                node.finish("collector_flight_timeout")
     finally:
         node.close()
         node.destroy_node()

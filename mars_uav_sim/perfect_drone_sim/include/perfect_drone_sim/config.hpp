@@ -23,7 +23,6 @@ namespace perfect_drone {
         Eigen::Vector3d init_pos;
         double init_yaw;
         double sensing_rate;
-        std::string dynamics_mode{"perfect"};
 
         Config() = default;
 
@@ -36,7 +35,6 @@ namespace perfect_drone {
             loader.LoadParam("init_position/z", init_pos.z(), 1.5);
             loader.LoadParam("init_yaw", init_yaw, 0.0);
             loader.LoadParam("sensing_rate", sensing_rate, 10.0);
-            loader.LoadParam("dynamics_mode", dynamics_mode, std::string("perfect"), false);
         }
     };
 }

@@ -1,0 +1,148 @@
+[WARN] [1794725094.910036887] [perfect_tracking]:  -- [MissionPlanner] Load config by file name: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/results/table3/nominal_sparse_00/sim_config.yaml
+Load config file: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/results/table3/nominal_sparse_00/sim_config.yaml
+[0;32m Load param mesh_resource success: [0;0mpackage://perfect_drone_sim/meshes/yunque-M.dae
+[0;32m Load param init_position/x success: [0;0m-14
+[0;32m Load param init_position/y success: [0;0m-6.5
+[0;32m Load param init_position/z success: [0;0m0.49
+[0;32m Load param init_yaw success: [0;0m3.14159
+[0;32m Load param sensing_rate success: [0;0m10
+[0;32m Load param dynamics_mode success: [0;0mperfect
+Load config file: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/results/table3/nominal_sparse_00/sim_config.yaml
+[0;32m Load param sensing_blind success: [0;0m0.1
+[0;32m Load param sensing_horizon success: [0;0m15
+[0;32m Load param sensing_rate success: [0;0m10
+[0;32m Load param lidar_type success: [0;0m2
+[0;32m Load param pcd_name success: [0;0m/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/experiments/scenes/sparse.pcd
+[0;32m Load param is_360lidar success: [0;0m1
+[0;32m Load param polar_resolution success: [0;0m0.4
+[0;33m Load param fx failed, use default value: [0;0m250
+[0;33m Load param fy failed, use default value: [0;0m250
+[0;33m Load param line_number failed, use default value: [0;0m64
+[0;32m Load param downsample_res success: [0;0m0.1
+[0;33m Load param yaw_fov failed, use default value: [0;0m360
+[0;32m Load param vertical_fov success: [0;0m178
+[0;32m Load param depth_image_en success: [0;0m0
+[0;33m Load param inf_point_en failed, use default value: [0;0m0
+[0;32m Load param print_time_consumption success: [0;0m0
+GLAD init success
+Load shader frome: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/marsim_render/config/pattern/360camera.vs
+Failed to find match for field 'intensity'.
+Now initing the point cloud data: 
+Number of points = 2.502X 10000
+Load data finish 
+========== OpenGL Info ==========
+Vendor: NVIDIA Corporation
+Renderer: NVIDIA GeForce RTX 4090/PCIe/SSE2
+OpenGL Version: 3.3.0 NVIDIA 595.84
+GLSL Version: 3.30 NVIDIA via Cg compiler
+========== OpenGL Info ==========
+ -- [MARSIM] Running FPS: 29.2696
+ -- [MARSIM] Running FPS: 44.826
+ -- [MARSIM] Running FPS: 42.7128
+ -- [MARSIM] Running FPS: 48.9501
+ -- [MARSIM] Running FPS: 48.896
+ -- [MARSIM] Running FPS: 47.012
+ -- [MARSIM] Running FPS: 49.6784
+ -- [MARSIM] Running FPS: 50.4454
+ -- [MARSIM] Running FPS: 46.7725
+ -- [MARSIM] Running FPS: 48.7028
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+Publish global map size: 25020
+ -- [MARSIM] Running FPS: 45.9888
+ -- [MARSIM] Running FPS: 40.4572
+ -- [MARSIM] Running FPS: 42.9771
+ -- [MARSIM] Running FPS: 43.736
+ -- [MARSIM] Running FPS: 43.3831
+ -- [MARSIM] Running FPS: 41.4829
+ -- [MARSIM] Running FPS: 43.0327
+ -- [MARSIM] Running FPS: 44.8932
+ -- [MARSIM] Running FPS: 43.8208
+ -- [MARSIM] Running FPS: 44.9535
+ -- [MARSIM] Running FPS: 45.7557
+ -- [MARSIM] Running FPS: 39.8157
+ -- [MARSIM] Running FPS: 47.0475
+ -- [MARSIM] Running FPS: 46.4422
+ -- [MARSIM] Running FPS: 43.9347
+ -- [MARSIM] Running FPS: 44.2016
+ -- [MARSIM] Running FPS: 41.3039
+ -- [MARSIM] Running FPS: 40.5146
+ -- [MARSIM] Running FPS: 39.4393
+[INFO] [1794725109.623496759] [rclcpp]: signal_handler(SIGINT/SIGTERM)

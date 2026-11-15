@@ -5,7 +5,7 @@
 #include <std_msgs/msg/string.hpp>
 #include <std_msgs/msg/bool.hpp>
 #include <visualization_msgs/msg/marker_array.hpp>
-#include <mars_quadrotor_msgs/msg/position_command.hpp>
+#include <rosgraph_msgs/msg/clock.hpp>
 #include <atomic>
 #include <iomanip>
 #include <sstream>
@@ -18,18 +18,17 @@ class RosInterface {
     rclcpp::Publisher<Marker>::SharedPtr predicted_, paths_, graph_;
     rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr corridors_;
     rclcpp::Publisher<geometry_msgs::msg::WrenchStamped>::SharedPtr control_;
-    rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr nominal_;
-    rclcpp::Publisher<mars_quadrotor_msgs::msg::PositionCommand>::SharedPtr position_;
+    rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr state_;
+    rclcpp::Publisher<rosgraph_msgs::msg::Clock>::SharedPtr clock_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr events_, status_;
     rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr stop_;
     const std::chrono::steady_clock::time_point start_wall_ = std::chrono::steady_clock::now();
     std::atomic<double> sim_time_{0.0};
-    bool nominal_mode_ = false;
 
     Marker marker(const std::string& ns, int id, int type) {
         Marker m;
         m.header.frame_id = "world";
-        m.header.stamp = node_.now();
+        m.header.stamp = rclcpp::Time(static_cast<int64_t>(std::llround(sim_time_.load() * 1e9)));
         m.ns = ns;
         m.id = id;
         m.type = type;
@@ -46,14 +45,13 @@ class RosInterface {
     }
 public:
     explicit RosInterface(rclcpp::Node& node) : node_(node) {
-        nominal_mode_ = node.get_parameter("execution_mode").as_string() == "nominal";
         predicted_ = node.create_publisher<Marker>("/corto/predict_traj", 10);
         paths_ = node.create_publisher<Marker>("/corto/filter_path", 10);
         graph_ = node.create_publisher<Marker>("/corto/graph_nodes", 10);
         corridors_ = node.create_publisher<visualization_msgs::msg::MarkerArray>("/corto/corridor_markers", 10);
         control_ = node.create_publisher<geometry_msgs::msg::WrenchStamped>("/corto/control", 100);
-        nominal_ = node.create_publisher<nav_msgs::msg::Odometry>("/corto/nominal_odom", 100);
-        position_ = node.create_publisher<mars_quadrotor_msgs::msg::PositionCommand>("/planning/pos_cmd", 100);
+        state_ = node.create_publisher<nav_msgs::msg::Odometry>("/corto/odom", rclcpp::QoS(100).transient_local());
+        clock_ = node.create_publisher<rosgraph_msgs::msg::Clock>("/clock", rclcpp::QoS(1).transient_local());
         events_ = node.create_publisher<std_msgs::msg::String>("/corto/events", 1000);
         status_ = node.create_publisher<std_msgs::msg::String>("/corto/status", rclcpp::QoS(1).transient_local());
         stop_ = node.create_publisher<std_msgs::msg::Bool>("/corto/stop", 10);
@@ -61,7 +59,7 @@ public:
     void set_sim_time(double t) { sim_time_.store(t); }
     void event(const std::string& kind, const std::string& fields = "") {
         std::ostringstream out;
-        out << std::setprecision(17) << "{\"event\":\"" << kind << "\",\"sim_time_s\":" << (nominal_mode_ ? sim_time_.load() : node_.now().seconds())
+        out << std::setprecision(17) << "{\"event\":\"" << kind << "\",\"sim_time_s\":" << sim_time_.load()
             << ",\"wall_time_s\":" << std::chrono::duration<double>(std::chrono::steady_clock::now() - start_wall_).count();
         if (!fields.empty()) out << "," << fields;
         out << "}";
@@ -93,14 +91,12 @@ public:
     void publish_control(const Eigen::Vector4d& u) {
         geometry_msgs::msg::WrenchStamped msg;
         msg.header.frame_id = "body";
-        msg.header.stamp = nominal_mode_
-            ? rclcpp::Time(static_cast<int64_t>(std::llround(sim_time_.load() * 1e9)))
-            : node_.now();
+        msg.header.stamp = rclcpp::Time(static_cast<int64_t>(std::llround(sim_time_.load() * 1e9)));
         msg.wrench.force.x = u(0); msg.wrench.force.y = u(1); msg.wrench.force.z = u(2);
         msg.wrench.torque.x = u(3);
         control_->publish(msg);
     }
-    void publish_nominal(const Eigen::Matrix<double, 10, 1>& x, const Eigen::Vector3d& acc, double elapsed) {
+    void publish_state(const Eigen::Matrix<double, 10, 1>& x, const Eigen::Vector3d& body_rates, double elapsed) {
         nav_msgs::msg::Odometry odom;
         odom.header.frame_id = "world"; odom.child_frame_id = "body";
         odom.header.stamp = rclcpp::Time(static_cast<int64_t>(std::llround(elapsed * 1e9)));
@@ -108,15 +104,13 @@ public:
         odom.pose.pose.orientation.w = x(6); odom.pose.pose.orientation.x = x(7);
         odom.pose.pose.orientation.y = x(8); odom.pose.pose.orientation.z = x(9);
         odom.twist.twist.linear.x = x(3); odom.twist.twist.linear.y = x(4); odom.twist.twist.linear.z = x(5);
-        nominal_->publish(odom);
-        mars_quadrotor_msgs::msg::PositionCommand cmd;
-        cmd.header.frame_id = "world"; cmd.header.stamp = node_.now();
-        cmd.position = odom.pose.pose.position;
-        cmd.velocity = odom.twist.twist.linear;
-        cmd.acceleration.x = acc.x(); cmd.acceleration.y = acc.y(); cmd.acceleration.z = acc.z();
-        cmd.yaw = std::atan2(2 * (x(6)*x(9) + x(7)*x(8)), 1 - 2 * (x(8)*x(8) + x(9)*x(9)));
-        cmd.trajectory_flag = mars_quadrotor_msgs::msg::PositionCommand::TRAJECTORY_STATUS_READY;
-        position_->publish(cmd);
+        odom.twist.twist.angular.x = body_rates.x();
+        odom.twist.twist.angular.y = body_rates.y();
+        odom.twist.twist.angular.z = body_rates.z();
+        rosgraph_msgs::msg::Clock clock;
+        clock.clock = odom.header.stamp;
+        clock_->publish(clock);
+        state_->publish(odom);
     }
     void publish_predict_traj(const std::vector<Eigen::Vector3d>& points) {
         auto m = marker("prediction", 0, Marker::LINE_STRIP);

@@ -1,0 +1,4 @@
+scene,completed,expected,reached_goal_count,successes,success_rate_percent,arrival_rate_percent,flight_time_s,mean_speed_mps,clearance_m,reached_flight_time_s,reached_mean_speed_mps,reached_clearance_m,collision_runs,out_of_bounds_runs,planning_failures,nmpc_failures,replanning_calls,online_replanning_ms
+sparse,1,10,1,0,,,,,,6.35,3.79410776157192,-0.025002592664098933,1,0,0,0,9,137.16252633333335
+medium,0,10,0,0,,,,,,,,,0,0,0,0,0,
+dense,0,10,0,0,,,,,,,,,0,0,0,0,0,
