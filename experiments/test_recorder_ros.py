@@ -50,9 +50,15 @@ def main():
                 command = WrenchStamped()
                 command.header = message.header
                 command.wrench.torque.x = 0.6
-                control.publish(command)
-                time.sleep(0.02)
-                odom.publish(message)
+                if i == len(points) - 1:
+                    # The terminal odometry frame may arrive before its control.
+                    odom.publish(message)
+                    time.sleep(0.05)
+                    control.publish(command)
+                else:
+                    control.publish(command)
+                    time.sleep(0.02)
+                    odom.publish(message)
                 time.sleep(0.1)
                 if i == 3:
                     time.sleep(0.4)

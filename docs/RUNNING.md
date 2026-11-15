@@ -59,6 +59,9 @@ xvfb-run -a python3 scripts/benchmark_run.py \
 
 # 从同一版本原始数据重算统计。
 python3 scripts/benchmark_report.py --results results/table3_reproduce
+
+# 核对 30 回合原始状态与 CTBR，逐步重放 CORTO RK4。
+python3 scripts/benchmark_audit.py --results results/table3_reproduce
 ```
 
 默认评测 ROS_DOMAIN_ID=185；并行诊断使用不同 `--ros-domain-id`。

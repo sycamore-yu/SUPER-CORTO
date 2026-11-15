@@ -58,6 +58,8 @@ class Recorder(Node):
         return time.monotonic() - self.started_wall
 
     def on_odom(self, message):
+        if self.ended_wall is not None:
+            return
         self.latest_sim = stamp_seconds(message.header.stamp)
         p, q = message.pose.pose.position, message.pose.pose.orientation
         v, w = message.twist.twist.linear, message.twist.twist.angular
@@ -140,10 +142,13 @@ def main():
     signal.signal(signal.SIGINT, interrupt)
     signal.signal(signal.SIGTERM, interrupt)
     try:
-        while rclpy.ok() and node.ended_wall is None:
+        while rclpy.ok():
             rclpy.spin_once(node, timeout_sec=0.05)
             if node.ended_wall is not None:
-                break
+                # Drain the other ROS topics after the terminal odometry frame.
+                if time.monotonic() - node.ended_wall >= 0.3:
+                    break
+                continue
             # ROS topics can be delivered in a different order. Retain the final state.
             if node.planner_end is not None and node.latest_sim >= node.planner_end["sim_time_s"] - 1e-9:
                 node.finish(node.planner_end["reason"])
