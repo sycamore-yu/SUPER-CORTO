@@ -10,7 +10,10 @@ CHANGED_GROUPS = {
     "topo": "ROG-Map voxel visibility and a 320-sample PRM budget",
     "sfc": "Continuous obstacle projection and the optimizer's latent ellipse representation",
 }
-CHANGED_KEYS = {"nmpc.prediction": "Roll out the final returned action vector, not the last NLopt trial cache"}
+CHANGED_KEYS = {
+    "nmpc.controls": "The previously unused CORTO transverse contour weight now contributes to NMPC cost",
+    "nmpc.prediction": "Final returned actions and the transverse contour cost differ from pinned upstream",
+}
 
 def read_values(path):
     values = {}

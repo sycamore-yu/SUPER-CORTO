@@ -185,6 +185,15 @@ double NominalNMPC::cost_func_impl(const std::vector<double> &u, std::vector<dou
     double contouring_cost = 0.0;
     Eigen::Matrix<double, 1, u_dim_ * n_step_> contouring_cost_g;
     contouring_cost_g.setZero();
+    for (int k = 1; k <= n_step_; ++k) {
+        const Eigen::Vector2d cross_track = proj_pos[k].tail<2>();
+        contouring_cost += cross_track.squaredNorm();
+        const Eigen::Vector3d direction =
+            cross_track.x() * ref_data.ref_fsf[k].col(1) +
+            cross_track.y() * ref_data.ref_fsf[k].col(2);
+        contouring_cost_g += 2.0 * direction.transpose() *
+            state_g[k - 1].block(0, 0, 3, u_dim_ * n_step_);
+    }
 
     const double terminal_radius = terminal_radius_;
     double term_vcost = 0.0;
@@ -319,13 +328,14 @@ double NominalNMPC::cost_func_impl(const std::vector<double> &u, std::vector<dou
     double ellipsoid_w = cost_w(8);
     double vcost_w = cost_w(9);
     double w_theta = cost_w(10);
-    cost = pos_err_w * pos_err - w_theta * progress_reward
+    cost = pos_err_w * pos_err + ellipsoid_w * contouring_cost - w_theta * progress_reward
            + vcost_w * vcost + ucost + yaw_w_ * yawcost
            + terminal_vel_w_ * term_vcost;
 
     Eigen::Matrix<double, 1, u_dim_ * n_step_> grad_tmp;
     grad_tmp.setZero();
-    grad_tmp += pos_err_w * pos_err_g - w_theta * progress_reward_g
+    grad_tmp += pos_err_w * pos_err_g + ellipsoid_w * contouring_cost_g
+                - w_theta * progress_reward_g
                 + vcost_w * vcost_g + ucost_g + yaw_w_ * yawcost_g
                 + terminal_vel_w_ * term_vcost_g;
 
