@@ -15,7 +15,7 @@ public:
     RefTrajOpt() {};
     ~RefTrajOpt() {};
 
-    void socp_interface(const int N, const double w1, const double wT, const ArcLengthSpline& spline, const double Vmax, const double Amax,
+    void socp_interface(const int N, const double initial_speed, const double terminal_speed, const ArcLengthSpline& spline, const double Vmax, const double Amax,
                         const bool is_jerk, const double Jmax);
 
     double get_total_time() const { return total_time_; }

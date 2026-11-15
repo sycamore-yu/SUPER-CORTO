@@ -1,4 +1,5 @@
 #include "map/map.hpp"
+#include "ros_interface/ros_interface.hpp"
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -11,7 +12,7 @@ int main(int argc, char** argv) {
     std::filesystem::create_directories(dir);
     const auto pcd = dir / "one_voxel.pcd";
     std::ofstream(pcd) << "VERSION .7\nFIELDS x y z intensity\nSIZE 4 4 4 4\nTYPE F F F F\n"
-        "COUNT 1 1 1 1\nWIDTH 1\nHEIGHT 1\nPOINTS 1\nDATA ascii\n0.05 0.05 1.55 1\n";
+        "COUNT 1 1 1 1\nWIDTH 2\nHEIGHT 1\nPOINTS 2\nDATA ascii\n0.05 0.05 1.55 1\n2.05 2.05 0.15 1\n";
     const auto config = dir / "map.yaml";
     std::ofstream(config) << "rog_map:\n  resolution: 0.1\n  inflation_resolution: 0.1\n"
         "  inflation_step: 1\n  map_size: [30, 15, 3]\n  fix_map_origin: [0, 0, 1.5]\n"
@@ -42,6 +43,21 @@ int main(int argc, char** argv) {
     check(map(Vector3d(1, 1, 3)), "upper z boundary is outside");
     check(!map(Vector3d(0.05, 0.05, 0.05)), "no implicit ground inflation inside scene");
     check(map.pos2idx(Vector3d(-0.001, 0, 0)).x() == -1, "floor indexing for negative positions");
+    Vector3d adjusted;
+    check(map.nearbyFreeEndpoint(Vector3d(2.05, 2.05, .15), adjusted) &&
+              !map(Vector3d(adjusted - map.origin())) &&
+              (adjusted - Vector3d(2.05, 2.05, .15)).norm() < 1.0,
+          "occupied temporary waypoint relocates to nearby free voxel");
+    check(map.nearbyFreeEndpoint(Vector3d(-2, -2, 1), adjusted) &&
+              (adjusted - Vector3d(-2, -2, 1)).norm() < 1e-12,
+          "free temporary waypoint remains unchanged");
+    RosInterface ros(*node);
+    const auto cloud = ros.grid_to_cloud(map);
+    bool retained_low_voxel=false;
+    for(const auto& p : cloud.points)
+        if(std::abs(p.x-2.05f)<.01f && std::abs(p.y-2.05f)<.01f && std::abs(p.z-.15f)<.01f)
+            retained_low_voxel=true;
+    check(retained_low_voxel, "map-to-SFC export retains real occupied voxels near the floor");
     rclcpp::shutdown();
     return failures ? 1 : 0;
 }

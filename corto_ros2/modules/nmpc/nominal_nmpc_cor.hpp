@@ -63,6 +63,7 @@ class NominalNMPC{
         NominalNMPC(double hover_ratio, std::string opt_algorithm, int maxeval, double dt, rclcpp::Node& nh);
         void set_w(const Eigen::Matrix<double, 3 + u_dim_ + 4, 1> &cost_w);
         void set_ref_data(const RefData &ref_data);
+        double maximumCorridorViolation() const;
 
         int solve(const Eigen::Matrix<double, x_dim_, 1> &state,
             Eigen::Matrix<double, u_dim_, 1> &u0,

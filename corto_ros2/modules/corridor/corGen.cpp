@@ -1,6 +1,7 @@
 #include "corGen.hpp"
 #include "corridor_lbfgs.hpp"
 #include "lbfgs.hpp"
+#include "utility/utility.hpp"
 
 void corGen::init(rclcpp::Node& nh) {
     nh.get_parameter_or("poly_degree", poly_degree_, 3);
@@ -214,18 +215,21 @@ Projection_data corGen::processPointCloud(std::string frame) {
         if (path_kdtree.nearestKSearch(pt, 1, nn_idx, nn_dist2) < 1) return;
         if (nn_dist2[0] > r_pre_sq) return;
 
-        int best_pi = nn_idx[0];
-        const PathSample& ps = path_samples[best_pi];
-        Eigen::Vector3d diff(pt.x - ps.pos.x(), pt.y - ps.pos.y(), pt.z - ps.pos.z());
-        Eigen::Vector3d local = ps.R.transpose() * diff;
+        const Eigen::Vector3d world(pt.x, pt.y, pt.z);
+        const double s_projected = projectOnSpline(spline_, world);
+        const Eigen::Vector3d pos = spline_.getPosition_3D(s_projected);
+        const Eigen::Matrix3d R = frame == "PTF" ? PTF_at_s(s_projected, spline_) :
+            FSF_Function_Robust(spline_.getDerivative_3D(s_projected),
+                               spline_.getSecondDerivative_3D(s_projected));
+        Eigen::Vector3d local = R.transpose() * (world - pos);
 
         if (std::abs(local(0)) >= 0.01) return;
         double yz_norm = std::sqrt(local(1)*local(1) + local(2)*local(2));
         if (yz_norm < 0.05 || local.norm() > ellipse_axis_max) return;
 
         int seg = std::max(0, std::min(n_segments - 1,
-            (int)(std::upper_bound(sweep_s.begin(), sweep_s.end(), ps.s_val) - sweep_s.begin()) - 1));
-        bins[seg].push_back({yz_norm, local, ps.s_val});
+            (int)(std::upper_bound(sweep_s.begin(), sweep_s.end(), s_projected) - sweep_s.begin()) - 1));
+        bins[seg].push_back({yz_norm, local, s_projected});
     };
 
     for (int idx : local_indices) {
@@ -839,6 +843,8 @@ void corGen::NLP_LBFGS(const Projection_data& pruned_points_local) {
     }
 
     int n_all_raw = (int)pruned_points_local.all_raw_pos.size();
+    result.latent_ctrl = all_ctrl;
+    result.eps_psd = prob.eps_psd;
     double worst_g_all;
     int n_violated_all = checkViolations(prob, all_ctrl,
                                          pruned_points_local.all_raw_pos,
@@ -935,6 +941,16 @@ Eigen::Vector2d corGen::get_ellipse_points(const double width, const double heig
 }
 
 std::vector<double> corGen::polynomial_eval(double s, const OptimizationResult& coeffs, int degree) const {
+    if (!coeffs.latent_ctrl.empty()) {
+        corridor_lbfgs::CorridorProblem prob;
+        prob.n_segments = coeffs.coeffs_a.rows();
+        prob.degree = degree;
+        prob.total_arc_length = spline_.getLength_3D();
+        prob.eps_psd = coeffs.eps_psd;
+        double a,b,c,d,e;
+        prob.evalEllipseAt(coeffs.latent_ctrl.data(), s, a,b,c,d,e);
+        return {a,b,c,d,e};
+    }
     int n_segments = n_sweep_ - 1;
     std::vector<double> s_segments(n_segments + 1);
     for (int i = 0; i <= n_segments; ++i) {

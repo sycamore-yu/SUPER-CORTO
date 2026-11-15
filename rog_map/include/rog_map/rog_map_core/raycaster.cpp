@@ -182,6 +182,12 @@ namespace rog_map {
                 return false;
             }
 
+            // At a mixed-sign voxel corner, roundoff can order the final crossings
+            // differently. An axis already in its target cell must not overshoot.
+            if (cur_ray_pt_id_x_ == end_x_i_) t_to_bound_x_ = std::numeric_limits<double>::max();
+            if (cur_ray_pt_id_y_ == end_y_i_) t_to_bound_y_ = std::numeric_limits<double>::max();
+            if (cur_ray_pt_id_z_ == end_z_i_) t_to_bound_z_ = std::numeric_limits<double>::max();
+
             // compute firest bound point
             if (t_to_bound_x_ < t_to_bound_y_) {
                 if (t_to_bound_x_ < t_to_bound_z_) {

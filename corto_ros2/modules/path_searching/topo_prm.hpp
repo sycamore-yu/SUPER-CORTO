@@ -5,7 +5,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <Eigen/Eigen>
 #include "../map/map.hpp"
-#include "../raycast/raycast.hpp"
+#include <list>
 
 using namespace std;
 
@@ -63,18 +63,12 @@ class TopologyPRM{
     vector<vector<Eigen::Vector3d>> raw_paths_;
     vector<vector<Eigen::Vector3d>> short_paths_;
     vector<vector<Eigen::Vector3d>> final_paths_;    
+    std::string failure_reason_;
     vector<Eigen::Vector3d> start_pts_, end_pts_;   
-
-    vector<RayCaster> casters_;
-    Eigen::Vector3d offset_;
 
     inline Eigen::Vector3d getSample();
 
     vector<GraphNode::Ptr> findVisibGuard(Eigen::Vector3d pt);
-    bool lineVisib(const Eigen::Vector3d& p1, const Eigen::Vector3d& p2, double thresh,
-                    Eigen::Vector3d& pc, int caster_id = 0);
-    bool lineVisibCoarse(const Eigen::Vector3d& p1, const Eigen::Vector3d& p2,
-                          double thresh, Eigen::Vector3d& pc);
     bool needConnection(GraphNode::Ptr g1, GraphNode::Ptr g2, Eigen::Vector3d pt);
     bool sameTopoPath(const vector<Eigen::Vector3d>& path1,
                                const vector<Eigen::Vector3d>& path2, double thresh);  
@@ -97,6 +91,7 @@ class TopologyPRM{
 
     void init(rclcpp::Node& nh);
     void setGridMap(const GridMap* grid_map);
+    const std::string& failureReason() const { return failure_reason_; }
 
     void findTopoPaths(Eigen::Vector3d start, Eigen::Vector3d end,
                        vector<Eigen::Vector3d> start_pts, vector<Eigen::Vector3d> end_pts,

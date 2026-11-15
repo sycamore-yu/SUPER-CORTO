@@ -24,6 +24,8 @@ struct PlanResult {
     int corridor_idx = 0;
     Eigen::Vector3d stitch_point = Eigen::Vector3d::Zero();
     double replan_ms = 0.0;
+    double requested_model_time = 0.0;
+    double predicted_model_delay = 0.0;
     int plan_id = 0;
     std::vector<std::vector<Eigen::Vector3d>> viz_paths;
     bool valid = false;
@@ -296,6 +298,9 @@ static void runPlanner() {
             bool is_last_segment = (dist_to_goal <= planning_horizon * 1.2);
             Vector3d local_goal = is_last_segment ? final_goal
                                  : (plan_start + planning_horizon * dir_to_goal.normalized());
+            Vector3d free_local_goal;
+            if (gridmap.nearbyFreeEndpoint(local_goal, free_local_goal))
+                local_goal = free_local_goal;
 
             double v_start_val = first_plan ? 0.0 : Eigen::Vector3d(x0(VX), x0(VY), x0(VZ)).norm();
 
@@ -307,6 +312,14 @@ static void runPlanner() {
             topo_prm->findTopoPaths(plan_start, local_goal,
                                     empty_start_pts, empty_end_pts,
                                     graph, raw_paths, filtered_paths);
+            {
+                std::ostringstream fields;
+                fields << std::setprecision(17) << "\"plan_id\":" << initial_plan_id
+                       << ",\"initial\":true,\"start\":[" << plan_start.x() << ',' << plan_start.y() << ',' << plan_start.z()
+                       << "],\"goal\":[" << local_goal.x() << ',' << local_goal.y() << ',' << local_goal.z()
+                       << "],\"paths\":" << filtered_paths.size() << ",\"reason\":\"" << topo_prm->failureReason() << "\"";
+                ros_inte.event("topo_query", fields.str());
+            }
 
             consecutive_fails = 0;
             ros_inte.visualizeGraphNodes(graph);
@@ -452,6 +465,8 @@ static void runPlanner() {
             }
 
             report_initial_plan(true, "complete");
+            replan_latency_ema = std::max(dt, std::chrono::duration<double>(
+                std::chrono::steady_clock::now() - initial_plan_start).count());
             best_corridor_idx = local_best_idx;
             best_spline = splines[valid_indices[best_corridor_idx]];
             coeffs4NMPC = all_coeffs[best_corridor_idx];
@@ -484,12 +499,15 @@ static void runPlanner() {
 
                 if (ready_plan.valid) {
                     const double stitch_err = (x0.head<3>() - ready_plan.stitch_point).norm();
-                    replan_latency_ema = 0.9 * replan_latency_ema + 0.1 * (ready_plan.replan_ms / 1000.0);
+                    const double model_latency = nominal_elapsed - ready_plan.requested_model_time;
+                    replan_latency_ema = 0.9 * replan_latency_ema + 0.1 * model_latency;
                     replan_latency_ema = std::max(dt, replan_latency_ema);
 
                     ros_inte.event("plan_handoff", "\"plan_id\":" + std::to_string(ready_plan.plan_id)
                         + ",\"accepted\":" + std::string(stitch_err <= stitch_tolerance ? "true" : "false")
-                        + ",\"stitch_error_m\":" + std::to_string(stitch_err));
+                        + ",\"stitch_error_m\":" + std::to_string(stitch_err)
+                        + ",\"model_latency_s\":" + std::to_string(model_latency)
+                        + ",\"predicted_model_delay_s\":" + std::to_string(ready_plan.predicted_model_delay));
                     if (stitch_err <= stitch_tolerance) {
                         best_spline = std::move(ready_plan.spline);
                         coeffs4NMPC = std::move(ready_plan.coeffs);
@@ -547,10 +565,13 @@ static void runPlanner() {
 
                 Vector3d plan_start_pos;
                 double snap_v;
+                double predicted_delay = replan_latency_ema;
                 if (last_pred_x_valid && last_nmpc_ok) {
                     const int k_pred = std::min(
                         NominalNMPC::n_step_ - 1,
-                        std::max(0, static_cast<int>(std::ceil(replan_latency_ema / dt)) - 1));
+                        std::max(1, static_cast<int>(std::ceil(replan_latency_ema / dt))));
+                    // The previous prediction's row zero is the current state.
+                    predicted_delay = k_pred * dt;
                     plan_start_pos = last_pred_x.row(k_pred).head<3>().transpose();
                     snap_v = Eigen::Vector3d(
                         last_pred_x(k_pred, VX), last_pred_x(k_pred, VY), last_pred_x(k_pred, VZ)).norm();
@@ -562,7 +583,9 @@ static void runPlanner() {
 
                 if (replan_thread.joinable()) replan_thread.join();
                 const int background_plan_id = ++plan_counter;
-                replan_thread = std::thread([&, plan_start_pos, snap_v, bg_pool_id, background_plan_id]() {
+                const double requested_model_time = nominal_elapsed;
+                replan_thread = std::thread([&, plan_start_pos, snap_v, bg_pool_id, background_plan_id,
+                                             requested_model_time, predicted_delay]() {
                     const auto replan_start = std::chrono::steady_clock::now();
                     auto report_background_plan = [&](bool success, const std::string& stage) {
                         double ms = std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - replan_start).count();
@@ -575,11 +598,24 @@ static void runPlanner() {
                     bool last_seg = (d2g <= planning_horizon * 1.2);
                     Vector3d local_goal = last_seg ? final_goal
                                         : (plan_start_pos + planning_horizon * dir.normalized());
+                    Vector3d free_local_goal;
+                    if (gridmap.nearbyFreeEndpoint(local_goal, free_local_goal))
+                        local_goal = free_local_goal;
 
                     vector<Eigen::Vector3d> es, ee;
                     list<GraphNode::Ptr> g;
                     vector<vector<Eigen::Vector3d>> rp, fp;
                     topo_prm->findTopoPaths(plan_start_pos, local_goal, es, ee, g, rp, fp);
+                    {
+                        std::ostringstream fields;
+                        fields << std::setprecision(17) << "\"plan_id\":" << background_plan_id
+                               << ",\"initial\":false,\"request_time_s\":" << requested_model_time
+                               << ",\"predicted_model_delay_s\":" << predicted_delay
+                               << ",\"start\":[" << plan_start_pos.x() << ',' << plan_start_pos.y() << ',' << plan_start_pos.z()
+                               << "],\"goal\":[" << local_goal.x() << ',' << local_goal.y() << ',' << local_goal.z()
+                               << "],\"paths\":" << fp.size() << ",\"reason\":\"" << topo_prm->failureReason() << "\"";
+                        ros_inte.event("topo_query", fields.str());
+                    }
 
                     vector<vector<Eigen::Vector3d>> sp_paths;
                     vector<ArcLengthSpline> sp_splines;
@@ -704,6 +740,8 @@ static void runPlanner() {
                     report_background_plan(true, "complete");
                     PlanResult res;
                     res.plan_id = background_plan_id;
+                    res.requested_model_time = requested_model_time;
+                    res.predicted_model_delay = predicted_delay;
                     res.valid = true;
                     res.spline = sp_splines[vidx[best_idx]];
                     res.coeffs = ac[best_idx];
@@ -759,7 +797,9 @@ static void runPlanner() {
             const double nmpc_ms = std::chrono::duration<double, std::milli>(std::chrono::steady_clock::now() - nmpc_begin).count();
             ros_inte.event("nmpc_result", "\"solver_code\":" + std::to_string(nmpc_result)
                 + ",\"success\":" + std::string(nmpc_result > 0 ? "true" : "false")
-                + ",\"elapsed_ms\":" + std::to_string(nmpc_ms));
+                + ",\"elapsed_ms\":" + std::to_string(nmpc_ms)
+                + (nmpc_result > 0 ? ",\"minimum_predicted_z_m\":" + std::to_string(pred_x.col(PZ).minCoeff())
+                  + ",\"maximum_corridor_violation\":" + std::to_string(nmpc.maximumCorridorViolation()) : ""));
             last_nmpc_ok = (nmpc_result > 0);
             if (last_nmpc_ok) {
                 last_pred_x = pred_x;
@@ -773,11 +813,11 @@ static void runPlanner() {
                 }
                 ros_inte.publish_predict_traj(nmpc_traj);
 
+                u0 = U.row(0).transpose();
                 if (NominalNMPC::n_step_ > 1) {
-                    U.topRows(NominalNMPC::n_step_ - 1) = U.bottomRows(NominalNMPC::n_step_ - 1);
+                    U.topRows(NominalNMPC::n_step_ - 1) = U.bottomRows(NominalNMPC::n_step_ - 1).eval();
                     U.row(NominalNMPC::n_step_ - 1) = U.row(NominalNMPC::n_step_ - 2);
                 }
-                u0 = U.row(0).transpose();
             } else {
                 U.setZero();
                 for (int k = 0; k < NominalNMPC::n_step_; ++k) U(k, 3) = hover_ratio;
@@ -785,6 +825,13 @@ static void runPlanner() {
             }
 
             advance_execution();
+
+            if (last_nmpc_ok) {
+                const double first_step_error = (x0 - pred_x.row(0).transpose()).cwiseAbs().maxCoeff();
+                std::ostringstream fields;
+                fields << std::setprecision(17) << "\"prediction_error_max\":" << first_step_error;
+                ros_inte.event("execution", fields.str());
+            }
 
             double s_actual = projectOnSpline(best_spline, x0.head<3>());
             double t_actual = arcLengthToTime(Init_data_nmpc.cumulative_times,

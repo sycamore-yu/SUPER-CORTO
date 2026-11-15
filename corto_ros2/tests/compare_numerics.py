@@ -6,6 +6,12 @@ import math
 from pathlib import Path
 import subprocess
 
+CHANGED_GROUPS = {
+    "topo": "ROG-Map voxel visibility and a 320-sample PRM budget",
+    "sfc": "Continuous obstacle projection and the optimizer's latent ellipse representation",
+}
+CHANGED_KEYS = {"nmpc.prediction": "Roll out the final returned action vector, not the last NLopt trial cache"}
+
 def read_values(path):
     values = {}
     for line in path.read_text().splitlines():
@@ -29,20 +35,25 @@ def main():
         if run.returncode:
             raise SystemExit(f"{executable} failed: {run.returncode}; see {output.with_suffix('.log')}")
     a, b = read_values(upstream), read_values(ported)
-    assert a.keys() == b.keys(), "fixture output keys differ"
     results = {}
-    for key in a:
-        assert len(a[key]) == len(b[key]), key
-        assert all(math.isfinite(v) for v in a[key] + b[key]), key
-        err = max((abs(x-y) for x,y in zip(a[key],b[key])), default=0)
-        scale = max((abs(x) for x in a[key]), default=0)
+    for key in sorted(a.keys() | b.keys()):
+        required = key.split(".")[0] not in CHANGED_GROUPS and key not in CHANGED_KEYS
+        av, bv = a.get(key, []), b.get(key, [])
+        assert all(math.isfinite(v) for v in av + bv), key
+        same_size = key in a and key in b and len(av) == len(bv)
+        err = max((abs(x-y) for x,y in zip(av,bv)), default=0) if same_size else None
+        scale = max((abs(x) for x in av), default=0)
         tolerance = 1e-9 + 1e-8 * scale
-        results[key] = {"count":len(a[key]),"max_abs_error":err,"tolerance":tolerance,"pass":err<=tolerance}
+        results[key] = {"upstream_count":len(av),"ported_count":len(bv),"max_abs_error":err,
+                        "tolerance":tolerance,"required_equal":required,
+                        "pass":same_size and err<=tolerance}
     summary = {
         "upstream_commit":"e05a2e60f78d9ae4425981c1343913c3c67d3bb3",
-        "pass":all(r["pass"] for r in results.values()),
+        "pass":all(r["pass"] for r in results.values() if r["required_equal"]),
+        "intentional_changes":CHANGED_GROUPS,
+        "intentional_key_changes":CHANGED_KEYS,
         "method":"Separate executables; vendor algorithms unmodified; same Eigen/PCL/NLopt/MOSEK; fixed PRM RNG and inputs.",
-        "map_fixture":"Same voxel column occupancy. ROG adapter is covered by separate ROS integration tests.",
+        "map_fixture":"Same voxel column occupancy; corrected Topo-PRM is validated by topo_map_contract and the three PCD scene tests.",
         "results":results,
     }
     (args.output/"regression.json").write_text(json.dumps(summary, indent=2)+"\n")

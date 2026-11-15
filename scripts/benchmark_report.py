@@ -32,6 +32,13 @@ def score_trial(run_dir, manifest, run, scene):
     plans = [x for x in measured if x["event"] == "plan_result"]
     replans = [x for x in plans if not x["initial"]]
     solves = [x for x in measured if x["event"] == "nmpc_result"]
+    queries = [x for x in measured if x["event"] == "topo_query"]
+    handoffs = [x for x in measured if x["event"] == "plan_handoff"]
+    successful_replans = [x for x in replans if x["success"]]
+    infeasible_positive = [x for x in solves if x["success"] and
+                           x.get("maximum_corridor_violation", 0) > 1e-3]
+    predicted_outside_floor = [x for x in solves if x["success"] and
+                               x.get("minimum_predicted_z_m", 0) < 0]
     result = dict(run, recorded_odom_samples=len(recorded), event_count=len(events),
                   termination_reason=terminal["reason"] if terminal else "missing_mission_end",
                   terminal_time_s=end if terminal else None,
@@ -42,6 +49,15 @@ def score_trial(run_dir, manifest, run, scene):
                   planning_calls=len(plans), planning_failures=sum(not x["success"] for x in plans),
                   replanning_calls=len(replans), replanning_failures=sum(not x["success"] for x in replans),
                   nmpc_calls=len(solves), nmpc_failures=sum(not x["success"] for x in solves),
+                  nmpc_infeasible_positive_calls=len(infeasible_positive),
+                  nmpc_predicted_floor_violations=len(predicted_outside_floor),
+                  topo_start_outside=sum(x.get("reason") == "start_outside_map" for x in queries),
+                  topo_start_occupied=sum(x.get("reason") == "start_occupied" for x in queries),
+                  topo_goal_occupied=sum(x.get("reason") == "goal_occupied" for x in queries),
+                  topo_no_connection=sum(x.get("reason") == "no_connection" for x in queries),
+                  rejected_plan_handoffs=sum(not x["accepted"] for x in handoffs),
+                  successful_replans=len(successful_replans),
+                  successful_replanning_ms=mean([x["elapsed_ms"] for x in successful_replans]),
                   planning_all_ms=mean([x["elapsed_ms"] for x in plans]),
                   online_replanning_ms=mean([x["elapsed_ms"] for x in replans]),
                   nmpc_mean_ms=mean([x["elapsed_ms"] for x in solves]))
@@ -129,6 +145,19 @@ def report(experiments, results):
                      out_of_bounds_runs=sum(x["out_of_bounds"] for x in observed),
                      planning_failures=sum(x["planning_failures"] for x in observed),
                      nmpc_failures=sum(x["nmpc_failures"] for x in observed),
+                     nmpc_infeasible_positive_calls=sum(x["nmpc_infeasible_positive_calls"] for x in observed),
+                     nmpc_predicted_floor_violations=sum(x["nmpc_predicted_floor_violations"] for x in observed),
+                     topo_start_outside=sum(x["topo_start_outside"] for x in observed),
+                     topo_start_occupied=sum(x["topo_start_occupied"] for x in observed),
+                     topo_goal_occupied=sum(x["topo_goal_occupied"] for x in observed),
+                     topo_no_connection=sum(x["topo_no_connection"] for x in observed),
+                     rejected_plan_handoffs=sum(x["rejected_plan_handoffs"] for x in observed),
+                     successful_replans=sum(x["successful_replans"] for x in observed),
+                     successful_replanning_ms=(
+                         sum(x["successful_replanning_ms"] * x["successful_replans"] for x in observed
+                             if x["successful_replanning_ms"] is not None)
+                         / sum(x["successful_replans"] for x in observed)
+                         if sum(x["successful_replans"] for x in observed) else None),
                      replanning_calls=calls,
                      online_replanning_ms=sum(x["online_replanning_ms"] * x["replanning_calls"] for x in observed
                                               if x["online_replanning_ms"] is not None) / calls if calls else None)
@@ -155,6 +184,14 @@ def report(experiments, results):
     for g in groups:
         lines.append(f"| {g['scene']} | {g['reached_goal_count']}/{g['expected']} | {g['successes']} | {g['collision_runs']} | {g['out_of_bounds_runs']} | "
                      + " | ".join(format_value(g[k]) for k in ("reached_flight_time_s", "reached_mean_speed_mps", "reached_clearance_m")) + " |")
+    lines += ["", "## 拓扑与 NMPC 诊断", "",
+              "成功求解与约束可行分别统计；椭圆约束正违反量超过 0.001 时记录为非可行正返回。",
+              "", "| 场景 | 地图外规划起点 | 被占据局部目标 | 无图连通 | 交接拒绝 | 成功重规划 ms | 正返回但走廊非可行 | 预测负高度 |",
+              "|---|---:|---:|---:|---:|---:|---:|---:|"]
+    for g in groups:
+        lines.append(f"| {g['scene']} | {g['topo_start_outside']} | {g['topo_goal_occupied']} | {g['topo_no_connection']} | "
+                     f"{g['rejected_plan_handoffs']} | {format_value(g['successful_replanning_ms'])} | "
+                     f"{g['nmpc_infeasible_positive_calls']} | {g['nmpc_predicted_floor_violations']} |")
     lines += ["", f"缺少回合：{', '.join(missing) if missing else '无'}。", "",
               "逐回合状态、控制、事件和失败结果见 trials.csv 及各回合目录。"]
     (results / "table3.md").write_text("\n".join(lines) + "\n")

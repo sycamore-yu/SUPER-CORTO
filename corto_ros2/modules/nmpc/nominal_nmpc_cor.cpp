@@ -1,6 +1,7 @@
 #include "nominal_nmpc_cor.hpp"
 #include "utility/utility.hpp"
 #include <cstdio>
+#include <limits>
 #include <string>
 
 NominalNMPC::NominalNMPC(double hover_ratio, std::string opt_algorithm, int maxeval, double dt, rclcpp::Node& nh) 
@@ -369,6 +370,13 @@ static double dbg_ellipsoid_g(const Eigen::Matrix<double, NominalQuadDynamic::x_
     return std::isfinite(g) ? g : 1e6;
 }
 
+double NominalNMPC::maximumCorridorViolation() const {
+    double worst = -std::numeric_limits<double>::infinity();
+    for (int k = 0; k < n_step_; ++k)
+        worst = std::max(worst, dbg_ellipsoid_g(state_[k], ref_data_, k + 1));
+    return worst;
+}
+
 int NominalNMPC::solve(const Eigen::Matrix<double, x_dim_, 1> &state,
     Eigen::Matrix<double, u_dim_, 1> &u0,
     Eigen::Matrix<double, n_step_, u_dim_> &u,
@@ -409,6 +417,9 @@ int NominalNMPC::solve(const Eigen::Matrix<double, x_dim_, 1> &state,
     x0_ = state;
     u0_ = u0;
 
+    // Check the current warm start, not the previous solve's state rollout.
+    rollout_and_sens(uv.data(), state_, state_g_, acc_, acc_g_);
+
     {
         int n_g_pos = 0, n_vel_pos = 0;
         for (int k = 0; k < n_step_; ++k) {
@@ -440,6 +451,9 @@ int NominalNMPC::solve(const Eigen::Matrix<double, x_dim_, 1> &state,
         if (result < 0) {
             result = -1;
         }
+
+        // NLopt's last callback may have evaluated a rejected trial point.
+        rollout_and_sens(uv.data(), state_, state_g_, acc_, acc_g_);
 
         for (int k = 0; k < n_step_; k++) {
             u(k, 0) = uv[k * u_dim_ + 0];

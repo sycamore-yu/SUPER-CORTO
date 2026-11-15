@@ -77,9 +77,7 @@ public:
         pcl::PointCloud<pcl::PointXYZ> cloud;
         const double r = map.resolution();
         const Eigen::Vector3d size = map.size(), origin = map.origin();
-        const double z_margin = 2.5 * r;
         for (double z = r / 2.0; z < size.z(); z += r) {
-            if (z < z_margin || z > size.z() - z_margin) continue;
             for (double y = r / 2.0; y < size.y(); y += r)
                 for (double x = r / 2.0; x < size.x(); x += r)
                     if (map(Eigen::Vector3d(x, y, z)))

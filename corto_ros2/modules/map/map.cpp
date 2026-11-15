@@ -1,5 +1,8 @@
 #include "map.hpp"
 #include <rog_map_ros/rog_map_ros2.hpp>
+#include <algorithm>
+#include <cmath>
+#include <limits>
 #include <stdexcept>
 
 void GridMap::init(rclcpp::Node& node) {
@@ -48,3 +51,40 @@ bool GridMap::operator()(const Vector3i& idx) const {
 
 bool GridMap::operator()(int x, int y, int z) const { return (*this)(Vector3i(x, y, z)); }
 bool GridMap::operator()(double x, double y, double z) const { return (*this)(Vector3d(x, y, z)); }
+
+bool GridMap::isLineFree(const Vector3d& start_world, const Vector3d& end_world) const {
+    // ROG's ray iterator excludes the final cell and may visit no cell at all.
+    if ((*this)(Vector3d(start_world - origin_)) || (*this)(Vector3d(end_world - origin_)))
+        return false;
+    return map_->isLineFree(start_world, end_world, true, false);
+}
+
+bool GridMap::nearbyFreeEndpoint(const Vector3d& preferred_world, Vector3d& free_world) const {
+    if (!(*this)(Vector3d(preferred_world - origin_))) {
+        free_world = preferred_world;
+        return true;
+    }
+    // A straight 8 m local target can lie inside an occupied voxel even when
+    // nearby space is free. Move only that temporary waypoint, not the mission goal.
+    for (int ring = 1; ring <= 10; ++ring) {
+        double best_distance = std::numeric_limits<double>::infinity();
+        Vector3d best;
+        for (int dz = -ring; dz <= ring; ++dz)
+            for (int dy = -ring; dy <= ring; ++dy)
+                for (int dx = -ring; dx <= ring; ++dx) {
+                    if (std::max({std::abs(dx), std::abs(dy), std::abs(dz)}) != ring)
+                        continue;
+                    const Vector3d offset(dx, dy, dz);
+                    const Vector3d candidate = preferred_world + resolution_ * offset;
+                    if (offset.squaredNorm() >= best_distance || (*this)(Vector3d(candidate - origin_)))
+                        continue;
+                    best_distance = offset.squaredNorm();
+                    best = candidate;
+                }
+        if (std::isfinite(best_distance)) {
+            free_world = best;
+            return true;
+        }
+    }
+    return false;
+}

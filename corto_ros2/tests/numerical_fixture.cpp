@@ -93,6 +93,17 @@ int main(int argc, char** argv) {
     dump(out,"socp.times",times);
     if(timing.get_result_t().size()!=100) return 4;
 
+    // The physical initial speed is 2 m/s; upstream's boundary argument is v^2.
+    RefTrajOpt moving_start;
+#ifdef CORTO_UPSTREAM
+    moving_start.socp_interface(100,4.0,0,spline,10,5,true,100);
+#else
+    moving_start.socp_interface(100,2.0,0,spline,10,5,true,100);
+#endif
+    scalar(out,"socp.moving_start_time",moving_start.get_total_time());
+    Eigen::Map<const Eigen::VectorXd> moving_times(moving_start.get_result_t().data(),moving_start.get_result_t().size());
+    dump(out,"socp.moving_start_samples",moving_times);
+
     pcl::PointCloud<pcl::PointXYZ> cloud;
     for(int ix=0;ix<=80;++ix) for(int iz=0;iz<=24;++iz) {
         float x=-4.0f+0.1f*ix, z=0.3f+0.1f*iz;
@@ -133,6 +144,15 @@ int main(int argc, char** argv) {
     scalar(out,"nmpc.status",status);
     dump(out,"nmpc.controls",U);dump(out,"nmpc.prediction",pred);
     if(status<=0) return 6;
+#ifndef CORTO_UPSTREAM
+    auto executed = state;
+    for(int k=0;k<10;++k) {
+        Eigen::Matrix<double,10,1> next;
+        nmpc.quad_dynamic_.rk4_func(executed,U.row(k).transpose(),.05,next);
+        if((next-pred.row(k).transpose()).cwiseAbs().maxCoeff()>1e-9) return 7;
+        executed=next;
+    }
+#endif
 
     Eigen::Matrix<double,10,1> next;
     Eigen::Matrix<double,10,10> gx;

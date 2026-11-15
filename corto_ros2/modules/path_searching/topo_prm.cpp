@@ -16,19 +16,14 @@ void TopologyPRM::init(rclcpp::Node& nh){
 
     resolution_ = grid_map_->resolution();
 
-    offset_ = Eigen::Vector3d(0.5, 0.5, 0.5);
-
     clearance_ = 0.1;
     sample_inflate_(0) = 1.0;
     sample_inflate_(1) = 2.0;
     sample_inflate_(2) = 0.5;
-    max_sample_num_ = 80;
+    max_sample_num_ = 320;
     max_sample_time_ = 0.1;
     max_raw_path_ = 6;
 
-    for (int i = 0; i < max_raw_path_; ++i) {
-        casters_.push_back(RayCaster());
-    }
 }
 
 void TopologyPRM::setGridMap(const GridMap* grid_map) {
@@ -46,11 +41,28 @@ void TopologyPRM::findTopoPaths(Eigen::Vector3d start, Eigen::Vector3d end,
                                 vector<vector<Eigen::Vector3d>>& filtered_paths) {
   start_pts_ = start_pts;
   end_pts_ = end_pts;
+  graph_.clear(); raw_paths_.clear(); short_paths_.clear(); final_paths_.clear();
+  graph.clear(); raw_paths.clear(); filtered_paths.clear();
+  failure_reason_.clear();
+  for (const auto& endpoint : {std::make_pair(start, "start"), std::make_pair(end, "goal")}) {
+    const Eigen::Vector3d local = endpoint.first - grid_map_origin_;
+    if (!grid_map_->check_in_map(local))
+      failure_reason_ = std::string(endpoint.second) + "_outside_map";
+    else if ((*grid_map_)(local))
+      failure_reason_ = std::string(endpoint.second) + "_occupied";
+    if (!failure_reason_.empty()) return;
+  }
+  if ((end - start).norm() < 1e-9) {
+    filtered_paths = {{start, end}};
+    final_paths_ = filtered_paths;
+    return;
+  }
   graph = createGraph(start, end);
   raw_paths = searchPaths();
   shortcutPathsVis();
   filtered_paths = pruneEquivalent(short_paths_);
   final_paths_ = filtered_paths;
+  if (filtered_paths.empty()) failure_reason_ = "no_connection";
 }
 
 list<GraphNode::Ptr> TopologyPRM::createGraph(Eigen::Vector3d start, Eigen::Vector3d end) {
@@ -68,6 +80,7 @@ list<GraphNode::Ptr> TopologyPRM::createGraph(Eigen::Vector3d start, Eigen::Vect
 
     Eigen::Vector3d xtf, ytf, ztf, downward(0, 0, -1);
     xtf = (end - translation_).normalized();
+    if (std::abs(xtf.z()) > 0.99) downward = Eigen::Vector3d::UnitY();
     ytf = xtf.cross(downward).normalized();
     ztf = xtf.cross(ytf);
 
@@ -175,14 +188,13 @@ return pt;
 
 vector<GraphNode::Ptr> TopologyPRM::findVisibGuard(Eigen::Vector3d pt) {
     vector<GraphNode::Ptr> visib_guards;
-    Eigen::Vector3d pc;
 
     int visib_num = 0;
 
     for (list<GraphNode::Ptr>::iterator iter = graph_.begin(); iter != graph_.end(); ++iter) {
         if ((*iter)->type_ == GraphNode::Connector) continue;
 
-        if (lineVisibCoarse(pt, (*iter)->pos_, resolution_, pc)) {
+        if (grid_map_->isLineFree(pt, (*iter)->pos_)) {
             visib_guards.push_back((*iter));
             ++visib_num;
             if (visib_num > 2) break;
@@ -190,54 +202,6 @@ vector<GraphNode::Ptr> TopologyPRM::findVisibGuard(Eigen::Vector3d pt) {
     }
 
     return visib_guards;
-}
-
-bool TopologyPRM::lineVisibCoarse(const Eigen::Vector3d& p1, const Eigen::Vector3d& p2,
-                                   double thresh, Eigen::Vector3d& pc) {
-    Eigen::Vector3d dir = p2 - p1;
-    double len = dir.norm();
-    if (len < 1e-6) return true;
-    dir /= len;
-
-    double step = 3.0 * resolution_;
-    int n_steps = (int)(len / step);
-
-    for (int i = 0; i <= n_steps; ++i) {
-        Eigen::Vector3d pt = p1 + std::min((double)i * step, len) * dir;
-        const Eigen::Vector3d pt_map = pt - grid_map_origin_;
-        if (!grid_map_->check_in_map(pt_map) || (*grid_map_)(pt_map)) {
-            pc = pt;
-            return false;
-        }
-    }
-    return true;
-}
-
-bool TopologyPRM::lineVisib(const Eigen::Vector3d& p1, const Eigen::Vector3d& p2, double thresh,
-                            Eigen::Vector3d& pc, int caster_id) {
-    Eigen::Vector3d ray_pt;
-    Eigen::Vector3d pt;
-    double dist;
-
-    bool setInput_result = casters_[caster_id].setInput(p1 / resolution_, p2 / resolution_);
-    while (casters_[caster_id].step(ray_pt)) {
-        pt(0) = (ray_pt(0) + offset_(0)) * resolution_;
-        pt(1) = (ray_pt(1) + offset_(1)) * resolution_;
-        pt(2) = (ray_pt(2) + offset_(2)) * resolution_;
-
-        const Eigen::Vector3d pt_map = pt - grid_map_origin_;
-        if (!grid_map_->check_in_map(pt_map) || (*grid_map_)(pt_map)) {
-            dist = 0.0;
-        } else {
-            dist = std::numeric_limits<double>::infinity();
-        }
-
-        if (dist <= thresh) {
-            pc = pt;
-            return false;
-        }
-    }
-    return true;
 }
 
 bool TopologyPRM::needConnection(GraphNode::Ptr g1, GraphNode::Ptr g2, Eigen::Vector3d pt) {
@@ -281,9 +245,8 @@ bool TopologyPRM::sameTopoPath(const vector<Eigen::Vector3d>& path1,
     vector<Eigen::Vector3d> pts1 = discretizePath(path1, pt_num);
     vector<Eigen::Vector3d> pts2 = discretizePath(path2, pt_num);
 
-    Eigen::Vector3d pc;
     for (int i = 0; i < pt_num; ++i) {
-        if (!lineVisib(pts1[i], pts2[i], thresh, pc)) {
+        if (!grid_map_->isLineFree(pts1[i], pts2[i])) {
         return false;
         }
     }
@@ -373,35 +336,14 @@ vector<Eigen::Vector3d> TopologyPRM::shortcutPathVis(const vector<Eigen::Vector3
 
     while (cur < path.size() - 1) {
         size_t farthest = cur + 1;
-        Eigen::Vector3d pc;
         for (size_t j = path.size() - 1; j > cur + 1; --j) {
-            if (lineVisibCoarse(path[cur], path[j], resolution_, pc)) {
+            if (grid_map_->isLineFree(path[cur], path[j])) {
                 farthest = j;
                 break;
             }
         }
         result.push_back(path[farthest]);
         cur = farthest;
-    }
-
-    if (result.size() > 2) {
-        Eigen::Vector3d axis = (result.back() - result.front());
-        double axis_len = axis.norm();
-        if (axis_len > 1e-6) {
-            Eigen::Vector3d axis_n = axis / axis_len;
-            vector<Eigen::Vector3d> cleaned;
-            cleaned.push_back(result.front());
-            double prev_proj = 0.0;
-            for (size_t i = 1; i < result.size() - 1; ++i) {
-                double proj = (result[i] - result.front()).dot(axis_n);
-                if (proj > prev_proj) {
-                    cleaned.push_back(result[i]);
-                    prev_proj = proj;
-                }
-            }
-            cleaned.push_back(result.back());
-            result = cleaned;
-        }
     }
 
     return result;

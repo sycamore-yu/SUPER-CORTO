@@ -37,6 +37,8 @@ struct OptimizationResult {
     Eigen::MatrixXd coeffs_c;
     Eigen::MatrixXd coeffs_d;
     Eigen::MatrixXd coeffs_e;
+    std::vector<double> latent_ctrl;
+    double eps_psd = 0.1;
     bool success;
 };
 

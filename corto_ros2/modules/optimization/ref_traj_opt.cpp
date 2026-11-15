@@ -1,6 +1,6 @@
 #include "ref_traj_opt.hpp"
 
-void RefTrajOpt::socp_interface(const int N, const double w1, const double wT, const ArcLengthSpline& spline, const double Vmax, const double Amax, 
+void RefTrajOpt::socp_interface(const int N, const double initial_speed, const double terminal_speed, const ArcLengthSpline& spline, const double Vmax, const double Amax,
                                 const bool is_jerk, const double Jmax) {
     Model::t M  = new Model("ref_traj_opt"); auto _M = finally([&]() { M->dispose(); });
 
@@ -12,8 +12,8 @@ void RefTrajOpt::socp_interface(const int N, const double w1, const double wT, c
     Variable::t x1 = M->variable("x1", N, Domain::greaterThan(0.0));
     Variable::t x2 = M->variable("x2", N, Domain::greaterThan(0.0));
 
-    M->constraint("Constraints1_begin", w->index(0), Domain::equalsTo(w1));
-    M->constraint("Constraints1_terminal", w->index(N - 1), Domain::equalsTo(wT));
+    M->constraint("Constraints1_begin", w->index(0), Domain::equalsTo(initial_speed * initial_speed));
+    M->constraint("Constraints1_terminal", w->index(N - 1), Domain::equalsTo(terminal_speed * terminal_speed));
 
     for(int i = 1; i < N - 1; ++i) {
         Expression::t th = Expr::vstack(t->index(i), Expr::constTerm(h * 0.5), x2->index(i));

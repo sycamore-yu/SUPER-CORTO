@@ -20,6 +20,8 @@ public:
     bool operator()(const Vector3d& pos) const;
     bool operator()(int x, int y, int z) const;
     bool operator()(double x, double y, double z) const;
+    bool isLineFree(const Vector3d& start_world, const Vector3d& end_world) const;
+    bool nearbyFreeEndpoint(const Vector3d& preferred_world, Vector3d& free_world) const;
     double resolution() const { return resolution_; }
     Vector3d size() const { return size_; }
     Vector3i isize() const { return isize_; }

@@ -1,4 +1,5 @@
 #include "map/map.hpp"
+#include <rog_map/rog_map_core/raycaster.h>
 // Deterministic occupancy input for Topo-PRM regression. The production ROG
 // adapter is exercised separately by the ROS integration experiment.
 void GridMap::init(rclcpp::Node&) {}
@@ -11,3 +12,12 @@ bool GridMap::operator()(const Vector3i& i) const {
 bool GridMap::operator()(const Vector3d& p) const { return (*this)(pos2idx(p)); }
 bool GridMap::operator()(int x, int y, int z) const { return (*this)(Vector3i(x,y,z)); }
 bool GridMap::operator()(double x, double y, double z) const { return (*this)(Vector3d(x,y,z)); }
+bool GridMap::isLineFree(const Vector3d& a, const Vector3d& b) const {
+    if ((*this)(Vector3d(a - origin_)) || (*this)(Vector3d(b - origin_))) return false;
+    rog_map::raycaster::RayCaster ray;
+    ray.setResolution(resolution_);
+    ray.setInput(a, b);
+    Vector3d p;
+    while (ray.step(p)) if ((*this)(Vector3d(p - origin_))) return false;
+    return true;
+}
