@@ -1,0 +1,64 @@
+rog_map:
+  resolution: 0.1
+  inflation_resolution: 0.1
+  inflation_step: 1
+  unk_inflation_en: false
+  unk_inflation_step: 0
+  map_size:
+  - 30.0
+  - 15.0
+  - 3.0
+  fix_map_origin:
+  - 0.0
+  - 0.0
+  - 1.5
+  frontier_extraction_en: false
+  virtual_ground_height: -10.0
+  virtual_ceil_height: 10.0
+  load_pcd_en: true
+  pcd_name: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/experiments/scenes/medium.pcd
+  map_sliding:
+    enable: false
+    threshold: 3.0
+  esdf:
+    enable: false
+    resolution: 0.1
+    local_update_box:
+    - 30.0
+    - 15.0
+    - 3.0
+  ros_callback:
+    enable: false
+    cloud_topic: /cloud_registered
+    odom_topic: /lidar_slam/odom
+    odom_timeout: 2.0
+  visualization:
+    enable: false
+    use_dynamic_reconfigure: false
+    time_rate: 1.0
+    frame_rate: 0
+    range:
+    - 30.0
+    - 15.0
+    - 3.0
+    frame_id: world
+    pub_unknown_map_en: false
+  intensity_thresh: -10
+  point_filt_num: 1
+  raycasting:
+    enable: false
+    batch_update_size: 1
+    local_update_box:
+    - 30.0
+    - 15.0
+    - 3.0
+    ray_range:
+    - 0.1
+    - 40.0
+    p_min: 0.12
+    p_miss: 0.49
+    p_free: 0.499
+    p_occ: 0.85
+    p_hit: 0.9
+    p_max: 0.98
+    unk_thresh: 1.0

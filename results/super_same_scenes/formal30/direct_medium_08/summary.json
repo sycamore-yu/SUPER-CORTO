@@ -1,0 +1,19 @@
+{
+  "run_id": "direct_medium_08",
+  "scene": "medium",
+  "planner_seed": 8,
+  "reached_goal": false,
+  "success": false,
+  "collision": false,
+  "out_of_bounds": false,
+  "termination_reason": "timeout",
+  "flight_time_s": 60.00912594795227,
+  "mean_speed_mps": 0.26677158589963473,
+  "clearance_m": 0.38422701072566834,
+  "path_length_m": 16.008729697586148,
+  "state_samples": 1202,
+  "super_odom_samples": 6002,
+  "mean_compute_ms": 37.58131894366198,
+  "first_collision_time_s": null,
+  "first_out_of_bounds_time_s": null
+}

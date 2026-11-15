@@ -1,0 +1,9 @@
+{
+  "super_source": "/home/tong/tongworkspace/projects/aerial/SUPER",
+  "super_git_commit": "3e249e7a37159f7e982f1b906e03bb8c9b3ae26f",
+  "super_planner_binary_sha256": "a5c28163b31c359839f890e05416b53d6efc60fb6e49ae15e851391d49d2f868",
+  "perfect_drone_binary_sha256": "ec7eeea16aa874866786abcd8a648491a77f820de674a5f9090e2e0307d0a979",
+  "manifest_sha256": "273f0af552f8156469a91434fbf4becde06989ebbb508bf0c5c2f616b9d031d1",
+  "execution_model": "SUPER original PerfectDrone ideal position tracking",
+  "scoring_model": "CORTO 20 Hz sampled center-point geometry"
+}

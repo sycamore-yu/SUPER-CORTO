@@ -10,7 +10,7 @@
 | 弧长样条 | `modules/cubic_spline/` | 原版三次样条、重采样与导数 |
 | SOCP | `modules/optimization/ref_traj_opt.cpp` | MOSEK Fusion、100 节点、速度平方变量、原加速度/jerk约束 |
 | PTF SFC | `modules/corridor/` | 弧长投影、连续潜变量椭圆、L-BFGS 分阶段惩罚、体积计算 |
-| NMPC | `modules/nmpc/` | SLSQP、10×0.05 s、RK4、原代价/约束/解析Jacobian |
+| NMPC | `modules/nmpc/` | SLSQP、10×0.05 s、RK4、原速度/走廊约束；修复版启用已声明的 PTF 横向轮廓成本 |
 | 异步规划与交接 | `src/corto_node.cpp` | 双走廊池、耗时EMA、预测接续点、候选选择、交接距离门限 |
 
 候选先保留预计时间小于最快候选加 0.2 s 的路径，再选走廊体积最大者。局部规划长度为 8 m；进度时间超过 1 s 或剩余时间小于 0.8 s 时触发重规划。交接距离门限为 0.5 m。以上均沿用上游代码。
@@ -24,6 +24,7 @@
 - SOCP 的 w 变量表示速度平方；修复版将 `snap_v` 平方后用作入口值。
 - 参考节点仍使用最近的离散累计时间节点；SFC 改为与 L-BFGS 完全一致的潜变量椭圆插值。
 - NMPC 原版硬约束只有速度范数与横截面椭圆约束。5 m/s² 是 SOCP 的设置；未另加 NMPC 加速度硬约束。
+- 后续安全实验将原版已有变量 `contouring_cost` 和 `cost_w(8)` 接入目标函数及梯度；该成本修复不改变原有约束与执行动力学，详见 `docs/RESULTS.md`。
 - 状态顺序为 `[px,py,pz,vx,vy,vz,qw,qx,qy,qz]`。原版初始化尾部 `[0,0,0,1]` 对应偏航 π。本包保留该值。
 - NMPC 的机体角速度范围为 ±1.8π rad/s。归一化推力范围为 [0,0.8]，悬停推力为 0.6。
 - 原版 nominal RK4 不额外归一化四元数。本包数值基线保持该行为。

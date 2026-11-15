@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--super", type=Path, required=True)
-    parser.add_argument("--corto", type=Path, default=ROOT / "results/table3_repaired")
+    parser.add_argument("--corto", type=Path, default=ROOT / "results/table3_centerline")
     args = parser.parse_args()
     super_root, corto_root = args.super.resolve(), args.corto.resolve()
     sr = json.loads((super_root / "report.json").read_text())

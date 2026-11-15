@@ -1,0 +1,14 @@
+{
+  "run_id": "direct_dense_00",
+  "scene": "dense",
+  "planner_seed": 0,
+  "manifest_sha256": "273f0af552f8156469a91434fbf4becde06989ebbb508bf0c5c2f616b9d031d1",
+  "protocol_version": 3,
+  "execution": "corto_direct",
+  "scene_sha256": "41aca0f0aebbf337731e492ec475034a577db292d1a60b61b937f4e35e732be7",
+  "ros_domain_id": "218",
+  "ros_distro": "jazzy",
+  "code_commit": "1e69749f05032ff4fd1a68d92259049bf7f1dcca",
+  "tracked_source_dirty": false,
+  "started_utc": "2026-11-15T12:55:21Z"
+}

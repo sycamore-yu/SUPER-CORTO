@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "ros2",
+    "launch",
+    "/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/launch/table3.launch.py",
+    "scene:=dense",
+    "planner_seed:=5",
+    "output_dir:=/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/results/repair_pipeline/centerline30/direct_dense_05",
+    "rviz:=false"
+  ],
+  "ros_domain_id": 218
+}

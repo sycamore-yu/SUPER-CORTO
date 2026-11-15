@@ -6,7 +6,8 @@
 NMPC 输出 `[wx,wy,wz,thrust]`，直接调用上游 `NominalQuadDynamic::rk4_func`。
 状态为位置、速度和四元数，共 10 维。步长为 0.05 s。
 本版执行 NMPC 优化序列的首个动作，再移动热启动序列。
-目标函数、原有约束与 Jacobian 继续使用 CORTO。
+安全实验修复了原版已定义但未使用的 PTF 横向轮廓代价及其 Jacobian。
+其他目标项、原有约束、动力学和 RK4 保持 CORTO。
 Topo-PRM 采用 320 次采样与 ROG-Map 体素射线；局部目标占据时就近选择空闲点。
 PerfectDrone 只转发 `/corto/odom`，渲染同一位姿，保留同一时间戳。
 

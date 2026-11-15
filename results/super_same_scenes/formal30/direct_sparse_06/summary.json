@@ -1,0 +1,19 @@
+{
+  "run_id": "direct_sparse_06",
+  "scene": "sparse",
+  "planner_seed": 6,
+  "reached_goal": false,
+  "success": false,
+  "collision": false,
+  "out_of_bounds": false,
+  "termination_reason": "timeout",
+  "flight_time_s": 60.00866746902466,
+  "mean_speed_mps": 0.26150079345318805,
+  "clearance_m": 0.638344580684662,
+  "path_length_m": 15.692314157218462,
+  "state_samples": 1202,
+  "super_odom_samples": 6002,
+  "mean_compute_ms": 33.08584156716419,
+  "first_collision_time_s": null,
+  "first_out_of_bounds_time_s": null
+}

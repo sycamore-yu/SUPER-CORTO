@@ -1,0 +1,19 @@
+{
+  "run_id": "direct_dense_03",
+  "scene": "dense",
+  "planner_seed": 3,
+  "reached_goal": false,
+  "success": false,
+  "collision": false,
+  "out_of_bounds": false,
+  "termination_reason": "timeout",
+  "flight_time_s": 60.00936269760132,
+  "mean_speed_mps": 0.04104421438787906,
+  "clearance_m": 0.5432654807285946,
+  "path_length_m": 2.463037147840341,
+  "state_samples": 1202,
+  "super_odom_samples": 6002,
+  "mean_compute_ms": 22.1337966,
+  "first_collision_time_s": null,
+  "first_out_of_bounds_time_s": null
+}
