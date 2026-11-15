@@ -43,6 +43,11 @@ def main():
     runs = [x for x in manifest["runs"] if args.run_id is None or x["run_id"] in args.run_id]
     if not runs:
         parser.error("No predeclared trials match the selection")
+    results.mkdir(parents=True, exist_ok=True)
+    commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
+    commit_path = results / "SOURCE_COMMIT"
+    if not commit_path.exists():
+        commit_path.write_text(commit + "\n")
     env = dict(os.environ, ROS_DOMAIN_ID=str(args.ros_domain_id))
     for run in runs:
         output = results / run["run_id"]

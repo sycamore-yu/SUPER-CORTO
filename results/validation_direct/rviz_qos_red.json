@@ -1,0 +1,8 @@
+{
+  "publishers": 1,
+  "volatile_received": [],
+  "transient_local_received": [
+    109723
+  ],
+  "rviz_config_needs_transient_local": true
+}

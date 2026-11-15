@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "ros2",
+    "launch",
+    "/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/launch/table3.launch.py",
+    "scene:=medium",
+    "planner_seed:=6",
+    "output_dir:=/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/results/table3/direct_medium_06",
+    "rviz:=false"
+  ],
+  "ros_domain_id": 185
+}

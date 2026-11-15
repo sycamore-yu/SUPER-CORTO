@@ -1,0 +1,41 @@
+{
+  "run_id": "direct_sparse_01",
+  "scene": "sparse",
+  "planner_seed": 1,
+  "recorded_odom_samples": 1201,
+  "event_count": 2343,
+  "termination_reason": "collector_flight_timeout",
+  "terminal_time_s": 60.0,
+  "reached_goal": false,
+  "success": false,
+  "collision": true,
+  "out_of_bounds": true,
+  "flight_time_s": 60.0,
+  "path_length_m": 483.3307777988141,
+  "mean_speed_mps": 8.055512963313568,
+  "clearance_m": -0.03827014132190526,
+  "first_collision_time_s": 2.0,
+  "first_collision_position": [
+    -8.050634502752576,
+    -3.4331117372610906,
+    0.666636726723213
+  ],
+  "first_out_of_bounds_time_s": 2.2,
+  "first_out_of_bounds_position": [
+    -7.473069288619843,
+    -3.797618108517265,
+    -0.029806055677804533
+  ],
+  "planning_calls": 1120,
+  "planning_failures": 1113,
+  "replanning_calls": 1119,
+  "replanning_failures": 1113,
+  "nmpc_calls": 1199,
+  "nmpc_failures": 586,
+  "planning_all_ms": 0.7604241383928572,
+  "online_replanning_ms": 0.6507252573726542,
+  "nmpc_mean_ms": 40.119222472060045,
+  "evaluation_samples": 1201,
+  "final_goal_distance_m": 16.705841100432863,
+  "evaluation_reason": "collision+out_of_bounds+collector_flight_timeout"
+}

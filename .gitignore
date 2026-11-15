@@ -16,3 +16,6 @@
 **/__pycache__/
 !experiments/**/*.csv
 !results/**/*.csv
+/results/validation_direct/first_pass_incomplete/
+/results/validation_direct/drain_single/
+/results/validation_direct/final30_run.log

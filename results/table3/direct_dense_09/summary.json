@@ -1,0 +1,41 @@
+{
+  "run_id": "direct_dense_09",
+  "scene": "dense",
+  "planner_seed": 9,
+  "recorded_odom_samples": 388,
+  "event_count": 623,
+  "termination_reason": "goal_reached",
+  "terminal_time_s": 19.35,
+  "reached_goal": true,
+  "success": false,
+  "collision": true,
+  "out_of_bounds": true,
+  "flight_time_s": 19.35,
+  "path_length_m": 56.02210824431454,
+  "mean_speed_mps": 2.8951993924710355,
+  "clearance_m": -0.3251821260663839,
+  "first_collision_time_s": 1.2,
+  "first_collision_position": [
+    -10.42429064086503,
+    -4.42648619299353,
+    0.44016269598884267
+  ],
+  "first_out_of_bounds_time_s": 2.55,
+  "first_out_of_bounds_position": [
+    -6.671670563124104,
+    -2.0213099400067045,
+    -0.012833251925344492
+  ],
+  "planning_calls": 224,
+  "planning_failures": 216,
+  "replanning_calls": 223,
+  "replanning_failures": 216,
+  "nmpc_calls": 387,
+  "nmpc_failures": 71,
+  "planning_all_ms": 5.294898383928571,
+  "online_replanning_ms": 4.488722533632287,
+  "nmpc_mean_ms": 72.63696364082686,
+  "evaluation_samples": 388,
+  "final_goal_distance_m": 0.19993075709687363,
+  "evaluation_reason": "collision+out_of_bounds"
+}

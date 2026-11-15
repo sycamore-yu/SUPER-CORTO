@@ -1,0 +1,361 @@
+{"event": "plan_result", "sim_time_s": 0, "wall_time_s": 3.294209951, "success": true, "initial": true, "elapsed_ms": 146.503453, "stage": "complete", "plan_id": 1, "wall_receive_s": 6.457252437947318}
+{"event": "nmpc_result", "sim_time_s": 0, "wall_time_s": 3.334120624, "solver_code": 3, "success": true, "elapsed_ms": 38.776772, "wall_receive_s": 6.4960490490775555}
+{"event": "mission_start", "sim_time_s": 0, "wall_time_s": 3.334405613, "wall_receive_s": 6.499458653852344}
+{"event": "nmpc_result", "sim_time_s": 0.05, "wall_time_s": 3.365145961, "solver_code": 3, "success": true, "elapsed_ms": 30.49092, "wall_receive_s": 6.533576318062842}
+{"event": "nmpc_result", "sim_time_s": 0.1, "wall_time_s": 3.38489205, "solver_code": 3, "success": true, "elapsed_ms": 19.371136, "wall_receive_s": 6.546825672965497}
+{"event": "nmpc_result", "sim_time_s": 0.15000000000000002, "wall_time_s": 3.430456622, "solver_code": 3, "success": true, "elapsed_ms": 32.555211, "wall_receive_s": 6.595651237061247}
+{"event": "nmpc_result", "sim_time_s": 0.2, "wall_time_s": 3.504480843, "solver_code": 3, "success": true, "elapsed_ms": 56.461989, "wall_receive_s": 6.674080970929936}
+{"event": "nmpc_result", "sim_time_s": 0.25, "wall_time_s": 3.530562164, "solver_code": 3, "success": true, "elapsed_ms": 25.692085, "wall_receive_s": 6.700925220036879}
+{"event": "nmpc_result", "sim_time_s": 0.3, "wall_time_s": 3.574195766, "solver_code": 3, "success": true, "elapsed_ms": 26.307957, "wall_receive_s": 6.739886927884072}
+{"event": "nmpc_result", "sim_time_s": 0.35, "wall_time_s": 3.637180211, "solver_code": 3, "success": true, "elapsed_ms": 39.084853, "wall_receive_s": 6.806397232925519}
+{"event": "nmpc_result", "sim_time_s": 0.39999999999999997, "wall_time_s": 3.675204516, "solver_code": 3, "success": true, "elapsed_ms": 27.353499, "wall_receive_s": 6.837425346020609}
+{"event": "nmpc_result", "sim_time_s": 0.44999999999999996, "wall_time_s": 3.719502346, "solver_code": 3, "success": true, "elapsed_ms": 21.691352, "wall_receive_s": 6.88177746697329}
+{"event": "nmpc_result", "sim_time_s": 0.49999999999999994, "wall_time_s": 3.779859317, "solver_code": 3, "success": true, "elapsed_ms": 31.714785, "wall_receive_s": 6.957242467906326}
+{"event": "nmpc_result", "sim_time_s": 0.5499999999999999, "wall_time_s": 3.825620275, "solver_code": 3, "success": true, "elapsed_ms": 27.677691, "wall_receive_s": 6.99414541805163}
+{"event": "nmpc_result", "sim_time_s": 0.6, "wall_time_s": 3.87877993, "solver_code": 3, "success": true, "elapsed_ms": 30.725296, "wall_receive_s": 7.041534618008882}
+{"event": "nmpc_result", "sim_time_s": 0.65, "wall_time_s": 3.932296856, "solver_code": 3, "success": true, "elapsed_ms": 34.376457, "wall_receive_s": 7.102697850903496}
+{"event": "nmpc_result", "sim_time_s": 0.7000000000000001, "wall_time_s": 3.973377185, "solver_code": 3, "success": true, "elapsed_ms": 25.461405, "wall_receive_s": 7.14419299387373}
+{"event": "nmpc_result", "sim_time_s": 0.7500000000000001, "wall_time_s": 4.025345644, "solver_code": 3, "success": true, "elapsed_ms": 27.426904, "wall_receive_s": 7.187307564076036}
+{"event": "nmpc_result", "sim_time_s": 0.8000000000000002, "wall_time_s": 4.074804441, "solver_code": 3, "success": true, "elapsed_ms": 26.849001, "wall_receive_s": 7.246722129872069}
+{"event": "nmpc_result", "sim_time_s": 0.8500000000000002, "wall_time_s": 4.12443093, "solver_code": 3, "success": true, "elapsed_ms": 26.464011, "wall_receive_s": 7.293829031055793}
+{"event": "nmpc_result", "sim_time_s": 0.9000000000000002, "wall_time_s": 4.176170933, "solver_code": 3, "success": true, "elapsed_ms": 28.259587, "wall_receive_s": 7.338295296067372}
+{"event": "nmpc_result", "sim_time_s": 0.9500000000000003, "wall_time_s": 4.227877274, "solver_code": 3, "success": true, "elapsed_ms": 29.577957, "wall_receive_s": 7.398093527881429}
+{"event": "nmpc_result", "sim_time_s": 1.0000000000000002, "wall_time_s": 4.274698343, "solver_code": 3, "success": true, "elapsed_ms": 26.683908, "wall_receive_s": 7.444563874974847}
+{"event": "nmpc_result", "sim_time_s": 1.0500000000000003, "wall_time_s": 4.32396565, "solver_code": 3, "success": true, "elapsed_ms": 26.065674, "wall_receive_s": 7.489796205889434}
+{"event": "plan_result", "sim_time_s": 1.1000000000000003, "wall_time_s": 4.356266079, "success": true, "initial": false, "elapsed_ms": 157.905001, "stage": "complete", "plan_id": 2, "wall_receive_s": 7.518008881015703}
+{"event": "collision", "origin": "collector", "sim_time_s": 1.15, "position": [-10.11840799800744, -4.405615186770173, 0.7504085190337063], "wall_receive_s": 7.547866268083453}
+{"event": "nmpc_result", "sim_time_s": 1.1000000000000003, "wall_time_s": 4.377339502, "solver_code": 3, "success": true, "elapsed_ms": 29.425712, "wall_receive_s": 7.548919019056484}
+{"event": "plan_handoff", "sim_time_s": 1.1500000000000004, "wall_time_s": 4.397869709, "plan_id": 2, "accepted": false, "stitch_error_m": 1.309469, "wall_receive_s": 7.559918998973444}
+{"event": "nmpc_result", "sim_time_s": 1.1500000000000004, "wall_time_s": 4.423115457, "solver_code": 3, "success": true, "elapsed_ms": 24.930449, "wall_receive_s": 7.58535870607011}
+{"event": "nmpc_result", "sim_time_s": 1.2000000000000004, "wall_time_s": 4.477240068, "solver_code": 3, "success": true, "elapsed_ms": 29.240597, "wall_receive_s": 7.639635175000876}
+{"event": "nmpc_result", "sim_time_s": 1.2500000000000004, "wall_time_s": 4.524556343, "solver_code": 3, "success": true, "elapsed_ms": 26.634764, "wall_receive_s": 7.686736088944599}
+{"event": "plan_result", "sim_time_s": 1.3000000000000005, "wall_time_s": 4.526709195, "success": true, "initial": false, "elapsed_ms": 128.532845, "stage": "complete", "plan_id": 3, "wall_receive_s": 7.6932786458637565}
+{"event": "plan_handoff", "sim_time_s": 1.3000000000000005, "wall_time_s": 4.547842949, "plan_id": 3, "accepted": false, "stitch_error_m": 0.648866, "wall_receive_s": 7.709695495897904}
+{"event": "nmpc_result", "sim_time_s": 1.3000000000000005, "wall_time_s": 4.580450208, "solver_code": 3, "success": true, "elapsed_ms": 32.328749, "wall_receive_s": 7.742830764036626}
+{"event": "nmpc_result", "sim_time_s": 1.3500000000000005, "wall_time_s": 4.626428947, "solver_code": 3, "success": true, "elapsed_ms": 28.467275, "wall_receive_s": 7.788130169967189}
+{"event": "nmpc_result", "sim_time_s": 1.4000000000000006, "wall_time_s": 4.681587833, "solver_code": 3, "success": true, "elapsed_ms": 33.614633, "wall_receive_s": 7.856195655884221}
+{"event": "plan_result", "sim_time_s": 1.4500000000000006, "wall_time_s": 4.716957479, "success": true, "initial": false, "elapsed_ms": 168.848878, "stage": "complete", "plan_id": 4, "wall_receive_s": 7.878699491033331}
+{"event": "nmpc_result", "sim_time_s": 1.4500000000000006, "wall_time_s": 4.724040778, "solver_code": 3, "success": true, "elapsed_ms": 26.178627, "wall_receive_s": 7.886023130035028}
+{"event": "plan_handoff", "sim_time_s": 1.5000000000000007, "wall_time_s": 4.747874596, "plan_id": 4, "accepted": false, "stitch_error_m": 0.816302, "wall_receive_s": 7.909686334896833}
+{"event": "nmpc_result", "sim_time_s": 1.5000000000000007, "wall_time_s": 4.781952414, "solver_code": 3, "success": true, "elapsed_ms": 33.748468, "wall_receive_s": 7.944854470901191}
+{"event": "nmpc_result", "sim_time_s": 1.5500000000000007, "wall_time_s": 4.826280573, "solver_code": 3, "success": true, "elapsed_ms": 28.33095, "wall_receive_s": 7.988163549918681}
+{"event": "plan_result", "sim_time_s": 1.6000000000000008, "wall_time_s": 4.874226279, "success": true, "initial": false, "elapsed_ms": 126.045952, "stage": "complete", "plan_id": 5, "wall_receive_s": 8.03621402499266}
+{"event": "nmpc_result", "sim_time_s": 1.6000000000000008, "wall_time_s": 4.878875256, "solver_code": 3, "success": true, "elapsed_ms": 30.996468, "wall_receive_s": 8.040445771068335}
+{"event": "plan_handoff", "sim_time_s": 1.6500000000000008, "wall_time_s": 4.897937784, "plan_id": 5, "accepted": true, "stitch_error_m": 0.387172, "wall_receive_s": 8.059817676898092}
+{"event": "nmpc_result", "sim_time_s": 1.6500000000000008, "wall_time_s": 4.967357671, "solver_code": 3, "success": true, "elapsed_ms": 67.521504, "wall_receive_s": 8.129050503950566}
+{"event": "nmpc_result", "sim_time_s": 1.7000000000000008, "wall_time_s": 5.0075186, "solver_code": 3, "success": true, "elapsed_ms": 39.519843, "wall_receive_s": 8.169556258944795}
+{"event": "nmpc_result", "sim_time_s": 1.7500000000000009, "wall_time_s": 5.039317432, "solver_code": 3, "success": true, "elapsed_ms": 31.145903, "wall_receive_s": 8.20121156098321}
+{"event": "nmpc_result", "sim_time_s": 1.800000000000001, "wall_time_s": 5.071945981, "solver_code": 3, "success": true, "elapsed_ms": 23.936105, "wall_receive_s": 8.233863136963919}
+{"event": "nmpc_result", "sim_time_s": 1.850000000000001, "wall_time_s": 5.147585472, "solver_code": 3, "success": true, "elapsed_ms": 49.526885, "wall_receive_s": 8.309216131921858}
+{"event": "nmpc_result", "sim_time_s": 1.900000000000001, "wall_time_s": 5.175924832, "solver_code": 3, "success": true, "elapsed_ms": 27.689179, "wall_receive_s": 8.33805347699672}
+{"event": "nmpc_result", "sim_time_s": 1.950000000000001, "wall_time_s": 5.22571102, "solver_code": 3, "success": true, "elapsed_ms": 27.762924, "wall_receive_s": 8.387576088076457}
+{"event": "nmpc_result", "sim_time_s": 2.000000000000001, "wall_time_s": 5.273969349, "solver_code": 3, "success": true, "elapsed_ms": 26.015358, "wall_receive_s": 8.435933907981962}
+{"event": "nmpc_result", "sim_time_s": 2.0500000000000007, "wall_time_s": 5.324657798, "solver_code": 3, "success": true, "elapsed_ms": 26.68876, "wall_receive_s": 8.487093904986978}
+{"event": "nmpc_result", "sim_time_s": 2.1000000000000005, "wall_time_s": 5.375083491, "solver_code": 3, "success": true, "elapsed_ms": 27.100089, "wall_receive_s": 8.537196297897026}
+{"event": "nmpc_result", "sim_time_s": 2.1500000000000004, "wall_time_s": 5.423440587, "solver_code": 3, "success": true, "elapsed_ms": 25.479702, "wall_receive_s": 8.585376322967932}
+{"event": "nmpc_result", "sim_time_s": 2.2, "wall_time_s": 5.474461114, "solver_code": 3, "success": true, "elapsed_ms": 26.55661, "wall_receive_s": 8.636298571014777}
+{"event": "nmpc_result", "sim_time_s": 2.25, "wall_time_s": 5.539483683, "solver_code": 3, "success": true, "elapsed_ms": 41.515108, "wall_receive_s": 8.701704140054062}
+{"event": "nmpc_result", "sim_time_s": 2.3, "wall_time_s": 5.572366532, "solver_code": 3, "success": true, "elapsed_ms": 24.517343, "wall_receive_s": 8.734526152955368}
+{"event": "nmpc_result", "sim_time_s": 2.3499999999999996, "wall_time_s": 5.627845158, "solver_code": 3, "success": true, "elapsed_ms": 29.841806, "wall_receive_s": 8.789729825919494}
+{"event": "nmpc_result", "sim_time_s": 2.3999999999999995, "wall_time_s": 5.690646754, "solver_code": 3, "success": true, "elapsed_ms": 42.694727, "wall_receive_s": 8.852873245952651}
+{"event": "nmpc_result", "sim_time_s": 2.4499999999999993, "wall_time_s": 5.728603866, "solver_code": 3, "success": true, "elapsed_ms": 30.592791, "wall_receive_s": 8.898482077987865}
+{"event": "nmpc_result", "sim_time_s": 2.499999999999999, "wall_time_s": 5.786372188, "solver_code": 3, "success": true, "elapsed_ms": 38.420159, "wall_receive_s": 8.949564279057086}
+{"event": "nmpc_result", "sim_time_s": 2.549999999999999, "wall_time_s": 5.823845484, "solver_code": 3, "success": true, "elapsed_ms": 25.979471, "wall_receive_s": 8.985668210079893}
+{"event": "plan_result", "sim_time_s": 2.5999999999999988, "wall_time_s": 5.840666533, "success": true, "initial": false, "elapsed_ms": 142.627272, "stage": "complete", "plan_id": 6, "wall_receive_s": 9.002320470986888}
+{"event": "plan_handoff", "sim_time_s": 2.5999999999999988, "wall_time_s": 5.847952202, "plan_id": 6, "accepted": false, "stitch_error_m": 0.576714, "wall_receive_s": 9.009833259973675}
+{"event": "nmpc_result", "sim_time_s": 2.5999999999999988, "wall_time_s": 5.881872172, "solver_code": 3, "success": true, "elapsed_ms": 33.504536, "wall_receive_s": 9.044537867885083}
+{"event": "nmpc_result", "sim_time_s": 2.6499999999999986, "wall_time_s": 5.932587092, "solver_code": 3, "success": true, "elapsed_ms": 34.62764, "wall_receive_s": 9.102338060038164}
+{"event": "plan_result", "sim_time_s": 2.6999999999999984, "wall_time_s": 5.956013972, "success": true, "initial": false, "elapsed_ms": 107.645353, "stage": "complete", "plan_id": 7, "wall_receive_s": 9.117966898949817}
+{"event": "nmpc_result", "sim_time_s": 2.6999999999999984, "wall_time_s": 6.049111069, "solver_code": 3, "success": true, "elapsed_ms": 101.290351, "wall_receive_s": 9.21864405204542}
+{"event": "plan_handoff", "sim_time_s": 2.7499999999999982, "wall_time_s": 6.049616065, "plan_id": 7, "accepted": true, "stitch_error_m": 0.44932, "wall_receive_s": 9.219564242986962}
+{"event": "nmpc_result", "sim_time_s": 2.7499999999999982, "wall_time_s": 6.096379765, "solver_code": 3, "success": true, "elapsed_ms": 45.698688, "wall_receive_s": 9.258559945970774}
+{"event": "nmpc_result", "sim_time_s": 2.799999999999998, "wall_time_s": 6.320031057, "solver_code": 5, "success": true, "elapsed_ms": 172.887789, "wall_receive_s": 9.482406301889569}
+{"event": "nmpc_result", "sim_time_s": 2.849999999999998, "wall_time_s": 6.469630616, "solver_code": 5, "success": true, "elapsed_ms": 149.081248, "wall_receive_s": 9.640139103867114}
+{"event": "nmpc_result", "sim_time_s": 2.8999999999999977, "wall_time_s": 6.508789268, "solver_code": 3, "success": true, "elapsed_ms": 38.651265, "wall_receive_s": 9.671013837913051}
+{"event": "nmpc_result", "sim_time_s": 2.9499999999999975, "wall_time_s": 6.576088372, "solver_code": 3, "success": true, "elapsed_ms": 66.661729, "wall_receive_s": 9.73841604986228}
+{"event": "nmpc_result", "sim_time_s": 2.9999999999999973, "wall_time_s": 6.656891331, "solver_code": 3, "success": true, "elapsed_ms": 80.131216, "wall_receive_s": 9.818763694958761}
+{"event": "nmpc_result", "sim_time_s": 3.049999999999997, "wall_time_s": 6.724113215, "solver_code": 3, "success": true, "elapsed_ms": 47.214503, "wall_receive_s": 9.88629355491139}
+{"event": "nmpc_result", "sim_time_s": 3.099999999999997, "wall_time_s": 6.782711031, "solver_code": 3, "success": true, "elapsed_ms": 55.921489, "wall_receive_s": 9.952001007040963}
+{"event": "nmpc_result", "sim_time_s": 3.149999999999997, "wall_time_s": 6.851531963, "solver_code": 3, "success": true, "elapsed_ms": 68.32623, "wall_receive_s": 10.013590282062069}
+{"event": "nmpc_result", "sim_time_s": 3.1999999999999966, "wall_time_s": 6.917429422, "solver_code": 3, "success": true, "elapsed_ms": 65.070114, "wall_receive_s": 10.079904726007953}
+{"event": "nmpc_result", "sim_time_s": 3.2499999999999964, "wall_time_s": 6.969166342, "solver_code": 3, "success": true, "elapsed_ms": 51.162113, "wall_receive_s": 10.131265538046136}
+{"event": "nmpc_result", "sim_time_s": 3.2999999999999963, "wall_time_s": 7.024440577, "solver_code": 3, "success": true, "elapsed_ms": 54.772754, "wall_receive_s": 10.186748777981848}
+{"event": "nmpc_result", "sim_time_s": 3.349999999999996, "wall_time_s": 7.089584544, "solver_code": 3, "success": true, "elapsed_ms": 64.602126, "wall_receive_s": 10.252406670013443}
+{"event": "nmpc_result", "sim_time_s": 3.399999999999996, "wall_time_s": 7.158726015, "solver_code": 3, "success": true, "elapsed_ms": 68.431235, "wall_receive_s": 10.320399478077888}
+{"event": "out_of_bounds", "origin": "collector", "sim_time_s": 3.45, "position": [-1.8343785565970692, 2.0522796680084827, -0.09536576267364313], "wall_receive_s": 10.325814753072336}
+{"event": "nmpc_result", "sim_time_s": 3.4499999999999957, "wall_time_s": 7.277773832, "solver_code": 3, "success": true, "elapsed_ms": 87.223132, "wall_receive_s": 10.439896269934252}
+{"event": "nmpc_result", "sim_time_s": 3.4999999999999956, "wall_time_s": 7.345859035, "solver_code": 3, "success": true, "elapsed_ms": 67.355046, "wall_receive_s": 10.508619933854789}
+{"event": "nmpc_result", "sim_time_s": 3.5499999999999954, "wall_time_s": 7.415540015, "solver_code": 3, "success": true, "elapsed_ms": 68.68632, "wall_receive_s": 10.577441141940653}
+{"event": "nmpc_result", "sim_time_s": 3.599999999999995, "wall_time_s": 7.509656155, "solver_code": 3, "success": true, "elapsed_ms": 62.64738, "wall_receive_s": 10.671701890882105}
+{"event": "plan_result", "sim_time_s": 3.649999999999995, "wall_time_s": 7.510751803, "success": false, "initial": false, "elapsed_ms": 0.361665, "stage": "topo", "plan_id": 8, "wall_receive_s": 10.678086553933099}
+{"event": "nmpc_result", "sim_time_s": 3.649999999999995, "wall_time_s": 7.572965349, "solver_code": 3, "success": true, "elapsed_ms": 62.528097, "wall_receive_s": 10.734598899958655}
+{"event": "plan_result", "sim_time_s": 3.699999999999995, "wall_time_s": 7.575264407, "success": false, "initial": false, "elapsed_ms": 1.562393, "stage": "topo", "plan_id": 9, "wall_receive_s": 10.741082441061735}
+{"event": "nmpc_result", "sim_time_s": 3.699999999999995, "wall_time_s": 7.632732007, "solver_code": 3, "success": true, "elapsed_ms": 59.008062, "wall_receive_s": 10.794278754852712}
+{"event": "plan_result", "sim_time_s": 3.7499999999999947, "wall_time_s": 7.633608819, "success": false, "initial": false, "elapsed_ms": 0.198505, "stage": "topo", "plan_id": 10, "wall_receive_s": 10.80087371589616}
+{"event": "nmpc_result", "sim_time_s": 3.7499999999999947, "wall_time_s": 7.693045213, "solver_code": -1, "success": false, "elapsed_ms": 59.605916, "wall_receive_s": 10.855025100987405}
+{"event": "plan_result", "sim_time_s": 3.7999999999999945, "wall_time_s": 7.694008217, "success": false, "initial": false, "elapsed_ms": 0.228661, "stage": "topo", "plan_id": 11, "wall_receive_s": 10.861283205915242}
+{"event": "nmpc_result", "sim_time_s": 3.7999999999999945, "wall_time_s": 7.745845917, "solver_code": 3, "success": true, "elapsed_ms": 52.034778, "wall_receive_s": 10.907812720863149}
+{"event": "plan_result", "sim_time_s": 3.8499999999999943, "wall_time_s": 7.746768456, "success": false, "initial": false, "elapsed_ms": 0.226875, "stage": "topo", "plan_id": 12, "wall_receive_s": 10.913747142069042}
+{"event": "nmpc_result", "sim_time_s": 3.8499999999999943, "wall_time_s": 7.783834195, "solver_code": 3, "success": true, "elapsed_ms": 37.269913, "wall_receive_s": 10.945757871959358}
+{"event": "plan_result", "sim_time_s": 3.899999999999994, "wall_time_s": 7.78466999, "success": false, "initial": false, "elapsed_ms": 0.169837, "stage": "topo", "plan_id": 13, "wall_receive_s": 10.95217313291505}
+{"event": "nmpc_result", "sim_time_s": 3.899999999999994, "wall_time_s": 7.835296265, "solver_code": 3, "success": true, "elapsed_ms": 50.773283, "wall_receive_s": 10.99696633592248}
+{"event": "plan_result", "sim_time_s": 3.949999999999994, "wall_time_s": 7.836133302, "success": false, "initial": false, "elapsed_ms": 0.130027, "stage": "topo", "plan_id": 14, "wall_receive_s": 11.003196595935151}
+{"event": "nmpc_result", "sim_time_s": 3.949999999999994, "wall_time_s": 7.895392875, "solver_code": 3, "success": true, "elapsed_ms": 59.357707, "wall_receive_s": 11.057446937076747}
+{"event": "plan_result", "sim_time_s": 3.999999999999994, "wall_time_s": 7.896298385, "success": false, "initial": false, "elapsed_ms": 0.138309, "stage": "topo", "plan_id": 15, "wall_receive_s": 11.063284144038334}
+{"event": "nmpc_result", "sim_time_s": 3.999999999999994, "wall_time_s": 7.95672349, "solver_code": 3, "success": true, "elapsed_ms": 60.544526, "wall_receive_s": 11.118560697883368}
+{"event": "plan_result", "sim_time_s": 4.049999999999994, "wall_time_s": 7.957544889, "success": false, "initial": false, "elapsed_ms": 0.138083, "stage": "topo", "plan_id": 16, "wall_receive_s": 11.124247894855216}
+{"event": "nmpc_result", "sim_time_s": 4.049999999999994, "wall_time_s": 8.014456837, "solver_code": 3, "success": true, "elapsed_ms": 57.033066, "wall_receive_s": 11.175947198877111}
+{"event": "plan_result", "sim_time_s": 4.099999999999993, "wall_time_s": 8.057811819, "success": false, "initial": false, "elapsed_ms": 0.085029, "stage": "topo", "plan_id": 17, "wall_receive_s": 11.219820557860658}
+{"event": "nmpc_result", "sim_time_s": 4.099999999999993, "wall_time_s": 8.110661086, "solver_code": 3, "success": true, "elapsed_ms": 52.89762, "wall_receive_s": 11.272276082076132}
+{"event": "plan_result", "sim_time_s": 4.149999999999993, "wall_time_s": 8.111504465, "success": false, "initial": false, "elapsed_ms": 0.102448, "stage": "topo", "plan_id": 18, "wall_receive_s": 11.278678189963102}
+{"event": "nmpc_result", "sim_time_s": 4.149999999999993, "wall_time_s": 8.166819355, "solver_code": 3, "success": true, "elapsed_ms": 55.399532, "wall_receive_s": 11.328649838920683}
+{"event": "plan_result", "sim_time_s": 4.199999999999993, "wall_time_s": 8.167593864, "success": false, "initial": false, "elapsed_ms": 0.134959, "stage": "topo", "plan_id": 19, "wall_receive_s": 11.334591934923083}
+{"event": "nmpc_result", "sim_time_s": 4.199999999999993, "wall_time_s": 8.23960464, "solver_code": 3, "success": true, "elapsed_ms": 72.123624, "wall_receive_s": 11.401584204984829}
+{"event": "plan_result", "sim_time_s": 4.249999999999993, "wall_time_s": 8.240405615, "success": false, "initial": false, "elapsed_ms": 0.094866, "stage": "topo", "plan_id": 20, "wall_receive_s": 11.407406694022939}
+{"event": "nmpc_result", "sim_time_s": 4.249999999999993, "wall_time_s": 8.300829971, "solver_code": 3, "success": true, "elapsed_ms": 60.472301, "wall_receive_s": 11.463192950934172}
+{"event": "plan_result", "sim_time_s": 4.299999999999993, "wall_time_s": 8.302140869, "success": false, "initial": false, "elapsed_ms": 0.218778, "stage": "topo", "plan_id": 21, "wall_receive_s": 11.469158337917179}
+{"event": "nmpc_result", "sim_time_s": 4.299999999999993, "wall_time_s": 8.343349775, "solver_code": 3, "success": true, "elapsed_ms": 41.405255, "wall_receive_s": 11.504862197907642}
+{"event": "plan_result", "sim_time_s": 4.3499999999999925, "wall_time_s": 8.344072872, "success": false, "initial": false, "elapsed_ms": 0.098727, "stage": "topo", "plan_id": 22, "wall_receive_s": 11.511478131869808}
+{"event": "nmpc_result", "sim_time_s": 4.3499999999999925, "wall_time_s": 8.398071375, "solver_code": 3, "success": true, "elapsed_ms": 54.075201, "wall_receive_s": 11.560039818985388}
+{"event": "plan_result", "sim_time_s": 4.399999999999992, "wall_time_s": 8.39880917, "success": false, "initial": false, "elapsed_ms": 0.068545, "stage": "topo", "plan_id": 23, "wall_receive_s": 11.565967401023954}
+{"event": "nmpc_result", "sim_time_s": 4.399999999999992, "wall_time_s": 8.449504783, "solver_code": 3, "success": true, "elapsed_ms": 50.734885, "wall_receive_s": 11.61144049395807}
+{"event": "plan_result", "sim_time_s": 4.449999999999992, "wall_time_s": 8.450256226, "success": false, "initial": false, "elapsed_ms": 0.103357, "stage": "topo", "plan_id": 24, "wall_receive_s": 11.617348799016327}
+{"event": "nmpc_result", "sim_time_s": 4.449999999999992, "wall_time_s": 8.506294779, "solver_code": 3, "success": true, "elapsed_ms": 56.103467, "wall_receive_s": 11.668635986978188}
+{"event": "plan_result", "sim_time_s": 4.499999999999992, "wall_time_s": 8.507334102, "success": false, "initial": false, "elapsed_ms": 0.083837, "stage": "topo", "plan_id": 25, "wall_receive_s": 11.67491402104497}
+{"event": "nmpc_result", "sim_time_s": 4.499999999999992, "wall_time_s": 8.556057967, "solver_code": -1, "success": false, "elapsed_ms": 48.766199, "wall_receive_s": 11.718183557968587}
+{"event": "plan_result", "sim_time_s": 4.549999999999992, "wall_time_s": 8.556890149, "success": false, "initial": false, "elapsed_ms": 0.077692, "stage": "topo", "plan_id": 26, "wall_receive_s": 11.723917762981728}
+{"event": "nmpc_result", "sim_time_s": 4.549999999999992, "wall_time_s": 8.605890396, "solver_code": 3, "success": true, "elapsed_ms": 49.066212, "wall_receive_s": 11.767826813971624}
+{"event": "plan_result", "sim_time_s": 4.599999999999992, "wall_time_s": 8.606638225, "success": false, "initial": false, "elapsed_ms": 0.068216, "stage": "topo", "plan_id": 27, "wall_receive_s": 11.773697868920863}
+{"event": "nmpc_result", "sim_time_s": 4.599999999999992, "wall_time_s": 8.669136417, "solver_code": 3, "success": true, "elapsed_ms": 62.557044, "wall_receive_s": 11.830725625855848}
+{"event": "plan_result", "sim_time_s": 4.6499999999999915, "wall_time_s": 8.66979885, "success": false, "initial": false, "elapsed_ms": 0.083381, "stage": "topo", "plan_id": 28, "wall_receive_s": 11.836924456059933}
+{"event": "nmpc_result", "sim_time_s": 4.6499999999999915, "wall_time_s": 8.739657151, "solver_code": 3, "success": true, "elapsed_ms": 69.943003, "wall_receive_s": 11.901650168932974}
+{"event": "plan_result", "sim_time_s": 4.699999999999991, "wall_time_s": 8.770080433, "success": false, "initial": false, "elapsed_ms": 0.071912, "stage": "topo", "plan_id": 29, "wall_receive_s": 11.931780993938446}
+{"event": "nmpc_result", "sim_time_s": 4.699999999999991, "wall_time_s": 8.853639405, "solver_code": 3, "success": true, "elapsed_ms": 83.612888, "wall_receive_s": 12.015629150904715}
+{"event": "plan_result", "sim_time_s": 4.749999999999991, "wall_time_s": 8.854430974, "success": false, "initial": false, "elapsed_ms": 0.122214, "stage": "topo", "plan_id": 30, "wall_receive_s": 12.019805032992736}
+{"event": "nmpc_result", "sim_time_s": 4.749999999999991, "wall_time_s": 8.915710311, "solver_code": 3, "success": true, "elapsed_ms": 61.401669, "wall_receive_s": 12.07768510398455}
+{"event": "plan_result", "sim_time_s": 4.799999999999991, "wall_time_s": 8.916313655, "success": false, "initial": false, "elapsed_ms": 0.055663, "stage": "topo", "plan_id": 31, "wall_receive_s": 12.085434389999136}
+{"event": "nmpc_result", "sim_time_s": 4.799999999999991, "wall_time_s": 8.978850351, "solver_code": 3, "success": true, "elapsed_ms": 62.570742, "wall_receive_s": 12.140859018079937}
+{"event": "plan_result", "sim_time_s": 4.849999999999991, "wall_time_s": 8.979503597, "success": false, "initial": false, "elapsed_ms": 0.066473, "stage": "topo", "plan_id": 32, "wall_receive_s": 12.147078556008637}
+{"event": "nmpc_result", "sim_time_s": 4.849999999999991, "wall_time_s": 9.03105666, "solver_code": 3, "success": true, "elapsed_ms": 51.619622, "wall_receive_s": 12.196088491007686}
+{"event": "plan_result", "sim_time_s": 4.899999999999991, "wall_time_s": 9.080086108, "success": false, "initial": false, "elapsed_ms": 0.135218, "stage": "topo", "plan_id": 33, "wall_receive_s": 12.242819191887975}
+{"event": "nmpc_result", "sim_time_s": 4.899999999999991, "wall_time_s": 9.141089005, "solver_code": 3, "success": true, "elapsed_ms": 61.120053, "wall_receive_s": 12.308346666861326}
+{"event": "plan_result", "sim_time_s": 4.94999999999999, "wall_time_s": 9.141793859, "success": false, "initial": false, "elapsed_ms": 0.069069, "stage": "topo", "plan_id": 34, "wall_receive_s": 12.308961638016626}
+{"event": "nmpc_result", "sim_time_s": 4.94999999999999, "wall_time_s": 9.195320515, "solver_code": 3, "success": true, "elapsed_ms": 53.587378, "wall_receive_s": 12.357295740861446}
+{"event": "plan_result", "sim_time_s": 4.99999999999999, "wall_time_s": 9.196069704, "success": false, "initial": false, "elapsed_ms": 0.097938, "stage": "topo", "plan_id": 35, "wall_receive_s": 12.363476095953956}
+{"event": "nmpc_result", "sim_time_s": 4.99999999999999, "wall_time_s": 9.255786005, "solver_code": 3, "success": true, "elapsed_ms": 59.800979, "wall_receive_s": 12.417636638972908}
+{"event": "plan_result", "sim_time_s": 5.04999999999999, "wall_time_s": 9.256524884, "success": false, "initial": false, "elapsed_ms": 0.064557, "stage": "topo", "plan_id": 36, "wall_receive_s": 12.423540747025982}
+{"event": "nmpc_result", "sim_time_s": 5.04999999999999, "wall_time_s": 9.327135419, "solver_code": 3, "success": true, "elapsed_ms": 70.651305, "wall_receive_s": 12.489041610853747}
+{"event": "plan_result", "sim_time_s": 5.09999999999999, "wall_time_s": 9.327863748, "success": false, "initial": false, "elapsed_ms": 0.07136, "stage": "topo", "plan_id": 37, "wall_receive_s": 12.494943311903626}
+{"event": "nmpc_result", "sim_time_s": 5.09999999999999, "wall_time_s": 9.399179101, "solver_code": 3, "success": true, "elapsed_ms": 71.373101, "wall_receive_s": 12.561262151924893}
+{"event": "plan_result", "sim_time_s": 5.14999999999999, "wall_time_s": 9.400022967, "success": false, "initial": false, "elapsed_ms": 0.102164, "stage": "topo", "plan_id": 38, "wall_receive_s": 12.567205318016931}
+{"event": "nmpc_result", "sim_time_s": 5.14999999999999, "wall_time_s": 9.46350672, "solver_code": 3, "success": true, "elapsed_ms": 63.562008, "wall_receive_s": 12.625412354944274}
+{"event": "plan_result", "sim_time_s": 5.1999999999999895, "wall_time_s": 9.50034014, "success": false, "initial": false, "elapsed_ms": 0.070695, "stage": "topo", "plan_id": 39, "wall_receive_s": 12.662324430886656}
+{"event": "nmpc_result", "sim_time_s": 5.1999999999999895, "wall_time_s": 9.579842604, "solver_code": 3, "success": true, "elapsed_ms": 79.606748, "wall_receive_s": 12.741965878056362}
+{"event": "plan_result", "sim_time_s": 5.249999999999989, "wall_time_s": 9.580702658, "success": false, "initial": false, "elapsed_ms": 0.069535, "stage": "topo", "plan_id": 40, "wall_receive_s": 12.748998614959419}
+{"event": "nmpc_result", "sim_time_s": 5.249999999999989, "wall_time_s": 9.653290591, "solver_code": 3, "success": true, "elapsed_ms": 72.650286, "wall_receive_s": 12.815129068912938}
+{"event": "plan_result", "sim_time_s": 5.299999999999989, "wall_time_s": 9.65402466, "success": false, "initial": false, "elapsed_ms": 0.08186, "stage": "topo", "plan_id": 41, "wall_receive_s": 12.820763520896435}
+{"event": "nmpc_result", "sim_time_s": 5.299999999999989, "wall_time_s": 9.716540919, "solver_code": 3, "success": true, "elapsed_ms": 62.600032, "wall_receive_s": 12.878102289047092}
+{"event": "plan_result", "sim_time_s": 5.349999999999989, "wall_time_s": 9.754163484, "success": false, "initial": false, "elapsed_ms": 0.056396, "stage": "topo", "plan_id": 42, "wall_receive_s": 12.915993557078764}
+{"event": "nmpc_result", "sim_time_s": 5.349999999999989, "wall_time_s": 9.826401217, "solver_code": 3, "success": true, "elapsed_ms": 72.288967, "wall_receive_s": 12.988288011867553}
+{"event": "plan_result", "sim_time_s": 5.399999999999989, "wall_time_s": 9.82710164, "success": false, "initial": false, "elapsed_ms": 0.061134, "stage": "topo", "plan_id": 43, "wall_receive_s": 12.994086076039821}
+{"event": "nmpc_result", "sim_time_s": 5.399999999999989, "wall_time_s": 9.898683022, "solver_code": 3, "success": true, "elapsed_ms": 71.636071, "wall_receive_s": 13.060693708015606}
+{"event": "plan_result", "sim_time_s": 5.449999999999989, "wall_time_s": 9.899471526, "success": false, "initial": false, "elapsed_ms": 0.098244, "stage": "topo", "plan_id": 44, "wall_receive_s": 13.066745561081916}
+{"event": "nmpc_result", "sim_time_s": 5.449999999999989, "wall_time_s": 9.974558095, "solver_code": 3, "success": true, "elapsed_ms": 75.166982, "wall_receive_s": 13.136484382906929}
+{"event": "plan_result", "sim_time_s": 5.4999999999999885, "wall_time_s": 9.975308727, "success": false, "initial": false, "elapsed_ms": 0.076162, "stage": "topo", "plan_id": 45, "wall_receive_s": 13.142317252932116}
+{"event": "nmpc_result", "sim_time_s": 5.4999999999999885, "wall_time_s": 10.041619492, "solver_code": 3, "success": true, "elapsed_ms": 66.373744, "wall_receive_s": 13.20320734498091}
+{"event": "plan_result", "sim_time_s": 5.549999999999988, "wall_time_s": 10.075567128, "success": false, "initial": false, "elapsed_ms": 0.079245, "stage": "topo", "plan_id": 46, "wall_receive_s": 13.237634056946263}
+{"event": "nmpc_result", "sim_time_s": 5.549999999999988, "wall_time_s": 10.136550303, "solver_code": 3, "success": true, "elapsed_ms": 61.062699, "wall_receive_s": 13.29852365795523}
+{"event": "plan_result", "sim_time_s": 5.599999999999988, "wall_time_s": 10.137324705, "success": false, "initial": false, "elapsed_ms": 0.083157, "stage": "topo", "plan_id": 47, "wall_receive_s": 13.30495666898787}
+{"event": "nmpc_result", "sim_time_s": 5.599999999999988, "wall_time_s": 10.20934983, "solver_code": 3, "success": true, "elapsed_ms": 72.084378, "wall_receive_s": 13.371243437053636}
+{"event": "plan_result", "sim_time_s": 5.649999999999988, "wall_time_s": 10.210083257, "success": false, "initial": false, "elapsed_ms": 0.06437, "stage": "topo", "plan_id": 48, "wall_receive_s": 13.377300370950252}
+{"event": "nmpc_result", "sim_time_s": 5.649999999999988, "wall_time_s": 10.263272518, "solver_code": 3, "success": true, "elapsed_ms": 53.218967, "wall_receive_s": 13.42787616001442}
+{"event": "plan_result", "sim_time_s": 5.699999999999988, "wall_time_s": 10.265124818, "success": false, "initial": false, "elapsed_ms": 0.229164, "stage": "topo", "plan_id": 49, "wall_receive_s": 13.443295337026939}
+{"event": "nmpc_result", "sim_time_s": 5.699999999999988, "wall_time_s": 10.330684153, "solver_code": 3, "success": true, "elapsed_ms": 65.736254, "wall_receive_s": 13.492717725923285}
+{"event": "plan_result", "sim_time_s": 5.749999999999988, "wall_time_s": 10.331423096, "success": false, "initial": false, "elapsed_ms": 0.074003, "stage": "topo", "plan_id": 50, "wall_receive_s": 13.498465902870521}
+{"event": "nmpc_result", "sim_time_s": 5.749999999999988, "wall_time_s": 10.395307822, "solver_code": 3, "success": true, "elapsed_ms": 63.947218, "wall_receive_s": 13.55720999208279}
+{"event": "plan_result", "sim_time_s": 5.799999999999987, "wall_time_s": 10.431646742, "success": false, "initial": false, "elapsed_ms": 0.089984, "stage": "topo", "plan_id": 51, "wall_receive_s": 13.593562023947015}
+{"event": "nmpc_result", "sim_time_s": 5.799999999999987, "wall_time_s": 10.497368025, "solver_code": 3, "success": true, "elapsed_ms": 65.804656, "wall_receive_s": 13.659271975979209}
+{"event": "plan_result", "sim_time_s": 5.849999999999987, "wall_time_s": 10.498074272, "success": false, "initial": false, "elapsed_ms": 0.073121, "stage": "topo", "plan_id": 52, "wall_receive_s": 13.66535871103406}
+{"event": "nmpc_result", "sim_time_s": 5.849999999999987, "wall_time_s": 10.571296507, "solver_code": 3, "success": true, "elapsed_ms": 73.28255, "wall_receive_s": 13.733258479041979}
+{"event": "plan_result", "sim_time_s": 5.899999999999987, "wall_time_s": 10.572030183, "success": false, "initial": false, "elapsed_ms": 0.068538, "stage": "topo", "plan_id": 53, "wall_receive_s": 13.739005194045603}
+{"event": "nmpc_result", "sim_time_s": 5.899999999999987, "wall_time_s": 10.664414559, "solver_code": 3, "success": true, "elapsed_ms": 92.414919, "wall_receive_s": 13.827041157055646}
+{"event": "plan_result", "sim_time_s": 5.949999999999987, "wall_time_s": 10.66561658, "success": false, "initial": false, "elapsed_ms": 0.099011, "stage": "topo", "plan_id": 54, "wall_receive_s": 13.832905690884218}
+{"event": "nmpc_result", "sim_time_s": 5.949999999999987, "wall_time_s": 10.733492697, "solver_code": 3, "success": true, "elapsed_ms": 67.956193, "wall_receive_s": 13.895340547896922}
+{"event": "plan_result", "sim_time_s": 5.999999999999987, "wall_time_s": 10.765639819, "success": false, "initial": false, "elapsed_ms": 0.067116, "stage": "topo", "plan_id": 55, "wall_receive_s": 13.927507127868012}
+{"event": "nmpc_result", "sim_time_s": 5.999999999999987, "wall_time_s": 10.848515203, "solver_code": 3, "success": true, "elapsed_ms": 82.948944, "wall_receive_s": 14.010537042981014}
+{"event": "plan_result", "sim_time_s": 6.0499999999999865, "wall_time_s": 10.849204196, "success": false, "initial": false, "elapsed_ms": 0.062304, "stage": "topo", "plan_id": 56, "wall_receive_s": 14.016688914969563}
+{"event": "nmpc_result", "sim_time_s": 6.0499999999999865, "wall_time_s": 10.936641868, "solver_code": 5, "success": true, "elapsed_ms": 87.493244, "wall_receive_s": 14.09861335507594}
+{"event": "plan_result", "sim_time_s": 6.099999999999986, "wall_time_s": 10.937309175, "success": false, "initial": false, "elapsed_ms": 0.051806, "stage": "topo", "plan_id": 57, "wall_receive_s": 14.104740714887157}
+{"event": "nmpc_result", "sim_time_s": 6.099999999999986, "wall_time_s": 11.087323906, "solver_code": 5, "success": true, "elapsed_ms": 150.054645, "wall_receive_s": 14.254737085895613}
+{"event": "plan_result", "sim_time_s": 6.149999999999986, "wall_time_s": 11.088022372, "success": false, "initial": false, "elapsed_ms": 0.065377, "stage": "topo", "plan_id": 58, "wall_receive_s": 14.255549938883632}
+{"event": "nmpc_result", "sim_time_s": 6.149999999999986, "wall_time_s": 11.13392147, "solver_code": 3, "success": true, "elapsed_ms": 45.957623, "wall_receive_s": 14.299082909943536}
+{"event": "plan_result", "sim_time_s": 6.199999999999986, "wall_time_s": 11.185005279, "success": false, "initial": false, "elapsed_ms": 0.09414, "stage": "topo", "plan_id": 59, "wall_receive_s": 14.347041798057035}
+{"event": "nmpc_result", "sim_time_s": 6.199999999999986, "wall_time_s": 11.266793721, "solver_code": 3, "success": true, "elapsed_ms": 81.838575, "wall_receive_s": 14.4289642770309}
+{"event": "plan_result", "sim_time_s": 6.249999999999986, "wall_time_s": 11.268585021, "success": false, "initial": false, "elapsed_ms": 0.177946, "stage": "topo", "plan_id": 60, "wall_receive_s": 14.436489897081628}
+{"event": "nmpc_result", "sim_time_s": 6.249999999999986, "wall_time_s": 11.348321558, "solver_code": 3, "success": true, "elapsed_ms": 79.911623, "wall_receive_s": 14.515301743056625}
+{"event": "plan_result", "sim_time_s": 6.299999999999986, "wall_time_s": 11.349076948, "success": false, "initial": false, "elapsed_ms": 0.099356, "stage": "topo", "plan_id": 61, "wall_receive_s": 14.516068801051006}
+{"event": "nmpc_result", "sim_time_s": 6.299999999999986, "wall_time_s": 11.447031405, "solver_code": 3, "success": true, "elapsed_ms": 98.042367, "wall_receive_s": 14.608973223017529}
+{"event": "plan_result", "sim_time_s": 6.349999999999985, "wall_time_s": 11.449227822, "success": false, "initial": false, "elapsed_ms": 0.09372, "stage": "topo", "plan_id": 62, "wall_receive_s": 14.614857953041792}
+{"event": "nmpc_result", "sim_time_s": 6.349999999999985, "wall_time_s": 11.605593331, "solver_code": 5, "success": true, "elapsed_ms": 156.448418, "wall_receive_s": 14.767459848895669}
+{"event": "plan_result", "sim_time_s": 6.399999999999985, "wall_time_s": 11.60640605, "success": false, "initial": false, "elapsed_ms": 0.093532, "stage": "topo", "plan_id": 63, "wall_receive_s": 14.773422033060342}
+{"event": "nmpc_result", "sim_time_s": 6.399999999999985, "wall_time_s": 11.703299445, "solver_code": 5, "success": true, "elapsed_ms": 96.973077, "wall_receive_s": 14.869363552890718}
+{"event": "plan_result", "sim_time_s": 6.449999999999985, "wall_time_s": 11.70649431, "success": false, "initial": false, "elapsed_ms": 0.092049, "stage": "topo", "plan_id": 64, "wall_receive_s": 14.870105253066868}
+{"event": "nmpc_result", "sim_time_s": 6.449999999999985, "wall_time_s": 11.780495555, "solver_code": 3, "success": true, "elapsed_ms": 74.065113, "wall_receive_s": 14.942706448957324}
+{"event": "plan_result", "sim_time_s": 6.499999999999985, "wall_time_s": 11.781406833, "success": false, "initial": false, "elapsed_ms": 0.103657, "stage": "topo", "plan_id": 65, "wall_receive_s": 14.94960562698543}
+{"event": "nmpc_result", "sim_time_s": 6.499999999999985, "wall_time_s": 11.854569383, "solver_code": 3, "success": true, "elapsed_ms": 73.25233, "wall_receive_s": 15.016587892081589}
+{"event": "plan_result", "sim_time_s": 6.549999999999985, "wall_time_s": 11.855375089, "success": false, "initial": false, "elapsed_ms": 0.123876, "stage": "topo", "plan_id": 66, "wall_receive_s": 15.022587908897549}
+{"event": "nmpc_result", "sim_time_s": 6.549999999999985, "wall_time_s": 11.932218855, "solver_code": 3, "success": true, "elapsed_ms": 76.953851, "wall_receive_s": 15.094416142906994}
+{"event": "plan_result", "sim_time_s": 6.5999999999999845, "wall_time_s": 11.933178284, "success": false, "initial": false, "elapsed_ms": 0.110892, "stage": "topo", "plan_id": 67, "wall_receive_s": 15.100600208854303}
+{"event": "nmpc_result", "sim_time_s": 6.5999999999999845, "wall_time_s": 12.008083667, "solver_code": 3, "success": true, "elapsed_ms": 75.003283, "wall_receive_s": 15.169977311044931}
+{"event": "plan_result", "sim_time_s": 6.649999999999984, "wall_time_s": 12.033252719, "success": false, "initial": false, "elapsed_ms": 0.093145, "stage": "topo", "plan_id": 68, "wall_receive_s": 15.19498193403706}
+{"event": "nmpc_result", "sim_time_s": 6.649999999999984, "wall_time_s": 12.093624964, "solver_code": 3, "success": true, "elapsed_ms": 60.453723, "wall_receive_s": 15.255827429005876}
+{"event": "plan_result", "sim_time_s": 6.699999999999984, "wall_time_s": 12.09459354, "success": false, "initial": false, "elapsed_ms": 0.100781, "stage": "topo", "plan_id": 69, "wall_receive_s": 15.261884063016623}
+{"event": "nmpc_result", "sim_time_s": 6.699999999999984, "wall_time_s": 12.15059968, "solver_code": 3, "success": true, "elapsed_ms": 56.09799, "wall_receive_s": 15.312631035922095}
+{"event": "plan_result", "sim_time_s": 6.749999999999984, "wall_time_s": 12.151312451, "success": false, "initial": false, "elapsed_ms": 0.046886, "stage": "topo", "plan_id": 70, "wall_receive_s": 15.318716178881004}
+{"event": "nmpc_result", "sim_time_s": 6.749999999999984, "wall_time_s": 12.208392905, "solver_code": 3, "success": true, "elapsed_ms": 57.089836, "wall_receive_s": 15.375829586060718}
+{"event": "plan_result", "sim_time_s": 6.799999999999984, "wall_time_s": 12.20921323, "success": false, "initial": false, "elapsed_ms": 0.084379, "stage": "topo", "plan_id": 71, "wall_receive_s": 15.376529943896458}
+{"event": "nmpc_result", "sim_time_s": 6.799999999999984, "wall_time_s": 12.266813955, "solver_code": 3, "success": true, "elapsed_ms": 57.664625, "wall_receive_s": 15.428902239073068}
+{"event": "plan_result", "sim_time_s": 6.849999999999984, "wall_time_s": 12.26776654, "success": false, "initial": false, "elapsed_ms": 0.131535, "stage": "topo", "plan_id": 72, "wall_receive_s": 15.43522578990087}
+{"event": "nmpc_result", "sim_time_s": 6.849999999999984, "wall_time_s": 12.321875037, "solver_code": 3, "success": true, "elapsed_ms": 54.228406, "wall_receive_s": 15.48890908388421}
+{"event": "plan_result", "sim_time_s": 6.8999999999999835, "wall_time_s": 12.322562071, "success": false, "initial": false, "elapsed_ms": 0.083481, "stage": "topo", "plan_id": 73, "wall_receive_s": 15.48970421589911}
+{"event": "nmpc_result", "sim_time_s": 6.8999999999999835, "wall_time_s": 12.369772728, "solver_code": 3, "success": true, "elapsed_ms": 47.288524, "wall_receive_s": 15.531621757894754}
+{"event": "plan_result", "sim_time_s": 6.949999999999983, "wall_time_s": 12.370612136, "success": false, "initial": false, "elapsed_ms": 0.119703, "stage": "topo", "plan_id": 74, "wall_receive_s": 15.5352876749821}
+{"event": "nmpc_result", "sim_time_s": 6.949999999999983, "wall_time_s": 12.419736638, "solver_code": 3, "success": true, "elapsed_ms": 49.235364, "wall_receive_s": 15.582096053054556}
+{"event": "plan_result", "sim_time_s": 6.999999999999983, "wall_time_s": 12.420482824, "success": false, "initial": false, "elapsed_ms": 0.086289, "stage": "topo", "plan_id": 75, "wall_receive_s": 15.589777434011921}
+{"event": "nmpc_result", "sim_time_s": 6.999999999999983, "wall_time_s": 12.472731443, "solver_code": 3, "success": true, "elapsed_ms": 52.33153, "wall_receive_s": 15.641925169853494}
+{"event": "plan_result", "sim_time_s": 7.049999999999983, "wall_time_s": 12.473514639, "success": false, "initial": false, "elapsed_ms": 0.10549, "stage": "topo", "plan_id": 76, "wall_receive_s": 15.64282256201841}
+{"event": "nmpc_result", "sim_time_s": 7.049999999999983, "wall_time_s": 12.527554209, "solver_code": 3, "success": true, "elapsed_ms": 54.146506, "wall_receive_s": 15.696876297006384}
+{"event": "plan_result", "sim_time_s": 7.099999999999983, "wall_time_s": 12.528163732, "success": false, "initial": false, "elapsed_ms": 0.052342, "stage": "topo", "plan_id": 77, "wall_receive_s": 15.69779905397445}
+{"event": "nmpc_result", "sim_time_s": 7.099999999999983, "wall_time_s": 12.581990531, "solver_code": -1, "success": false, "elapsed_ms": 53.855222, "wall_receive_s": 15.752816974883899}
+{"event": "plan_result", "sim_time_s": 7.149999999999983, "wall_time_s": 12.582957022, "success": false, "initial": false, "elapsed_ms": 0.179569, "stage": "topo", "plan_id": 78, "wall_receive_s": 15.753699054941535}
+{"event": "nmpc_result", "sim_time_s": 7.149999999999983, "wall_time_s": 12.638457008, "solver_code": 3, "success": true, "elapsed_ms": 55.718855, "wall_receive_s": 15.809244767995551}
+{"event": "plan_result", "sim_time_s": 7.199999999999982, "wall_time_s": 12.639229766, "success": false, "initial": false, "elapsed_ms": 0.119681, "stage": "topo", "plan_id": 79, "wall_receive_s": 15.810281537938863}
+{"event": "nmpc_result", "sim_time_s": 7.199999999999982, "wall_time_s": 12.702564818, "solver_code": 3, "success": true, "elapsed_ms": 63.45366, "wall_receive_s": 15.871841495856643}
+{"event": "plan_result", "sim_time_s": 7.249999999999982, "wall_time_s": 12.739548301, "success": false, "initial": false, "elapsed_ms": 0.124928, "stage": "topo", "plan_id": 80, "wall_receive_s": 15.901560093043372}
+{"event": "nmpc_result", "sim_time_s": 7.249999999999982, "wall_time_s": 12.799485106, "solver_code": 3, "success": true, "elapsed_ms": 60.047263, "wall_receive_s": 15.968763093929738}
+{"event": "plan_result", "sim_time_s": 7.299999999999982, "wall_time_s": 12.800288536, "success": false, "initial": false, "elapsed_ms": 0.13045, "stage": "topo", "plan_id": 81, "wall_receive_s": 15.96962641295977}
+{"event": "nmpc_result", "sim_time_s": 7.299999999999982, "wall_time_s": 12.857127199, "solver_code": 3, "success": true, "elapsed_ms": 56.962704, "wall_receive_s": 16.019380444893613}
+{"event": "plan_result", "sim_time_s": 7.349999999999982, "wall_time_s": 12.85780308, "success": false, "initial": false, "elapsed_ms": 0.069819, "stage": "topo", "plan_id": 82, "wall_receive_s": 16.027479810873047}
+{"event": "nmpc_result", "sim_time_s": 7.349999999999982, "wall_time_s": 12.906133956, "solver_code": 3, "success": true, "elapsed_ms": 48.373418, "wall_receive_s": 16.074286684859544}
+{"event": "plan_result", "sim_time_s": 7.399999999999982, "wall_time_s": 12.907077915, "success": false, "initial": false, "elapsed_ms": 0.19658, "stage": "topo", "plan_id": 83, "wall_receive_s": 16.074985920917243}
+{"event": "nmpc_result", "sim_time_s": 7.399999999999982, "wall_time_s": 12.962668907, "solver_code": 3, "success": true, "elapsed_ms": 55.785643, "wall_receive_s": 16.124537552939728}
+{"event": "plan_result", "sim_time_s": 7.4499999999999815, "wall_time_s": 12.963480771, "success": false, "initial": false, "elapsed_ms": 0.166433, "stage": "topo", "plan_id": 84, "wall_receive_s": 16.130411114078015}
+{"event": "nmpc_result", "sim_time_s": 7.4499999999999815, "wall_time_s": 13.033720054, "solver_code": 3, "success": true, "elapsed_ms": 70.382616, "wall_receive_s": 16.195845800917596}
+{"event": "plan_result", "sim_time_s": 7.499999999999981, "wall_time_s": 13.034689109, "success": false, "initial": false, "elapsed_ms": 0.15146, "stage": "topo", "plan_id": 85, "wall_receive_s": 16.20176134002395}
+{"event": "nmpc_result", "sim_time_s": 7.499999999999981, "wall_time_s": 13.116797204, "solver_code": 3, "success": true, "elapsed_ms": 82.263715, "wall_receive_s": 16.278705179924145}
+{"event": "plan_result", "sim_time_s": 7.549999999999981, "wall_time_s": 13.117900026, "success": false, "initial": false, "elapsed_ms": 0.3636, "stage": "topo", "plan_id": 86, "wall_receive_s": 16.284992191940546}
+{"event": "nmpc_result", "sim_time_s": 7.549999999999981, "wall_time_s": 13.190043621, "solver_code": 3, "success": true, "elapsed_ms": 72.444441, "wall_receive_s": 16.353388522053137}
+{"event": "plan_result", "sim_time_s": 7.599999999999981, "wall_time_s": 13.217933019, "success": false, "initial": false, "elapsed_ms": 0.158885, "stage": "topo", "plan_id": 87, "wall_receive_s": 16.379632028983906}
+{"event": "nmpc_result", "sim_time_s": 7.599999999999981, "wall_time_s": 13.307178615, "solver_code": 3, "success": true, "elapsed_ms": 89.412652, "wall_receive_s": 16.474424734944478}
+{"event": "plan_result", "sim_time_s": 7.649999999999981, "wall_time_s": 13.307937592, "success": false, "initial": false, "elapsed_ms": 0.142905, "stage": "topo", "plan_id": 88, "wall_receive_s": 16.475047756917775}
+{"event": "nmpc_result", "sim_time_s": 7.649999999999981, "wall_time_s": 13.393548006, "solver_code": 3, "success": true, "elapsed_ms": 85.744482, "wall_receive_s": 16.561458019074053}
+{"event": "plan_result", "sim_time_s": 7.699999999999981, "wall_time_s": 13.394860017, "success": false, "initial": false, "elapsed_ms": 0.291489, "stage": "topo", "plan_id": 89, "wall_receive_s": 16.562215903075412}
+{"event": "nmpc_result", "sim_time_s": 7.699999999999981, "wall_time_s": 13.474056353, "solver_code": 3, "success": true, "elapsed_ms": 79.468157, "wall_receive_s": 16.63620891608298}
+{"event": "plan_result", "sim_time_s": 7.7499999999999805, "wall_time_s": 13.495163114, "success": false, "initial": false, "elapsed_ms": 0.384382, "stage": "topo", "plan_id": 90, "wall_receive_s": 16.65694358595647}
+{"event": "nmpc_result", "sim_time_s": 7.7499999999999805, "wall_time_s": 13.555482059, "solver_code": 3, "success": true, "elapsed_ms": 60.697004, "wall_receive_s": 16.71740045794286}
+{"event": "nmpc_result", "sim_time_s": 7.79999999999998, "wall_time_s": 13.621015923, "solver_code": 3, "success": true, "elapsed_ms": 64.855342, "wall_receive_s": 16.782888018991798}
+{"event": "plan_result", "sim_time_s": 7.84999999999998, "wall_time_s": 13.649804027, "success": true, "initial": false, "elapsed_ms": 93.632404, "stage": "complete", "plan_id": 91, "wall_receive_s": 16.811377790989354}
+{"event": "nmpc_result", "sim_time_s": 7.84999999999998, "wall_time_s": 13.684886799, "solver_code": 3, "success": true, "elapsed_ms": 63.340219, "wall_receive_s": 16.847711927024648}
+{"event": "plan_handoff", "sim_time_s": 7.89999999999998, "wall_time_s": 13.685953106, "plan_id": 91, "accepted": true, "stitch_error_m": 0.337424, "wall_receive_s": 16.857899022987112}
+{"event": "nmpc_result", "sim_time_s": 7.89999999999998, "wall_time_s": 13.732621373, "solver_code": 3, "success": true, "elapsed_ms": 43.921705, "wall_receive_s": 16.894632121082395}
+{"event": "nmpc_result", "sim_time_s": 7.94999999999998, "wall_time_s": 13.775727945, "solver_code": 3, "success": true, "elapsed_ms": 42.58134, "wall_receive_s": 16.942704136949033}
+{"event": "nmpc_result", "sim_time_s": 7.99999999999998, "wall_time_s": 13.822425459, "solver_code": 3, "success": true, "elapsed_ms": 46.181214, "wall_receive_s": 16.984895973000675}
+{"event": "nmpc_result", "sim_time_s": 8.04999999999998, "wall_time_s": 13.868888661, "solver_code": 3, "success": true, "elapsed_ms": 45.906143, "wall_receive_s": 17.0390894820448}
+{"event": "nmpc_result", "sim_time_s": 8.09999999999998, "wall_time_s": 13.927045368, "solver_code": 3, "success": true, "elapsed_ms": 57.648629, "wall_receive_s": 17.093107237946242}
+{"event": "nmpc_result", "sim_time_s": 8.14999999999998, "wall_time_s": 13.983800032, "solver_code": 3, "success": true, "elapsed_ms": 56.247137, "wall_receive_s": 17.146097850985825}
+{"event": "nmpc_result", "sim_time_s": 8.199999999999982, "wall_time_s": 14.049858098, "solver_code": 3, "success": true, "elapsed_ms": 65.31423, "wall_receive_s": 17.22351888893172}
+{"event": "nmpc_result", "sim_time_s": 8.249999999999982, "wall_time_s": 14.10758234, "solver_code": 3, "success": true, "elapsed_ms": 57.202173, "wall_receive_s": 17.274913704022765}
+{"event": "nmpc_result", "sim_time_s": 8.299999999999983, "wall_time_s": 14.197180279, "solver_code": 3, "success": true, "elapsed_ms": 46.547413, "wall_receive_s": 17.367408535908908}
+{"event": "nmpc_result", "sim_time_s": 8.349999999999984, "wall_time_s": 14.240601054, "solver_code": 3, "success": true, "elapsed_ms": 40.155964, "wall_receive_s": 17.402550681028515}
+{"event": "nmpc_result", "sim_time_s": 8.399999999999984, "wall_time_s": 14.301403417, "solver_code": 3, "success": true, "elapsed_ms": 50.939088, "wall_receive_s": 17.464023614069447}
+{"event": "nmpc_result", "sim_time_s": 8.449999999999985, "wall_time_s": 14.34565157, "solver_code": 3, "success": true, "elapsed_ms": 43.550194, "wall_receive_s": 17.51592604094185}
+{"event": "nmpc_result", "sim_time_s": 8.499999999999986, "wall_time_s": 14.390964242, "solver_code": 3, "success": true, "elapsed_ms": 40.479663, "wall_receive_s": 17.55731295188889}
+{"event": "nmpc_result", "sim_time_s": 8.549999999999986, "wall_time_s": 14.451741023, "solver_code": 3, "success": true, "elapsed_ms": 51.179576, "wall_receive_s": 17.620839416980743}
+{"event": "nmpc_result", "sim_time_s": 8.599999999999987, "wall_time_s": 14.501745389, "solver_code": -1, "success": false, "elapsed_ms": 49.488099, "wall_receive_s": 17.671693936921656}
+{"event": "nmpc_result", "sim_time_s": 8.649999999999988, "wall_time_s": 14.525756543, "solver_code": 3, "success": true, "elapsed_ms": 23.433932, "wall_receive_s": 17.69265667302534}
+{"event": "nmpc_result", "sim_time_s": 8.699999999999989, "wall_time_s": 14.604189994, "solver_code": 3, "success": true, "elapsed_ms": 53.662233, "wall_receive_s": 17.76638368703425}
+{"event": "nmpc_result", "sim_time_s": 8.74999999999999, "wall_time_s": 14.629582626, "solver_code": 3, "success": true, "elapsed_ms": 24.832608, "wall_receive_s": 17.791552409064025}
+{"event": "nmpc_result", "sim_time_s": 8.79999999999999, "wall_time_s": 14.707910103, "solver_code": 3, "success": true, "elapsed_ms": 57.332394, "wall_receive_s": 17.87833883985877}
+{"event": "nmpc_result", "sim_time_s": 8.84999999999999, "wall_time_s": 14.765733942, "solver_code": 3, "success": true, "elapsed_ms": 57.184659, "wall_receive_s": 17.927938665030524}
+{"event": "nmpc_result", "sim_time_s": 8.899999999999991, "wall_time_s": 14.79658572, "solver_code": 3, "success": true, "elapsed_ms": 30.175386, "wall_receive_s": 17.95887295086868}
+{"event": "plan_result", "sim_time_s": 8.949999999999992, "wall_time_s": 14.800941276, "success": false, "initial": false, "elapsed_ms": 0.260113, "stage": "topo", "plan_id": 92, "wall_receive_s": 17.967206910951063}
+{"event": "nmpc_result", "sim_time_s": 8.949999999999992, "wall_time_s": 14.834330836, "solver_code": 3, "success": true, "elapsed_ms": 33.672747, "wall_receive_s": 18.009098619921133}
+{"event": "plan_result", "sim_time_s": 8.999999999999993, "wall_time_s": 14.850775349, "success": false, "initial": false, "elapsed_ms": 0.174311, "stage": "topo", "plan_id": 93, "wall_receive_s": 18.012383410939947}
+{"event": "nmpc_result", "sim_time_s": 8.999999999999993, "wall_time_s": 14.896739198, "solver_code": 3, "success": true, "elapsed_ms": 46.120535, "wall_receive_s": 18.066914750030264}
+{"event": "plan_result", "sim_time_s": 9.049999999999994, "wall_time_s": 14.900655456, "success": false, "initial": false, "elapsed_ms": 0.127398, "stage": "topo", "plan_id": 94, "wall_receive_s": 18.06764931185171}
+{"event": "nmpc_result", "sim_time_s": 9.049999999999994, "wall_time_s": 14.948320705, "solver_code": 3, "success": true, "elapsed_ms": 47.755755, "wall_receive_s": 18.110437165014446}
+{"event": "plan_result", "sim_time_s": 9.099999999999994, "wall_time_s": 14.950704163, "success": false, "initial": false, "elapsed_ms": 0.167572, "stage": "topo", "plan_id": 95, "wall_receive_s": 18.115178660023957}
+{"event": "nmpc_result", "sim_time_s": 9.099999999999994, "wall_time_s": 14.987714153, "solver_code": 3, "success": true, "elapsed_ms": 37.175041, "wall_receive_s": 18.15788041194901}
+{"event": "plan_result", "sim_time_s": 9.149999999999995, "wall_time_s": 15.001039337, "success": false, "initial": false, "elapsed_ms": 0.192311, "stage": "topo", "plan_id": 96, "wall_receive_s": 18.1627138920594}
+{"event": "nmpc_result", "sim_time_s": 9.149999999999995, "wall_time_s": 15.042763568, "solver_code": 3, "success": true, "elapsed_ms": 41.884181, "wall_receive_s": 18.20471744192764}
+{"event": "nmpc_result", "sim_time_s": 9.199999999999996, "wall_time_s": 15.088539814, "solver_code": 3, "success": true, "elapsed_ms": 38.044207, "wall_receive_s": 18.25087224994786}
+{"event": "nmpc_result", "sim_time_s": 9.249999999999996, "wall_time_s": 15.123448108, "solver_code": 3, "success": true, "elapsed_ms": 22.89655, "wall_receive_s": 18.285805993014947}
+{"event": "nmpc_result", "sim_time_s": 9.299999999999997, "wall_time_s": 15.174590425, "solver_code": 3, "success": true, "elapsed_ms": 23.996315, "wall_receive_s": 18.337035870878026}
+{"event": "nmpc_result", "sim_time_s": 9.349999999999998, "wall_time_s": 15.228412256, "solver_code": -1, "success": false, "elapsed_ms": 27.837311, "wall_receive_s": 18.39820883097127}
+{"event": "nmpc_result", "sim_time_s": 9.399999999999999, "wall_time_s": 15.277085471, "solver_code": -1, "success": false, "elapsed_ms": 26.477985, "wall_receive_s": 18.43937266501598}
+{"event": "nmpc_result", "sim_time_s": 9.45, "wall_time_s": 15.33107389, "solver_code": 3, "success": true, "elapsed_ms": 30.447547, "wall_receive_s": 18.50081787700765}
+{"event": "nmpc_result", "sim_time_s": 9.5, "wall_time_s": 15.386538003, "solver_code": 3, "success": true, "elapsed_ms": 36.010947, "wall_receive_s": 18.549170684069395}
+{"event": "nmpc_result", "sim_time_s": 9.55, "wall_time_s": 15.439982495, "solver_code": 3, "success": true, "elapsed_ms": 39.496026, "wall_receive_s": 18.609452967066318}
+{"event": "nmpc_result", "sim_time_s": 9.600000000000001, "wall_time_s": 15.493779552, "solver_code": 3, "success": true, "elapsed_ms": 43.201864, "wall_receive_s": 18.656026541953906}
+{"event": "nmpc_result", "sim_time_s": 9.650000000000002, "wall_time_s": 15.546892136, "solver_code": 3, "success": true, "elapsed_ms": 46.438836, "wall_receive_s": 18.715560853946954}
+{"event": "plan_result", "sim_time_s": 9.700000000000003, "wall_time_s": 15.550614205, "success": false, "initial": false, "elapsed_ms": 0.101217, "stage": "topo", "plan_id": 97, "wall_receive_s": 18.716562470886856}
+{"event": "nmpc_result", "sim_time_s": 9.700000000000003, "wall_time_s": 15.580039925, "solver_code": 3, "success": true, "elapsed_ms": 29.526932, "wall_receive_s": 18.74187162099406}
+{"event": "plan_result", "sim_time_s": 9.750000000000004, "wall_time_s": 15.600655704, "success": false, "initial": false, "elapsed_ms": 0.080262, "stage": "topo", "plan_id": 98, "wall_receive_s": 18.76230934006162}
+{"event": "nmpc_result", "sim_time_s": 9.750000000000004, "wall_time_s": 15.645551383, "solver_code": 3, "success": true, "elapsed_ms": 44.971464, "wall_receive_s": 18.81452149199322}
+{"event": "plan_result", "sim_time_s": 9.800000000000004, "wall_time_s": 15.650638214, "success": false, "initial": false, "elapsed_ms": 0.090887, "stage": "topo", "plan_id": 99, "wall_receive_s": 18.81523206993006}
+{"event": "nmpc_result", "sim_time_s": 9.800000000000004, "wall_time_s": 15.692037519, "solver_code": 3, "success": true, "elapsed_ms": 41.483967, "wall_receive_s": 18.854054217925295}
+{"event": "plan_result", "sim_time_s": 9.850000000000005, "wall_time_s": 15.700654744, "success": false, "initial": false, "elapsed_ms": 0.099929, "stage": "topo", "plan_id": 100, "wall_receive_s": 18.86220592702739}
+{"event": "nmpc_result", "sim_time_s": 9.850000000000005, "wall_time_s": 15.746463618, "solver_code": 3, "success": true, "elapsed_ms": 45.906041, "wall_receive_s": 18.908727383008227}
+{"event": "plan_result", "sim_time_s": 9.900000000000006, "wall_time_s": 15.75059054, "success": false, "initial": false, "elapsed_ms": 0.096977, "stage": "topo", "plan_id": 101, "wall_receive_s": 18.916913677938282}
+{"event": "nmpc_result", "sim_time_s": 9.900000000000006, "wall_time_s": 15.793307776, "solver_code": 3, "success": true, "elapsed_ms": 42.805939, "wall_receive_s": 18.964336205041036}
+{"event": "plan_result", "sim_time_s": 9.950000000000006, "wall_time_s": 15.800606384, "success": false, "initial": false, "elapsed_ms": 0.095319, "stage": "topo", "plan_id": 102, "wall_receive_s": 18.965024347882718}
+{"event": "nmpc_result", "sim_time_s": 9.950000000000006, "wall_time_s": 15.844870547, "solver_code": 3, "success": true, "elapsed_ms": 44.368033, "wall_receive_s": 19.00712584098801}
+{"event": "plan_result", "sim_time_s": 10.000000000000007, "wall_time_s": 15.850582479, "success": false, "initial": false, "elapsed_ms": 0.067343, "stage": "topo", "plan_id": 103, "wall_receive_s": 19.01593135506846}
+{"event": "nmpc_result", "sim_time_s": 10.000000000000007, "wall_time_s": 15.88545504, "solver_code": 3, "success": true, "elapsed_ms": 34.933908, "wall_receive_s": 19.055339525919408}
+{"event": "plan_result", "sim_time_s": 10.050000000000008, "wall_time_s": 15.900667215, "success": false, "initial": false, "elapsed_ms": 0.087817, "stage": "topo", "plan_id": 104, "wall_receive_s": 19.06228202697821}
+{"event": "nmpc_result", "sim_time_s": 10.050000000000008, "wall_time_s": 15.951514721, "solver_code": 3, "success": true, "elapsed_ms": 50.936202, "wall_receive_s": 19.121742521878332}
+{"event": "plan_result", "sim_time_s": 10.100000000000009, "wall_time_s": 15.952139168, "success": false, "initial": false, "elapsed_ms": 0.058749, "stage": "topo", "plan_id": 105, "wall_receive_s": 19.122647423064336}
+{"event": "nmpc_result", "sim_time_s": 10.100000000000009, "wall_time_s": 15.996279118, "solver_code": 3, "success": true, "elapsed_ms": 44.202417, "wall_receive_s": 19.166350479936227}
+{"event": "plan_result", "sim_time_s": 10.15000000000001, "wall_time_s": 16.000580109, "success": false, "initial": false, "elapsed_ms": 0.074538, "stage": "topo", "plan_id": 106, "wall_receive_s": 19.166974341031164}
+{"event": "nmpc_result", "sim_time_s": 10.15000000000001, "wall_time_s": 16.042870025, "solver_code": 3, "success": true, "elapsed_ms": 42.367587, "wall_receive_s": 19.21267584292218}
+{"event": "plan_result", "sim_time_s": 10.20000000000001, "wall_time_s": 16.050691581, "success": false, "initial": false, "elapsed_ms": 0.079069, "stage": "topo", "plan_id": 107, "wall_receive_s": 19.213625653879717}
+{"event": "nmpc_result", "sim_time_s": 10.20000000000001, "wall_time_s": 16.091745436, "solver_code": 3, "success": true, "elapsed_ms": 41.191514, "wall_receive_s": 19.261829463997856}
+{"event": "plan_result", "sim_time_s": 10.25000000000001, "wall_time_s": 16.100668949, "success": false, "initial": false, "elapsed_ms": 0.079375, "stage": "topo", "plan_id": 108, "wall_receive_s": 19.262763316975906}
+{"event": "nmpc_result", "sim_time_s": 10.25000000000001, "wall_time_s": 16.143907771, "solver_code": 3, "success": true, "elapsed_ms": 43.324678, "wall_receive_s": 19.313440762925893}
+{"event": "plan_result", "sim_time_s": 10.300000000000011, "wall_time_s": 16.150641731, "success": false, "initial": false, "elapsed_ms": 0.107938, "stage": "topo", "plan_id": 109, "wall_receive_s": 19.314334352035075}
+{"event": "nmpc_result", "sim_time_s": 10.300000000000011, "wall_time_s": 16.190240901, "solver_code": 3, "success": true, "elapsed_ms": 39.70978, "wall_receive_s": 19.360219264868647}
+{"event": "plan_result", "sim_time_s": 10.350000000000012, "wall_time_s": 16.200644356, "success": false, "initial": false, "elapsed_ms": 0.054352, "stage": "topo", "plan_id": 110, "wall_receive_s": 19.362309651914984}
+{"event": "nmpc_result", "sim_time_s": 10.350000000000012, "wall_time_s": 16.254694619, "solver_code": 3, "success": true, "elapsed_ms": 54.08007, "wall_receive_s": 19.424854853888974}
+{"event": "plan_result", "sim_time_s": 10.400000000000013, "wall_time_s": 16.255618721, "success": false, "initial": false, "elapsed_ms": 0.115205, "stage": "topo", "plan_id": 111, "wall_receive_s": 19.425984493922442}
+{"event": "nmpc_result", "sim_time_s": 10.400000000000013, "wall_time_s": 16.296346491, "solver_code": 3, "success": true, "elapsed_ms": 40.838242, "wall_receive_s": 19.466015135869384}
+{"event": "plan_result", "sim_time_s": 10.450000000000014, "wall_time_s": 16.30067985, "success": false, "initial": false, "elapsed_ms": 0.07355, "stage": "topo", "plan_id": 112, "wall_receive_s": 19.466917912941426}
+{"event": "nmpc_result", "sim_time_s": 10.450000000000014, "wall_time_s": 16.356745491, "solver_code": 3, "success": true, "elapsed_ms": 56.193409, "wall_receive_s": 19.526304740924388}
+{"event": "plan_result", "sim_time_s": 10.500000000000014, "wall_time_s": 16.357463883, "success": false, "initial": false, "elapsed_ms": 0.08568, "stage": "topo", "plan_id": 113, "wall_receive_s": 19.527158666867763}
+{"event": "nmpc_result", "sim_time_s": 10.500000000000014, "wall_time_s": 16.410812959, "solver_code": 3, "success": true, "elapsed_ms": 53.433546, "wall_receive_s": 19.580939926905558}
+{"event": "plan_result", "sim_time_s": 10.550000000000015, "wall_time_s": 16.411443856, "success": false, "initial": false, "elapsed_ms": 0.092358, "stage": "topo", "plan_id": 114, "wall_receive_s": 19.581923346035182}
+{"event": "nmpc_result", "sim_time_s": 10.550000000000015, "wall_time_s": 16.480107751, "solver_code": 3, "success": true, "elapsed_ms": 68.764151, "wall_receive_s": 19.642363152932376}
+{"event": "plan_result", "sim_time_s": 10.600000000000016, "wall_time_s": 16.480775209, "success": false, "initial": false, "elapsed_ms": 0.101932, "stage": "topo", "plan_id": 115, "wall_receive_s": 19.64997610892169}
+{"event": "nmpc_result", "sim_time_s": 10.600000000000016, "wall_time_s": 16.546823531, "solver_code": 3, "success": true, "elapsed_ms": 66.152781, "wall_receive_s": 19.716360613005236}
+{"event": "plan_result", "sim_time_s": 10.650000000000016, "wall_time_s": 16.54753436, "success": false, "initial": false, "elapsed_ms": 0.097189, "stage": "topo", "plan_id": 116, "wall_receive_s": 19.717427117051557}
+{"event": "nmpc_result", "sim_time_s": 10.650000000000016, "wall_time_s": 16.605122115, "solver_code": 3, "success": true, "elapsed_ms": 57.682733, "wall_receive_s": 19.77472388604656}
+{"event": "nmpc_result", "sim_time_s": 10.700000000000017, "wall_time_s": 16.661590744, "solver_code": 3, "success": true, "elapsed_ms": 55.916262, "wall_receive_s": 19.83076153206639}
+{"event": "nmpc_result", "sim_time_s": 10.750000000000018, "wall_time_s": 16.769828202, "solver_code": 3, "success": true, "elapsed_ms": 63.851516, "wall_receive_s": 19.933112372877076}
+{"event": "nmpc_result", "sim_time_s": 10.800000000000018, "wall_time_s": 16.856271046, "solver_code": 3, "success": true, "elapsed_ms": 85.364667, "wall_receive_s": 20.026543082902208}
+{"event": "nmpc_result", "sim_time_s": 10.85000000000002, "wall_time_s": 16.91428075, "solver_code": 3, "success": true, "elapsed_ms": 57.536673, "wall_receive_s": 20.076463164994493}
+{"event": "nmpc_result", "sim_time_s": 10.90000000000002, "wall_time_s": 17.043031936, "solver_code": 3, "success": true, "elapsed_ms": 86.01238, "wall_receive_s": 20.212343791965395}
+{"event": "nmpc_result", "sim_time_s": 10.95000000000002, "wall_time_s": 17.115561234, "solver_code": 3, "success": true, "elapsed_ms": 71.984803, "wall_receive_s": 20.28450515586883}
+{"event": "nmpc_result", "sim_time_s": 11.000000000000021, "wall_time_s": 17.181197587, "solver_code": 3, "success": true, "elapsed_ms": 65.133677, "wall_receive_s": 20.35108196293004}
+{"event": "nmpc_result", "sim_time_s": 11.050000000000022, "wall_time_s": 17.285536599, "solver_code": 3, "success": true, "elapsed_ms": 69.084658, "wall_receive_s": 20.44833715702407}
+{"event": "nmpc_result", "sim_time_s": 11.100000000000023, "wall_time_s": 17.337076026, "solver_code": 3, "success": true, "elapsed_ms": 50.701195, "wall_receive_s": 20.502443165052682}
+{"event": "nmpc_result", "sim_time_s": 11.150000000000023, "wall_time_s": 17.407501042, "solver_code": 3, "success": true, "elapsed_ms": 69.921649, "wall_receive_s": 20.576585084898397}
+{"event": "nmpc_result", "sim_time_s": 11.200000000000024, "wall_time_s": 17.490887852, "solver_code": 3, "success": true, "elapsed_ms": 82.856115, "wall_receive_s": 20.653566618915647}
+{"event": "nmpc_result", "sim_time_s": 11.250000000000025, "wall_time_s": 17.556417588, "solver_code": 3, "success": true, "elapsed_ms": 64.609785, "wall_receive_s": 20.725841782987118}
+{"event": "nmpc_result", "sim_time_s": 11.300000000000026, "wall_time_s": 17.676978824, "solver_code": 3, "success": true, "elapsed_ms": 84.761609, "wall_receive_s": 20.846470983000472}
+{"event": "nmpc_result", "sim_time_s": 11.350000000000026, "wall_time_s": 17.724942239, "solver_code": 3, "success": true, "elapsed_ms": 47.275162, "wall_receive_s": 20.894413814879954}
+{"event": "nmpc_result", "sim_time_s": 11.400000000000027, "wall_time_s": 17.763011454, "solver_code": 3, "success": true, "elapsed_ms": 37.534424, "wall_receive_s": 20.932310285046697}
+{"event": "nmpc_result", "sim_time_s": 11.450000000000028, "wall_time_s": 17.832719111, "solver_code": 5, "success": true, "elapsed_ms": 69.221508, "wall_receive_s": 20.99452173989266}
+{"event": "nmpc_result", "sim_time_s": 11.500000000000028, "wall_time_s": 17.876411248, "solver_code": 3, "success": true, "elapsed_ms": 43.082028, "wall_receive_s": 21.04672331805341}
+{"event": "nmpc_result", "sim_time_s": 11.55000000000003, "wall_time_s": 17.931939281, "solver_code": 3, "success": true, "elapsed_ms": 55.04213, "wall_receive_s": 21.10104626091197}
+{"event": "nmpc_result", "sim_time_s": 11.60000000000003, "wall_time_s": 17.994366428, "solver_code": 5, "success": true, "elapsed_ms": 61.94771, "wall_receive_s": 21.156504563987255}
+{"event": "mission_end", "origin": "collector", "reason": "goal_reached", "sim_time_s": 11.65, "wall_receive_s": 21.16386695485562}
+{"event": "mission_end", "sim_time_s": 11.65000000000003, "wall_time_s": 18.04538273, "reason": "goal_reached", "wall_receive_s": 21.207157334079966}
