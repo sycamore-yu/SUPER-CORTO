@@ -5,7 +5,9 @@
 `corto_direct` 是唯一执行链。
 NMPC 输出 `[wx,wy,wz,thrust]`，直接调用上游 `NominalQuadDynamic::rk4_func`。
 状态为位置、速度和四元数，共 10 维。步长为 0.05 s。
-保留上游输入移位、目标函数、约束、Jacobian 和异步重规划。
+本版执行 NMPC 优化序列的首个动作，再移动热启动序列。
+目标函数、原有约束与 Jacobian 继续使用 CORTO。
+Topo-PRM 采用 320 次采样与 ROG-Map 体素射线；局部目标占据时就近选择空闲点。
 PerfectDrone 只转发 `/corto/odom`，渲染同一位姿，保留同一时间戳。
 
 速度上限为 10 m/s；SOCP 加速度上限为 5 m/s²。

@@ -1,15 +1,15 @@
 # CORTO ROS 2 移植契约
 
-上游固定为 `yzpd/CORTO-Planner@e05a2e60f78d9ae4425981c1343913c3c67d3bb3`。原始源码位于 `../vendor/corto`。本包保留原 C++ 数值算法，运行接口改用 ROS 2 Jazzy。
+上游固定为 `yzpd/CORTO-Planner@e05a2e60f78d9ae4425981c1343913c3c67d3bb3`。原始源码位于 `../vendor/corto`。本包运行于 ROS 2 Jazzy，修复后的算法差异见 `docs/repair-pipeline.md`。
 
 ## 算法文件
 
-| 阶段 | 文件 | 保留行为 |
+| 阶段 | 文件 | 当前行为 |
 | --- | --- | --- |
-| Topo-PRM | `modules/path_searching/topo_prm.cpp` | 80 次采样、Guard/Connector、路径剪枝与同拓扑去重 |
+| Topo-PRM | `modules/path_searching/topo_prm.cpp` | 320 次采样、ROG-Map 膨胀体素射线、Guard/Connector 和安全路径缩短 |
 | 弧长样条 | `modules/cubic_spline/` | 原版三次样条、重采样与导数 |
 | SOCP | `modules/optimization/ref_traj_opt.cpp` | MOSEK Fusion、100 节点、速度平方变量、原加速度/jerk约束 |
-| PTF SFC | `modules/corridor/` | 原点云投影、分段系数、L-BFGS 分阶段惩罚、体积计算 |
+| PTF SFC | `modules/corridor/` | 弧长投影、连续潜变量椭圆、L-BFGS 分阶段惩罚、体积计算 |
 | NMPC | `modules/nmpc/` | SLSQP、10×0.05 s、RK4、原代价/约束/解析Jacobian |
 | 异步规划与交接 | `src/corto_node.cpp` | 双走廊池、耗时EMA、预测接续点、候选选择、交接距离门限 |
 
@@ -17,12 +17,12 @@
 
 ## 原版数值语义
 
-这些行为来自固定提交。复现实验不修正它们：
+以下区分上游行为和修复版行为：
 
 - SFC 使用 `NLP_LBFGS()`。最后一次优化返回成功或达到迭代上限，且原始投影点违反数量不超过整数除法 `n_all_raw / 4` 时，原版允许该候选进入选择。
-- 主循环先将控制矩阵 U 向前移位，再取 `U.row(0)`。执行值对应刚求出的第 2 个控制节点。
-- SOCP 的 w 变量表示速度平方，但重规划入口传入的是速度范数 `snap_v`。
-- 参考节点使用最近的离散累计时间节点。SFC 的优化隐参数转换及输出系数插值方式保持原版。
+- 上游先移动 U 再执行，实际执行第 2 个优化节点；修复版先执行 `U.row(0)`，再移动热启动序列。
+- SOCP 的 w 变量表示速度平方；修复版将 `snap_v` 平方后用作入口值。
+- 参考节点仍使用最近的离散累计时间节点；SFC 改为与 L-BFGS 完全一致的潜变量椭圆插值。
 - NMPC 原版硬约束只有速度范数与横截面椭圆约束。5 m/s² 是 SOCP 的设置；未另加 NMPC 加速度硬约束。
 - 状态顺序为 `[px,py,pz,vx,vy,vz,qw,qx,qy,qz]`。原版初始化尾部 `[0,0,0,1]` 对应偏航 π。本包保留该值。
 - NMPC 的机体角速度范围为 ±1.8π rad/s。归一化推力范围为 [0,0.8]，悬停推力为 0.6。
@@ -49,7 +49,7 @@ NMPC 输出直接进入原版 RK4，每步推进 0.05 s。
 
 start_pos_x/y/z 和 goal_pos_x/y/z 直接使用 world 坐标。默认起终点为 [-14,-6.5,0.49] 和 [6.8,5.2,0.49]。原 demo 的局部坐标偏移不再重复施加。地图坐标转换由 GridMap::origin() 明确提供。Topo-PRM 不再写死原版的 z=-0.01 偏移。
 
-地图实际查询委托给 ROG-Map。SFC 点云由同一膨胀占据查询按原网格中心采样生成，保留原版排除上下 2.5 个体素的点云采样规则。MARSIM 输出仍由 PerfectDrone 提供。
+地图实际查询委托给 ROG-Map。SFC 点云从同一膨胀占据查询按网格中心采样生成，包含靠近地面和天花板的占据体素。MARSIM 输出仍由 PerfectDrone 提供。
 
 `ros::NodeHandle` 参数读取直接替换为 rclcpp 参数读取。参数中的斜杠改为点，例如 `nmpc.maxVel`。Topo-PRM 新增 `planner_seed`：-1 保留随机设备种子，非负值固定随机输入。线程在销毁前 join，避免后台引用悬空。头文件 `Pre4NMPC_Robust` 增加 inline，解决重复定义；函数体未改。
 

@@ -1,0 +1,14 @@
+{
+  "run_id": "direct_medium_04",
+  "scene": "medium",
+  "planner_seed": 4,
+  "manifest_sha256": "273f0af552f8156469a91434fbf4becde06989ebbb508bf0c5c2f616b9d031d1",
+  "protocol_version": 3,
+  "execution": "corto_direct",
+  "scene_sha256": "24a02fd809d1fac2a29848295ed9ddd274a6fe2f500cfbac8276f0456728c7c3",
+  "ros_domain_id": "201",
+  "ros_distro": "jazzy",
+  "code_commit": "1f5785b29cbfe90a158f54a1e59e2fc86b7b2c29",
+  "tracked_source_dirty": false,
+  "started_utc": "2026-11-15T09:30:08Z"
+}

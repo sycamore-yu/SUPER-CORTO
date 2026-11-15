@@ -1,0 +1,214 @@
+[INFO] [launch]: All log files can be found below /var/lib/tong-services/home/.ros/log/2026-11-15-17-35-30-786640-tianmushan1060-1991816
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [vglrun-1]: process started with pid [1991830]
+[INFO] [corto_node-2]: process started with pid [1991831]
+[vglrun-1] Load config file: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/results/table3_repaired/direct_dense_04/sim_config.yaml
+[vglrun-1] [0;32m Load param mesh_resource success: [0;0mpackage://perfect_drone_sim/meshes/yunque-M.dae
+[vglrun-1] [0;32m Load param init_position/x success: [0;0m-14
+[vglrun-1] [0;32m Load param init_position/y success: [0;0m-6.5
+[vglrun-1] [0;32m Load param init_position/z success: [0;0m0.49
+[vglrun-1] [0;32m Load param init_yaw success: [0;0m3.14159
+[vglrun-1] [0;32m Load param sensing_rate success: [0;0m10
+[vglrun-1] Load config file: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/results/table3_repaired/direct_dense_04/sim_config.yaml
+[vglrun-1] [0;32m Load param sensing_blind success: [0;0m0.1
+[vglrun-1] [0;32m Load param sensing_horizon success: [0;0m15
+[vglrun-1] [0;32m Load param sensing_rate success: [0;0m10
+[vglrun-1] [0;32m Load param lidar_type success: [0;0m2
+[vglrun-1] [0;32m Load param pcd_name success: [0;0m/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/experiments/scenes/dense.pcd
+[vglrun-1] [0;32m Load param is_360lidar success: [0;0m1
+[vglrun-1] [0;32m Load param polar_resolution success: [0;0m0.4
+[vglrun-1] [0;33m Load param fx failed, use default value: [0;0m250
+[vglrun-1] [0;33m Load param fy failed, use default value: [0;0m250
+[vglrun-1] [0;33m Load param line_number failed, use default value: [0;0m64
+[vglrun-1] [0;32m Load param downsample_res success: [0;0m0.1
+[vglrun-1] [0;33m Load param yaw_fov failed, use default value: [0;0m360
+[vglrun-1] [0;32m Load param vertical_fov success: [0;0m178
+[vglrun-1] [0;32m Load param depth_image_en success: [0;0m0
+[vglrun-1] [0;33m Load param inf_point_en failed, use default value: [0;0m0
+[vglrun-1] [0;32m Load param print_time_consumption success: [0;0m0
+[vglrun-1] GLAD init success
+[vglrun-1] Load shader frome: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/marsim_render/config/pattern/360camera.vs
+[vglrun-1] Failed to find match for field 'intensity'.
+[vglrun-1] Now initing the point cloud data: 
+[vglrun-1] Number of points = 10.9723X 10000
+[vglrun-1] Load data finish 
+[vglrun-1] ========== OpenGL Info ==========
+[vglrun-1] Vendor: NVIDIA Corporation
+[vglrun-1] Renderer: NVIDIA GeForce RTX 4090/PCIe/SSE2
+[vglrun-1] OpenGL Version: 3.3.0 NVIDIA 595.84
+[vglrun-1] GLSL Version: 3.30 NVIDIA via Cg compiler
+[vglrun-1] ========== OpenGL Info ==========
+[corto_node-2] Load config file: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/results/table3_repaired/direct_dense_04/map_config.yaml
+[corto_node-2] [0;32m Load param rog_map/esdf/resolution success: [0;0m0.1
+[corto_node-2] [0;32m Load param rog_map/esdf/enable success: [0;0m0
+[corto_node-2] [0;32m Load param rog_map/esdf/local_update_box success: [0;0m[30 15 3 ]
+[corto_node-2] [0;32m Load param rog_map/load_pcd_en success: [0;0m1
+[corto_node-2] [0;32m Load param rog_map/pcd_name success: [0;0m/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/experiments/scenes/dense.pcd
+[corto_node-2] [0;32m Load param rog_map/map_sliding/enable success: [0;0m0
+[corto_node-2] [0;32m Load param rog_map/map_sliding/threshold success: [0;0m3
+[corto_node-2] [0;32m Load param rog_map/fix_map_origin success: [0;0m[0 0 1.5 ]
+[corto_node-2] [0;32m Load param rog_map/frontier_extraction_en success: [0;0m0
+[corto_node-2] [0;32m Load param rog_map/ros_callback/enable success: [0;0m0
+[corto_node-2] [0;32m Load param rog_map/ros_callback/cloud_topic success: [0;0m/cloud_registered
+[corto_node-2] [0;32m Load param rog_map/ros_callback/odom_topic success: [0;0m/lidar_slam/odom
+[corto_node-2] [0;32m Load param rog_map/ros_callback/odom_timeout success: [0;0m2
+[corto_node-2] [0;32m Load param rog_map/visualization/enable success: [0;0m0
+[corto_node-2] [0;32m Load param rog_map/visualization/use_dynamic_reconfigure success: [0;0m0
+[corto_node-2] [0;32m Load param rog_map/visualization/pub_unknown_map_en success: [0;0m0
+[corto_node-2] [0;32m Load param rog_map/visualization/frame_id success: [0;0mworld
+[corto_node-2] [0;32m Load param rog_map/visualization/time_rate success: [0;0m1
+[corto_node-2] [0;32m Load param rog_map/visualization/frame_rate success: [0;0m0
+[corto_node-2] [0;32m Load param rog_map/visualization/range success: [0;0m[30 15 3 ]
+[corto_node-2] [0;32m Load param rog_map/resolution success: [0;0m0.1
+[corto_node-2] [0;32m Load param rog_map/inflation_resolution success: [0;0m0.1
+[corto_node-2] [0;32m Load param rog_map/unk_inflation_en success: [0;0m0
+[corto_node-2] [0;32m Load param rog_map/unk_inflation_step success: [0;0m0
+[corto_node-2] [0;32m Load param rog_map/inflation_step success: [0;0m1
+[corto_node-2] [0;32m Load param rog_map/intensity_thresh success: [0;0m-10
+[corto_node-2] [0;32m Load param rog_map/map_size success: [0;0m[30 15 3 ]
+[corto_node-2] [0;32m Load param rog_map/point_filt_num success: [0;0m1
+[corto_node-2] [0;32m Load param rog_map/raycasting/enable success: [0;0m0
+[corto_node-2] [0;32m Load param rog_map/raycasting/batch_update_size success: [0;0m1
+[corto_node-2] [0;32m Load param rog_map/raycasting/unk_thresh success: [0;0m1
+[corto_node-2] [0;32m Load param rog_map/raycasting/p_hit success: [0;0m0.9
+[corto_node-2] [0;32m Load param rog_map/raycasting/p_miss success: [0;0m0.49
+[corto_node-2] [0;32m Load param rog_map/raycasting/p_min success: [0;0m0.12
+[corto_node-2] [0;32m Load param rog_map/raycasting/p_max success: [0;0m0.98
+[corto_node-2] [0;32m Load param rog_map/raycasting/p_occ success: [0;0m0.85
+[corto_node-2] [0;32m Load param rog_map/raycasting/p_free success: [0;0m0.499
+[corto_node-2] [0;32m Load param rog_map/raycasting/p_free success: [0;0m0.499
+[corto_node-2] [0;32m Load param rog_map/raycasting/ray_range success: [0;0m[0.1 40 ]
+[corto_node-2] [0;32m Load param rog_map/raycasting/local_update_box success: [0;0m[30 15 3 ]
+[corto_node-2] [0;32m Load param rog_map/virtual_ground_height success: [0;0m-10
+[corto_node-2] [0;32m Load param rog_map/virtual_ceil_height success: [0;0m10
+[corto_node-2] [32m -- [RM-Config] inflation_resolution: 0.1[0m
+[corto_node-2]  -- [ROG-Map] Init, resetMapSize: ORIGIN_AT_CORNER.
+[corto_node-2]  -- [ROG-Map] Init, resetMapSize: virtual_ceil_height: 9.85, virtual_ground_height: -9.85.
+[corto_node-2] [34m	[ROG] n_free: 1[0m
+[corto_node-2] [34m	[ROG] n_occ: 1[0m
+[corto_node-2] [34m	[ROG] l_hit: 2.19722[0m
+[corto_node-2] [34m	[ROG] l_miss: -0.0400053[0m
+[corto_node-2] [34m	[ROG] l_min: -1.99243[0m
+[corto_node-2] [34m	[ROG] l_max: 3.89182[0m
+[corto_node-2] [34m	[ROG] l_occ: 1.7346[0m
+[corto_node-2] [34m	[ROG] l_free: -0.00399995[0m
+[corto_node-2] [33m -- [Inf-Map] Clear all local map.[0m
+[corto_node-2] [32m -- [CounterMap] Init successfully -- .[0m
+[corto_node-2] [32m	resolution: 0.1[0m
+[corto_node-2] [32m	map_sliding_en: 0[0m
+[corto_node-2] [32m	local_map_size_i: 305 155  35[0m
+[corto_node-2] [32m	local_map_size_d: 30.5 15.5  3.5[0m
+[corto_node-2] [33m -- [Inf-Map] Clear all local map.[0m
+[corto_node-2] [32m -- [InfMap] Init successfully -- .[0m
+[corto_node-2] [32m	resolution: 0.1[0m
+[corto_node-2] [32m	map_sliding_en: 0[0m
+[corto_node-2] [32m	local_map_size_i: 305 155  35[0m
+[corto_node-2] [32m	local_map_size_d: 30.5 15.5  3.5[0m
+[corto_node-2] [ProbMap] virtual_ceil_height: 9.8
+[corto_node-2] [ProbMap] virtual_ground_height: -9.9
+[corto_node-2] [33m -- [ProbMap] Map sliding disabled, set origin to [  0   0 1.5] -- [0m
+[corto_node-2] [33m -- [Prob-Map] Clear all local map.[0m
+[corto_node-2] [32m -- [ProbMap] Init successfully -- .[0m
+[corto_node-2] [32m	resolution: 0.1[0m
+[corto_node-2] [32m	map_sliding_en: 0[0m
+[corto_node-2] [32m	local_map_size_i: 301 151  31[0m
+[corto_node-2] [32m	local_map_size_d: 30.1 15.1  3.1[0m
+[corto_node-2] Failed to find match for field 'intensity'.
+[corto_node-2] [34m -- [ROGMap]Load pcd file success with 109723 pts.[0m
+[corto_node-2] [INFO] [1794735333.382394647] [corto_planner]: Static ROG-Map: resolution=0.100, inflation=1 cells, unknown=free, outside=occupied
+[corto_node-2] [INFO] [1794735335.565260020] [corto_planner]: Setting up NMPC ...
+[corto_node-2] [INFO] [1794735336.565482646] [corto_planner]: Start: [-14.00, -6.50, 0.49]
+[corto_node-2] [INFO] [1794735336.565680946] [corto_planner]: Goal: [6.80, 5.20, 0.49]
+[vglrun-1]  -- [MARSIM] Running FPS: 25.8944
+[vglrun-1]  -- [MARSIM] Running FPS: 47.4544
+[vglrun-1]  -- [MARSIM] Running FPS: 45.6823
+[vglrun-1]  -- [MARSIM] Running FPS: 42.6932
+[vglrun-1]  -- [MARSIM] Running FPS: 41.1671
+[vglrun-1]  -- [MARSIM] Running FPS: 35.6713
+[vglrun-1]  -- [MARSIM] Running FPS: 35.1525
+[vglrun-1]  -- [MARSIM] Running FPS: 36.5167
+[vglrun-1]  -- [MARSIM] Running FPS: 38.8763
+[vglrun-1]  -- [MARSIM] Running FPS: 39.7186
+[vglrun-1]  -- [MARSIM] Running FPS: 46.8548
+[vglrun-1]  -- [MARSIM] Running FPS: 45.3761
+[vglrun-1]  -- [MARSIM] Running FPS: 43.7127
+[vglrun-1]  -- [MARSIM] Running FPS: 44.7374
+[vglrun-1]  -- [MARSIM] Running FPS: 47.7767
+[vglrun-1]  -- [MARSIM] Running FPS: 49.0183
+[vglrun-1]  -- [MARSIM] Running FPS: 47.0993
+[vglrun-1]  -- [MARSIM] Running FPS: 43.2529
+[vglrun-1]  -- [MARSIM] Running FPS: 43.0641
+[vglrun-1]  -- [MARSIM] Running FPS: 42.254
+[vglrun-1]  -- [MARSIM] Running FPS: 35.9251
+[vglrun-1]  -- [MARSIM] Running FPS: 39.3499
+[vglrun-1]  -- [MARSIM] Running FPS: 48.4968
+[vglrun-1]  -- [MARSIM] Running FPS: 39.883
+[vglrun-1]  -- [MARSIM] Running FPS: 41.2187
+[vglrun-1]  -- [MARSIM] Running FPS: 45.4343
+[vglrun-1]  -- [MARSIM] Running FPS: 43.244
+[vglrun-1]  -- [MARSIM] Running FPS: 48.9687
+[vglrun-1]  -- [MARSIM] Running FPS: 49.4398
+[vglrun-1]  -- [MARSIM] Running FPS: 47.3704
+[vglrun-1]  -- [MARSIM] Running FPS: 45.6874
+[vglrun-1]  -- [MARSIM] Running FPS: 43.794
+[vglrun-1]  -- [MARSIM] Running FPS: 49.7644
+[vglrun-1]  -- [MARSIM] Running FPS: 42.8399
+[vglrun-1]  -- [MARSIM] Running FPS: 37.3895
+[vglrun-1]  -- [MARSIM] Running FPS: 38.0271
+[vglrun-1]  -- [MARSIM] Running FPS: 39.8409
+[vglrun-1]  -- [MARSIM] Running FPS: 34.7549
+[vglrun-1]  -- [MARSIM] Running FPS: 39.5585
+[vglrun-1]  -- [MARSIM] Running FPS: 38.2656
+[vglrun-1]  -- [MARSIM] Running FPS: 38.3116
+[vglrun-1]  -- [MARSIM] Running FPS: 42.9918
+[vglrun-1]  -- [MARSIM] Running FPS: 43.2095
+[vglrun-1]  -- [MARSIM] Running FPS: 44.5021
+[vglrun-1]  -- [MARSIM] Running FPS: 47.6879
+[vglrun-1]  -- [MARSIM] Running FPS: 43.7927
+[vglrun-1]  -- [MARSIM] Running FPS: 49.5126
+[vglrun-1]  -- [MARSIM] Running FPS: 40.784
+[vglrun-1]  -- [MARSIM] Running FPS: 44.0085
+[vglrun-1]  -- [MARSIM] Running FPS: 47.4931
+[vglrun-1]  -- [MARSIM] Running FPS: 41.7716
+[vglrun-1]  -- [MARSIM] Running FPS: 45.4266
+[vglrun-1]  -- [MARSIM] Running FPS: 49.7212
+[vglrun-1]  -- [MARSIM] Running FPS: 44.6015
+[vglrun-1]  -- [MARSIM] Running FPS: 40.9365
+[vglrun-1]  -- [MARSIM] Running FPS: 40.0093
+[vglrun-1]  -- [MARSIM] Running FPS: 43.7963
+[vglrun-1]  -- [MARSIM] Running FPS: 40.3725
+[vglrun-1]  -- [MARSIM] Running FPS: 41.9269
+[vglrun-1]  -- [MARSIM] Running FPS: 40.6996
+[vglrun-1]  -- [MARSIM] Running FPS: 41.6592
+[vglrun-1]  -- [MARSIM] Running FPS: 39.9558
+[vglrun-1]  -- [MARSIM] Running FPS: 36.4597
+[vglrun-1]  -- [MARSIM] Running FPS: 36.9471
+[vglrun-1]  -- [MARSIM] Running FPS: 39.8115
+[vglrun-1]  -- [MARSIM] Running FPS: 44.3755
+[vglrun-1]  -- [MARSIM] Running FPS: 42.2702
+[vglrun-1]  -- [MARSIM] Running FPS: 37.4155
+[vglrun-1]  -- [MARSIM] Running FPS: 48.5931
+[vglrun-1]  -- [MARSIM] Running FPS: 42.9441
+[vglrun-1]  -- [MARSIM] Running FPS: 48.401
+[vglrun-1]  -- [MARSIM] Running FPS: 49.6028
+[vglrun-1]  -- [MARSIM] Running FPS: 47.3111
+[vglrun-1]  -- [MARSIM] Running FPS: 42.0589
+[vglrun-1]  -- [MARSIM] Running FPS: 41.1518
+[vglrun-1]  -- [MARSIM] Running FPS: 44.1342
+[vglrun-1]  -- [MARSIM] Running FPS: 44.6902
+[vglrun-1]  -- [MARSIM] Running FPS: 40.4146
+[vglrun-1]  -- [MARSIM] Running FPS: 41.0063
+[vglrun-1]  -- [MARSIM] Running FPS: 42.72
+[vglrun-1]  -- [MARSIM] Running FPS: 36.012
+[corto_node-2] [INFO] [1794735375.990450359] [corto_planner]: [FSM] GOAL_REACHED!
+[vglrun-1]  -- [MARSIM] Running FPS: 47.1752
+[vglrun-1]  -- [MARSIM] Running FPS: 52.5256
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [corto_node-2]: sending signal 'SIGINT' to process[corto_node-2]
+[INFO] [vglrun-1]: sending signal 'SIGINT' to process[vglrun-1]
+[corto_node-2] [INFO] [1794735376.981382931] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[vglrun-1] [INFO] [1794735376.981401623] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[corto_node-2] [INFO] [1794735376.984004575] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[vglrun-1] [INFO] [1794735376.984444043] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [corto_node-2]: process has finished cleanly [pid 1991831]
+[INFO] [vglrun-1]: process has finished cleanly [pid 1991830]

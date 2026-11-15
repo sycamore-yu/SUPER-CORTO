@@ -21,7 +21,7 @@ The CORTO snapshot was extracted with `git archive` from the pinned official com
 
 ## Source behaviours preserved
 
-The source's L-BFGS corridor acceptance permits a projected-obstacle violation fraction of 25%. The control loop shifts the optimized input sequence before executing row zero, so the executed command is originally the second optimized row. The asynchronous SOCP call passes `snap_v` to the original speed-boundary argument. These behaviours remain unchanged and are logged as source characteristics, not repaired by this migration.
+The pinned upstream source allows up to 25% projected-obstacle violations in L-BFGS corridor acceptance. The upstream control loop shifts the optimized sequence before executing, and the original SOCP call passes `snap_v` into a squared-speed variable. The repaired ROS 2 implementation corrects the last two behaviors and keeps the upstream oracle unchanged. See `docs/repair-pipeline.md` for other deliberate changes.
 
 The original ROS control message is `WrenchStamped`: `force.xyz` are body rates in rad/s; `torque.x` is normalized collective thrust. `0.6` corresponds to `9.81 m/s²`. The same CTBR action directly enters the original 10-state RK4 model.
 

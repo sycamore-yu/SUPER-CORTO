@@ -1,5 +1,9 @@
 # 直接动力学清理与验收
 
+本文件记录 `6de6a14` 完成的第一阶段清理。
+此后已修复 Topo-PRM、控制输入移位和轨迹交接。
+当前行为和结果以 `docs/repair-pipeline.md`、`docs/RESULTS.md` 为准。
+
 ## 已确认设计
 
 CORTO 在同一控制循环内执行原版 CTBR → 10 状态 RK4，步长 0.05 s。
