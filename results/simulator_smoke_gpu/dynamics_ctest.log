@@ -1,0 +1,19 @@
+Start testing: Nov 15 13:00 CST
+----------------------------------------------------------
+1/1 Testing: so3_dynamics
+1/1 Test: so3_dynamics
+Command: "/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/build-so3/perfect_drone_sim/so3_dynamics_test"
+Directory: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/build-so3/perfect_drone_sim
+"so3_dynamics" start time: Nov 15 13:00 CST
+Output:
+----------------------------------------------------------
+{"hover_drift_m":0,"motor_response_error_rpm":1.59143e-08,"body_rate_error_rad_s":1.31957e-07,"collective_step_vz_m_s":0.110759}
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"so3_dynamics" end time: Nov 15 13:00 CST
+"so3_dynamics" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 15 13:00 CST

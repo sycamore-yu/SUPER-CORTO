@@ -1,0 +1,47 @@
+{
+  "mode": "so3",
+  "odometry_count": 23,
+  "clock_count": 401,
+  "lidar_count": 15,
+  "lidar_nonempty_count": 15,
+  "motor_count": 22,
+  "tf_drone_count": 22,
+  "robot_marker_count": 22,
+  "path_count": 3,
+  "simulation_span_s": 4.009,
+  "wall_span_s": 4.006952024996281,
+  "initial_position_m": [
+    0.0,
+    -50.0,
+    1.5
+  ],
+  "final": {
+    "t": 4.019,
+    "p": [
+      0.0,
+      -50.0,
+      3.175356974120732
+    ],
+    "q_xyzw": [
+      0.0,
+      0.0,
+      0.912485627364354,
+      0.4091087628656728
+    ],
+    "v": [
+      0.0,
+      0.0,
+      1.2589761837593973
+    ],
+    "omega": [
+      0.0,
+      0.0,
+      0.2999989953130114
+    ],
+    "wall_s": 5.684092769864947
+  },
+  "all_states_finite": true,
+  "clock_monotonic": true,
+  "input_response_passed": false,
+  "passed": false
+}

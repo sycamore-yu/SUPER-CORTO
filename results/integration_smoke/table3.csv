@@ -1,0 +1,7 @@
+mode,scene,completed,expected,successes,reached_goal_count,reached_goal_rate_percent,reached_run_flight_time_s,reached_run_mean_speed_mps,all_run_observed_flight_duration_s,all_run_recording_span_sim_s,success_rate_percent,center_success_rate_percent,original_r0p1_success_rate_percent,flight_time_s,mean_speed_mps,body_clearance_m,center_clearance_m,failed_run_min_body_clearance_m,planning_all_ms,online_replanning_ms,planning_failures,nmpc_failures
+nominal,sparse,1,10,0,0,,,,60.0,60.25,,,,,,,,-0.36047173880943534,0.7653431722912967,0.6629569466666666,1119,589
+nominal,medium,0,10,0,0,,,,,,,,,,,,,,,,0,0
+nominal,dense,0,10,0,0,,,,,,,,,,,,,,,,0,0
+so3,sparse,1,10,0,1,,42.11616899020464,1.9484577322806118,42.18,47.330000000000005,,,,,,,,-0.3376615778486944,99.56393925,97.2541902857143,0,16
+so3,medium,0,10,0,0,,,,,,,,,,,,,,,,0,0
+so3,dense,0,10,0,0,,,,,,,,,,,,,,,,0,0

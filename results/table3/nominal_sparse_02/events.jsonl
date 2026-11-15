@@ -1,0 +1,44 @@
+{"event": "plan_result", "sim_time_s": 0, "wall_time_s": 3.26601519, "success": true, "initial": true, "elapsed_ms": 110.802196, "stage": "complete", "plan_id": 1, "wall_receive_s": 6.307700473116711}
+{"event": "nmpc_result", "sim_time_s": 0, "wall_time_s": 3.298219816, "solver_code": 3, "success": true, "elapsed_ms": 30.704277, "wall_receive_s": 6.339492538012564}
+{"event": "mission_start", "sim_time_s": 0, "wall_time_s": 3.298867162, "execution_mode": "nominal", "wall_receive_s": 6.340808677952737}
+{"event": "nmpc_result", "sim_time_s": 0.05, "wall_time_s": 3.34449227, "solver_code": 3, "success": true, "elapsed_ms": 38.853769, "wall_receive_s": 6.391921571921557}
+{"event": "nmpc_result", "sim_time_s": 0.1, "wall_time_s": 3.384508388, "solver_code": 3, "success": true, "elapsed_ms": 29.009959, "wall_receive_s": 6.433374836109579}
+{"event": "nmpc_result", "sim_time_s": 0.15000000000000002, "wall_time_s": 3.441887271, "solver_code": 3, "success": true, "elapsed_ms": 36.331162, "wall_receive_s": 6.49085404491052}
+{"event": "nmpc_result", "sim_time_s": 0.2, "wall_time_s": 3.49893699, "solver_code": 3, "success": true, "elapsed_ms": 43.49411, "wall_receive_s": 6.554337803972885}
+{"event": "nmpc_result", "sim_time_s": 0.25, "wall_time_s": 3.534306698, "solver_code": 3, "success": true, "elapsed_ms": 28.856951, "wall_receive_s": 6.575568156084046}
+{"event": "nmpc_result", "sim_time_s": 0.3, "wall_time_s": 3.58228725, "solver_code": 3, "success": true, "elapsed_ms": 26.881757, "wall_receive_s": 6.623996726935729}
+{"event": "nmpc_result", "sim_time_s": 0.35, "wall_time_s": 3.640280659, "solver_code": 3, "success": true, "elapsed_ms": 34.881538, "wall_receive_s": 6.693346776068211}
+{"event": "nmpc_result", "sim_time_s": 0.39999999999999997, "wall_time_s": 3.684688845, "solver_code": 3, "success": true, "elapsed_ms": 29.280199, "wall_receive_s": 6.7383016280364245}
+{"event": "nmpc_result", "sim_time_s": 0.44999999999999996, "wall_time_s": 3.73120741, "solver_code": 3, "success": true, "elapsed_ms": 25.784783, "wall_receive_s": 6.786815179046243}
+{"event": "nmpc_result", "sim_time_s": 0.49999999999999994, "wall_time_s": 3.78102329, "solver_code": 3, "success": true, "elapsed_ms": 25.599189, "wall_receive_s": 6.830328003037721}
+{"event": "nmpc_result", "sim_time_s": 0.5499999999999999, "wall_time_s": 3.83082726, "solver_code": 3, "success": true, "elapsed_ms": 25.473338, "wall_receive_s": 6.881050216034055}
+{"event": "nmpc_result", "sim_time_s": 0.6, "wall_time_s": 3.884187612, "solver_code": 3, "success": true, "elapsed_ms": 28.828805, "wall_receive_s": 6.934613987104967}
+{"event": "nmpc_result", "sim_time_s": 0.65, "wall_time_s": 3.935037591, "solver_code": 3, "success": true, "elapsed_ms": 29.669821, "wall_receive_s": 6.987305776914582}
+{"event": "nmpc_result", "sim_time_s": 0.7000000000000001, "wall_time_s": 3.976542376, "solver_code": 3, "success": true, "elapsed_ms": 21.174071, "wall_receive_s": 7.028150312136859}
+{"event": "nmpc_result", "sim_time_s": 0.7500000000000001, "wall_time_s": 4.027373102, "solver_code": 3, "success": true, "elapsed_ms": 21.98358, "wall_receive_s": 7.079935044981539}
+{"event": "nmpc_result", "sim_time_s": 0.8000000000000002, "wall_time_s": 4.077511903, "solver_code": 3, "success": true, "elapsed_ms": 22.096576, "wall_receive_s": 7.13003087695688}
+{"event": "nmpc_result", "sim_time_s": 0.8500000000000002, "wall_time_s": 4.131427024, "solver_code": 3, "success": true, "elapsed_ms": 26.059582, "wall_receive_s": 7.185008920030668}
+{"event": "nmpc_result", "sim_time_s": 0.9000000000000002, "wall_time_s": 4.18017915, "solver_code": 3, "success": true, "elapsed_ms": 24.696519, "wall_receive_s": 7.2341439430601895}
+{"event": "nmpc_result", "sim_time_s": 0.9500000000000003, "wall_time_s": 4.231315049, "solver_code": 3, "success": true, "elapsed_ms": 25.832964, "wall_receive_s": 7.286420586053282}
+{"event": "nmpc_result", "sim_time_s": 1.0000000000000002, "wall_time_s": 4.27494628, "solver_code": 3, "success": true, "elapsed_ms": 19.503865, "wall_receive_s": 7.329566210042685}
+{"event": "nmpc_result", "sim_time_s": 1.0500000000000003, "wall_time_s": 4.330554647, "solver_code": 3, "success": true, "elapsed_ms": 25.114558, "wall_receive_s": 7.372575460933149}
+{"event": "plan_result", "sim_time_s": 1.1000000000000003, "wall_time_s": 4.336860101, "success": true, "initial": false, "elapsed_ms": 131.367579, "stage": "complete", "plan_id": 2, "wall_receive_s": 7.387624009978026}
+{"event": "plan_handoff", "sim_time_s": 1.1000000000000003, "wall_time_s": 4.355340926, "plan_id": 2, "accepted": false, "stitch_error_m": 0.995053, "wall_receive_s": 7.396452139131725}
+{"event": "nmpc_result", "sim_time_s": 1.1000000000000003, "wall_time_s": 4.378915904, "solver_code": 3, "success": true, "elapsed_ms": 23.285817, "wall_receive_s": 7.420204387977719}
+{"event": "nmpc_result", "sim_time_s": 1.1500000000000004, "wall_time_s": 4.436844104, "solver_code": 3, "success": true, "elapsed_ms": 31.365396, "wall_receive_s": 7.499719372019172}
+{"event": "plan_result", "sim_time_s": 1.2000000000000004, "wall_time_s": 4.451138834, "success": true, "initial": false, "elapsed_ms": 95.523539, "stage": "complete", "plan_id": 3, "wall_receive_s": 7.5002653079573065}
+{"event": "plan_handoff", "sim_time_s": 1.2000000000000004, "wall_time_s": 4.455384207, "plan_id": 3, "accepted": true, "stitch_error_m": 0.340946, "wall_receive_s": 7.50059424713254}
+{"event": "nmpc_result", "sim_time_s": 1.2000000000000004, "wall_time_s": 4.481564627, "solver_code": 3, "success": true, "elapsed_ms": 23.347222, "wall_receive_s": 7.522464731009677}
+{"event": "nmpc_result", "sim_time_s": 1.2500000000000004, "wall_time_s": 4.539538996, "solver_code": 3, "success": true, "elapsed_ms": 34.15719, "wall_receive_s": 7.58140217512846}
+{"event": "nmpc_result", "sim_time_s": 1.3000000000000005, "wall_time_s": 4.581411637, "solver_code": 3, "success": true, "elapsed_ms": 26.008273, "wall_receive_s": 7.622458886122331}
+{"event": "nmpc_result", "sim_time_s": 1.3500000000000005, "wall_time_s": 4.629694298, "solver_code": 3, "success": true, "elapsed_ms": 24.313099, "wall_receive_s": 7.671357379062101}
+{"event": "nmpc_result", "sim_time_s": 1.4000000000000006, "wall_time_s": 4.680064048, "solver_code": 3, "success": true, "elapsed_ms": 24.688521, "wall_receive_s": 7.72165093710646}
+{"event": "nmpc_result", "sim_time_s": 1.4500000000000006, "wall_time_s": 4.728120097, "solver_code": 3, "success": true, "elapsed_ms": 22.739435, "wall_receive_s": 7.769686957122758}
+{"event": "mission_end", "origin": "collector", "reason": "collision", "sim_time_s": 1.55, "wall_time_s": 7.831497800070792, "evaluation_end_sim_time_s": 1.55, "observed_position": [-8.320502377922514, -2.857763009953994, 0.8703770846211555], "terminal_time_s": 1.524, "terminal_position": [-8.407203605425074, -2.9515570067946912, 0.8905011444351856], "clearance_error_bound_m": 0.0031643102661682216, "first_contact_time_s": 1.524, "first_contact_position": [-8.407203605425074, -2.9515570067946912, 0.8905011444351856], "wall_receive_s": 7.831504645058885}
+{"event": "nmpc_result", "sim_time_s": 1.5000000000000007, "wall_time_s": 4.780710171, "solver_code": 3, "success": true, "elapsed_ms": 25.225638, "wall_receive_s": 7.832370599964634}
+{"event": "nmpc_result", "sim_time_s": 1.5500000000000007, "wall_time_s": 4.836648077, "solver_code": 3, "success": true, "elapsed_ms": 31.219883, "wall_receive_s": 7.87909155106172}
+{"event": "nmpc_result", "sim_time_s": 1.6000000000000008, "wall_time_s": 4.88300214, "solver_code": 3, "success": true, "elapsed_ms": 27.6349, "wall_receive_s": 7.924526375019923}
+{"event": "nmpc_result", "sim_time_s": 1.6500000000000008, "wall_time_s": 4.931152181, "solver_code": 3, "success": true, "elapsed_ms": 25.786209, "wall_receive_s": 7.97380058397539}
+{"event": "nmpc_result", "sim_time_s": 1.7000000000000008, "wall_time_s": 4.985789495, "solver_code": 3, "success": true, "elapsed_ms": 30.300655, "wall_receive_s": 8.026908731088042}
+{"event": "nmpc_result", "sim_time_s": 1.7500000000000009, "wall_time_s": 5.030914775, "solver_code": 3, "success": true, "elapsed_ms": 25.532195, "wall_receive_s": 8.07384220813401}
+{"event": "nmpc_result", "sim_time_s": 1.800000000000001, "wall_time_s": 5.086127991, "solver_code": 3, "success": true, "elapsed_ms": 30.591972, "wall_receive_s": 8.127212065970525}

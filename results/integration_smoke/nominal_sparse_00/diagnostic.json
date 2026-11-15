@@ -1,0 +1,126 @@
+{
+  "run_id": "nominal_sparse_00",
+  "classification": "development_integration_smoke_not_formal_table3_result",
+  "analysis_mode": "read_only_analysis_of_existing_records",
+  "upstream_commit": "e05a2e60f78d9ae4425981c1343913c3c67d3bb3",
+  "files_sha256": {
+    "trajectory.csv": "054d3a380af32e3b37dc332ead788756348fcae0f6b918f8f6300b22cc7149ca",
+    "control.csv": "1f5ccb5e4f4de07fd0d14815a0055f1242f62e639751e4d9314bc9f52439a1cf",
+    "events.jsonl": "76af5d8f285376565323ddaeae43cf94d104b18bc5776a1aaae2a909f3682112",
+    "experiments/scenes/sparse.json": "28dcc5396539974627816ad35daf4a5c508c5411188b545b0fe3de343f4e7657"
+  },
+  "interface_check": {
+    "state_order": [
+      "px",
+      "py",
+      "pz",
+      "vx",
+      "vy",
+      "vz",
+      "qw",
+      "qx",
+      "qy",
+      "qz"
+    ],
+    "control_order": [
+      "body_rate_x",
+      "body_rate_y",
+      "body_rate_z",
+      "normalized_thrust"
+    ],
+    "initial_quaternion_wxyz": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "initial_yaw_rad": 3.141592653589793,
+    "nominal_dt_s": 0.05,
+    "checked_recorded_transitions": 1205,
+    "method": "For each recorded interval, evaluate the original four-stage RK4 formula at recorded x(t) and CTBR u(t), then compare with recorded x(t+0.05). No optimizer or simulation process was rerun.",
+    "max_absolute_state_residual": 1.4210854715202004e-14,
+    "max_absolute_state_residual_before_3_s": 8.881784197001252e-16,
+    "max_control_to_state_timestamp_difference_s": 0,
+    "max_recorded_step_difference_from_0p05_s": 4.260480856999038e-15,
+    "upstream_and_ported_dynamics_header_sha256": "9cf6b1fef95984ca25300e1a6287006c833d742be96ae03f15740f7790df45a3",
+    "command_selection": "Both upstream and port shift U before selecting row 0, therefore executing the second optimized control.",
+    "source_reference": "vendor/corto/src/planner/src/CORTO_planner_main.cpp:697-710",
+    "conclusion": "The recorded execution is consistent with the original state/control ordering and nominal RK4 time step."
+  },
+  "first_envelope_trigger": {
+    "model_time_s": 1.7285714285714286,
+    "position_m": [
+      -8.439774029298432,
+      -3.1054555098506915,
+      1.134241172503334
+    ],
+    "body_radius_m": 0.322,
+    "center_to_solid_clearance_m": 0.3246878585399978,
+    "conservative_clearance_lower_bound_m": 0.3215235482738296,
+    "clearance_bound_margin_m": 0.0031643102661682216,
+    "evaluation_sample_spacing_m": 0.005,
+    "nearest_obstacle": {
+      "id": 37,
+      "type": "cylinder",
+      "x": -7.6448397019555525,
+      "y": -3.1917025065584337,
+      "z": 0,
+      "radius": 0.4749114969057039,
+      "height": 3
+    },
+    "interpretation": "First failure under the predeclared conservative enclosing-sphere criterion. Its lower bound crosses the radius; this timestamp is not an exact physical surface-contact time.",
+    "source_reference": "summary.json:first_body_collision_time_s and trajectory.csv; recomputed with benchmark_geometry.py and the frozen scene"
+  },
+  "solver_events_before_first_envelope_trigger": {
+    "nmpc_calls": 35,
+    "nmpc_positive_returns": 35,
+    "nmpc_solver_code": 3,
+    "nmpc_failures": 0,
+    "planning_failures": 0,
+    "first_later_nmpc_failure": {
+      "model_time_s": 2.1500000000000004,
+      "solver_code": -1,
+      "event_line": 54
+    },
+    "first_later_planning_failure": {
+      "model_time_s": 2.6499999999999986,
+      "stage": "topo",
+      "plan_id": 6,
+      "event_line": 64
+    }
+  },
+  "early_plan_handoffs": [
+    {
+      "model_time_s": 1.1000000000000003,
+      "plan_id": 2,
+      "accepted": false,
+      "stitch_error_m": 0.924806,
+      "replan_wall_elapsed_ms": 134.193261,
+      "event_line": 26
+    },
+    {
+      "model_time_s": 1.2500000000000004,
+      "plan_id": 3,
+      "accepted": false,
+      "stitch_error_m": 0.579868,
+      "replan_wall_elapsed_ms": 132.805764,
+      "event_line": 31
+    },
+    {
+      "model_time_s": 1.4000000000000006,
+      "plan_id": 4,
+      "accepted": true,
+      "stitch_error_m": 0.475894,
+      "replan_wall_elapsed_ms": 128.624521,
+      "event_line": 36
+    }
+  ],
+  "interpretation": {
+    "earliest_recorded_handoff_rejection_s": 1.1,
+    "upstream_stitch_tolerance_m": 0.5,
+    "upstream_handoff_source": "vendor/corto/src/planner/src/CORTO_planner_main.cpp:423-447",
+    "supported": "The first two completed replans were rejected by the unchanged 0.5 m handoff threshold. The first envelope trigger preceded any negative NMPC return or failed planning call.",
+    "cause_not_established": "The stored trace does not contain each reference trajectory and corridor coefficient set, so it cannot isolate the planner, corridor, handoff or control-selection contribution to this first failure.",
+    "no_changes": "No algorithm, parameter, map, seed or raw record was modified during this diagnosis."
+  }
+}

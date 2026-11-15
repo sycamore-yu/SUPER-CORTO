@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "run_id": "nominal_sparse_00",
+      "passed": true,
+      "errors": [],
+      "clean_exit": [
+        "[INFO] [corto_node-2]: process has finished cleanly [pid 1621264]",
+        "[INFO] [vglrun-1]: process has finished cleanly [pid 1621263]"
+      ],
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      }
+    },
+    {
+      "run_id": "so3_sparse_00",
+      "passed": true,
+      "errors": [],
+      "clean_exit": [
+        "[INFO] [corto_node-2]: process has finished cleanly [pid 1621601]",
+        "[INFO] [vglrun-1]: process has finished cleanly [pid 1621600]"
+      ],
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      }
+    }
+  ],
+  "scope": "Post-experiment shutdown-only fix. These two runs are not formal Table III trials."
+}

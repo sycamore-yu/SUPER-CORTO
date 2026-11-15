@@ -1,0 +1,146 @@
+{
+  "upstream_commit": "e05a2e60f78d9ae4425981c1343913c3c67d3bb3",
+  "pass": true,
+  "method": "Separate executables; vendor algorithms unmodified; same Eigen/PCL/NLopt/MOSEK; fixed PRM RNG and inputs.",
+  "map_fixture": "Same voxel column occupancy. ROG adapter is covered by separate ROS integration tests.",
+  "results": {
+    "topo.filtered_count": {
+      "count": 1,
+      "max_abs_error": 0.0,
+      "tolerance": 2.1e-08,
+      "pass": true
+    },
+    "topo.path.0": {
+      "count": 9,
+      "max_abs_error": 0.0,
+      "tolerance": 4.1e-08,
+      "pass": true
+    },
+    "topo.path.1": {
+      "count": 9,
+      "max_abs_error": 0.0,
+      "tolerance": 4.1e-08,
+      "pass": true
+    },
+    "spline.length": {
+      "count": 1,
+      "max_abs_error": 0.0,
+      "tolerance": 8.469411639092214e-08,
+      "pass": true
+    },
+    "spline.samples": {
+      "count": 900,
+      "max_abs_error": 0.0,
+      "tolerance": 4.5053769532015025e-08,
+      "pass": true
+    },
+    "socp.total_time": {
+      "count": 1,
+      "max_abs_error": 0.0,
+      "tolerance": 3.601020242794228e-08,
+      "pass": true
+    },
+    "socp.times": {
+      "count": 100,
+      "max_abs_error": 0.0,
+      "tolerance": 2.036247729903067e-09,
+      "pass": true
+    },
+    "sfc.success": {
+      "count": 1,
+      "max_abs_error": 0.0,
+      "tolerance": 1.1000000000000001e-08,
+      "pass": true
+    },
+    "sfc.volume": {
+      "count": 1,
+      "max_abs_error": 0.0,
+      "tolerance": 4.790190954745417e-07,
+      "pass": true
+    },
+    "sfc.a": {
+      "count": 24,
+      "max_abs_error": 0.0,
+      "tolerance": 8.570979916449963e-09,
+      "pass": true
+    },
+    "sfc.b": {
+      "count": 24,
+      "max_abs_error": 0.0,
+      "tolerance": 4.931702079404684e-08,
+      "pass": true
+    },
+    "sfc.c": {
+      "count": 24,
+      "max_abs_error": 0.0,
+      "tolerance": 1.3629484725080436e-09,
+      "pass": true
+    },
+    "sfc.d": {
+      "count": 24,
+      "max_abs_error": 0.0,
+      "tolerance": 2.8097448909387047e-09,
+      "pass": true
+    },
+    "sfc.e": {
+      "count": 24,
+      "max_abs_error": 0.0,
+      "tolerance": 2.0444514049164826e-08,
+      "pass": true
+    },
+    "nmpc.status": {
+      "count": 1,
+      "max_abs_error": 0.0,
+      "tolerance": 3.1000000000000006e-08,
+      "pass": true
+    },
+    "nmpc.controls": {
+      "count": 40,
+      "max_abs_error": 0.0,
+      "tolerance": 7.205092809742433e-09,
+      "pass": true
+    },
+    "nmpc.prediction": {
+      "count": 100,
+      "max_abs_error": 0.0,
+      "tolerance": 2.3432970363017052e-08,
+      "pass": true
+    },
+    "rk4.next": {
+      "count": 10,
+      "max_abs_error": 0.0,
+      "tolerance": 2.0973498445335435e-08,
+      "pass": true
+    },
+    "rk4.gx": {
+      "count": 100,
+      "max_abs_error": 0.0,
+      "tolerance": 1.162692435464728e-08,
+      "pass": true
+    },
+    "rk4.gu": {
+      "count": 40,
+      "max_abs_error": 0.0,
+      "tolerance": 9.174557197186419e-09,
+      "pass": true
+    },
+    "rk4.acc": {
+      "count": 3,
+      "max_abs_error": 0.0,
+      "tolerance": 9.17500000000001e-09,
+      "pass": true
+    },
+    "rk4.acc_gx": {
+      "count": 30,
+      "max_abs_error": 0.0,
+      "tolerance": 2.1355000000000003e-07,
+      "pass": true
+    },
+    "rk4.acc_gu": {
+      "count": 12,
+      "max_abs_error": 0.0,
+      "tolerance": 1.6450000000000002e-07,
+      "pass": true
+    }
+  }
+}

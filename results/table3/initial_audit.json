@@ -1,0 +1,145 @@
+{
+  "audit_type": "initial_completed_trials",
+  "audited_utc": "2026-11-15T05:31:55.667269+00:00",
+  "expected_code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+  "manifest_sha256": "755f64c65f9688425630bd45e90d75e952116c970ec273983255dc70b8d63803",
+  "run_count": 3,
+  "passed": false,
+  "runs": [
+    {
+      "run_id": "nominal_sparse_00",
+      "passed": false,
+      "checks": {
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "live_manifest_matches_frozen_commit": true,
+        "scene_hash_matches": true,
+        "pcd_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match": true,
+        "controls_recorded": true,
+        "mission_start_recorded": true,
+        "collector_terminal_recorded": true,
+        "initial_plan_recorded": true,
+        "normal_process_exit": true,
+        "no_abnormal_process_log": false,
+        "no_control_gap_before_terminal": true
+      },
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "odometry_samples": 41,
+      "control_samples": 40,
+      "events": 49,
+      "termination_reason": "collision",
+      "abnormal_log_lines": [
+        "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'",
+        "[ERROR] [corto_node-2]: process has died [pid 1598382, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_tp4o1p25']."
+      ],
+      "shutdown_observation": "runtime_error_after_runner_SIGINT",
+      "shutdown_error": "context cannot be slept with because it is invalid",
+      "recorded_data_complete_before_shutdown": true,
+      "control_timestamps_through_terminal": {
+        "count": 35,
+        "first_s": 0.0,
+        "last_s": 1.7000000000000002,
+        "maximum_step_s": 0.050000000000000266
+      },
+      "data_integrity_passed": true
+    },
+    {
+      "run_id": "nominal_sparse_01",
+      "passed": true,
+      "checks": {
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "live_manifest_matches_frozen_commit": true,
+        "scene_hash_matches": true,
+        "pcd_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match": true,
+        "controls_recorded": true,
+        "mission_start_recorded": true,
+        "collector_terminal_recorded": true,
+        "initial_plan_recorded": true,
+        "normal_process_exit": true,
+        "no_abnormal_process_log": true,
+        "no_control_gap_before_terminal": true
+      },
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "odometry_samples": 42,
+      "control_samples": 41,
+      "events": 52,
+      "termination_reason": "collision",
+      "abnormal_log_lines": [],
+      "shutdown_observation": "clean",
+      "shutdown_error": null,
+      "recorded_data_complete_before_shutdown": true,
+      "control_timestamps_through_terminal": {
+        "count": 35,
+        "first_s": 0.0,
+        "last_s": 1.7000000000000002,
+        "maximum_step_s": 0.050000000000000266
+      },
+      "data_integrity_passed": true
+    },
+    {
+      "run_id": "nominal_sparse_02",
+      "passed": false,
+      "checks": {
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "live_manifest_matches_frozen_commit": true,
+        "scene_hash_matches": true,
+        "pcd_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match": true,
+        "controls_recorded": true,
+        "mission_start_recorded": true,
+        "collector_terminal_recorded": true,
+        "initial_plan_recorded": true,
+        "normal_process_exit": true,
+        "no_abnormal_process_log": false,
+        "no_control_gap_before_terminal": true
+      },
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "odometry_samples": 39,
+      "control_samples": 37,
+      "events": 44,
+      "termination_reason": "collision",
+      "abnormal_log_lines": [
+        "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'",
+        "[ERROR] [corto_node-2]: process has died [pid 1599133, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_10xej_9g']."
+      ],
+      "shutdown_observation": "runtime_error_after_runner_SIGINT",
+      "shutdown_error": "context cannot be slept with because it is invalid",
+      "recorded_data_complete_before_shutdown": true,
+      "control_timestamps_through_terminal": {
+        "count": 31,
+        "first_s": 0.0,
+        "last_s": 1.5,
+        "maximum_step_s": 0.050000000000000044
+      },
+      "data_integrity_passed": true
+    }
+  ],
+  "data_integrity_passed": true,
+  "clean_shutdown_passed": false,
+  "finding": "Two CORTO subprocesses abort only after runner SIGINT, after complete recorder output. Formal data integrity passes; shutdown cleanliness fails."
+}

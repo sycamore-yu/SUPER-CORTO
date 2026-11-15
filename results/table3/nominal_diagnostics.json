@@ -1,0 +1,3329 @@
+{
+  "analysis": "Offline audit of all 30 nominal trials, truncated at each first terminal event",
+  "code_commits": [
+    "ef8e8e472dbbac40f4b91581582d848a83697234"
+  ],
+  "method": {
+    "state_order": [
+      "x",
+      "y",
+      "z",
+      "vx",
+      "vy",
+      "vz",
+      "qw",
+      "qx",
+      "qy",
+      "qz"
+    ],
+    "control_order": [
+      "body_rate_x",
+      "body_rate_y",
+      "body_rate_z",
+      "normalized_thrust"
+    ],
+    "nominal_dt_s": 0.05,
+    "rk4_source": "vendor/corto/src/modules/nmpc/nominal_quad_dynamic.hpp",
+    "interval_scope": "Only complete recorded intervals ending at or before terminal_time_s; the interval crossing termination is excluded.",
+    "event_scope": "Main counts require both reception before the first collector mission_end and event sim_time_s at or before terminal_time_s.",
+    "late_event_scope": "Events received after the collector mission_end but timestamped at or before terminal_time_s are retained only in late_preterminal_events audit fields; excluded from all main counts.",
+    "terminal_definition": "Existing collector event and summary; no collision, bounds or success classification is recomputed.",
+    "time_matching_tolerance_s": 1e-09,
+    "absolute_state_residual_tolerance": 1e-10,
+    "interpretation": "Execution-model consistency and collision-free goal-reaching success are separate evidence. This audit does not identify a single cause of collision or out-of-bounds failure.",
+    "no_simulation_or_optimization_rerun": true,
+    "raw_records_and_summaries_modified": false
+  },
+  "total_checked_complete_intervals": 835,
+  "max_absolute_state_residual": 1.7763568394002505e-15,
+  "summary_counts_matching_runs": 30,
+  "late_preterminal_event_counts": {
+    "nmpc_result": 21
+  },
+  "groups": [
+    {
+      "scene": "sparse",
+      "runs": 10,
+      "first_terminal_reasons": {
+        "collision": 8,
+        "out_of_bounds": 2
+      },
+      "successful_runs": 0,
+      "rk4_consistent_runs": 10,
+      "checked_complete_intervals": 389,
+      "max_absolute_state_residual": 1.7763568394002505e-15,
+      "nmpc_positive_returns_before_terminal": 393,
+      "nmpc_negative_returns_before_terminal": 1,
+      "runs_with_negative_nmpc_before_terminal": 1,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 9,
+      "handoffs_rejected_before_terminal": 24,
+      "summary_counts_matching_runs": 10,
+      "late_preterminal_event_counts": {
+        "nmpc_result": 5
+      }
+    },
+    {
+      "scene": "medium",
+      "runs": 10,
+      "first_terminal_reasons": {
+        "collision": 10
+      },
+      "successful_runs": 0,
+      "rk4_consistent_runs": 10,
+      "checked_complete_intervals": 205,
+      "max_absolute_state_residual": 8.881784197001252e-16,
+      "nmpc_positive_returns_before_terminal": 205,
+      "nmpc_negative_returns_before_terminal": 0,
+      "runs_with_negative_nmpc_before_terminal": 0,
+      "plan_failures_before_terminal": 1,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 1,
+      "summary_counts_matching_runs": 10,
+      "late_preterminal_event_counts": {
+        "nmpc_result": 10
+      }
+    },
+    {
+      "scene": "dense",
+      "runs": 10,
+      "first_terminal_reasons": {
+        "out_of_bounds": 4,
+        "collision": 6
+      },
+      "successful_runs": 0,
+      "rk4_consistent_runs": 10,
+      "checked_complete_intervals": 241,
+      "max_absolute_state_residual": 8.881784197001252e-16,
+      "nmpc_positive_returns_before_terminal": 242,
+      "nmpc_negative_returns_before_terminal": 3,
+      "runs_with_negative_nmpc_before_terminal": 2,
+      "plan_failures_before_terminal": 12,
+      "handoffs_accepted_before_terminal": 2,
+      "handoffs_rejected_before_terminal": 4,
+      "summary_counts_matching_runs": 10,
+      "late_preterminal_event_counts": {
+        "nmpc_result": 6
+      }
+    }
+  ],
+  "runs": [
+    {
+      "run_id": "nominal_sparse_00",
+      "scene": "sparse",
+      "planner_seed": 0,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.7285714285714286,
+      "terminal_observation_time_s": 1.75,
+      "first_collector_terminal_events_jsonl_line": 44,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 34,
+      "checked_complete_intervals": 34,
+      "max_absolute_state_residual": 2.220446049250313e-16,
+      "max_absolute_position_residual_m": 1.1102230246251565e-16,
+      "max_absolute_velocity_residual_mps": 2.220446049250313e-16,
+      "max_absolute_quaternion_residual": 5.551115123125783e-17,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.1102230246251565e-16,
+        "vx": 1.3877787807814457e-17,
+        "vy": 2.220446049250313e-16,
+        "vz": 1.1102230246251565e-16,
+        "qw": 5.551115123125783e-17,
+        "qx": 5.551115123125783e-17,
+        "qy": 5.551115123125783e-17,
+        "qz": 5.551115123125783e-17
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 2.636779683484747e-16,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 35,
+      "nmpc_positive_returns_before_terminal": 35,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 35
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 4,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 1,
+      "handoffs_rejected_before_terminal": 2,
+      "handoff_rejections": [
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.1000000000000003,
+          "wall_time_s": 4.360770012,
+          "plan_id": 2,
+          "accepted": false,
+          "stitch_error_m": 0.924806,
+          "wall_receive_s": 7.349798652809113
+        },
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.2500000000000004,
+          "wall_time_s": 4.510874067,
+          "plan_id": 3,
+          "accepted": false,
+          "stitch_error_m": 0.579868,
+          "wall_receive_s": 7.497820890974253
+        }
+      ],
+      "late_preterminal_events": [],
+      "late_preterminal_event_counts": {},
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 35,
+          "summary": 35,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 4,
+          "summary": 4,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 3,
+          "summary": 3,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "daa590b607c5b93e84817d6619d9637bb26e7c7a3d206e48e0d36cd608048bb2",
+        "control.csv": "08748cefc5592ba02659d844ea6332784bbf42f1356fd71882a13e6155a23d36",
+        "events.jsonl": "c7a1f54750902020b6ac099db1442eb790744da28cea622715f9a7503b16eb13",
+        "summary.json": "994162b182692b922f3ee6648916781ceaeebdb4c12d49d72799f0475f949d75",
+        "run.json": "ea78e7a98e4448590c396b18df6201ee86f2b7fd95da2540f6fa058adeb1b018"
+      }
+    },
+    {
+      "run_id": "nominal_sparse_01",
+      "scene": "sparse",
+      "planner_seed": 1,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.7285714285714286,
+      "terminal_observation_time_s": 1.75,
+      "first_collector_terminal_events_jsonl_line": 43,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 34,
+      "checked_complete_intervals": 34,
+      "max_absolute_state_residual": 2.220446049250313e-16,
+      "max_absolute_position_residual_m": 1.1102230246251565e-16,
+      "max_absolute_velocity_residual_mps": 2.220446049250313e-16,
+      "max_absolute_quaternion_residual": 5.551115123125783e-17,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.1102230246251565e-16,
+        "vx": 1.3877787807814457e-17,
+        "vy": 2.220446049250313e-16,
+        "vz": 1.1102230246251565e-16,
+        "qw": 5.551115123125783e-17,
+        "qx": 5.551115123125783e-17,
+        "qy": 5.551115123125783e-17,
+        "qz": 5.551115123125783e-17
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 2.636779683484747e-16,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 34,
+      "nmpc_positive_returns_before_terminal": 34,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 34
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 4,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 1,
+      "handoffs_rejected_before_terminal": 2,
+      "handoff_rejections": [
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.1000000000000003,
+          "wall_time_s": 4.339861352,
+          "plan_id": 2,
+          "accepted": false,
+          "stitch_error_m": 0.924806,
+          "wall_receive_s": 7.391699345083907
+        },
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.2500000000000004,
+          "wall_time_s": 4.489932913,
+          "plan_id": 3,
+          "accepted": false,
+          "stitch_error_m": 0.579868,
+          "wall_receive_s": 7.542041212087497
+        }
+      ],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.7000000000000008,
+          "wall_time_s": 5.01561285,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 63.014044,
+          "wall_receive_s": 8.077672495041043,
+          "events_jsonl_line": 44
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 34,
+          "summary": 34,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 4,
+          "summary": 4,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 3,
+          "summary": 3,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "2ad388c2e2f26bba9080858cec8ae5fd6b9b46479c5018340d0511a82ce9d774",
+        "control.csv": "78b474833439929818b53a49fb6f28857d0d9fe2c4f84e5c060b627f52e01d27",
+        "events.jsonl": "ae712ee83aa984dd1a96cd56650db5c639db5f7e58e97439ae4c97b289b0665a",
+        "summary.json": "fc7aaa7d314095f3d313a1e8ec7a179b7873ce1273e5923afcc596a2f1654f05",
+        "run.json": "2573c66f0e0fb87e5529c33fa69b5021c3249f6a6a4a3fa1c7fe705d38c770b6"
+      }
+    },
+    {
+      "run_id": "nominal_sparse_02",
+      "scene": "sparse",
+      "planner_seed": 2,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.524,
+      "terminal_observation_time_s": 1.55,
+      "first_collector_terminal_events_jsonl_line": 37,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 30,
+      "checked_complete_intervals": 30,
+      "max_absolute_state_residual": 8.881784197001252e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 8.881784197001252e-16,
+      "max_absolute_quaternion_residual": 1.1102230246251565e-16,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 8.881784197001252e-16,
+        "vy": 4.440892098500626e-16,
+        "vz": 1.1102230246251565e-16,
+        "qw": 5.551115123125783e-17,
+        "qx": 5.551115123125783e-17,
+        "qy": 5.551115123125783e-17,
+        "qz": 1.1102230246251565e-16
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 1.8041124150158794e-16,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 30,
+      "nmpc_positive_returns_before_terminal": 30,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 30
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 3,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 1,
+      "handoffs_rejected_before_terminal": 1,
+      "handoff_rejections": [
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.1000000000000003,
+          "wall_time_s": 4.355340926,
+          "plan_id": 2,
+          "accepted": false,
+          "stitch_error_m": 0.995053,
+          "wall_receive_s": 7.396452139131725
+        }
+      ],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.5000000000000007,
+          "wall_time_s": 4.780710171,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 25.225638,
+          "wall_receive_s": 7.832370599964634,
+          "events_jsonl_line": 38
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 30,
+          "summary": 30,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 3,
+          "summary": 3,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 2,
+          "summary": 2,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "964c6252fd72ab45ef87edc39fd7082bab2f1f0215868836a95c0e7a9a407be0",
+        "control.csv": "75080823f7a73635e1322d71176c0cca7de6fe8a895ff1b842d13dd6d39e4ad8",
+        "events.jsonl": "e5ad719b8617ff075805189f8323b6d703510bf94c6c756061f264a5eab5a2da",
+        "summary.json": "6bfc002ad6abf7eae7afdffbc559386cd99519c71003e62754af1c50b145b7dd",
+        "run.json": "e4b1bee35acbd15085f6e8a74c05d6c01e0067293fd8ec5b70ad7152d79e48f4"
+      }
+    },
+    {
+      "run_id": "nominal_sparse_03",
+      "scene": "sparse",
+      "planner_seed": 3,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "out_of_bounds",
+      "terminal_time_s": 1.9697076418562025,
+      "terminal_observation_time_s": 2.0,
+      "first_collector_terminal_events_jsonl_line": 46,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 39,
+      "checked_complete_intervals": 39,
+      "max_absolute_state_residual": 4.440892098500626e-16,
+      "max_absolute_position_residual_m": 1.1102230246251565e-16,
+      "max_absolute_velocity_residual_mps": 4.440892098500626e-16,
+      "max_absolute_quaternion_residual": 1.1102230246251565e-16,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.1102230246251565e-16,
+        "vx": 4.440892098500626e-16,
+        "vy": 4.440892098500626e-16,
+        "vz": 1.1102230246251565e-16,
+        "qw": 1.1102230246251565e-16,
+        "qx": 2.7755575615628914e-17,
+        "qy": 5.551115123125783e-17,
+        "qz": 5.551115123125783e-17
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 2.636779683484747e-16,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 39,
+      "nmpc_positive_returns_before_terminal": 39,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 39
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 3,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 1,
+      "handoffs_rejected_before_terminal": 1,
+      "handoff_rejections": [
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.1000000000000003,
+          "wall_time_s": 4.343949425,
+          "plan_id": 2,
+          "accepted": false,
+          "stitch_error_m": 0.804945,
+          "wall_receive_s": 7.480812784982845
+        }
+      ],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.950000000000001,
+          "wall_time_s": 5.650853456,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 71.13177,
+          "wall_receive_s": 8.801973643014207,
+          "events_jsonl_line": 47
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 39,
+          "summary": 39,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 3,
+          "summary": 3,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 2,
+          "summary": 2,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "904aee01fff9b2562d7ba1a2457e54413ff3c2448b961ec70852162fcac22551",
+        "control.csv": "97cdfbb2d2761d656f511e382aa4cb14831c9015c4a121f1c1954eb300beeedb",
+        "events.jsonl": "857975d33b6a51992111b83fb5cc6f78269d09173e17e40f23df9c19bf673262",
+        "summary.json": "6ce6a7773edaa3d8358c1c6088fa6c9cc26aee8f74971dbd73c864391bce304c",
+        "run.json": "559fb21e935ecada55aa6b037beeaec7d0c4cc09787574336da420e2307e75c3"
+      }
+    },
+    {
+      "run_id": "nominal_sparse_04",
+      "scene": "sparse",
+      "planner_seed": 4,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.4103448275862067,
+      "terminal_observation_time_s": 1.45,
+      "first_collector_terminal_events_jsonl_line": 38,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 28,
+      "checked_complete_intervals": 28,
+      "max_absolute_state_residual": 1.7763568394002505e-15,
+      "max_absolute_position_residual_m": 1.7763568394002505e-15,
+      "max_absolute_velocity_residual_mps": 4.440892098500626e-16,
+      "max_absolute_quaternion_residual": 5.551115123125783e-17,
+      "component_max_residual": {
+        "x": 1.7763568394002505e-15,
+        "y": 8.881784197001252e-16,
+        "z": 0.0,
+        "vx": 2.220446049250313e-16,
+        "vy": 4.440892098500626e-16,
+        "vz": 5.551115123125783e-17,
+        "qw": 5.551115123125783e-17,
+        "qx": 2.7755575615628914e-17,
+        "qy": 2.7755575615628914e-17,
+        "qz": 0.0
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 1.8041124150158794e-16,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 29,
+      "nmpc_positive_returns_before_terminal": 29,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 29
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 4,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 3,
+      "handoff_rejections": [
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.1000000000000003,
+          "wall_time_s": 4.416325149,
+          "plan_id": 2,
+          "accepted": false,
+          "stitch_error_m": 0.97322,
+          "wall_receive_s": 7.452426933916286
+        },
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.2500000000000004,
+          "wall_time_s": 4.566371726,
+          "plan_id": 3,
+          "accepted": false,
+          "stitch_error_m": 0.655118,
+          "wall_receive_s": 7.594163784990087
+        },
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.4000000000000006,
+          "wall_time_s": 4.716425272,
+          "plan_id": 4,
+          "accepted": false,
+          "stitch_error_m": 0.604179,
+          "wall_receive_s": 7.744139914866537
+        }
+      ],
+      "late_preterminal_events": [],
+      "late_preterminal_event_counts": {},
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 29,
+          "summary": 29,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 4,
+          "summary": 4,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 3,
+          "summary": 3,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "f743c7547e847474507c9db0c93360e7c530800cabe445621b1c8dee11f79091",
+        "control.csv": "ecc8aa8042fd490873df6b9c5cae463245aecaaaadc92ae06c35402f859ead12",
+        "events.jsonl": "49a8ff5afad0c9afcb64edcaf95101ce660cac71dedc6643114b111ecf885289",
+        "summary.json": "425f0d0cfcad8f56fa0c0c5519f9400fb5ab9cdad5d29d90b9ca3c16e897bd0f",
+        "run.json": "3bfc0dd08f914cd345e9d44ba71c4aac7c6697d7187653d70e8029f2a23b29bf"
+      }
+    },
+    {
+      "run_id": "nominal_sparse_05",
+      "scene": "sparse",
+      "planner_seed": 5,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.4333333333333333,
+      "terminal_observation_time_s": 1.45,
+      "first_collector_terminal_events_jsonl_line": 38,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 28,
+      "checked_complete_intervals": 28,
+      "max_absolute_state_residual": 1.1102230246251565e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 1.1102230246251565e-16,
+      "max_absolute_quaternion_residual": 1.1102230246251565e-16,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 5.551115123125783e-17,
+        "vy": 1.1102230246251565e-16,
+        "vz": 5.551115123125783e-17,
+        "qw": 5.551115123125783e-17,
+        "qx": 5.551115123125783e-17,
+        "qy": 2.7755575615628914e-17,
+        "qz": 1.1102230246251565e-16
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 1.8041124150158794e-16,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 29,
+      "nmpc_positive_returns_before_terminal": 28,
+      "nmpc_negative_returns_before_terminal": 1,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 28,
+        "-1": 1
+      },
+      "first_negative_nmpc_before_terminal": {
+        "event": "nmpc_result",
+        "sim_time_s": 0.9500000000000003,
+        "wall_time_s": 4.243017971,
+        "solver_code": -1,
+        "success": false,
+        "elapsed_ms": 20.508997,
+        "wall_receive_s": 7.364230459090322
+      },
+      "plan_calls_before_terminal": 4,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 3,
+      "handoff_rejections": [
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.1000000000000003,
+          "wall_time_s": 4.372193888,
+          "plan_id": 2,
+          "accepted": false,
+          "stitch_error_m": 0.963357,
+          "wall_receive_s": 7.4939557400066406
+        },
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.2500000000000004,
+          "wall_time_s": 4.522132031,
+          "plan_id": 3,
+          "accepted": false,
+          "stitch_error_m": 0.65386,
+          "wall_receive_s": 7.643890714040026
+        },
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.4000000000000006,
+          "wall_time_s": 4.672142582,
+          "plan_id": 4,
+          "accepted": false,
+          "stitch_error_m": 0.587367,
+          "wall_receive_s": 7.793411893071607
+        }
+      ],
+      "late_preterminal_events": [],
+      "late_preterminal_event_counts": {},
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 29,
+          "summary": 29,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 4,
+          "summary": 4,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 3,
+          "summary": 3,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "f14d8a6cd671897ad1c67a0a79a19f144d83067626be2af5e97ecfeb98575dc5",
+        "control.csv": "cc965ec20d24a85bb747626bbc587507ea42959ee9f85c3ad6c6c44ad8e98a24",
+        "events.jsonl": "bfe2f86fc547ca3e62e3b3fccdf03dc4136c59140b79003d06cac6eb4c072e69",
+        "summary.json": "8fec48864516b66a03056953a66de1cf3353782f76a99a79d8aaa37497058e91",
+        "run.json": "da5030a9c7ef292def32773bda0a23f41f3b633ed34843dbd7beb736762cdbfb"
+      }
+    },
+    {
+      "run_id": "nominal_sparse_06",
+      "scene": "sparse",
+      "planner_seed": 6,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 2.489,
+      "terminal_observation_time_s": 2.5,
+      "first_collector_terminal_events_jsonl_line": 61,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 49,
+      "checked_complete_intervals": 49,
+      "max_absolute_state_residual": 8.881784197001252e-16,
+      "max_absolute_position_residual_m": 1.1102230246251565e-16,
+      "max_absolute_velocity_residual_mps": 8.881784197001252e-16,
+      "max_absolute_quaternion_residual": 5.551115123125783e-17,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 1.1102230246251565e-16,
+        "z": 1.1102230246251565e-16,
+        "vx": 8.881784197001252e-16,
+        "vy": 8.881784197001252e-16,
+        "vz": 5.551115123125783e-17,
+        "qw": 6.938893903907228e-18,
+        "qx": 2.7755575615628914e-17,
+        "qy": 2.7755575615628914e-17,
+        "qz": 5.551115123125783e-17
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 2.636779683484747e-16,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 50,
+      "nmpc_positive_returns_before_terminal": 50,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 50
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 5,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 1,
+      "handoffs_rejected_before_terminal": 3,
+      "handoff_rejections": [
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.1000000000000003,
+          "wall_time_s": 4.355457422,
+          "plan_id": 2,
+          "accepted": false,
+          "stitch_error_m": 0.975122,
+          "wall_receive_s": 7.392266093054786
+        },
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.2500000000000004,
+          "wall_time_s": 4.505466763,
+          "plan_id": 3,
+          "accepted": false,
+          "stitch_error_m": 0.678812,
+          "wall_receive_s": 7.541518496116623
+        },
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.4500000000000006,
+          "wall_time_s": 4.705478367,
+          "plan_id": 4,
+          "accepted": false,
+          "stitch_error_m": 0.928612,
+          "wall_receive_s": 7.74271888891235
+        }
+      ],
+      "late_preterminal_events": [],
+      "late_preterminal_event_counts": {},
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 50,
+          "summary": 50,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 5,
+          "summary": 5,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 4,
+          "summary": 4,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "dbc2f414db05f4946801d19beeed10bf9863fe8ceab6305737ace8c474e28860",
+        "control.csv": "8ed21b4b537e0177bedfc40caad47e182dfbb76d0fb6cedd3c3279e8de1c6c74",
+        "events.jsonl": "f39e7becfd9ad0159d7d2dce7566b69db409c0bf5457b9bd8a932e7db37ba587",
+        "summary.json": "74edf130850acb099d15e6e28706d74d4b546666931a9e2f20af89aea4ba9e5e",
+        "run.json": "a0a6c746a4ef2bca4b5c1b48ad01a986e8afd14039d6bb07dfe7c66e19f3cbd0"
+      }
+    },
+    {
+      "run_id": "nominal_sparse_07",
+      "scene": "sparse",
+      "planner_seed": 7,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 2.6243243243243244,
+      "terminal_observation_time_s": 2.65,
+      "first_collector_terminal_events_jsonl_line": 65,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 52,
+      "checked_complete_intervals": 52,
+      "max_absolute_state_residual": 8.881784197001252e-16,
+      "max_absolute_position_residual_m": 4.440892098500626e-16,
+      "max_absolute_velocity_residual_mps": 8.881784197001252e-16,
+      "max_absolute_quaternion_residual": 1.1102230246251565e-16,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 4.440892098500626e-16,
+        "z": 1.1102230246251565e-16,
+        "vx": 8.881784197001252e-16,
+        "vy": 2.220446049250313e-16,
+        "vz": 5.551115123125783e-17,
+        "qw": 1.1102230246251565e-16,
+        "qx": 2.7755575615628914e-17,
+        "qy": 5.551115123125783e-17,
+        "qz": 2.7755575615628914e-17
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 2.636779683484747e-16,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 52,
+      "nmpc_positive_returns_before_terminal": 52,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 51,
+        "5": 1
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 6,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 2,
+      "handoffs_rejected_before_terminal": 3,
+      "handoff_rejections": [
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.1000000000000003,
+          "wall_time_s": 4.328404694,
+          "plan_id": 2,
+          "accepted": false,
+          "stitch_error_m": 0.959775,
+          "wall_receive_s": 7.4211328940000385
+        },
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.2500000000000004,
+          "wall_time_s": 4.478363552,
+          "plan_id": 3,
+          "accepted": false,
+          "stitch_error_m": 0.622149,
+          "wall_receive_s": 7.575522289145738
+        },
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.4000000000000006,
+          "wall_time_s": 4.62840014,
+          "plan_id": 4,
+          "accepted": false,
+          "stitch_error_m": 0.533812,
+          "wall_receive_s": 7.7214701902121305
+        }
+      ],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 2.5999999999999988,
+          "wall_time_s": 5.964071831,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 60.036414,
+          "wall_receive_s": 9.070635250071064,
+          "events_jsonl_line": 66
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 52,
+          "summary": 52,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 6,
+          "summary": 6,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 5,
+          "summary": 5,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "64199f35de50106c734de12a5ed132f6d57c1a9b5c8144555fecc2b52d74dafd",
+        "control.csv": "090b7007597e53d1646d183021fad2f6d6491d02cb7110f7fde98bfda528daa6",
+        "events.jsonl": "09af287da36370eda7c7e815b4452139fd0788ca9c37c992fd09e9b5c66cb1a4",
+        "summary.json": "40114e9606ab09f84d0464ce174317d8cb10e3cea037fc161361a0c546207199",
+        "run.json": "4868bef944aba40e108473c56e365931e8864b2eb088a1fb53c3e7e909e0453a"
+      }
+    },
+    {
+      "run_id": "nominal_sparse_08",
+      "scene": "sparse",
+      "planner_seed": 8,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 2.334246575342466,
+      "terminal_observation_time_s": 2.35,
+      "first_collector_terminal_events_jsonl_line": 57,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 46,
+      "checked_complete_intervals": 46,
+      "max_absolute_state_residual": 8.881784197001252e-16,
+      "max_absolute_position_residual_m": 8.881784197001252e-16,
+      "max_absolute_velocity_residual_mps": 4.440892098500626e-16,
+      "max_absolute_quaternion_residual": 5.551115123125783e-17,
+      "component_max_residual": {
+        "x": 8.881784197001252e-16,
+        "y": 4.440892098500626e-16,
+        "z": 0.0,
+        "vx": 4.440892098500626e-16,
+        "vy": 4.440892098500626e-16,
+        "vz": 1.1102230246251565e-16,
+        "qw": 5.551115123125783e-17,
+        "qx": 2.7755575615628914e-17,
+        "qy": 2.7755575615628914e-17,
+        "qz": 0.0
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 2.636779683484747e-16,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 46,
+      "nmpc_positive_returns_before_terminal": 46,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 46
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 5,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 1,
+      "handoffs_rejected_before_terminal": 3,
+      "handoff_rejections": [
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.1000000000000003,
+          "wall_time_s": 4.367939894,
+          "plan_id": 2,
+          "accepted": false,
+          "stitch_error_m": 0.932705,
+          "wall_receive_s": 7.4174678339622915
+        },
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.2500000000000004,
+          "wall_time_s": 4.518010112,
+          "plan_id": 3,
+          "accepted": false,
+          "stitch_error_m": 0.596753,
+          "wall_receive_s": 7.567467707907781
+        },
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.4000000000000006,
+          "wall_time_s": 4.668031951,
+          "plan_id": 4,
+          "accepted": false,
+          "stitch_error_m": 0.505989,
+          "wall_receive_s": 7.725751468911767
+        }
+      ],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 2.3,
+          "wall_time_s": 5.590847875,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 22.665205,
+          "wall_receive_s": 8.663115042960271,
+          "events_jsonl_line": 58
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 46,
+          "summary": 46,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 5,
+          "summary": 5,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 4,
+          "summary": 4,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "84354ef0d5c742133600011381b9e2cb7fc1369fa0f1fdb95427e0a5502d8904",
+        "control.csv": "d74869bfcdbceb87c3041cd9699d96250d0ef901e878227ce7cf29c7b870739d",
+        "events.jsonl": "9c7d1fd18b163825e90020657a98304e44236d6dca5befd76bf0f2da8a8ac2cf",
+        "summary.json": "68a34e08ec364f926f7efb483f544f16439f54a3acbe8710d0694ce524cc1b36",
+        "run.json": "b17fd77884668c0954b9f0d4a35f504144ea2e7026e8d239b5cc480604bb9013"
+      }
+    },
+    {
+      "run_id": "nominal_sparse_09",
+      "scene": "sparse",
+      "planner_seed": 9,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "out_of_bounds",
+      "terminal_time_s": 2.480277354648485,
+      "terminal_observation_time_s": 2.5,
+      "first_collector_terminal_events_jsonl_line": 61,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 49,
+      "checked_complete_intervals": 49,
+      "max_absolute_state_residual": 8.881784197001252e-16,
+      "max_absolute_position_residual_m": 8.881784197001252e-16,
+      "max_absolute_velocity_residual_mps": 4.440892098500626e-16,
+      "max_absolute_quaternion_residual": 1.1102230246251565e-16,
+      "component_max_residual": {
+        "x": 8.881784197001252e-16,
+        "y": 5.551115123125783e-17,
+        "z": 0.0,
+        "vx": 4.440892098500626e-16,
+        "vy": 1.1102230246251565e-16,
+        "vz": 5.551115123125783e-17,
+        "qw": 1.1102230246251565e-16,
+        "qx": 2.7755575615628914e-17,
+        "qy": 5.551115123125783e-17,
+        "qz": 1.1102230246251565e-16
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 2.636779683484747e-16,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 50,
+      "nmpc_positive_returns_before_terminal": 50,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 48,
+        "5": 2
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 5,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 1,
+      "handoffs_rejected_before_terminal": 3,
+      "handoff_rejections": [
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.1000000000000003,
+          "wall_time_s": 4.335357363,
+          "plan_id": 2,
+          "accepted": false,
+          "stitch_error_m": 0.959687,
+          "wall_receive_s": 7.376493865158409
+        },
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.2500000000000004,
+          "wall_time_s": 4.485322361,
+          "plan_id": 3,
+          "accepted": false,
+          "stitch_error_m": 0.664369,
+          "wall_receive_s": 7.520233139162883
+        },
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.4500000000000006,
+          "wall_time_s": 4.68532666,
+          "plan_id": 4,
+          "accepted": false,
+          "stitch_error_m": 0.924473,
+          "wall_receive_s": 7.7204097751528025
+        }
+      ],
+      "late_preterminal_events": [],
+      "late_preterminal_event_counts": {},
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 50,
+          "summary": 50,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 5,
+          "summary": 5,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 4,
+          "summary": 4,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "d0b7883e371487b97a6b39833a9d29596552dc33e70039b736799e3183e7b6c6",
+        "control.csv": "b6e3e3a3f4dc491cd5573879bd3d275bac02869d5996313b3ac8b59639947eb9",
+        "events.jsonl": "d400de5c68b0182940d16279bf46476abb88907023f49849788b050f2f75d51c",
+        "summary.json": "fcdbb5047b0ebb98d49235325520b55c323050fb87108c9e7c2e6309452840ec",
+        "run.json": "48d9033a455169b0217912b99b03996ba123330e42a2c1b19a009e3b589af429"
+      }
+    },
+    {
+      "run_id": "nominal_medium_00",
+      "scene": "medium",
+      "planner_seed": 0,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.1188524590163935,
+      "terminal_observation_time_s": 1.15,
+      "first_collector_terminal_events_jsonl_line": 27,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 22,
+      "checked_complete_intervals": 22,
+      "max_absolute_state_residual": 8.881784197001252e-16,
+      "max_absolute_position_residual_m": 8.881784197001252e-16,
+      "max_absolute_velocity_residual_mps": 4.440892098500626e-16,
+      "max_absolute_quaternion_residual": 5.551115123125783e-17,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 8.881784197001252e-16,
+        "z": 0.0,
+        "vx": 1.3877787807814457e-17,
+        "vy": 4.440892098500626e-16,
+        "vz": 5.551115123125783e-17,
+        "qw": 2.7755575615628914e-17,
+        "qx": 5.551115123125783e-17,
+        "qy": 2.7755575615628914e-17,
+        "qz": 0.0
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 6.938893903907228e-17,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 22,
+      "nmpc_positive_returns_before_terminal": 22,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 22
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 2,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 1,
+      "handoff_rejections": [
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.1000000000000003,
+          "wall_time_s": 4.472744734,
+          "plan_id": 2,
+          "accepted": false,
+          "stitch_error_m": 0.918221,
+          "wall_receive_s": 7.536042107036337
+        }
+      ],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.1000000000000003,
+          "wall_time_s": 4.506737448,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 33.624686,
+          "wall_receive_s": 7.5914204670116305,
+          "events_jsonl_line": 28
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 22,
+          "summary": 22,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 2,
+          "summary": 2,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "92320b6476bf43ee64559da6e54719359ec1630d15cac859d1f15efc5652b0e5",
+        "control.csv": "e84c1fb497193417ad71674b3856e81f94507b70bc5bc6d2f243a9e479dc0af9",
+        "events.jsonl": "30271e00c75cde591bb6f3097b929bb98a4da506ab10327f615f7878a06553d0",
+        "summary.json": "9eef5e0de00ea12633a84514710451df4f0f08168df99ffb47aa25dec9742f94",
+        "run.json": "be5d1caa3699806e7475f76f5c57ab55ce887bdf3dcf7eee1e4b3c3866c77252"
+      }
+    },
+    {
+      "run_id": "nominal_medium_01",
+      "scene": "medium",
+      "planner_seed": 1,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.1188524590163935,
+      "terminal_observation_time_s": 1.15,
+      "first_collector_terminal_events_jsonl_line": 26,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 22,
+      "checked_complete_intervals": 22,
+      "max_absolute_state_residual": 8.881784197001252e-16,
+      "max_absolute_position_residual_m": 8.881784197001252e-16,
+      "max_absolute_velocity_residual_mps": 4.440892098500626e-16,
+      "max_absolute_quaternion_residual": 5.551115123125783e-17,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 8.881784197001252e-16,
+        "z": 0.0,
+        "vx": 1.3877787807814457e-17,
+        "vy": 4.440892098500626e-16,
+        "vz": 5.551115123125783e-17,
+        "qw": 2.7755575615628914e-17,
+        "qx": 5.551115123125783e-17,
+        "qy": 2.7755575615628914e-17,
+        "qz": 0.0
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 6.938893903907228e-17,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 22,
+      "nmpc_positive_returns_before_terminal": 22,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 22
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 2,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 0,
+      "handoff_rejections": [],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.1000000000000003,
+          "wall_time_s": 4.508484614,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 32.789693,
+          "wall_receive_s": 7.571750112110749,
+          "events_jsonl_line": 27
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 22,
+          "summary": 22,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 2,
+          "summary": 2,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "39f8a7e28e2ec3cb828752d5bcadddf90ccd81160e4650a4bcb9db53c5f8c2e4",
+        "control.csv": "d58f83e8bf1acf0ffd70e13badb500751013782f453e855f948bc5914ec3f8cf",
+        "events.jsonl": "3ad8a3eea7f683be61885c657257004c27f8a242cea154306328d8cbe2ebc579",
+        "summary.json": "ee754ebb85a578ce4f49158e587c74ffc64afcd66e53c139708de5bf80d2cb56",
+        "run.json": "c53a03cd58e4f5bdd0bdbcaf5237b54f279d16b470d8504b7fbd5ff0e35a1e60"
+      }
+    },
+    {
+      "run_id": "nominal_medium_02",
+      "scene": "medium",
+      "planner_seed": 2,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.0485074626865671,
+      "terminal_observation_time_s": 1.05,
+      "first_collector_terminal_events_jsonl_line": 23,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 20,
+      "checked_complete_intervals": 20,
+      "max_absolute_state_residual": 1.1102230246251565e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 1.1102230246251565e-16,
+      "max_absolute_quaternion_residual": 5.551115123125783e-17,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 1.1102230246251565e-16,
+        "vy": 1.1102230246251565e-16,
+        "vz": 2.7755575615628914e-17,
+        "qw": 5.551115123125783e-17,
+        "qx": 2.7755575615628914e-17,
+        "qy": 2.7755575615628914e-17,
+        "qz": 0.0
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 6.938893903907228e-17,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 20,
+      "nmpc_positive_returns_before_terminal": 20,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 19,
+        "5": 1
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 1,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 0,
+      "handoff_rejections": [],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.0000000000000002,
+          "wall_time_s": 4.464675429,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 15.858316,
+          "wall_receive_s": 7.6565605599898845,
+          "events_jsonl_line": 24
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 20,
+          "summary": 20,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "ddb11dcd6eac88a581af3486076b1d589962952ab703571e38a1372892068858",
+        "control.csv": "c1fd9621793f5380e37036f518d60f1d0d738586fcc1f5eeb12c9192620d50bc",
+        "events.jsonl": "29d799fdccf1940be8ad97ec3b0eba12c1f2af174ad3750c0aa952b7d744c80c",
+        "summary.json": "883f4e8fe734fc746ad5100c258ee082022d44bc85bd77eadc01bfa1f420b6a2",
+        "run.json": "1b527c8274a724801e4fea6426bad6f51c9d9f0a92be47986835c744181df6fb"
+      }
+    },
+    {
+      "run_id": "nominal_medium_03",
+      "scene": "medium",
+      "planner_seed": 3,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.040909090909091,
+      "terminal_observation_time_s": 1.05,
+      "first_collector_terminal_events_jsonl_line": 23,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 20,
+      "checked_complete_intervals": 20,
+      "max_absolute_state_residual": 4.440892098500626e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 4.440892098500626e-16,
+      "max_absolute_quaternion_residual": 1.1102230246251565e-16,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 4.440892098500626e-16,
+        "vy": 4.440892098500626e-16,
+        "vz": 5.551115123125783e-17,
+        "qw": 1.1102230246251565e-16,
+        "qx": 5.551115123125783e-17,
+        "qy": 2.7755575615628914e-17,
+        "qz": 1.1102230246251565e-16
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 6.938893903907228e-17,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 20,
+      "nmpc_positive_returns_before_terminal": 20,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 20
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 1,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 0,
+      "handoff_rejections": [],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.0000000000000002,
+          "wall_time_s": 4.392687665,
+          "solver_code": -1,
+          "success": false,
+          "elapsed_ms": 44.280331,
+          "wall_receive_s": 7.544711067108437,
+          "events_jsonl_line": 24
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 20,
+          "summary": 20,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "e15a9ebb08066060739bcc9b023d78881fff7623a32d6a5604bac791f4b6d6a2",
+        "control.csv": "42bc0ae3a15bf1a83fb1cc3817c900121af4efd60b4d91e5c4dbf212d00f0bc7",
+        "events.jsonl": "0bb49e74df02e42a0bf91639f4ed1b82f6376285b991a536cd1d5f2b93b83d69",
+        "summary.json": "6722dbc15af77a95d28e239b1b31d1e6e31c5d8245f48fd4d427c25d821eb027",
+        "run.json": "41a9171ac18ddc774bd7b2275c3f07abb8c2231c6f8fbc77c49f1710a80fdcc8"
+      }
+    },
+    {
+      "run_id": "nominal_medium_04",
+      "scene": "medium",
+      "planner_seed": 4,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.0378787878787878,
+      "terminal_observation_time_s": 1.05,
+      "first_collector_terminal_events_jsonl_line": 23,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 20,
+      "checked_complete_intervals": 20,
+      "max_absolute_state_residual": 4.440892098500626e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 4.440892098500626e-16,
+      "max_absolute_quaternion_residual": 2.7755575615628914e-17,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 2.220446049250313e-16,
+        "vy": 4.440892098500626e-16,
+        "vz": 2.7755575615628914e-17,
+        "qw": 1.3877787807814457e-17,
+        "qx": 2.7755575615628914e-17,
+        "qy": 2.7755575615628914e-17,
+        "qz": 0.0
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 6.938893903907228e-17,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 20,
+      "nmpc_positive_returns_before_terminal": 20,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 20
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 1,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 0,
+      "handoff_rejections": [],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.0000000000000002,
+          "wall_time_s": 4.372186964,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 27.759045,
+          "wall_receive_s": 7.441130934050307,
+          "events_jsonl_line": 24
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 20,
+          "summary": 20,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "7eb077de4545bc7cdee0f7d16642de86a6a6e5f4e3d2786f7197dcf8e25fc09d",
+        "control.csv": "5d2840f5f3ff5bb800d01fb3121146808f47002bbd84310c07ab8e7842a7906c",
+        "events.jsonl": "1ac593703f589ff477856d5fcfc0e20c754d90149f931e7a40a9115b8253ad99",
+        "summary.json": "611e7d5982e0ec00811a8d13a96337f2944b180263c9df2f66c0b2ad66a6bbb7",
+        "run.json": "ac1a1e164b68a0d3af7cd3eabed6141b43b74d8c095c4488db8b97cd0a0b77a1"
+      }
+    },
+    {
+      "run_id": "nominal_medium_05",
+      "scene": "medium",
+      "planner_seed": 5,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.0415384615384615,
+      "terminal_observation_time_s": 1.05,
+      "first_collector_terminal_events_jsonl_line": 23,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 20,
+      "checked_complete_intervals": 20,
+      "max_absolute_state_residual": 2.220446049250313e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 2.220446049250313e-16,
+      "max_absolute_quaternion_residual": 1.1102230246251565e-16,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 5.551115123125783e-17,
+        "vy": 2.220446049250313e-16,
+        "vz": 5.551115123125783e-17,
+        "qw": 1.1102230246251565e-16,
+        "qx": 2.7755575615628914e-17,
+        "qy": 2.7755575615628914e-17,
+        "qz": 0.0
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 6.938893903907228e-17,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 20,
+      "nmpc_positive_returns_before_terminal": 20,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 20
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 1,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 0,
+      "handoff_rejections": [],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.0000000000000002,
+          "wall_time_s": 4.468146561,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 73.545293,
+          "wall_receive_s": 7.590678550070152,
+          "events_jsonl_line": 24
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 20,
+          "summary": 20,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "9e6debc9996b35168564ea6a2d94977370889d90452dbbf034ca35a62ded4430",
+        "control.csv": "716ca97838b63f491e62531de6c6e906c55de4d9d65b20e7b08fae41dc30a5a0",
+        "events.jsonl": "98d99afd3a8cf57ac782712b1dbaf0c9254a359c219f063fe48f2cc3215963b6",
+        "summary.json": "20b890867f515cc0e4fbdd5d1bbc1126adf1c898a769619b3009aeb01884a6f4",
+        "run.json": "b47512498e7072f0199d04ab57adf89638abf11de2b01e87175b6ebaa1007c96"
+      }
+    },
+    {
+      "run_id": "nominal_medium_06",
+      "scene": "medium",
+      "planner_seed": 6,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.0401515151515153,
+      "terminal_observation_time_s": 1.05,
+      "first_collector_terminal_events_jsonl_line": 23,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 20,
+      "checked_complete_intervals": 20,
+      "max_absolute_state_residual": 2.220446049250313e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 2.220446049250313e-16,
+      "max_absolute_quaternion_residual": 1.1102230246251565e-16,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 2.220446049250313e-16,
+        "vy": 1.1102230246251565e-16,
+        "vz": 5.551115123125783e-17,
+        "qw": 5.551115123125783e-17,
+        "qx": 2.7755575615628914e-17,
+        "qy": 0.0,
+        "qz": 1.1102230246251565e-16
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 6.938893903907228e-17,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 20,
+      "nmpc_positive_returns_before_terminal": 20,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 20
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 1,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 0,
+      "handoff_rejections": [],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.0000000000000002,
+          "wall_time_s": 4.456737145,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 64.137123,
+          "wall_receive_s": 7.58606364694424,
+          "events_jsonl_line": 24
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 20,
+          "summary": 20,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "3696a7ddc740e68f0e61a68cb97e1e19abf597cee241418ac1240df65003781c",
+        "control.csv": "1a8e9dcd79fd2b5129742fb056b3a87629ed19d85218322268e04fff29581a77",
+        "events.jsonl": "0474491bb12395a92e1750eab222ac1a7e8f08c37c47ae1c2381ffdade46de81",
+        "summary.json": "d8997910c148b51a7cb4c56e7ad21ef8aa859eeb45a81d9de1d4c0330fccba36",
+        "run.json": "a5acdb403ec2f0c1932bfbd9b82462a67eca1891c786476dd0551438a165e302"
+      }
+    },
+    {
+      "run_id": "nominal_medium_07",
+      "scene": "medium",
+      "planner_seed": 7,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.0367187500000001,
+      "terminal_observation_time_s": 1.05,
+      "first_collector_terminal_events_jsonl_line": 24,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 20,
+      "checked_complete_intervals": 20,
+      "max_absolute_state_residual": 8.881784197001252e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 8.881784197001252e-16,
+      "max_absolute_quaternion_residual": 5.551115123125783e-17,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 8.881784197001252e-16,
+        "vy": 1.1102230246251565e-16,
+        "vz": 5.551115123125783e-17,
+        "qw": 6.938893903907228e-18,
+        "qx": 5.551115123125783e-17,
+        "qy": 2.7755575615628914e-17,
+        "qz": 0.0
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 6.938893903907228e-17,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 20,
+      "nmpc_positive_returns_before_terminal": 20,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 20
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 2,
+      "plan_failures_before_terminal": 1,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 0,
+      "handoff_rejections": [],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.0000000000000002,
+          "wall_time_s": 4.521653969,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 64.989693,
+          "wall_receive_s": 7.629970875103027,
+          "events_jsonl_line": 25
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 20,
+          "summary": 20,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 2,
+          "summary": 2,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "feaf167f7b309d3ed102d595ba098e97e72e16613f9693334222f4b7aac3814a",
+        "control.csv": "2f4dde33a079d5ae19fe88b32d33e5c68f191377e9993cfcb34b59850b780693",
+        "events.jsonl": "14fe2fa029372213479576f7ae181d85eaa9db9e8aab0c309ca673d713265331",
+        "summary.json": "f014138f8e7b0d320c78bf87b5729a75a04d328fa52de507741f47c4fc2607b3",
+        "run.json": "10972cdc0a84a0eee5f38f971b737476b7fbd9fd006a686d39a02968f7cb920d"
+      }
+    },
+    {
+      "run_id": "nominal_medium_08",
+      "scene": "medium",
+      "planner_seed": 8,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.0671875,
+      "terminal_observation_time_s": 1.1,
+      "first_collector_terminal_events_jsonl_line": 24,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 21,
+      "checked_complete_intervals": 21,
+      "max_absolute_state_residual": 8.881784197001252e-16,
+      "max_absolute_position_residual_m": 8.881784197001252e-16,
+      "max_absolute_velocity_residual_mps": 4.440892098500626e-16,
+      "max_absolute_quaternion_residual": 2.7755575615628914e-17,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 8.881784197001252e-16,
+        "z": 0.0,
+        "vx": 2.220446049250313e-16,
+        "vy": 4.440892098500626e-16,
+        "vz": 5.551115123125783e-17,
+        "qw": 1.3877787807814457e-17,
+        "qx": 2.7755575615628914e-17,
+        "qy": 1.3877787807814457e-17,
+        "qz": 0.0
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 6.938893903907228e-17,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 21,
+      "nmpc_positive_returns_before_terminal": 21,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 21
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 1,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 0,
+      "handoff_rejections": [],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.0500000000000003,
+          "wall_time_s": 4.489040282,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 31.449958,
+          "wall_receive_s": 7.594859869917855,
+          "events_jsonl_line": 25
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 21,
+          "summary": 21,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "27d31d59a3e340a1dc1129b07e7159da23f411a026e96f43ff2763af9ae2b00e",
+        "control.csv": "e988400f1f6f6fedbff5c9e787cbdc6f9ed84bef29e15c6fbe48c2f65e1a30bf",
+        "events.jsonl": "2d5e87f90473c3d4a769d1f6b6aa2acbcf41ee273678a88dd3a644861f9f0f5d",
+        "summary.json": "76191ba84d304e69e8a47a04d69cb13466dea41ed0283cc5e293e35c86056415",
+        "run.json": "b1b3ba2a1abd6453f07d7c4df2b743e3fc18d85be77b7c563b7fd73cc9b8103e"
+      }
+    },
+    {
+      "run_id": "nominal_medium_09",
+      "scene": "medium",
+      "planner_seed": 9,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.0323076923076924,
+      "terminal_observation_time_s": 1.05,
+      "first_collector_terminal_events_jsonl_line": 23,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 20,
+      "checked_complete_intervals": 20,
+      "max_absolute_state_residual": 4.440892098500626e-16,
+      "max_absolute_position_residual_m": 1.1102230246251565e-16,
+      "max_absolute_velocity_residual_mps": 4.440892098500626e-16,
+      "max_absolute_quaternion_residual": 1.1102230246251565e-16,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 1.1102230246251565e-16,
+        "vx": 4.440892098500626e-16,
+        "vy": 2.220446049250313e-16,
+        "vz": 2.7755575615628914e-17,
+        "qw": 1.1102230246251565e-16,
+        "qx": 2.7755575615628914e-17,
+        "qy": 2.7755575615628914e-17,
+        "qz": 0.0
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 6.938893903907228e-17,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 20,
+      "nmpc_positive_returns_before_terminal": 20,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 20
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 1,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 0,
+      "handoff_rejections": [],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.0000000000000002,
+          "wall_time_s": 4.411442115,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 34.650922,
+          "wall_receive_s": 7.4802293258253485,
+          "events_jsonl_line": 24
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 20,
+          "summary": 20,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "6eb029b611b357ac6ef89a1b805be6adb584f4c2811e394e071358ffc451fde7",
+        "control.csv": "71efc5ebbc72036618c3be810506648639b75533485b97f2beca307797ebe7fc",
+        "events.jsonl": "bb3ba8867ece1b8ae58defabed8f58b529878e12037743ec7c2e6be87459cf66",
+        "summary.json": "82f482c6af4dda421a2ebee585cca5d0c78ec587c450816160ed98e45851bf49",
+        "run.json": "a258968a8eb8df7e939a5ba368b16e9ac85d655c4e095c0bf8c1cd93cca46045"
+      }
+    },
+    {
+      "run_id": "nominal_dense_00",
+      "scene": "dense",
+      "planner_seed": 0,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "out_of_bounds",
+      "terminal_time_s": 1.4852947412349198,
+      "terminal_observation_time_s": 1.5,
+      "first_collector_terminal_events_jsonl_line": 35,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 29,
+      "checked_complete_intervals": 29,
+      "max_absolute_state_residual": 4.440892098500626e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 4.440892098500626e-16,
+      "max_absolute_quaternion_residual": 5.551115123125783e-17,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 4.440892098500626e-16,
+        "vy": 4.440892098500626e-16,
+        "vz": 5.551115123125783e-17,
+        "qw": 8.673617379884035e-19,
+        "qx": 2.7755575615628914e-17,
+        "qy": 5.551115123125783e-17,
+        "qz": 0.0
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 1.8041124150158794e-16,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 29,
+      "nmpc_positive_returns_before_terminal": 29,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 29
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 3,
+      "plan_failures_before_terminal": 1,
+      "handoffs_accepted_before_terminal": 1,
+      "handoffs_rejected_before_terminal": 0,
+      "handoff_rejections": [],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.4500000000000006,
+          "wall_time_s": 5.320854593,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 60.509561,
+          "wall_receive_s": 8.523218523943797,
+          "events_jsonl_line": 36
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 29,
+          "summary": 29,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 3,
+          "summary": 3,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "190c7d68bcf15b67c43ebe9c085f95243136adfb47d590204d83808478e3d1e8",
+        "control.csv": "0e72dae807d06205913b95b59abe207686442a74b958bdb8326d263cf9da2e6c",
+        "events.jsonl": "c055f56011f8e70efdb9f4e554fb14c3d979b8bf0b4e51d96ce10bc524f95359",
+        "summary.json": "a24d2e28d274bd9254cb315dda1e94eba761278f460fea7bdb57a32978eaa553",
+        "run.json": "014840c1e0c6c1bc41322a526eb42b07cc252acc3570276efb44a661cbcb7fa7"
+      }
+    },
+    {
+      "run_id": "nominal_dense_01",
+      "scene": "dense",
+      "planner_seed": 1,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "out_of_bounds",
+      "terminal_time_s": 1.4852947412349198,
+      "terminal_observation_time_s": 1.5,
+      "first_collector_terminal_events_jsonl_line": 36,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 29,
+      "checked_complete_intervals": 29,
+      "max_absolute_state_residual": 4.440892098500626e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 4.440892098500626e-16,
+      "max_absolute_quaternion_residual": 5.551115123125783e-17,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 4.440892098500626e-16,
+        "vy": 4.440892098500626e-16,
+        "vz": 5.551115123125783e-17,
+        "qw": 8.673617379884035e-19,
+        "qx": 2.7755575615628914e-17,
+        "qy": 5.551115123125783e-17,
+        "qz": 0.0
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 1.8041124150158794e-16,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 30,
+      "nmpc_positive_returns_before_terminal": 30,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 30
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 3,
+      "plan_failures_before_terminal": 1,
+      "handoffs_accepted_before_terminal": 1,
+      "handoffs_rejected_before_terminal": 0,
+      "handoff_rejections": [],
+      "late_preterminal_events": [],
+      "late_preterminal_event_counts": {},
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 30,
+          "summary": 30,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 3,
+          "summary": 3,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "56abfacc059feb0befb2e3562cafc3dd433183b05c91b40291bc42e3f218e147",
+        "control.csv": "2b78eccb4828b32dad9a113639b11d0500e8d4c11ffb952c84e2f48d57f5e7d9",
+        "events.jsonl": "c5303bcf2abb284e1adbfa184630398b8331eee85534d75c5f9929dc6f094ced",
+        "summary.json": "6462bc0d40d5e82435eec5d674e6a4a7a734a4070758bf21b5ccabd53eb5ef5a",
+        "run.json": "636e9fc744d189733a2463bf021dcafcd3256e88f6173fa60de8eaeac3957b57"
+      }
+    },
+    {
+      "run_id": "nominal_dense_02",
+      "scene": "dense",
+      "planner_seed": 2,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "out_of_bounds",
+      "terminal_time_s": 1.820007534182034,
+      "terminal_observation_time_s": 1.85,
+      "first_collector_terminal_events_jsonl_line": 48,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 36,
+      "checked_complete_intervals": 36,
+      "max_absolute_state_residual": 4.440892098500626e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 4.440892098500626e-16,
+      "max_absolute_quaternion_residual": 1.1102230246251565e-16,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 4.440892098500626e-16,
+        "vy": 4.440892098500626e-16,
+        "vz": 2.220446049250313e-16,
+        "qw": 1.1102230246251565e-16,
+        "qx": 1.1102230246251565e-16,
+        "qy": 2.7755575615628914e-17,
+        "qz": 1.1102230246251565e-16
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 2.636779683484747e-16,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 36,
+      "nmpc_positive_returns_before_terminal": 34,
+      "nmpc_negative_returns_before_terminal": 2,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 34,
+        "-1": 2
+      },
+      "first_negative_nmpc_before_terminal": {
+        "event": "nmpc_result",
+        "sim_time_s": 1.5500000000000007,
+        "wall_time_s": 5.023511537,
+        "solver_code": -1,
+        "success": false,
+        "elapsed_ms": 15.303668,
+        "wall_receive_s": 8.229580262908712
+      },
+      "plan_calls_before_terminal": 7,
+      "plan_failures_before_terminal": 3,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 3,
+      "handoff_rejections": [
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.2000000000000004,
+          "wall_time_s": 4.657760226,
+          "plan_id": 3,
+          "accepted": false,
+          "stitch_error_m": 0.738885,
+          "wall_receive_s": 7.8342404689174145
+        },
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.4500000000000006,
+          "wall_time_s": 4.908161429,
+          "plan_id": 4,
+          "accepted": false,
+          "stitch_error_m": 0.830321,
+          "wall_receive_s": 8.147372591076419
+        },
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.7500000000000009,
+          "wall_time_s": 5.23217161,
+          "plan_id": 7,
+          "accepted": false,
+          "stitch_error_m": 0.816891,
+          "wall_receive_s": 8.438544586999342
+        }
+      ],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.800000000000001,
+          "wall_time_s": 5.339673717,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 29.601215,
+          "wall_receive_s": 8.57284607202746,
+          "events_jsonl_line": 49
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 36,
+          "summary": 36,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 2,
+          "summary": 2,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 7,
+          "summary": 7,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 3,
+          "summary": 3,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 6,
+          "summary": 6,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 3,
+          "summary": 3,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "7d3e9f2b5870bbdce9e82924b589863e4bb7f09f131b2ed7e8a1fc00486a9232",
+        "control.csv": "c8de4dcad77bd2d66b066c0517bf18582388089b680fcf2abb0f04fd32f51749",
+        "events.jsonl": "6c07cab5db141c2db8cc53f200fd5066bba046677904ffaae3ef18ff9ab82238",
+        "summary.json": "39ba128f1cb615096cc997ad440788f0524c5bfd554c912bf0a478040bacaed5",
+        "run.json": "2fbbef75c9af4f2386d4372ac8de392bb439efd9d1197e1ac3a96e2300e3af73"
+      }
+    },
+    {
+      "run_id": "nominal_dense_03",
+      "scene": "dense",
+      "planner_seed": 3,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.0702898550724638,
+      "terminal_observation_time_s": 1.1,
+      "first_collector_terminal_events_jsonl_line": 25,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 21,
+      "checked_complete_intervals": 21,
+      "max_absolute_state_residual": 4.440892098500626e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 4.440892098500626e-16,
+      "max_absolute_quaternion_residual": 5.551115123125783e-17,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 4.440892098500626e-16,
+        "vy": 4.440892098500626e-16,
+        "vz": 2.7755575615628914e-17,
+        "qw": 1.3877787807814457e-17,
+        "qx": 5.551115123125783e-17,
+        "qy": 2.7755575615628914e-17,
+        "qz": 0.0
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 6.938893903907228e-17,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 21,
+      "nmpc_positive_returns_before_terminal": 21,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 21
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 2,
+      "plan_failures_before_terminal": 1,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 0,
+      "handoff_rejections": [],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.0500000000000003,
+          "wall_time_s": 4.637991096,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 32.150631,
+          "wall_receive_s": 7.839661251055077,
+          "events_jsonl_line": 26
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 21,
+          "summary": 21,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 2,
+          "summary": 2,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "e4b44813af8fdd97101a6ba16e152d5325b01d4f220700d591b6f83d9aba11d2",
+        "control.csv": "9a25a6d30207322b3ad7aeac81c880f5e65ec062b4f058a21a6e2976ce3541d9",
+        "events.jsonl": "cf8148d7d43549f2734749b0eb4f9084ce3d9e6509efdb9ade3b425a037af8e8",
+        "summary.json": "c6835c905a92cfb7747f34c5f55c71e9d9404abd974752e886004dfefb9dc754",
+        "run.json": "0fb354413f4a13b9932738621a9bd63d8db43279806325ff1abc45a72f2845a7"
+      }
+    },
+    {
+      "run_id": "nominal_dense_04",
+      "scene": "dense",
+      "planner_seed": 4,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.0895522388059702,
+      "terminal_observation_time_s": 1.1,
+      "first_collector_terminal_events_jsonl_line": 24,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 21,
+      "checked_complete_intervals": 21,
+      "max_absolute_state_residual": 8.881784197001252e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 8.881784197001252e-16,
+      "max_absolute_quaternion_residual": 5.551115123125783e-17,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 1.3877787807814457e-17,
+        "vy": 8.881784197001252e-16,
+        "vz": 2.7755575615628914e-17,
+        "qw": 5.551115123125783e-17,
+        "qx": 5.551115123125783e-17,
+        "qy": 5.551115123125783e-17,
+        "qz": 0.0
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 6.938893903907228e-17,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 21,
+      "nmpc_positive_returns_before_terminal": 20,
+      "nmpc_negative_returns_before_terminal": 1,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 20,
+        "-1": 1
+      },
+      "first_negative_nmpc_before_terminal": {
+        "event": "nmpc_result",
+        "sim_time_s": 0.8500000000000002,
+        "wall_time_s": 4.493327509,
+        "solver_code": -1,
+        "success": false,
+        "elapsed_ms": 20.911325,
+        "wall_receive_s": 7.771567902993411
+      },
+      "plan_calls_before_terminal": 1,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 0,
+      "handoff_rejections": [],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.0500000000000003,
+          "wall_time_s": 4.831155214,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 76.877637,
+          "wall_receive_s": 8.097685201093554,
+          "events_jsonl_line": 25
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 21,
+          "summary": 21,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "d41ab0a0923701e622a24a50305c0169881e0b2a47493135b51b6bd32019c306",
+        "control.csv": "19b06276c808e6490e47a659d703f120e8f1c41778c2de4d437dfc2982ae7ef8",
+        "events.jsonl": "29fb0981d3930909a68379abc20397e3081ff1935c1ab316d2f8260c7ea40913",
+        "summary.json": "05fb5d8dfa4655a90b944ba20597ae72b0069b4dd1aebdc52cfb3a64d81cc364",
+        "run.json": "efaf73a227de3528180fcda1ce86ddcd25ea5a906a420a939db15c88f52ef31d"
+      }
+    },
+    {
+      "run_id": "nominal_dense_05",
+      "scene": "dense",
+      "planner_seed": 5,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 0.7371428571428572,
+      "terminal_observation_time_s": 0.75,
+      "first_collector_terminal_events_jsonl_line": 18,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 14,
+      "checked_complete_intervals": 14,
+      "max_absolute_state_residual": 2.220446049250313e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 2.220446049250313e-16,
+      "max_absolute_quaternion_residual": 2.7755575615628914e-17,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 2.220446049250313e-16,
+        "vy": 1.1102230246251565e-16,
+        "vz": 2.7755575615628914e-17,
+        "qw": 1.3877787807814457e-17,
+        "qx": 1.3877787807814457e-17,
+        "qy": 2.7755575615628914e-17,
+        "qz": 0.0
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 6.938893903907228e-17,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 15,
+      "nmpc_positive_returns_before_terminal": 15,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 15
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 1,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 0,
+      "handoff_rejections": [],
+      "late_preterminal_events": [],
+      "late_preterminal_event_counts": {},
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 15,
+          "summary": 15,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "36a2774cfa5d0c416f9f24be20a9226761355bb4ad57909fc7327292e45a5fbd",
+        "control.csv": "8ddf44f74966b19d04f16bd5d0f7b6274da4d626c5ac4f465d4a5f925e3b71e4",
+        "events.jsonl": "536af79bfbeebe377adbde9f0c459500208376106411a38b56fb5cd50625b8af",
+        "summary.json": "af1954cdd69b18699b38472ceadab7affdd1ca3ed86fe761e94451453896fb96",
+        "run.json": "c597aa97556aad2fb45859e73c90a8c9861c4b28457e237272fcc4a1a8d4c642"
+      }
+    },
+    {
+      "run_id": "nominal_dense_06",
+      "scene": "dense",
+      "planner_seed": 6,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "out_of_bounds",
+      "terminal_time_s": 1.313065427777615,
+      "terminal_observation_time_s": 1.35,
+      "first_collector_terminal_events_jsonl_line": 35,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 26,
+      "checked_complete_intervals": 26,
+      "max_absolute_state_residual": 2.220446049250313e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 2.220446049250313e-16,
+      "max_absolute_quaternion_residual": 1.1102230246251565e-16,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 2.220446049250313e-16,
+        "vy": 2.220446049250313e-16,
+        "vz": 5.551115123125783e-17,
+        "qw": 1.1102230246251565e-16,
+        "qx": 5.551115123125783e-17,
+        "qy": 2.7755575615628914e-17,
+        "qz": 1.1102230246251565e-16
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 1.8041124150158794e-16,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 27,
+      "nmpc_positive_returns_before_terminal": 27,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 27
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 5,
+      "plan_failures_before_terminal": 2,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 1,
+      "handoff_rejections": [
+        {
+          "event": "plan_handoff",
+          "sim_time_s": 1.2500000000000004,
+          "wall_time_s": 4.82861037,
+          "plan_id": 4,
+          "accepted": false,
+          "stitch_error_m": 0.65091,
+          "wall_receive_s": 8.021839899942279
+        }
+      ],
+      "late_preterminal_events": [],
+      "late_preterminal_event_counts": {},
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 27,
+          "summary": 27,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 5,
+          "summary": 5,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 2,
+          "summary": 2,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 3,
+          "summary": 3,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "f85c59614bf9e2ecaf4c82d7b1f226a8bbda95d5e2f0d930a34a0b8283f7bf27",
+        "control.csv": "005d490f25628b3edb609f835c8569586d51b6877eae34d5008a7ffbd9f249a5",
+        "events.jsonl": "6454a721dfa6b3054ad210337c0d2b6a79f75ecc2437d9394c7d2beb1e3dc0a1",
+        "summary.json": "d737ad2892325a62a642a6aef95bc822ef583e1bfdad6001f2ec5ef2a4d35413",
+        "run.json": "addd05d21b6dc3a2fb09f63f90d5b8dee9d85f5888c1efb75bc24c366844864c"
+      }
+    },
+    {
+      "run_id": "nominal_dense_07",
+      "scene": "dense",
+      "planner_seed": 7,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.112121212121212,
+      "terminal_observation_time_s": 1.15,
+      "first_collector_terminal_events_jsonl_line": 26,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 22,
+      "checked_complete_intervals": 22,
+      "max_absolute_state_residual": 4.440892098500626e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 4.440892098500626e-16,
+      "max_absolute_quaternion_residual": 1.1102230246251565e-16,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 2.220446049250313e-16,
+        "vy": 4.440892098500626e-16,
+        "vz": 2.7755575615628914e-17,
+        "qw": 2.7755575615628914e-17,
+        "qx": 5.551115123125783e-17,
+        "qy": 5.551115123125783e-17,
+        "qz": 1.1102230246251565e-16
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 6.938893903907228e-17,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 22,
+      "nmpc_positive_returns_before_terminal": 22,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 22
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 2,
+      "plan_failures_before_terminal": 1,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 0,
+      "handoff_rejections": [],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.1000000000000003,
+          "wall_time_s": 4.689341674,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 18.32032,
+          "wall_receive_s": 7.891024790937081,
+          "events_jsonl_line": 27
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 22,
+          "summary": 22,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 2,
+          "summary": 2,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "56290d0b7ec21cb1beada06d558ae8d18ddf627e232ffe1306f0a783051b7219",
+        "control.csv": "2c42cb060f27186376123991c60f75786232cc04e84de002e44e443405d7b438",
+        "events.jsonl": "b1a9249cd77fa4063bbfe1fd879ae276d29d94dcd4ae3e76d90b9c86ee74103d",
+        "summary.json": "22a9bd9da1e2cf52af4113301255387b31d24cf6601070bf421fc6148685ceaa",
+        "run.json": "e587df84d75c57e5a1615cfb3720795a7808c04235050c0ea25d8ebb646ff805"
+      }
+    },
+    {
+      "run_id": "nominal_dense_08",
+      "scene": "dense",
+      "planner_seed": 8,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.0855072463768116,
+      "terminal_observation_time_s": 1.1,
+      "first_collector_terminal_events_jsonl_line": 28,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 21,
+      "checked_complete_intervals": 21,
+      "max_absolute_state_residual": 4.440892098500626e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 4.440892098500626e-16,
+      "max_absolute_quaternion_residual": 1.1102230246251565e-16,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 4.440892098500626e-16,
+        "vy": 4.440892098500626e-16,
+        "vz": 5.551115123125783e-17,
+        "qw": 1.3877787807814457e-17,
+        "qx": 5.551115123125783e-17,
+        "qy": 2.7755575615628914e-17,
+        "qz": 1.1102230246251565e-16
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 6.938893903907228e-17,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 21,
+      "nmpc_positive_returns_before_terminal": 21,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 21
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 5,
+      "plan_failures_before_terminal": 3,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 0,
+      "handoff_rejections": [],
+      "late_preterminal_events": [
+        {
+          "event": "nmpc_result",
+          "sim_time_s": 1.0500000000000003,
+          "wall_time_s": 5.097066902,
+          "solver_code": 3,
+          "success": true,
+          "elapsed_ms": 66.845048,
+          "wall_receive_s": 8.318065525963902,
+          "events_jsonl_line": 29
+        }
+      ],
+      "late_preterminal_event_counts": {
+        "nmpc_result": 1
+      },
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 21,
+          "summary": 21,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 5,
+          "summary": 5,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 3,
+          "summary": 3,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "c8282a4d35ec10a3e83da317629cd1e76cbe20c3236e00eccb7f581aceaae61e",
+        "control.csv": "ef8af4761f6361891f83d59ceec3f21f338ee8f6a542358877bc4202d4b1295a",
+        "events.jsonl": "29e3c3cd996047c0dfd3bccb641e455832da3b556decd0e504f040b2e2cdd11b",
+        "summary.json": "1e756fefc09d378e41bb865ab2340fb393593ad88b011d1d106c8740d277b6ee",
+        "run.json": "e994865650f2b7d59ee6b081801c1df1d17282fe2beb2229aaf1af661939bdca"
+      }
+    },
+    {
+      "run_id": "nominal_dense_09",
+      "scene": "dense",
+      "planner_seed": 9,
+      "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+      "first_terminal_reason": "collision",
+      "terminal_time_s": 1.1236842105263158,
+      "terminal_observation_time_s": 1.15,
+      "first_collector_terminal_events_jsonl_line": 27,
+      "success_in_existing_summary": false,
+      "eligible_complete_intervals": 22,
+      "checked_complete_intervals": 22,
+      "max_absolute_state_residual": 8.881784197001252e-16,
+      "max_absolute_position_residual_m": 0.0,
+      "max_absolute_velocity_residual_mps": 8.881784197001252e-16,
+      "max_absolute_quaternion_residual": 1.1102230246251565e-16,
+      "component_max_residual": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "vx": 2.220446049250313e-16,
+        "vy": 8.881784197001252e-16,
+        "vz": 2.7755575615628914e-17,
+        "qw": 5.551115123125783e-17,
+        "qx": 2.7755575615628914e-17,
+        "qy": 2.7755575615628914e-17,
+        "qz": 1.1102230246251565e-16
+      },
+      "max_control_state_timestamp_difference_s": 0.0,
+      "max_step_difference_s": 6.938893903907228e-17,
+      "transition_integrity_issues": [],
+      "consistent_with_recorded_rk4": true,
+      "nmpc_calls_before_terminal": 23,
+      "nmpc_positive_returns_before_terminal": 23,
+      "nmpc_negative_returns_before_terminal": 0,
+      "nmpc_zero_returns_before_terminal": 0,
+      "nmpc_return_codes_before_terminal": {
+        "3": 23
+      },
+      "first_negative_nmpc_before_terminal": null,
+      "plan_calls_before_terminal": 2,
+      "plan_failures_before_terminal": 0,
+      "handoffs_accepted_before_terminal": 0,
+      "handoffs_rejected_before_terminal": 0,
+      "handoff_rejections": [],
+      "late_preterminal_events": [],
+      "late_preterminal_event_counts": {},
+      "summary_count_checks": {
+        "nmpc_calls": {
+          "diagnostic": 23,
+          "summary": 23,
+          "equal": true
+        },
+        "nmpc_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "planning_calls": {
+          "diagnostic": 2,
+          "summary": 2,
+          "equal": true
+        },
+        "planning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        },
+        "replanning_calls": {
+          "diagnostic": 1,
+          "summary": 1,
+          "equal": true
+        },
+        "replanning_failures": {
+          "diagnostic": 0,
+          "summary": 0,
+          "equal": true
+        }
+      },
+      "summary_counts_match": true,
+      "files_sha256": {
+        "trajectory.csv": "7be33079909a7eb253763eb77eb7df56f6f075e16e0a50c59b00049ff70d6457",
+        "control.csv": "8a7a57dfe2243205296be703ecb9c7d343249da7a05cefa7bcca22587de82268",
+        "events.jsonl": "89d9b103cb801b0da718e5be7c71417828720af71610b8eb4b9fd8a14e731eb6",
+        "summary.json": "a3c1909cd03472cccdce8ce9cd34dd83899cd035416e826e4ee2a81cbfc3b76c",
+        "run.json": "895acb1eb853b13fad0622d2c94f3f81b94079d9b8454ddddef76300b9340e67"
+      }
+    }
+  ]
+}

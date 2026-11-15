@@ -1,0 +1,51 @@
+[WARN] [1794719097.737540260] [perfect_tracking]:  -- [MissionPlanner] Load config by file name: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/perfect_drone_sim/config/dense.yaml
+Load config file: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/perfect_drone_sim/config/dense.yaml
+[0;32m Load param mesh_resource success: [0;0mpackage://perfect_drone_sim/meshes/yunque-M.dae
+[0;32m Load param init_position/x success: [0;0m0
+[0;32m Load param init_position/y success: [0;0m-50
+[0;32m Load param init_position/z success: [0;0m1.5
+[0;32m Load param init_yaw success: [0;0m1.5741
+[0;32m Load param sensing_rate success: [0;0m10
+[0;33m Load param dynamics_mode failed, use default value: [0;0mperfect
+Load config file: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/perfect_drone_sim/config/dense.yaml
+[0;32m Load param sensing_blind success: [0;0m0.1
+[0;32m Load param sensing_horizon success: [0;0m15
+[0;32m Load param sensing_rate success: [0;0m10
+[0;32m Load param lidar_type success: [0;0m2
+[0;32m Load param pcd_name success: [0;0mrandom_map_2_26609.pcd
+[0;32m Load param is_360lidar success: [0;0m1
+[0;32m Load param polar_resolution success: [0;0m0.4
+[0;33m Load param fx failed, use default value: [0;0m250
+[0;33m Load param fy failed, use default value: [0;0m250
+[0;33m Load param line_number failed, use default value: [0;0m64
+[0;32m Load param downsample_res success: [0;0m0.1
+[0;33m Load param yaw_fov failed, use default value: [0;0m360
+[0;32m Load param vertical_fov success: [0;0m178
+[0;32m Load param depth_image_en success: [0;0m0
+[0;33m Load param inf_point_en failed, use default value: [0;0m0
+[0;32m Load param print_time_consumption success: [0;0m0
+GLAD init success
+Load shader frome: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/marsim_render/config/pattern/360camera.vs
+Failed to find match for field 'intensity'.
+Now initing the point cloud data: 
+Number of points = 41.4755X 10000
+Load data finish 
+========== OpenGL Info ==========
+Vendor: NVIDIA Corporation
+Renderer: NVIDIA GeForce RTX 4090/PCIe/SSE2
+OpenGL Version: 3.3.0 NVIDIA 595.84
+GLSL Version: 3.30 NVIDIA via Cg compiler
+========== OpenGL Info ==========
+ -- [MARSIM] Running FPS: 19.1149
+ -- [MARSIM] Running FPS: 35.0044
+ -- [MARSIM] Running FPS: 35.1532
+ -- [MARSIM] Running FPS: 28.3247
+ -- [MARSIM] Running FPS: 35.6376
+ -- [MARSIM] Running FPS: 38.0163
+ -- [MARSIM] Running FPS: 34.8763
+ -- [MARSIM] Running FPS: 33.26
+ -- [MARSIM] Running FPS: 32.3341
+ -- [MARSIM] Running FPS: 33.8671
+[INFO] [1794719102.992216142] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+XIO:  fatal IO error 33 (Numerical argument out of domain) on X server ":100"
+      after 179 requests (179 known processed) with 0 events remaining.

@@ -1,0 +1,18 @@
+pcd_name: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/experiments/scenes/sparse.pcd
+mesh_resource: package://perfect_drone_sim/meshes/yunque-M.dae
+init_position:
+  x: -14.0
+  y: -6.5
+  z: 0.49
+init_yaw: 3.141592653589793
+is_360lidar: true
+polar_resolution: 0.4
+downsample_res: 0.1
+vertical_fov: 178.0
+sensing_blind: 0.1
+sensing_horizon: 15
+sensing_rate: 10
+print_time_consumption: false
+lidar_type: 2
+depth_image_en: false
+dynamics_mode: perfect

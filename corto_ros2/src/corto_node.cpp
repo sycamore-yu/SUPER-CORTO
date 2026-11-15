@@ -847,6 +847,12 @@ int main(int argc, char **argv) {
         runPlanner();
     } catch (const rclcpp::exceptions::RCLError&) {
         if (rclcpp::ok()) throw;
+    } catch (const std::runtime_error& error) {
+        const bool shutdown_sleep =
+            !rclcpp::ok() &&
+            std::string(error.what()) ==
+                "context cannot be slept with because it's invalid";
+        if (!shutdown_sleep) throw;
     }
     if (rclcpp::ok()) rclcpp::shutdown();
     return 0;

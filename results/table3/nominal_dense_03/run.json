@@ -1,0 +1,15 @@
+{
+  "run_id": "nominal_dense_03",
+  "mode": "nominal",
+  "scene": "dense",
+  "planner_seed": 3,
+  "manifest_sha256": "755f64c65f9688425630bd45e90d75e952116c970ec273983255dc70b8d63803",
+  "protocol_version": 2,
+  "termination_policy": "first_collision_or_body_boundary_or_goal_or_timeout",
+  "scene_sha256": "41aca0f0aebbf337731e492ec475034a577db292d1a60b61b937f4e35e732be7",
+  "ros_domain_id": "185",
+  "ros_distro": "jazzy",
+  "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+  "tracked_source_dirty": false,
+  "started_utc": "2026-11-15T05:35:14Z"
+}

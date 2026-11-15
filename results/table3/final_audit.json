@@ -1,0 +1,3264 @@
+{
+  "audit_type": "all_predeclared_trials",
+  "audited_utc": "2026-11-15T05:42:09.248984+00:00",
+  "expected_code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+  "manifest_sha256": "755f64c65f9688425630bd45e90d75e952116c970ec273983255dc70b8d63803",
+  "data_integrity_passed": true,
+  "clean_shutdown_passed": false,
+  "shutdown_anomaly_runs": 20,
+  "pre_interrupt_error_runs": [],
+  "manifest_checks": {
+    "manifest_has_60_unique_runs": true,
+    "actual_matches_all_predeclared_runs": true,
+    "six_groups_of_ten": true,
+    "manifest_matches_frozen_commit": true,
+    "root_report_lists_no_missing_runs": true,
+    "root_report_has_six_unique_groups": true
+  },
+  "scene_checks": {
+    "sparse": {
+      "scene_sha256": "28dcc5396539974627816ad35daf4a5c508c5411188b545b0fe3de343f4e7657",
+      "scene_json_matches_manifest": true,
+      "scene_json_matches_frozen_commit": true,
+      "pcd_sha256": "dbaed2ecfd78838b878503fedddd4380a181147eb0d83382574c4954e7d403c5",
+      "scene_pcd_matches_manifest": true,
+      "scene_pcd_matches_frozen_commit": true
+    },
+    "medium": {
+      "scene_sha256": "24a02fd809d1fac2a29848295ed9ddd274a6fe2f500cfbac8276f0456728c7c3",
+      "scene_json_matches_manifest": true,
+      "scene_json_matches_frozen_commit": true,
+      "pcd_sha256": "66c45f045b9ca7fc0caa65029124d0e26122199f518ea4def7cfb6f3f5d853a5",
+      "scene_pcd_matches_manifest": true,
+      "scene_pcd_matches_frozen_commit": true
+    },
+    "dense": {
+      "scene_sha256": "41aca0f0aebbf337731e492ec475034a577db292d1a60b61b937f4e35e732be7",
+      "scene_json_matches_manifest": true,
+      "scene_json_matches_frozen_commit": true,
+      "pcd_sha256": "93122855cee575ba787e212852823112a8aca1a988bbd9ac36834abd56700cc1",
+      "scene_pcd_matches_manifest": true,
+      "scene_pcd_matches_frozen_commit": true
+    }
+  },
+  "groups": [
+    {
+      "mode": "nominal",
+      "scene": "sparse",
+      "passed": true,
+      "checks": {
+        "ten_trials": true,
+        "success_rate_denominator_ten": true,
+        "flight_time_success_only": true,
+        "speed_success_only": true,
+        "clearance_success_only": true,
+        "planning_mean_weighted_by_calls": true,
+        "online_mean_excludes_initial": true
+      },
+      "trial_count": 10,
+      "success_count": 0,
+      "terminal_counts": {
+        "collision": 8,
+        "out_of_bounds": 2
+      }
+    },
+    {
+      "mode": "nominal",
+      "scene": "medium",
+      "passed": true,
+      "checks": {
+        "ten_trials": true,
+        "success_rate_denominator_ten": true,
+        "flight_time_success_only": true,
+        "speed_success_only": true,
+        "clearance_success_only": true,
+        "planning_mean_weighted_by_calls": true,
+        "online_mean_excludes_initial": true
+      },
+      "trial_count": 10,
+      "success_count": 0,
+      "terminal_counts": {
+        "collision": 10
+      }
+    },
+    {
+      "mode": "nominal",
+      "scene": "dense",
+      "passed": true,
+      "checks": {
+        "ten_trials": true,
+        "success_rate_denominator_ten": true,
+        "flight_time_success_only": true,
+        "speed_success_only": true,
+        "clearance_success_only": true,
+        "planning_mean_weighted_by_calls": true,
+        "online_mean_excludes_initial": true
+      },
+      "trial_count": 10,
+      "success_count": 0,
+      "terminal_counts": {
+        "out_of_bounds": 4,
+        "collision": 6
+      }
+    },
+    {
+      "mode": "so3",
+      "scene": "sparse",
+      "passed": true,
+      "checks": {
+        "ten_trials": true,
+        "success_rate_denominator_ten": true,
+        "flight_time_success_only": true,
+        "speed_success_only": true,
+        "clearance_success_only": true,
+        "planning_mean_weighted_by_calls": true,
+        "online_mean_excludes_initial": true
+      },
+      "trial_count": 10,
+      "success_count": 0,
+      "terminal_counts": {
+        "out_of_bounds": 10
+      }
+    },
+    {
+      "mode": "so3",
+      "scene": "medium",
+      "passed": true,
+      "checks": {
+        "ten_trials": true,
+        "success_rate_denominator_ten": true,
+        "flight_time_success_only": true,
+        "speed_success_only": true,
+        "clearance_success_only": true,
+        "planning_mean_weighted_by_calls": true,
+        "online_mean_excludes_initial": true
+      },
+      "trial_count": 10,
+      "success_count": 0,
+      "terminal_counts": {
+        "out_of_bounds": 10
+      }
+    },
+    {
+      "mode": "so3",
+      "scene": "dense",
+      "passed": true,
+      "checks": {
+        "ten_trials": true,
+        "success_rate_denominator_ten": true,
+        "flight_time_success_only": true,
+        "speed_success_only": true,
+        "clearance_success_only": true,
+        "planning_mean_weighted_by_calls": true,
+        "online_mean_excludes_initial": true
+      },
+      "trial_count": 10,
+      "success_count": 0,
+      "terminal_counts": {
+        "out_of_bounds": 10
+      }
+    }
+  ],
+  "runs": [
+    {
+      "run_id": "nominal_sparse_00",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 41,
+        "control": 40,
+        "events": 49
+      },
+      "max_observed_odom_step_s": 0.050000000000000266,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 224,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 227,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1598382, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_tp4o1p25']."
+        }
+      ]
+    },
+    {
+      "run_id": "nominal_sparse_01",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 42,
+        "control": 41,
+        "events": 52
+      },
+      "max_observed_odom_step_s": 0.050000000000000266,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "nominal_sparse_02",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 39,
+        "control": 37,
+        "events": 44
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 224,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 227,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1599133, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_10xej_9g']."
+        }
+      ]
+    },
+    {
+      "run_id": "nominal_sparse_03",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 45,
+        "control": 43,
+        "events": 52
+      },
+      "max_observed_odom_step_s": 0.050000000000000266,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "nominal_sparse_04",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 34,
+        "control": 33,
+        "events": 44
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 220,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 224,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1599825, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_u5ivai10']."
+        }
+      ]
+    },
+    {
+      "run_id": "nominal_sparse_05",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 37,
+        "control": 35,
+        "events": 46
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 226,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 229,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1600223, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_mhe0ku1_']."
+        }
+      ]
+    },
+    {
+      "run_id": "nominal_sparse_06",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 56,
+        "control": 55,
+        "events": 68
+      },
+      "max_observed_odom_step_s": 0.050000000000000266,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 222,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 225,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1600661, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_ejwl53v9']."
+        }
+      ]
+    },
+    {
+      "run_id": "nominal_sparse_07",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 59,
+        "control": 57,
+        "events": 70
+      },
+      "max_observed_odom_step_s": 0.050000000000000266,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "nominal_sparse_08",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 54,
+        "control": 52,
+        "events": 65
+      },
+      "max_observed_odom_step_s": 0.050000000000000266,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "nominal_sparse_09",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 58,
+        "control": 56,
+        "events": 71
+      },
+      "max_observed_odom_step_s": 0.050000000000000266,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "nominal_medium_00",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 31,
+        "control": 29,
+        "events": 38
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "nominal_medium_01",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 30,
+        "control": 29,
+        "events": 37
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "nominal_medium_02",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 29,
+        "control": 29,
+        "events": 35
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 212,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 215,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1602679, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_o_nkyd0_']."
+        }
+      ]
+    },
+    {
+      "run_id": "nominal_medium_03",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 29,
+        "control": 28,
+        "events": 37
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 221,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 224,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1603084, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_xjof4i93']."
+        }
+      ]
+    },
+    {
+      "run_id": "nominal_medium_04",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 29,
+        "control": 27,
+        "events": 34
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 207,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 210,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1603479, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_e9z9lobd']."
+        }
+      ]
+    },
+    {
+      "run_id": "nominal_medium_05",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 26,
+        "control": 25,
+        "events": 32
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "nominal_medium_06",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 28,
+        "control": 26,
+        "events": 33
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "nominal_medium_07",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 29,
+        "control": 28,
+        "events": 36
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "nominal_medium_08",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 29,
+        "control": 29,
+        "events": 37
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "nominal_medium_09",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 28,
+        "control": 27,
+        "events": 34
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "nominal_dense_00",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 36,
+        "control": 35,
+        "events": 41
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 159,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 162,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1605345, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_6dvsgdd0']."
+        }
+      ]
+    },
+    {
+      "run_id": "nominal_dense_01",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 36,
+        "control": 35,
+        "events": 41
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "nominal_dense_02",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 43,
+        "control": 42,
+        "events": 56
+      },
+      "max_observed_odom_step_s": 0.050000000000000266,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 156,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 160,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1606126, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_awobo22h']."
+        }
+      ]
+    },
+    {
+      "run_id": "nominal_dense_03",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 31,
+        "control": 29,
+        "events": 39
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "nominal_dense_04",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 28,
+        "control": 27,
+        "events": 34
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "nominal_dense_05",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 20,
+        "control": 20,
+        "events": 22
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 154,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 157,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1607284, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_adit5v78']."
+        }
+      ]
+    },
+    {
+      "run_id": "nominal_dense_06",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 34,
+        "control": 32,
+        "events": 41
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "nominal_dense_07",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 31,
+        "control": 30,
+        "events": 39
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 158,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 161,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1608008, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_15szz3tj']."
+        }
+      ]
+    },
+    {
+      "run_id": "nominal_dense_08",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 28,
+        "control": 27,
+        "events": 38
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "nominal_dense_09",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 30,
+        "control": 28,
+        "events": 37
+      },
+      "max_observed_odom_step_s": 0.050000000000000044,
+      "terminal_reason": "collision",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_sparse_00",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 575,
+        "control": 15,
+        "events": 18
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_sparse_01",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 570,
+        "control": 12,
+        "events": 15
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 224,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 227,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1609295, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_up5e5dpb']."
+        }
+      ]
+    },
+    {
+      "run_id": "so3_sparse_02",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 579,
+        "control": 14,
+        "events": 17
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_sparse_03",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 591,
+        "control": 15,
+        "events": 18
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_sparse_04",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 571,
+        "control": 13,
+        "events": 16
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_sparse_05",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 348,
+        "control": 14,
+        "events": 17
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_sparse_06",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 557,
+        "control": 13,
+        "events": 16
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_sparse_07",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 577,
+        "control": 13,
+        "events": 16
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_sparse_08",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 564,
+        "control": 15,
+        "events": 18
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_sparse_09",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 562,
+        "control": 14,
+        "events": 17
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_medium_00",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 586,
+        "control": 14,
+        "events": 18
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 215,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 218,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1611586, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_akoj4j_t']."
+        }
+      ]
+    },
+    {
+      "run_id": "so3_medium_01",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 578,
+        "control": 11,
+        "events": 14
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_medium_02",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 591,
+        "control": 13,
+        "events": 16
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 215,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 218,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1612166, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_cjsd8tp1']."
+        }
+      ]
+    },
+    {
+      "run_id": "so3_medium_03",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 583,
+        "control": 13,
+        "events": 16
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 210,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 213,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1612502, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_tlr23nez']."
+        }
+      ]
+    },
+    {
+      "run_id": "so3_medium_04",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 570,
+        "control": 12,
+        "events": 16
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_medium_05",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 577,
+        "control": 12,
+        "events": 15
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_medium_06",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 565,
+        "control": 12,
+        "events": 15
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_medium_07",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 588,
+        "control": 12,
+        "events": 16
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_medium_08",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 588,
+        "control": 14,
+        "events": 17
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_medium_09",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 566,
+        "control": 13,
+        "events": 16
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_dense_00",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 598,
+        "control": 14,
+        "events": 18
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 153,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 156,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1614416, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_dketjfyo']."
+        }
+      ]
+    },
+    {
+      "run_id": "so3_dense_01",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 596,
+        "control": 15,
+        "events": 19
+      },
+      "max_observed_odom_step_s": 0.020000000000000462,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 156,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 159,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1614760, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_b9d6he7t']."
+        }
+      ]
+    },
+    {
+      "run_id": "so3_dense_02",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 597,
+        "control": 13,
+        "events": 16
+      },
+      "max_observed_odom_step_s": 0.020000000000000462,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_dense_03",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 611,
+        "control": 12,
+        "events": 16
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_dense_04",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 590,
+        "control": 13,
+        "events": 16
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_dense_05",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 602,
+        "control": 14,
+        "events": 17
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 153,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 156,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1615862, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_n88dkxin']."
+        }
+      ]
+    },
+    {
+      "run_id": "so3_dense_06",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 617,
+        "control": 13,
+        "events": 17
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [
+        {
+          "node": "corto_node-2",
+          "exit_code": -6,
+          "after_runner_sigint": true
+        }
+      ],
+      "clean_shutdown": false,
+      "shutdown_only_anomalies": true,
+      "abnormal_log_evidence": [
+        {
+          "line_number": 153,
+          "after_runner_sigint": true,
+          "text": "[corto_node-2] terminate called after throwing an instance of 'std::runtime_error'"
+        },
+        {
+          "line_number": 156,
+          "after_runner_sigint": true,
+          "text": "[ERROR] [corto_node-2]: process has died [pid 1616245, exit code -6, cmd '/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/lib/corto_ros2/corto_node --ros-args --params-file /tmp/launch_params_hb02v3on']."
+        }
+      ]
+    },
+    {
+      "run_id": "so3_dense_07",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 595,
+        "control": 13,
+        "events": 16
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_dense_08",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 629,
+        "control": 13,
+        "events": 19
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    },
+    {
+      "run_id": "so3_dense_09",
+      "data_integrity_passed": true,
+      "checks": {
+        "run_identity_matches_manifest": true,
+        "code_commit_matches": true,
+        "recorded_source_clean": true,
+        "manifest_hash_matches": true,
+        "scene_hash_matches": true,
+        "protocol_v2": true,
+        "required_files_nonempty": true,
+        "raw_row_counts_match_summary": true,
+        "trajectory_and_controls_nonempty": true,
+        "states_finite": true,
+        "controls_finite": true,
+        "odometry_time_monotonic": true,
+        "one_collector_terminal": true,
+        "mission_start_recorded": true,
+        "terminal_reason_matches_summary": true,
+        "terminal_time_matches_summary": true,
+        "planning_count_matches_cutoff": true,
+        "planning_failures_retained": true,
+        "planning_means_match_raw_events": true,
+        "nmpc_count_and_mean_match": true,
+        "post_terminal_plans_retained_and_excluded": true,
+        "recorder_exited_normally": true,
+        "launch_did_not_exit_before_recorder": true,
+        "no_pre_interrupt_process_error": true
+      },
+      "raw_counts": {
+        "trajectory": 581,
+        "control": 12,
+        "events": 15
+      },
+      "max_observed_odom_step_s": 0.010000000000000675,
+      "terminal_reason": "out_of_bounds",
+      "process_exit": {
+        "launch": 0,
+        "launch_natural_exit": null,
+        "recorder": 0
+      },
+      "child_abnormal_exits": [],
+      "clean_shutdown": true,
+      "shutdown_only_anomalies": false,
+      "abnormal_log_evidence": []
+    }
+  ]
+}

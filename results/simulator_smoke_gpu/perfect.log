@@ -1,0 +1,51 @@
+[WARN] [1794719100.234098973] [perfect_tracking]:  -- [MissionPlanner] Load config by file name: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/perfect_drone_sim/config/dense.yaml
+Load config file: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/perfect_drone_sim/config/dense.yaml
+[0;32m Load param mesh_resource success: [0;0mpackage://perfect_drone_sim/meshes/yunque-M.dae
+[0;32m Load param init_position/x success: [0;0m0
+[0;32m Load param init_position/y success: [0;0m-50
+[0;32m Load param init_position/z success: [0;0m1.5
+[0;32m Load param init_yaw success: [0;0m1.5741
+[0;32m Load param sensing_rate success: [0;0m10
+[0;33m Load param dynamics_mode failed, use default value: [0;0mperfect
+Load config file: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/perfect_drone_sim/config/dense.yaml
+[0;32m Load param sensing_blind success: [0;0m0.1
+[0;32m Load param sensing_horizon success: [0;0m15
+[0;32m Load param sensing_rate success: [0;0m10
+[0;32m Load param lidar_type success: [0;0m2
+[0;32m Load param pcd_name success: [0;0mrandom_map_2_26609.pcd
+[0;32m Load param is_360lidar success: [0;0m1
+[0;32m Load param polar_resolution success: [0;0m0.4
+[0;33m Load param fx failed, use default value: [0;0m250
+[0;33m Load param fy failed, use default value: [0;0m250
+[0;33m Load param line_number failed, use default value: [0;0m64
+[0;32m Load param downsample_res success: [0;0m0.1
+[0;33m Load param yaw_fov failed, use default value: [0;0m360
+[0;32m Load param vertical_fov success: [0;0m178
+[0;32m Load param depth_image_en success: [0;0m0
+[0;33m Load param inf_point_en failed, use default value: [0;0m0
+[0;32m Load param print_time_consumption success: [0;0m0
+GLAD init success
+Load shader frome: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/marsim_render/config/pattern/360camera.vs
+Failed to find match for field 'intensity'.
+Now initing the point cloud data: 
+Number of points = 41.4755X 10000
+Load data finish 
+========== OpenGL Info ==========
+Vendor: NVIDIA Corporation
+Renderer: NVIDIA GeForce RTX 4090/PCIe/SSE2
+OpenGL Version: 3.3.0 NVIDIA 595.84
+GLSL Version: 3.30 NVIDIA via Cg compiler
+========== OpenGL Info ==========
+ -- [MARSIM] Running FPS: 17.9641
+ -- [MARSIM] Running FPS: 27.0197
+ -- [MARSIM] Running FPS: 31.2261
+ -- [MARSIM] Running FPS: 29.8714
+ -- [MARSIM] Running FPS: 35.8526
+ -- [MARSIM] Running FPS: 41.9033
+ -- [MARSIM] Running FPS: 43.946
+ -- [MARSIM] Running FPS: 44.181
+ -- [MARSIM] Running FPS: 42.4802
+[INFO] [1794719105.607657023] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  could not count subscribers: rcl node's context is invalid, at ./src/rcl/node.c:404
+Aborted (core dumped)

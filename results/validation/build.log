@@ -1,0 +1,203 @@
+not found: "/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/install/corto_ros2/share/corto_ros2/local_setup.bash"
+Starting >>> mars_quadrotor_msgs
+--- stderr: mars_quadrotor_msgs
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    NLopt_DIR
+
+
+---
+Finished <<< mars_quadrotor_msgs [3.92s]
+Starting >>> marsim_render
+--- stderr: marsim_render
+CMake Warning (dev) at /usr/share/cmake-3.28/Modules/FindOpenGL.cmake:381 (message):
+  Policy CMP0072 is not set: FindOpenGL prefers GLVND by default when
+  available.  Run "cmake --help-policy CMP0072" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+
+  FindOpenGL found both a legacy GL library:
+
+    OPENGL_gl_LIBRARY: /usr/lib/x86_64-linux-gnu/libGL.so
+
+  and GLVND libraries for OpenGL and GLX:
+
+    OPENGL_opengl_LIBRARY: /usr/lib/x86_64-linux-gnu/libOpenGL.so
+    OPENGL_glx_LIBRARY: /usr/lib/x86_64-linux-gnu/libGLX.so
+
+  OpenGL_GL_PREFERENCE has not been set to "GLVND" or "LEGACY", so for
+  compatibility with CMake 3.10 and below the legacy GL library will be used.
+Call Stack (most recent call first):
+  CMakeLists.txt:49 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at /usr/lib/x86_64-linux-gnu/cmake/pcl/Modules/FindFLANN.cmake:45 (find_package):
+  Policy CMP0144 is not set: find_package uses upper-case <PACKAGENAME>_ROOT
+  variables.  Run "cmake --help-policy CMP0144" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+
+  CMake variable FLANN_ROOT is set to:
+
+    /usr
+
+  For compatibility, find_package is ignoring the variable, but code in a
+  .cmake module might still use it.
+Call Stack (most recent call first):
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:261 (find_package)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:306 (find_flann)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:570 (find_external_library)
+  CMakeLists.txt:52 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+** WARNING ** io features related to pcap will be disabled
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    NLopt_DIR
+
+
+cc1: warning: command-line option ‘-Wnon-virtual-dtor’ is valid for C++/ObjC++ but not for C
+cc1: warning: command-line option ‘-Woverloaded-virtual=2’ is valid for C++/ObjC++ but not for C
+---
+Finished <<< marsim_render [28.0s]
+Starting >>> rog_map
+--- stderr: rog_map
+Using ROS2
+** WARNING ** io features related to pcap will be disabled
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    NLopt_DIR
+
+
+---
+Finished <<< rog_map [7.11s]
+Starting >>> corto_ros2
+--- stderr: corto_ros2
+CMake Warning (dev) at /usr/lib/x86_64-linux-gnu/cmake/pcl/Modules/FindFLANN.cmake:45 (find_package):
+  Policy CMP0144 is not set: find_package uses upper-case <PACKAGENAME>_ROOT
+  variables.  Run "cmake --help-policy CMP0144" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+
+  CMake variable FLANN_ROOT is set to:
+
+    /usr
+
+  For compatibility, find_package is ignoring the variable, but code in a
+  .cmake module might still use it.
+Call Stack (most recent call first):
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:261 (find_package)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:306 (find_flann)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:570 (find_external_library)
+  /opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)
+  CMakeLists.txt:9 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning at CMakeLists.txt:37 (add_executable):
+  Cannot generate a safe runtime search path for target corto_node because
+  files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libtbb.so.12] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/tong/.local/opt/mosek-11.2.2/mosek/11.2/tools/platform/linux64x86/bin
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at CMakeLists.txt:44 (add_executable):
+  Cannot generate a safe runtime search path for target corto_upstream_oracle
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libtbb.so.12] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/tong/.local/opt/mosek-11.2.2/mosek/11.2/tools/platform/linux64x86/bin
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at CMakeLists.txt:52 (add_executable):
+  Cannot generate a safe runtime search path for target corto_ported_fixture
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libtbb.so.12] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/tong/.local/opt/mosek-11.2.2/mosek/11.2/tools/platform/linux64x86/bin
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at CMakeLists.txt:58 (add_executable):
+  Cannot generate a safe runtime search path for target corto_map_contract
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libtbb.so.12] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/tong/.local/opt/mosek-11.2.2/mosek/11.2/tools/platform/linux64x86/bin
+
+  Some of these libraries may not be found correctly.
+
+
+---
+Finished <<< corto_ros2 [2min 29s]
+Starting >>> perfect_drone_sim
+--- stderr: perfect_drone_sim
+CMake Warning (dev) at /usr/lib/x86_64-linux-gnu/cmake/pcl/Modules/FindFLANN.cmake:45 (find_package):
+  Policy CMP0144 is not set: find_package uses upper-case <PACKAGENAME>_ROOT
+  variables.  Run "cmake --help-policy CMP0144" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+
+  CMake variable FLANN_ROOT is set to:
+
+    /usr
+
+  For compatibility, find_package is ignoring the variable, but code in a
+  .cmake module might still use it.
+Call Stack (most recent call first):
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:261 (find_package)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:306 (find_flann)
+  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:570 (find_external_library)
+  /opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)
+  CMakeLists.txt:32 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) at CMakeLists.txt:36 (find_package):
+  Policy CMP0074 is not set: find_package uses <PackageName>_ROOT variables.
+  Run "cmake --help-policy CMP0074" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  CMake variable PCL_ROOT is set to:
+
+    /usr
+
+  For compatibility, CMake is ignoring the variable.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    NLopt_DIR
+
+
+In file included from /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/perfect_drone_sim/third_party/ego/src/Quadrotor.cpp:1:
+/home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/perfect_drone_sim/third_party/ego/include/quadrotor_simulator/Quadrotor.h:20:36: warning: extra ‘;’ [-Wpedantic]
+   20 |     EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
+      |                                    ^
+      |                                    -
+In file included from /usr/include/boost/typeof/detail/requires_cxx11.hpp:9,
+                 from /usr/include/boost/typeof/typeof.hpp:16,
+                 from /usr/include/boost/numeric/ublas/traits.hpp:29,
+                 from /usr/include/boost/numeric/ublas/storage.hpp:27,
+                 from /usr/include/boost/numeric/ublas/vector.hpp:21,
+                 from /usr/include/boost/numeric/odeint/util/ublas_wrapper.hpp:23,
+                 from /usr/include/boost/numeric/odeint.hpp:25,
+                 from /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/perfect_drone_sim/third_party/ego/src/Quadrotor.cpp:2:
+/usr/include/boost/bind.hpp:36:1: note: ‘#pragma message: The practice of declaring the Bind placeholders (_1, _2, ...) in the global namespace is deprecated. Please use <boost/bind/bind.hpp> + using namespace boost::placeholders, or define BOOST_BIND_GLOBAL_PLACEHOLDERS to retain the current behavior.’
+   36 | BOOST_PRAGMA_MESSAGE(
+      | ^~~~~~~~~~~~~~~~~~~~
+---
+Finished <<< perfect_drone_sim [1min 48s]
+
+Summary: 5 packages finished [4min 57s]
+  5 packages had stderr output: corto_ros2 mars_quadrotor_msgs marsim_render perfect_drone_sim rog_map

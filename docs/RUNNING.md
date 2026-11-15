@@ -36,7 +36,7 @@ SUPER 原规划器与任务节点使用 `COLCON_IGNORE` 排除。
 回归覆盖 Topo-PRM、样条、SOCP、PTF SFC、NMPC、RK4 与解析 Jacobian。
 真实 ROG-Map 的加载、坐标、膨胀、未知与边界语义另有契约检查。
 
-## 单回合
+## 交互启动
 
 ```bash
 source scripts/env.sh
@@ -56,6 +56,16 @@ NMPC 读取 `/lidar_slam/odom` 的实际状态。
 独立物理线程持续推进 1 ms 时间步，规划与渲染不会暂停物理时间。
 
 在有显示器的终端移除 `xvfb-run -a` 并设置 `rviz:=true`，可查看地图、LiDAR、参考路径、连续走廊、NMPC 预测和执行轨迹。
+
+上述命令用于交互观察，按 Ctrl+C 停止。
+若需按正式规则终止并保存单回合数据，使用记录器入口：
+
+```bash
+source scripts/env.sh
+xvfb-run -a python3 scripts/benchmark_run.py \
+  --results results/single_reproduce --run-id so3_medium_00 \
+  --launch-command "ros2 launch $SUPER_CORTO_ROOT/launch/table3.launch.py mode:={mode} scene:={scene} planner_seed:={planner_seed} output_dir:={output_dir} rviz:=false"
+```
 
 ## 完整 60 回合
 
@@ -80,3 +90,21 @@ python3 scripts/benchmark_report.py --results results/table3_reproduce
 结果目录中的 `trials.csv` 为全部逐回合指标。
 `table3.csv`、`table3.md` 为论文对照表。
 指标定义、重建条件与统计分母见 `experiments/PROTOCOL.md`。
+
+## 已有结果与离线复算
+
+正式数据使用提交 `ef8e8e472dbbac40f4b91581582d848a83697234`。
+全部 60 个 run 记录的源码修改状态均为 false。
+当前版本随后只修复了一个停止阶段的 ROS 休眠异常。
+该修复没有改变规划、控制、动力学或评分逻辑。
+正式数据保留在 `results/table3/`，已有失败回合不会被后续检查替换。
+
+```bash
+python3 scripts/benchmark_report.py --results results/table3
+python3 -B results/table3/nominal_diagnostics.py
+python3 -B results/table3/analyze_runtime.py
+python3 -B results/table3/plot_diagnostics.py
+```
+
+绘图脚本使用 Matplotlib；本机验证版本为 3.6.3。
+回归向量、所有原始数据、汇总表和图均保存在仓库中。

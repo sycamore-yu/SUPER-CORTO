@@ -1,0 +1,430 @@
+{
+  "schema_version": 1,
+  "generation_seed": 20261115,
+  "start": [
+    -14.0,
+    -6.5,
+    0.49
+  ],
+  "goal": [
+    6.8,
+    5.2,
+    0.49
+  ],
+  "initial_yaw_rad": 3.141592653589793,
+  "initial_quaternion_wxyz": [
+    0,
+    0,
+    0,
+    1
+  ],
+  "goal_tolerance_m": 0.2,
+  "collision_model": "ego_rotor_enclosing_sphere",
+  "body_radius_m": 0.322,
+  "original_reference_radius_m": 0.1,
+  "continuous_sample_spacing_m": 0.005,
+  "flight_timeout_s": 60.0,
+  "wall_timeout_s": 180.0,
+  "v_max_mps": 10,
+  "a_max_mps2": 5,
+  "nmpc_horizon": 10,
+  "nmpc_dt_s": 0.05,
+  "socp_nodes": 100,
+  "scenes": [
+    {
+      "scene": "sparse",
+      "scene_json": "scenes/sparse.json",
+      "scene_pcd": "scenes/sparse.pcd",
+      "scene_sha256": "28dcc5396539974627816ad35daf4a5c508c5411188b545b0fe3de343f4e7657",
+      "pcd_sha256": "dbaed2ecfd78838b878503fedddd4380a181147eb0d83382574c4954e7d403c5",
+      "point_count": 25020,
+      "obstacle_count": 45,
+      "circle_count": 9,
+      "cylinder_count": 36
+    },
+    {
+      "scene": "medium",
+      "scene_json": "scenes/medium.json",
+      "scene_pcd": "scenes/medium.pcd",
+      "scene_sha256": "24a02fd809d1fac2a29848295ed9ddd274a6fe2f500cfbac8276f0456728c7c3",
+      "pcd_sha256": "66c45f045b9ca7fc0caa65029124d0e26122199f518ea4def7cfb6f3f5d853a5",
+      "point_count": 55086,
+      "obstacle_count": 90,
+      "circle_count": 18,
+      "cylinder_count": 72
+    },
+    {
+      "scene": "dense",
+      "scene_json": "scenes/dense.json",
+      "scene_pcd": "scenes/dense.pcd",
+      "scene_sha256": "41aca0f0aebbf337731e492ec475034a577db292d1a60b61b937f4e35e732be7",
+      "pcd_sha256": "93122855cee575ba787e212852823112a8aca1a988bbd9ac36834abd56700cc1",
+      "point_count": 109723,
+      "obstacle_count": 180,
+      "circle_count": 36,
+      "cylinder_count": 144
+    }
+  ],
+  "runs": [
+    {
+      "run_id": "nominal_sparse_00",
+      "mode": "nominal",
+      "scene": "sparse",
+      "planner_seed": 0
+    },
+    {
+      "run_id": "nominal_sparse_01",
+      "mode": "nominal",
+      "scene": "sparse",
+      "planner_seed": 1
+    },
+    {
+      "run_id": "nominal_sparse_02",
+      "mode": "nominal",
+      "scene": "sparse",
+      "planner_seed": 2
+    },
+    {
+      "run_id": "nominal_sparse_03",
+      "mode": "nominal",
+      "scene": "sparse",
+      "planner_seed": 3
+    },
+    {
+      "run_id": "nominal_sparse_04",
+      "mode": "nominal",
+      "scene": "sparse",
+      "planner_seed": 4
+    },
+    {
+      "run_id": "nominal_sparse_05",
+      "mode": "nominal",
+      "scene": "sparse",
+      "planner_seed": 5
+    },
+    {
+      "run_id": "nominal_sparse_06",
+      "mode": "nominal",
+      "scene": "sparse",
+      "planner_seed": 6
+    },
+    {
+      "run_id": "nominal_sparse_07",
+      "mode": "nominal",
+      "scene": "sparse",
+      "planner_seed": 7
+    },
+    {
+      "run_id": "nominal_sparse_08",
+      "mode": "nominal",
+      "scene": "sparse",
+      "planner_seed": 8
+    },
+    {
+      "run_id": "nominal_sparse_09",
+      "mode": "nominal",
+      "scene": "sparse",
+      "planner_seed": 9
+    },
+    {
+      "run_id": "nominal_medium_00",
+      "mode": "nominal",
+      "scene": "medium",
+      "planner_seed": 0
+    },
+    {
+      "run_id": "nominal_medium_01",
+      "mode": "nominal",
+      "scene": "medium",
+      "planner_seed": 1
+    },
+    {
+      "run_id": "nominal_medium_02",
+      "mode": "nominal",
+      "scene": "medium",
+      "planner_seed": 2
+    },
+    {
+      "run_id": "nominal_medium_03",
+      "mode": "nominal",
+      "scene": "medium",
+      "planner_seed": 3
+    },
+    {
+      "run_id": "nominal_medium_04",
+      "mode": "nominal",
+      "scene": "medium",
+      "planner_seed": 4
+    },
+    {
+      "run_id": "nominal_medium_05",
+      "mode": "nominal",
+      "scene": "medium",
+      "planner_seed": 5
+    },
+    {
+      "run_id": "nominal_medium_06",
+      "mode": "nominal",
+      "scene": "medium",
+      "planner_seed": 6
+    },
+    {
+      "run_id": "nominal_medium_07",
+      "mode": "nominal",
+      "scene": "medium",
+      "planner_seed": 7
+    },
+    {
+      "run_id": "nominal_medium_08",
+      "mode": "nominal",
+      "scene": "medium",
+      "planner_seed": 8
+    },
+    {
+      "run_id": "nominal_medium_09",
+      "mode": "nominal",
+      "scene": "medium",
+      "planner_seed": 9
+    },
+    {
+      "run_id": "nominal_dense_00",
+      "mode": "nominal",
+      "scene": "dense",
+      "planner_seed": 0
+    },
+    {
+      "run_id": "nominal_dense_01",
+      "mode": "nominal",
+      "scene": "dense",
+      "planner_seed": 1
+    },
+    {
+      "run_id": "nominal_dense_02",
+      "mode": "nominal",
+      "scene": "dense",
+      "planner_seed": 2
+    },
+    {
+      "run_id": "nominal_dense_03",
+      "mode": "nominal",
+      "scene": "dense",
+      "planner_seed": 3
+    },
+    {
+      "run_id": "nominal_dense_04",
+      "mode": "nominal",
+      "scene": "dense",
+      "planner_seed": 4
+    },
+    {
+      "run_id": "nominal_dense_05",
+      "mode": "nominal",
+      "scene": "dense",
+      "planner_seed": 5
+    },
+    {
+      "run_id": "nominal_dense_06",
+      "mode": "nominal",
+      "scene": "dense",
+      "planner_seed": 6
+    },
+    {
+      "run_id": "nominal_dense_07",
+      "mode": "nominal",
+      "scene": "dense",
+      "planner_seed": 7
+    },
+    {
+      "run_id": "nominal_dense_08",
+      "mode": "nominal",
+      "scene": "dense",
+      "planner_seed": 8
+    },
+    {
+      "run_id": "nominal_dense_09",
+      "mode": "nominal",
+      "scene": "dense",
+      "planner_seed": 9
+    },
+    {
+      "run_id": "so3_sparse_00",
+      "mode": "so3",
+      "scene": "sparse",
+      "planner_seed": 0
+    },
+    {
+      "run_id": "so3_sparse_01",
+      "mode": "so3",
+      "scene": "sparse",
+      "planner_seed": 1
+    },
+    {
+      "run_id": "so3_sparse_02",
+      "mode": "so3",
+      "scene": "sparse",
+      "planner_seed": 2
+    },
+    {
+      "run_id": "so3_sparse_03",
+      "mode": "so3",
+      "scene": "sparse",
+      "planner_seed": 3
+    },
+    {
+      "run_id": "so3_sparse_04",
+      "mode": "so3",
+      "scene": "sparse",
+      "planner_seed": 4
+    },
+    {
+      "run_id": "so3_sparse_05",
+      "mode": "so3",
+      "scene": "sparse",
+      "planner_seed": 5
+    },
+    {
+      "run_id": "so3_sparse_06",
+      "mode": "so3",
+      "scene": "sparse",
+      "planner_seed": 6
+    },
+    {
+      "run_id": "so3_sparse_07",
+      "mode": "so3",
+      "scene": "sparse",
+      "planner_seed": 7
+    },
+    {
+      "run_id": "so3_sparse_08",
+      "mode": "so3",
+      "scene": "sparse",
+      "planner_seed": 8
+    },
+    {
+      "run_id": "so3_sparse_09",
+      "mode": "so3",
+      "scene": "sparse",
+      "planner_seed": 9
+    },
+    {
+      "run_id": "so3_medium_00",
+      "mode": "so3",
+      "scene": "medium",
+      "planner_seed": 0
+    },
+    {
+      "run_id": "so3_medium_01",
+      "mode": "so3",
+      "scene": "medium",
+      "planner_seed": 1
+    },
+    {
+      "run_id": "so3_medium_02",
+      "mode": "so3",
+      "scene": "medium",
+      "planner_seed": 2
+    },
+    {
+      "run_id": "so3_medium_03",
+      "mode": "so3",
+      "scene": "medium",
+      "planner_seed": 3
+    },
+    {
+      "run_id": "so3_medium_04",
+      "mode": "so3",
+      "scene": "medium",
+      "planner_seed": 4
+    },
+    {
+      "run_id": "so3_medium_05",
+      "mode": "so3",
+      "scene": "medium",
+      "planner_seed": 5
+    },
+    {
+      "run_id": "so3_medium_06",
+      "mode": "so3",
+      "scene": "medium",
+      "planner_seed": 6
+    },
+    {
+      "run_id": "so3_medium_07",
+      "mode": "so3",
+      "scene": "medium",
+      "planner_seed": 7
+    },
+    {
+      "run_id": "so3_medium_08",
+      "mode": "so3",
+      "scene": "medium",
+      "planner_seed": 8
+    },
+    {
+      "run_id": "so3_medium_09",
+      "mode": "so3",
+      "scene": "medium",
+      "planner_seed": 9
+    },
+    {
+      "run_id": "so3_dense_00",
+      "mode": "so3",
+      "scene": "dense",
+      "planner_seed": 0
+    },
+    {
+      "run_id": "so3_dense_01",
+      "mode": "so3",
+      "scene": "dense",
+      "planner_seed": 1
+    },
+    {
+      "run_id": "so3_dense_02",
+      "mode": "so3",
+      "scene": "dense",
+      "planner_seed": 2
+    },
+    {
+      "run_id": "so3_dense_03",
+      "mode": "so3",
+      "scene": "dense",
+      "planner_seed": 3
+    },
+    {
+      "run_id": "so3_dense_04",
+      "mode": "so3",
+      "scene": "dense",
+      "planner_seed": 4
+    },
+    {
+      "run_id": "so3_dense_05",
+      "mode": "so3",
+      "scene": "dense",
+      "planner_seed": 5
+    },
+    {
+      "run_id": "so3_dense_06",
+      "mode": "so3",
+      "scene": "dense",
+      "planner_seed": 6
+    },
+    {
+      "run_id": "so3_dense_07",
+      "mode": "so3",
+      "scene": "dense",
+      "planner_seed": 7
+    },
+    {
+      "run_id": "so3_dense_08",
+      "mode": "so3",
+      "scene": "dense",
+      "planner_seed": 8
+    },
+    {
+      "run_id": "so3_dense_09",
+      "mode": "so3",
+      "scene": "dense",
+      "planner_seed": 9
+    }
+  ]
+}

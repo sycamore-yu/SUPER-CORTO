@@ -1,0 +1,73 @@
+[WARN] [1794719050.483141278] [perfect_tracking]:  -- [MissionPlanner] Load config by file name: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/perfect_drone_sim/config/dense.yaml
+Load config file: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/perfect_drone_sim/config/dense.yaml
+[0;32m Load param mesh_resource success: [0;0mpackage://perfect_drone_sim/meshes/yunque-M.dae
+[0;32m Load param init_position/x success: [0;0m0
+[0;32m Load param init_position/y success: [0;0m-50
+[0;32m Load param init_position/z success: [0;0m1.5
+[0;32m Load param init_yaw success: [0;0m1.5741
+[0;32m Load param sensing_rate success: [0;0m10
+[0;33m Load param dynamics_mode failed, use default value: [0;0mperfect
+Load config file: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/perfect_drone_sim/config/dense.yaml
+[0;32m Load param sensing_blind success: [0;0m0.1
+[0;32m Load param sensing_horizon success: [0;0m15
+[0;32m Load param sensing_rate success: [0;0m10
+[0;32m Load param lidar_type success: [0;0m2
+[0;32m Load param pcd_name success: [0;0mrandom_map_2_26609.pcd
+[0;32m Load param is_360lidar success: [0;0m1
+[0;32m Load param polar_resolution success: [0;0m0.4
+[0;33m Load param fx failed, use default value: [0;0m250
+[0;33m Load param fy failed, use default value: [0;0m250
+[0;33m Load param line_number failed, use default value: [0;0m64
+[0;32m Load param downsample_res success: [0;0m0.1
+[0;33m Load param yaw_fov failed, use default value: [0;0m360
+[0;32m Load param vertical_fov success: [0;0m178
+[0;32m Load param depth_image_en success: [0;0m0
+[0;33m Load param inf_point_en failed, use default value: [0;0m0
+[0;32m Load param print_time_consumption success: [0;0m0
+GLAD init success
+Load shader frome: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/mars_uav_sim/marsim_render/config/pattern/360camera.vs
+Failed to find match for field 'intensity'.
+Now initing the point cloud data: 
+Number of points = 41.4755X 10000
+Load data finish 
+========== OpenGL Info ==========
+Vendor: Mesa
+Renderer: llvmpipe (LLVM 20.1.2, 256 bits)
+OpenGL Version: 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2
+GLSL Version: 4.50
+========== OpenGL Info ==========
+ -- [MARSIM] Running FPS: 2.97839
+ -- [MARSIM] Running FPS: 8.22364
+ -- [MARSIM] Running FPS: 8.58801
+ -- [MARSIM] Running FPS: 9.90298
+ -- [MARSIM] Running FPS: 8.63816
+ -- [MARSIM] Running FPS: 9.57801
+ -- [MARSIM] Running FPS: 8.56784
+ -- [MARSIM] Running FPS: 7.4038
+ -- [MARSIM] Running FPS: 8.02565
+ -- [MARSIM] Running FPS: 9.97094
+ -- [MARSIM] Running FPS: 9.9372
+ -- [MARSIM] Running FPS: 9.19639
+ -- [MARSIM] Running FPS: 8.85463
+ -- [MARSIM] Running FPS: 9.64424
+ -- [MARSIM] Running FPS: 8.72957
+ -- [MARSIM] Running FPS: 9.85713
+ -- [MARSIM] Running FPS: 9.53576
+ -- [MARSIM] Running FPS: 9.57494
+ -- [MARSIM] Running FPS: 9.53369
+ -- [MARSIM] Running FPS: 7.74705
+ -- [MARSIM] Running FPS: 7.71925
+ -- [MARSIM] Running FPS: 7.36408
+ -- [MARSIM] Running FPS: 7.19434
+ -- [MARSIM] Running FPS: 8.92275
+ -- [MARSIM] Running FPS: 7.6077
+ -- [MARSIM] Running FPS: 8.04844
+ -- [MARSIM] Running FPS: 8.21623
+ -- [MARSIM] Running FPS: 9.05624
+ -- [MARSIM] Running FPS: 8.54213
+ -- [MARSIM] Running FPS: 8.56798
+ -- [MARSIM] Running FPS: 8.18504
+[INFO] [1794719055.407146586] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+ -- [MARSIM] Running FPS: 8.93253
+XIO:  fatal IO error 22 (Invalid argument) on X server ":100"
+      after 245 requests (238 known processed) with 0 events remaining.

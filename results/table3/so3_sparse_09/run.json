@@ -1,0 +1,15 @@
+{
+  "run_id": "so3_sparse_09",
+  "mode": "so3",
+  "scene": "sparse",
+  "planner_seed": 9,
+  "manifest_sha256": "755f64c65f9688425630bd45e90d75e952116c970ec273983255dc70b8d63803",
+  "protocol_version": 2,
+  "termination_policy": "first_collision_or_body_boundary_or_goal_or_timeout",
+  "scene_sha256": "28dcc5396539974627816ad35daf4a5c508c5411188b545b0fe3de343f4e7657",
+  "ros_domain_id": "185",
+  "ros_distro": "jazzy",
+  "code_commit": "ef8e8e472dbbac40f4b91581582d848a83697234",
+  "tracked_source_dirty": false,
+  "started_utc": "2026-11-15T05:37:56Z"
+}

@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/build/perfect_drone_sim
+Test project /home/tong/tongworkspace/projects/aerial/SUPER-CORTO/build/perfect_drone_sim
+    Start 1: so3_dynamics
+1/1 Test #1: so3_dynamics .....................   Passed    0.02 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.02 sec

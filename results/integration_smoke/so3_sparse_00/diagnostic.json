@@ -1,0 +1,829 @@
+{
+  "schema_version": 1,
+  "classification": "development_integration_smoke_not_formal_table_iii",
+  "analyzed_utc": "2026-11-15T05:31:41.295156+00:00",
+  "method": "分析已有 CTBR、odom、事件与源码。没有重新运行模拟，没有修改算法、动力学、增益、地图或种子。",
+  "run_metadata": {
+    "run_id": "so3_sparse_00",
+    "mode": "so3",
+    "scene": "sparse",
+    "planner_seed": 0,
+    "manifest_sha256": "6725c4a7ccef847b0f4268194742c2fc3615fd0f33c310cf998828345c7f1b2d",
+    "scene_sha256": "28dcc5396539974627816ad35daf4a5c508c5411188b545b0fe3de343f4e7657",
+    "ros_domain_id": "188",
+    "ros_distro": "jazzy",
+    "code_commit": "2ad3419c127a617c6d7df6925e81a14175a9c096",
+    "tracked_source_dirty": true,
+    "started_utc": "2026-11-15T05:13:08Z"
+  },
+  "input_sha256": {
+    "trajectory.csv": "167a163b6f92ca6b918f80a998f319da9afa889bc58304592610e54a405ca7db",
+    "control.csv": "84c8b5b7db9b913bc49f2b6f64b0709a9ad6ef3292a893a22dc8abcc5a36c7c5",
+    "events.jsonl": "80d5a36bfdfd2df730f7f84488f4aacd0bdee5cf98293af908746dcb4a497a86",
+    "run.json": "fd769f67931e39053c78192d985566147648055bcb66e95e4883de6182f3ff52",
+    "summary.json": "f94902bacc15ae845022403f0c1b9cfa23791a160079b1f5c9916056083e1763",
+    "launch.log": "f2496f20674474c7fa7571744d542e1376590740f3d606b6b8bc5dcdb815b24a",
+    "launch_inputs.json": "594393bf7ddc48695e941ae45aa0c705c745292e9b0e76359c673fcaaec51f80",
+    "launch_command.json": "b02dac8c5b0b8071dc20af356a74715eac09b33c1704be5f9f6f6201106ae387",
+    "sim_config.yaml": "a0c68b6a4b1a3cdd0e1c9b939e83f8acde770b4fd5859181dea1fcee8b6d6c52",
+    "map_config.yaml": "b5edad2940f49d1afc911cae9e1f395bd34ca7b56c1546f70f2bd64f441ea4b2"
+  },
+  "source_sha256_at_analysis": {
+    "mars_uav_sim/perfect_drone_sim/include/perfect_drone_sim/so3_dynamics.hpp": "8c4658ecdd19a4e70c31e3ab2938b0e79a1b34e3c42ecbde28f458e1ecfe0d24",
+    "mars_uav_sim/perfect_drone_sim/include/perfect_drone_sim/ros2_perfect_drone_model.hpp": "04cfac5b79d6fb9b22321431465b6b0d1cfb5529ce5e2b03234daac1acdff1fb",
+    "mars_uav_sim/perfect_drone_sim/third_party/ego/UPSTREAM.md": "56b18d5ec54654293e7bd012836351ba8735851d9607ede3765a8ca9b82c9f55",
+    "corto_ros2/src/corto_node.cpp": "e824c177ca13d63e0b8328e7a0e8b0f4f14cadcbc7481cab347661e8013c8389",
+    "corto_ros2/modules/ros_interface/ros_interface.hpp": "926a360bdf2e31bc1a8b5a568db5e5d0a6d6d73a69b2db5356a396799c3dc2ff",
+    "corto_ros2/modules/nmpc/nominal_quad_dynamic.hpp": "9cf6b1fef95984ca25300e1a6287006c833d742be96ae03f15740f7790df45a3"
+  },
+  "hardware": {
+    "inventory_observed_after_trial": true,
+    "cpu_model": "Intel(R) Xeon(R) Silver 4210R CPU @ 2.40GHz",
+    "sockets": 2,
+    "cores_per_socket": 10,
+    "threads_per_core": 2,
+    "online_logical_cpu_count": 40,
+    "analysis_process_affinity_cpu_count": 40,
+    "physical_memory_bytes": 66926120960,
+    "kernel": "6.8.0-146-generic",
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "gpu_memory_mib": 24564,
+    "nvidia_driver": "595.84",
+    "trial_log_opengl": "3.3.0 NVIDIA 595.84",
+    "trial_log_renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+    "ros_distro": "jazzy",
+    "ros_domain_id": 188,
+    "trial_cpu_load_affinity_governor_or_isolation_recorded": false,
+    "evidence": "试跑 launch.log 确认 GPU/驱动/OpenGL；CPU、内存和内核来自诊断时 lscpu/free/nvidia-smi 查询。"
+  },
+  "mission_start_sim_time_s": 4.85,
+  "first_conservative_body_boundary": {
+    "model": "已声明的半径 0.322 m 保守球包络，不是 EGO 原版碰撞网格",
+    "world_lower_m": [
+      -15.0,
+      -7.5,
+      0.0
+    ],
+    "world_upper_m": [
+      15.0,
+      7.5,
+      3.0
+    ],
+    "body_radius_m": 0.322,
+    "boundary": "z_lower",
+    "sim_time_s": 5.310563181453742,
+    "mission_elapsed_s": 0.4605631814537423,
+    "position_m": [
+      -13.452107760282765,
+      -6.108607337975826,
+      0.322
+    ],
+    "method": "相邻 100 Hz 状态线性插值",
+    "bracket_sim_time_s": [
+      5.31,
+      5.32
+    ],
+    "bracket_margin_m": [
+      0.0008976237179902924,
+      -0.015040822266435938
+    ],
+    "last_pre_boundary_state": {
+      "sim_time_s": 5.31,
+      "mission_elapsed_s": 0.45999999999999996,
+      "position_m": [
+        -13.453800944680077,
+        -6.109525960099884,
+        0.3228976237179903
+      ],
+      "velocity_world_mps": [
+        2.9629596462363312,
+        1.6389235382010565,
+        -1.5829861697857595
+      ],
+      "speed_mps": 3.7377861687136926,
+      "quaternion_wxyz": [
+        0.33969433301668134,
+        0.4227944871439364,
+        0.10285098380057169,
+        0.8338310721532883
+      ],
+      "tilt_deg": 51.58645780118967,
+      "body_rate_actual_radps": [
+        -5.664302132759206,
+        3.7126614336536083,
+        -2.3394497397357186
+      ],
+      "last_command_stamp_s": 5.25,
+      "body_rate_command_radps": [
+        -5.654866776461628,
+        5.654866776461628,
+        -1.565679500215071
+      ],
+      "normalized_thrust_command": 0.8,
+      "matching_note": "按 10 ms 量化的仿真时间戳匹配，不是执行器消费时间。"
+    },
+    "completed_nmpc_before_boundary_ms": {
+      "count": 10,
+      "mean": 36.9246566,
+      "min": 22.65889,
+      "p50": 31.966857,
+      "p95": 55.71323915,
+      "p99": 56.436865430000005,
+      "max": 56.617772,
+      "over_50_ms_count": 3,
+      "over_50_ms_fraction": 0.3,
+      "negative_status_count": 0,
+      "solver_code_counts": {
+        "3": 10
+      }
+    },
+    "completed_nmpc_events": [
+      {
+        "event": "nmpc_result",
+        "sim_time_s": 4.85,
+        "wall_time_s": 3.352005602,
+        "solver_code": 3,
+        "success": true,
+        "elapsed_ms": 53.401716,
+        "wall_receive_s": 6.304672434926033
+      },
+      {
+        "event": "nmpc_result",
+        "sim_time_s": 4.9,
+        "wall_time_s": 3.407577101,
+        "solver_code": 3,
+        "success": true,
+        "elapsed_ms": 54.607699,
+        "wall_receive_s": 6.360367588931695
+      },
+      {
+        "event": "nmpc_result",
+        "sim_time_s": 4.96,
+        "wall_time_s": 3.465048369,
+        "solver_code": 3,
+        "success": true,
+        "elapsed_ms": 56.617772,
+        "wall_receive_s": 6.417778827948496
+      },
+      {
+        "event": "nmpc_result",
+        "sim_time_s": 5,
+        "wall_time_s": 3.501538519,
+        "solver_code": 3,
+        "success": true,
+        "elapsed_ms": 35.657028,
+        "wall_receive_s": 6.45447730878368
+      },
+      {
+        "event": "nmpc_result",
+        "sim_time_s": 5.02,
+        "wall_time_s": 3.530609256,
+        "solver_code": 3,
+        "success": true,
+        "elapsed_ms": 28.151756,
+        "wall_receive_s": 6.483318592887372
+      },
+      {
+        "event": "nmpc_result",
+        "sim_time_s": 5.05,
+        "wall_time_s": 3.55917398,
+        "solver_code": 3,
+        "success": true,
+        "elapsed_ms": 27.7434,
+        "wall_receive_s": 6.511828313814476
+      },
+      {
+        "event": "nmpc_result",
+        "sim_time_s": 5.1,
+        "wall_time_s": 3.608037222,
+        "solver_code": 3,
+        "success": true,
+        "elapsed_ms": 29.551153,
+        "wall_receive_s": 6.560883858939633
+      },
+      {
+        "event": "nmpc_result",
+        "sim_time_s": 5.15,
+        "wall_time_s": 3.651202523,
+        "solver_code": 3,
+        "success": true,
+        "elapsed_ms": 22.65889,
+        "wall_receive_s": 6.605478110956028
+      },
+      {
+        "event": "nmpc_result",
+        "sim_time_s": 5.21,
+        "wall_time_s": 3.713043527,
+        "solver_code": 3,
+        "success": true,
+        "elapsed_ms": 34.382561,
+        "wall_receive_s": 6.665876213926822
+      },
+      {
+        "event": "nmpc_result",
+        "sim_time_s": 5.25,
+        "wall_time_s": 3.755062071,
+        "solver_code": 3,
+        "success": true,
+        "elapsed_ms": 26.474591,
+        "wall_receive_s": 6.708011430921033
+      }
+    ],
+    "last_command_age_at_boundary_recorder_wall_estimate_ms": 55.448135455929304,
+    "next_command_recorder_interval_ms": 84.36643797904253,
+    "command_age_note": "同一记录器墙钟上插值边界接收时刻，不是执行器消费时间。"
+  },
+  "early_motion": {
+    "first_negative_vertical_velocity_s": 5.08,
+    "largest_pre_boundary_tilt": {
+      "sim_time_s": 5.13,
+      "mission_elapsed_s": 0.28000000000000025,
+      "position_m": [
+        -13.864132684215717,
+        -6.392825483817999,
+        0.5122563867873807
+      ],
+      "velocity_world_mps": [
+        1.5660870950053125,
+        1.2507795784143005,
+        -0.3897075303655992
+      ],
+      "speed_mps": 2.0418007498637296,
+      "quaternion_wxyz": [
+        0.009517947192973573,
+        0.5156801058981578,
+        0.37981217289342933,
+        0.7679362931806702
+      ],
+      "tilt_deg": 79.65158801540686,
+      "body_rate_actual_radps": [
+        -1.9741368821258063,
+        -1.3545730233016218,
+        -0.15176794606762137
+      ],
+      "last_command_stamp_s": 5.1,
+      "body_rate_command_radps": [
+        -3.3836087261000283,
+        -1.5125882253184801,
+        -3.389620769076401
+      ],
+      "normalized_thrust_command": 0.8,
+      "matching_note": "按 10 ms 量化的仿真时间戳匹配，不是执行器消费时间。"
+    },
+    "snapshots": [
+      {
+        "sim_time_s": 4.85,
+        "mission_elapsed_s": 0.0,
+        "position_m": [
+          -14.0,
+          -6.5,
+          0.49
+        ],
+        "velocity_world_mps": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "speed_mps": 0.0,
+        "quaternion_wxyz": [
+          6.123233995736766e-17,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "tilt_deg": 0.0,
+        "body_rate_actual_radps": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "last_command_stamp_s": 4.85,
+        "body_rate_command_radps": [
+          3.8361130394768175,
+          -5.654866776457071,
+          0.6046996883717172
+        ],
+        "normalized_thrust_command": 0.7999999999994686,
+        "matching_note": "按 10 ms 量化的仿真时间戳匹配，不是执行器消费时间。"
+      },
+      {
+        "sim_time_s": 4.9,
+        "mission_elapsed_s": 0.05000000000000071,
+        "position_m": [
+          -13.999914253393346,
+          -6.4999393124996105,
+          0.4913020508715062
+        ],
+        "velocity_world_mps": [
+          0.008514172097396985,
+          0.006003111672090984,
+          0.07266085548237407
+        ],
+        "speed_mps": 0.0734038718030741,
+        "quaternion_wxyz": [
+          -0.0004632436710107395,
+          0.02695734439251487,
+          0.01889148255032587,
+          0.999457952530098
+        ],
+        "tilt_deg": 3.772792244338589,
+        "body_rate_actual_radps": [
+          1.9938244076306213,
+          -2.869910440857079,
+          0.0519634809872597
+        ],
+        "last_command_stamp_s": 4.9,
+        "body_rate_command_radps": [
+          5.036881192313198,
+          -5.654866776461628,
+          0.029118667958158626
+        ],
+        "normalized_thrust_command": 0.7999999999941387,
+        "matching_note": "按 10 ms 量化的仿真时间戳匹配，不是执行器消费时间。"
+      },
+      {
+        "sim_time_s": 5.0,
+        "mission_elapsed_s": 0.15000000000000036,
+        "position_m": [
+          -13.986284366859786,
+          -6.490031189799451,
+          0.5102081991480965
+        ],
+        "velocity_world_mps": [
+          0.3762853974792766,
+          0.2816954849412646,
+          0.25810501561378385
+        ],
+        "speed_mps": 0.5362473735855711,
+        "quaternion_wxyz": [
+          -0.008339756162627188,
+          0.2935065177780097,
+          0.22957995821018354,
+          0.927942571109433
+        ],
+        "tilt_deg": 43.75580194663024,
+        "body_rate_actual_radps": [
+          5.69594421058874,
+          -6.378294668489661,
+          0.08780075386575578
+        ],
+        "last_command_stamp_s": 5.0,
+        "body_rate_command_radps": [
+          2.9862528418810017,
+          -4.657366941391147,
+          0.6749902720818678
+        ],
+        "normalized_thrust_command": 0.7999999999958683,
+        "matching_note": "按 10 ms 量化的仿真时间戳匹配，不是执行器消费时间。"
+      },
+      {
+        "sim_time_s": 5.1,
+        "mission_elapsed_s": 0.25,
+        "position_m": [
+          -13.906542329930664,
+          -6.4269192545633995,
+          0.5206092836908975
+        ],
+        "velocity_world_mps": [
+          1.2632810135512735,
+          1.0192924741828462,
+          -0.16871521241561294
+        ],
+        "speed_mps": 1.631962282047403,
+        "quaternion_wxyz": [
+          -0.008237082190279162,
+          0.4956461317532373,
+          0.390186645427558,
+          0.7759004087413747
+        ],
+        "tilt_deg": 78.21858141833307,
+        "body_rate_actual_radps": [
+          0.16607797101623578,
+          -2.279325628636231,
+          0.047621411181572114
+        ],
+        "last_command_stamp_s": 5.1,
+        "body_rate_command_radps": [
+          -3.3836087261000283,
+          -1.5125882253184801,
+          -3.389620769076401
+        ],
+        "normalized_thrust_command": 0.8,
+        "matching_note": "按 10 ms 量化的仿真时间戳匹配，不是执行器消费时间。"
+      },
+      {
+        "sim_time_s": 5.2,
+        "mission_elapsed_s": 0.35000000000000053,
+        "position_m": [
+          -13.731582475396257,
+          -6.2909279427561,
+          0.46645952832503784
+        ],
+        "velocity_world_mps": [
+          2.154324823031923,
+          1.589738459172057,
+          -0.9271696287871256
+        ],
+        "speed_mps": 2.833377372015159,
+        "quaternion_wxyz": [
+          0.10581690986506695,
+          0.530201932554886,
+          0.2883774008655718,
+          0.7902703125967024
+        ],
+        "tilt_deg": 74.24950464883301,
+        "body_rate_actual_radps": [
+          -4.95030760234691,
+          -0.9028790711008641,
+          -1.0967484621378483
+        ],
+        "last_command_stamp_s": 5.15,
+        "body_rate_command_radps": [
+          -4.937826789956751,
+          -0.9278487334351194,
+          -4.589741563944018
+        ],
+        "normalized_thrust_command": 0.36266308778273615,
+        "matching_note": "按 10 ms 量化的仿真时间戳匹配，不是执行器消费时间。"
+      },
+      {
+        "sim_time_s": 5.31,
+        "mission_elapsed_s": 0.45999999999999996,
+        "position_m": [
+          -13.453800944680077,
+          -6.109525960099884,
+          0.3228976237179903
+        ],
+        "velocity_world_mps": [
+          2.9629596462363312,
+          1.6389235382010565,
+          -1.5829861697857595
+        ],
+        "speed_mps": 3.7377861687136926,
+        "quaternion_wxyz": [
+          0.33969433301668134,
+          0.4227944871439364,
+          0.10285098380057169,
+          0.8338310721532883
+        ],
+        "tilt_deg": 51.58645780118967,
+        "body_rate_actual_radps": [
+          -5.664302132759206,
+          3.7126614336536083,
+          -2.3394497397357186
+        ],
+        "last_command_stamp_s": 5.25,
+        "body_rate_command_radps": [
+          -5.654866776461628,
+          5.654866776461628,
+          -1.565679500215071
+        ],
+        "normalized_thrust_command": 0.8,
+        "matching_note": "按 10 ms 量化的仿真时间戳匹配，不是执行器消费时间。"
+      },
+      {
+        "sim_time_s": 5.4,
+        "mission_elapsed_s": 0.5500000000000007,
+        "position_m": [
+          -13.158086640443756,
+          -5.968739869361107,
+          0.17979744703622808
+        ],
+        "velocity_world_mps": [
+          3.5025952943154652,
+          1.504767411551558,
+          -1.5117667954537215
+        ],
+        "speed_mps": 4.10096788605627,
+        "quaternion_wxyz": [
+          0.4794726671162283,
+          0.08643161514360931,
+          0.026685496096023234,
+          0.872882249613444
+        ],
+        "tilt_deg": 10.379842129618849,
+        "body_rate_actual_radps": [
+          -5.549802311126945,
+          6.478316015933736,
+          -2.151592653871921
+        ],
+        "last_command_stamp_s": 5.4,
+        "body_rate_command_radps": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "normalized_thrust_command": 0.6,
+        "matching_note": "按 10 ms 量化的仿真时间戳匹配，不是执行器消费时间。"
+      },
+      {
+        "sim_time_s": 5.98,
+        "mission_elapsed_s": 1.1300000000000008,
+        "position_m": [
+          -10.955853957497657,
+          -4.661794804369354,
+          0.0
+        ],
+        "velocity_world_mps": [
+          5.119775830680233,
+          3.825969854969214,
+          0.0
+        ],
+        "speed_mps": 6.391412198219625,
+        "quaternion_wxyz": [
+          0.49799609111356025,
+          -0.23407179108428836,
+          0.6770132384422587,
+          0.4887364983589145
+        ],
+        "tilt_deg": 91.5055085063992,
+        "body_rate_actual_radps": [
+          -5.3852004049534825,
+          -3.827035504967794,
+          -2.1142225930361094
+        ],
+        "last_command_stamp_s": 5.96,
+        "body_rate_command_radps": [
+          -5.654866776461628,
+          -5.654866776461628,
+          -2.2090473106399817
+        ],
+        "normalized_thrust_command": 4.42646174289116e-11,
+        "matching_note": "按 10 ms 量化的仿真时间戳匹配，不是执行器消费时间。"
+      },
+      {
+        "sim_time_s": 7.31,
+        "mission_elapsed_s": 2.46,
+        "position_m": [
+          -5.187144036748504,
+          0.21806302041732697,
+          0.0
+        ],
+        "velocity_world_mps": [
+          6.467569311997124,
+          3.8932910557418663,
+          0.0
+        ],
+        "speed_mps": 7.548984570801995,
+        "quaternion_wxyz": [
+          0.8260041101996928,
+          0.3169511080193228,
+          0.24478609668913714,
+          0.39665976847448725
+        ],
+        "tilt_deg": 47.21544241526076,
+        "body_rate_actual_radps": [
+          -5.402998842451069,
+          -5.00484783000233,
+          0.016238531356069296
+        ],
+        "last_command_stamp_s": 7.3,
+        "body_rate_command_radps": [
+          -5.654866776461628,
+          -5.654866776461628,
+          -5.654866776461628
+        ],
+        "normalized_thrust_command": 0.7569442812678252,
+        "matching_note": "按 10 ms 量化的仿真时间戳匹配，不是执行器消费时间。"
+      }
+    ],
+    "first_solver_failure": {
+      "event": "nmpc_result",
+      "sim_time_s": 5.4,
+      "wall_time_s": 3.91045612,
+      "solver_code": -1,
+      "success": false,
+      "elapsed_ms": 13.324801,
+      "wall_receive_s": 6.863277775933966
+    },
+    "first_center_ground_contact_s": 5.98,
+    "first_body_obstacle_collision_s_from_original_summary": 7.31,
+    "first_replan_result": {
+      "event": "plan_result",
+      "sim_time_s": 6.14,
+      "wall_time_s": 4.641187761,
+      "success": true,
+      "initial": false,
+      "elapsed_ms": 129.770888,
+      "stage": "complete",
+      "plan_id": 2,
+      "wall_receive_s": 7.595040769781917
+    }
+  },
+  "timing": {
+    "physics_integration_dt_s_from_source": 0.001,
+    "physics_nominal_hz": 1000,
+    "odom_and_clock_publish_dt_s_from_source": 0.01,
+    "odom_and_clock_nominal_hz": 100,
+    "nmpc_requested_period_s": 0.05,
+    "nmpc_prediction_step_s": 0.05,
+    "nmpc_horizon_steps": 10,
+    "socp_discrete_nodes": 100,
+    "odom_samples": 4734,
+    "odom_sim_interval_ms": {
+      "count": 4733,
+      "mean": 10.0,
+      "min": 9.99999999999801,
+      "p50": 9.999999999999787,
+      "p95": 10.000000000005116,
+      "p99": 10.000000000005116,
+      "max": 10.000000000005116
+    },
+    "odom_receive_wall_interval_ms": {
+      "count": 4733,
+      "mean": 9.999794568958974,
+      "min": 1.321194926276803,
+      "p50": 9.996235137805343,
+      "p95": 10.356188658624887,
+      "p99": 10.626698024570942,
+      "max": 18.411049153655767
+    },
+    "recording_sim_elapsed_s": 47.330000000000005,
+    "recording_receive_wall_elapsed_s": 47.329027694882825,
+    "full_development_nmpc_solver_ms": {
+      "count": 660,
+      "mean": 55.29052800303031,
+      "min": 8.962428,
+      "p50": 52.730531,
+      "p95": 99.26374779999999,
+      "p99": 137.04794527999985,
+      "max": 190.04187,
+      "over_50_ms_count": 362,
+      "over_50_ms_fraction": 0.5484848484848485,
+      "negative_status_count": 16,
+      "solver_code_counts": {
+        "3": 629,
+        "-1": 16,
+        "5": 15
+      }
+    },
+    "full_development_control_cadence_event_wall": {
+      "interval_ms": {
+        "count": 659,
+        "mean": 63.972122966616084,
+        "min": 12.419252000000824,
+        "p50": 58.09169499999989,
+        "p95": 117.43945350000155,
+        "p99": 149.5348155600002,
+        "max": 213.41189799999682
+      },
+      "over_50_ms_count": 457,
+      "over_100_ms_count": 68,
+      "observed_hz": 15.63180888215717
+    },
+    "control_receive_wall_interval_ms": {
+      "count": 659,
+      "mean": 63.974248090962426,
+      "min": 10.859786998480558,
+      "p50": 58.029825100675225,
+      "p95": 118.05169933941215,
+      "p99": 149.19415501411999,
+      "max": 212.83585508354008
+    },
+    "pre_boundary_control_cadence_event_wall": {
+      "interval_ms": {
+        "count": 9,
+        "mean": 44.78405211111106,
+        "min": 28.564724000000208,
+        "p50": 43.165300999999715,
+        "p95": 60.09310959999991,
+        "p99": 61.491425120000095,
+        "max": 61.84100400000014
+      },
+      "over_50_ms_count": 3,
+      "over_100_ms_count": 0,
+      "observed_hz": 22.329377375655046
+    },
+    "longest_control_gap": {
+      "from_event_sim_s": 43.56,
+      "to_event_sim_s": 43.78,
+      "event_wall_interval_ms": 213.41189799999682,
+      "next_solver_elapsed_ms": 162.436412,
+      "odom_samples": 23,
+      "odom_sim_interval_ms": {
+        "count": 22,
+        "mean": 9.999999999999948,
+        "min": 9.99999999999801,
+        "p50": 9.99999999999801,
+        "p95": 10.000000000005116,
+        "p99": 10.000000000005116,
+        "max": 10.000000000005116
+      }
+    },
+    "control_stamp_age_at_recorder_ms": {
+      "count": 660,
+      "mean": 5.691173034594998,
+      "min": 0.35655814408386277,
+      "p50": 5.802500631393315,
+      "p95": 10.372679887916902,
+      "p99": 10.484046032416927,
+      "max": 12.332194509468763
+    },
+    "stamp_age_caveat": "包括 10 ms /clock 量化、DDS 和记录器调度，不能解释为单独的网络或执行器延迟。",
+    "solver_state_age_caveat": "求解前读取状态，求解期间物理继续推进。未记录每次输入状态的精确时间戳；发布时状态年龄至少包含已测求解时间。",
+    "scope": "完整 660 次调用包含首次失效后的开发调试数据，不作为正式 Table III 终止前统计。"
+  },
+  "interface_evidence": {
+    "observed_execution_mode": "odometry",
+    "ctbr_message": "geometry_msgs/msg/WrenchStamped",
+    "command_topic": "/corto/control",
+    "body_rate_encoding": "force.xyz = body rates [rad/s]",
+    "collective_encoding": "torque.x = normalized thrust; 0.6 corresponds to 9.81 m/s^2",
+    "state_topic": "/lidar_slam/odom",
+    "state_encoding": "world position, world linear velocity, body-to-world quaternion [w,x,y,z], body angular velocity",
+    "initial_attitude": "yaw=pi; quaternion [0,0,0,1] up to floating-point roundoff",
+    "first_command": {
+      "sim_time_s": 4.85,
+      "mission_elapsed_s": 0.0,
+      "position_m": [
+        -14.0,
+        -6.5,
+        0.49
+      ],
+      "velocity_world_mps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "speed_mps": 0.0,
+      "quaternion_wxyz": [
+        6.123233995736766e-17,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "tilt_deg": 0.0,
+      "body_rate_actual_radps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "last_command_stamp_s": 4.85,
+      "body_rate_command_radps": [
+        3.8361130394768175,
+        -5.654866776457071,
+        0.6046996883717172
+      ],
+      "normalized_thrust_command": 0.7999999999994686,
+      "matching_note": "按 10 ms 量化的仿真时间戳匹配，不是执行器消费时间。"
+    },
+    "response_50_ms_later": {
+      "sim_time_s": 4.9,
+      "mission_elapsed_s": 0.05000000000000071,
+      "position_m": [
+        -13.999914253393346,
+        -6.4999393124996105,
+        0.4913020508715062
+      ],
+      "velocity_world_mps": [
+        0.008514172097396985,
+        0.006003111672090984,
+        0.07266085548237407
+      ],
+      "speed_mps": 0.0734038718030741,
+      "quaternion_wxyz": [
+        -0.0004632436710107395,
+        0.02695734439251487,
+        0.01889148255032587,
+        0.999457952530098
+      ],
+      "tilt_deg": 3.772792244338589,
+      "body_rate_actual_radps": [
+        1.9938244076306213,
+        -2.869910440857079,
+        0.0519634809872597
+      ],
+      "last_command_stamp_s": 4.9,
+      "body_rate_command_radps": [
+        5.036881192313198,
+        -5.654866776461628,
+        0.029118667958158626
+      ],
+      "normalized_thrust_command": 0.7999999999941387,
+      "matching_note": "按 10 ms 量化的仿真时间戳匹配，不是执行器消费时间。"
+    },
+    "body_z_world_at_4p90": [
+      0.05386796174492836,
+      0.03778746057836771,
+      0.9978328269407083
+    ],
+    "quaternion_norm_max_abs_error": 2.220446049250313e-16,
+    "body_omega_vs_quaternion_increment_pre_boundary_radps": {
+      "rmse": 0.011439982804338514,
+      "max": 0.034554464605439525,
+      "method": "相对旋转除以 0.01 s，与两端 body omega 均值比较，含离散近似误差。"
+    },
+    "source_review": "未发现字段顺序、body/world 约定、推力标度或状态回传分支的移植错误；实际角速度呈动态响应，没有直接复制指令。",
+    "logging_limit": "本回合未记录执行器消费时间或 motor RPM，不能仅用 CSV 测得精确执行器延迟。"
+  },
+  "interpretation": {
+    "confirmed": [
+      "包络越界发生在首次求解失败、首次重规划返回和首次障碍碰撞之前。",
+      "物理持续推进；完整日志中控制计算及发布间隔经常超过 50 ms。",
+      "初期大倾角与下降同时出现。0.8 的标称比推力为 13.08 m/s^2，静态垂向分量在倾角超过 41.409622 度后低于重力。",
+      "名义模型直接使用 body-rate 输入推进姿态；EGO 实际模型包含刚体角加速度、电机 1/30 s 滞后、RPM 限制和阻力。"
+    ],
+    "causal_limit": "单回合支持模型差异、状态滞后与大倾角和失效相关，不能将计算超期、初始倾角或任一因素断言为唯一原因。",
+    "source_freeze": "只新增 diagnostic.json 与 diagnostic.md。"
+  }
+}
